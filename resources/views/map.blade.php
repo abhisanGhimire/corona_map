@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/sidebar.css') }}" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <head>
         <meta charset="UTF-8">
@@ -26,12 +28,12 @@
     <script>
         /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
 function openNav() {
-  document.getElementById("mySidebar").style.width = "250px";
+  document.getElementById("mapSidebar").style.width = "250px";
 }
 
 /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
 function closeNav() {
-  document.getElementById("mySidebar").style.width = "0";
+  document.getElementById("mapSidebar").style.width = "0";
 }
     </script>
 

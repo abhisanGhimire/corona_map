@@ -1,5 +1,5 @@
 /* The sidebar menu */
-.sidebar {
+.mapSidebar {
     height: 100%;
     /* 100% Full-height */
     width: 0;
@@ -21,22 +21,22 @@
 }
 
 /* The sidebar links */
-.sidebar a {
-    padding: 8px 8px 8px 32px;
+.mapSidebar .selection {
+    margin-left: 20px;
     text-decoration: none;
-    font-size: 25px;
+    font-size: 20px;
     color: #f1f1f1;
     display: block;
     transition: 0.3s;
 }
 
 /* When you mouse over the navigation links, change their color */
-.sidebar a:hover {
+.mapSidebar .selection:hover {
     color: #818181;
 }
 
 /* Position and style the close button (top right corner) */
-.sidebar .closebtn {
+.mapSidebar .closebtn {
     position: absolute;
     top: 0;
     right: 25px;

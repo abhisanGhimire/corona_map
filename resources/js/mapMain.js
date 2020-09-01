@@ -1,5 +1,5 @@
 import { Map, View } from "ol";
-import * as mapConstants from "./mapConstants.js";
+import * as mapConstants from "./mapConstants";
 import { defaults as defaultControls } from "ol/control";
 import { defaults as defaultInteractions } from "ol/interaction";
 import * as mapBaselayer from "./mapBaselayer";

@@ -3,6 +3,7 @@ import ZoomSlider from "ol/control/ZoomSlider";
 import { DragRotateAndZoom } from "ol/interaction";
 import { Tile as TileLayer } from "ol/layer";
 import OSM from "ol/source/OSM";
+import { Draw } from "ol/interaction";
 
 //Controls and Interactions
 export const fullScreen = new FullScreen();
@@ -22,3 +23,12 @@ export const attribution = new Attribution({
 
 //URL of geoserver
 export const gurl = "http://localhost:8080/geoserver/nepal_map/wms";
+
+export const baseLayerElements = document.querySelectorAll(
+    ".selection>select[id=base_layer]"
+);
+
+export const drawInteraction = new Draw({
+    type: "LineString",
+    maxPoints: 2
+});

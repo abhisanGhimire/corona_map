@@ -2,7 +2,7 @@
     <a class="navbar-brand" href="#">Nepal Map</a>
     <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-            <a class="nav-link" href="#">Draw</a>
+            <a class="nav-link" href="#" id="drawline">Draw</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#">Corona Info</a>
