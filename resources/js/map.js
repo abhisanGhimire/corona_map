@@ -3,20 +3,11 @@ import * as mapMain from "./mapMain";
 import * as mapBaselayer from "./mapBaselayer";
 import * as mapLayergroup from "./mapLayergroup";
 import * as mapConstants from "./mapConstants";
-import * as mapFunctions from "./mapFunctions";
 
-//Main map initial view
-mapMain.map;
 //Map baselayer added
 mapMain.map.addLayer(mapLayergroup.baseLayerGroup);
 //Map mainlayer added
 mapMain.map.addLayer(mapLayergroup.mainLayerGroup);
-//Draw linestring upon click draw button
-document
-    .getElementById("drawline")
-    .addEventListener("click", mapFunctions.drawline);
-//Remove interaction
-document.getElementById("clear").addEventListener("click", mapFunctions.clear);
 
 //Layer switcher logic
 for (let baseLayerElement of mapConstants.baseLayerElements) {
