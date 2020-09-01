@@ -19,7 +19,7 @@ const sourceNepalBorder = new ImageWMS({
 });
 export const nepalBorder = new ImageLayer({
     source: sourceNepalBorder,
-    title: "NepalBorder",
+    title: "nepalBorder",
     visible: true
 });
 
@@ -37,7 +37,7 @@ const sourceNepalProvince = new TileWMS({
 
 export const nepalProvince = new TileLayer({
     source: sourceNepalProvince,
-    title: "NepalProvince",
+    title: "nepalProvince",
     visible: false
 });
 
@@ -54,7 +54,7 @@ const sourceNepalDistrict = new ImageWMS({
 });
 export const nepalDistrict = new ImageLayer({
     source: sourceNepalDistrict,
-    title: "NepalDistrict",
+    title: "nepalDistrict",
     visible: false
 });
 
@@ -71,7 +71,7 @@ const sourceNepalVdc = new TileWMS({
 });
 export const nepalVDC = new TileLayer({
     source: sourceNepalVdc,
-    title: "NepalVDC",
+    title: "nepalVDC",
     visible: false
 });
 
@@ -88,6 +88,6 @@ const sourceNepalWard = new TileWMS({
 });
 export const nepalWard = new TileLayer({
     source: sourceNepalWard,
-    title: "NepalWard",
+    title: "nepalWard",
     visible: false
 });

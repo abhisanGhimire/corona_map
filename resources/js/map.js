@@ -1,7 +1,6 @@
 import "ol/ol.css";
 import * as mapMain from "./mapMain";
 import * as mapBaselayer from "./mapBaselayer";
-import * as mapMainlayer from "./mapMainlayer";
 import * as mapLayergroup from "./mapLayergroup";
 import * as mapConstants from "./mapConstants";
 import * as mapFunctions from "./mapFunctions";
@@ -16,8 +15,10 @@ mapMain.map.addLayer(mapLayergroup.mainLayerGroup);
 document
     .getElementById("drawline")
     .addEventListener("click", mapFunctions.drawline);
+//Remove interaction
+document.getElementById("clear").addEventListener("click", mapFunctions.clear);
 
-//LayerSwitcher Logic
+//Layer switcher logic
 for (let baseLayerElement of mapConstants.baseLayerElements) {
     baseLayerElement.addEventListener("change", function() {
         let baseLayerElementValue = this.value;
@@ -29,5 +30,21 @@ for (let baseLayerElement of mapConstants.baseLayerElements) {
                 //Setting vector layer to true for drawing
                 mapBaselayer.vector.setVisible("true");
             });
+    });
+}
+
+// Layer switcher logic for upper layer
+for (let mainLayerElement of mapConstants.mainLayerElements) {
+    mainLayerElement.addEventListener("change", function() {
+        let mainLayerElementValue = this.value;
+        let mainLayer;
+        mapLayergroup.mainLayerGroup
+            .getLayers()
+            .forEach(function(element, index, array) {
+                if (mainLayerElementValue === element.get("title")) {
+                    mainLayer = element;
+                }
+            });
+        this.checked ? mainLayer.setVisible(true) : mainLayer.setVisible(false);
     });
 }

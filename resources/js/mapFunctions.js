@@ -26,3 +26,7 @@ export function drawline() {
         });
     });
 }
+
+export function clear() {
+    mapMain.map.removeInteraction(mapConstants.drawInteraction);
+}

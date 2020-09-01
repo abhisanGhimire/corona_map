@@ -27,6 +27,9 @@ export const gurl = "http://localhost:8080/geoserver/nepal_map/wms";
 export const baseLayerElements = document.querySelectorAll(
     ".selection>select[id=base_layer]"
 );
+export const mainLayerElements = document.querySelectorAll(
+    ".selection > input[type=checkbox]"
+);
 
 export const drawInteraction = new Draw({
     type: "LineString",
