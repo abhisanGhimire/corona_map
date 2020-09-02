@@ -29,6 +29,8 @@
             id="vdclayerCheckbox" />VDC<br />
         <input class="layer  mr-2" type="checkbox" name="rasterTileLayerCheckbox" value="nepalWard"
             id="wardlayerCheckbox" />Ward<br />
+        <input class="layer  mr-2" type="checkbox" name="rasterTileLayerCheckbox" value="corona"
+            id="coronalayerCheckbox" />Corona<br />
     </div>
 
 </div>

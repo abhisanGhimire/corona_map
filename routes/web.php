@@ -16,4 +16,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('map');
 });
+Route::get('/corona','CoronaController@getCoordinates');
 Route::post('/map/coordinates',"MapController@getCoordinates");

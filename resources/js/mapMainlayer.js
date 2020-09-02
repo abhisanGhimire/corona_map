@@ -91,3 +91,20 @@ export const nepalWard = new TileLayer({
     title: "nepalWard",
     visible: false
 });
+
+//Corona
+const sourceCorona = new TileWMS({
+    url: "http://localhost:8080/geoserver/nepal_map/wms",
+    params: {
+        layers: "nepal_map:corona_points",
+        TILED: true
+    },
+    crossOrigin: "anonymous",
+    serverType: "geoserver",
+    attributions: mapAttribution
+});
+export const corona = new TileLayer({
+    source: sourceCorona,
+    title: "corona",
+    visible: false
+});

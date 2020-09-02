@@ -22,6 +22,7 @@ export const mainLayerGroup = new LayerGroup({
         mapMainlayer.nepalProvince,
         mapMainlayer.nepalDistrict,
         mapMainlayer.nepalVDC,
-        mapMainlayer.nepalWard
+        mapMainlayer.nepalWard,
+        mapMainlayer.corona
     ]
 });

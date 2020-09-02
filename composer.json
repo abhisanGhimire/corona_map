@@ -9,12 +9,15 @@
     "license": "MIT",
     "require": {
         "php": "^7.2.5",
+        "bosnadev/database": "^0.20.0",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "^7.24",
         "laravel/tinker": "^2.0",
-        "laravel/ui": "^2.2"
+        "laravel/ui": "^2.2",
+        "mstaack/laravel-postgis": "^5.1",
+        "ramsey/uuid": "3.x"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

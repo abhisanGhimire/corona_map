@@ -80024,13 +80024,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _mapBaselayer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./mapBaselayer */ "./resources/js/mapBaselayer.js");
 /* harmony import */ var _mapLayergroup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./mapLayergroup */ "./resources/js/mapLayergroup.js");
 /* harmony import */ var _mapConstants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./mapConstants */ "./resources/js/mapConstants.js");
-/* harmony import */ var _mapFunctions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./mapFunctions */ "./resources/js/mapFunctions.js");
 function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
 
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
 
 
 
@@ -80077,6 +80075,7 @@ try {
       _mapLayergroup__WEBPACK_IMPORTED_MODULE_3__["mainLayerGroup"].getLayers().forEach(function (element, index, array) {
         if (mainLayerElementValue === element.get("title")) {
           mainLayer = element;
+          console.log(mainLayer);
         }
       });
       this.checked ? mainLayer.setVisible(true) : mainLayer.setVisible(false);
@@ -80351,7 +80350,7 @@ var baseLayerGroup = new ol_layer__WEBPACK_IMPORTED_MODULE_0__["Group"]({
   layers: [_mapBaselayer__WEBPACK_IMPORTED_MODULE_1__["base_no_layer"], _mapBaselayer__WEBPACK_IMPORTED_MODULE_1__["base_osm_standardmap"], _mapBaselayer__WEBPACK_IMPORTED_MODULE_1__["base_osm_humanitarianmap"], _mapBaselayer__WEBPACK_IMPORTED_MODULE_1__["base_bing_map"], _mapBaselayer__WEBPACK_IMPORTED_MODULE_1__["base_cartoDB_map"], _mapBaselayer__WEBPACK_IMPORTED_MODULE_1__["base_stamenwithlabel_map"], _mapBaselayer__WEBPACK_IMPORTED_MODULE_1__["base_stamen_map"], _mapBaselayer__WEBPACK_IMPORTED_MODULE_1__["vector"], _mapBaselayer__WEBPACK_IMPORTED_MODULE_1__["base_gmap"], _mapBaselayer__WEBPACK_IMPORTED_MODULE_1__["base_gsatmap"]]
 });
 var mainLayerGroup = new ol_layer__WEBPACK_IMPORTED_MODULE_0__["Group"]({
-  layers: [_mapMainlayer__WEBPACK_IMPORTED_MODULE_2__["nepalBorder"], _mapMainlayer__WEBPACK_IMPORTED_MODULE_2__["nepalProvince"], _mapMainlayer__WEBPACK_IMPORTED_MODULE_2__["nepalDistrict"], _mapMainlayer__WEBPACK_IMPORTED_MODULE_2__["nepalVDC"], _mapMainlayer__WEBPACK_IMPORTED_MODULE_2__["nepalWard"]]
+  layers: [_mapMainlayer__WEBPACK_IMPORTED_MODULE_2__["nepalBorder"], _mapMainlayer__WEBPACK_IMPORTED_MODULE_2__["nepalProvince"], _mapMainlayer__WEBPACK_IMPORTED_MODULE_2__["nepalDistrict"], _mapMainlayer__WEBPACK_IMPORTED_MODULE_2__["nepalVDC"], _mapMainlayer__WEBPACK_IMPORTED_MODULE_2__["nepalWard"], _mapMainlayer__WEBPACK_IMPORTED_MODULE_2__["corona"]]
 });
 
 /***/ }),
@@ -80399,7 +80398,7 @@ var map = new ol__WEBPACK_IMPORTED_MODULE_0__["Map"]({
 /*!**************************************!*\
   !*** ./resources/js/mapMainlayer.js ***!
   \**************************************/
-/*! exports provided: nepalBorder, nepalProvince, nepalDistrict, nepalVDC, nepalWard */
+/*! exports provided: nepalBorder, nepalProvince, nepalDistrict, nepalVDC, nepalWard, corona */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -80409,6 +80408,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "nepalDistrict", function() { return nepalDistrict; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "nepalVDC", function() { return nepalVDC; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "nepalWard", function() { return nepalWard; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "corona", function() { return corona; });
 /* harmony import */ var ol_source_ImageWMS__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ol/source/ImageWMS */ "./node_modules/ol/source/ImageWMS.js");
 /* harmony import */ var ol_layer_Image__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ol/layer/Image */ "./node_modules/ol/layer/Image.js");
 /* harmony import */ var _mapConstants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./mapConstants */ "./resources/js/mapConstants.js");
@@ -80499,6 +80499,22 @@ var nepalWard = new ol_layer_Tile__WEBPACK_IMPORTED_MODULE_4__["default"]({
   source: sourceNepalWard,
   title: "nepalWard",
   visible: false
+}); //Corona
+
+var sourceCorona = new ol_source_TileWMS__WEBPACK_IMPORTED_MODULE_3__["default"]({
+  url: "http://localhost:8080/geoserver/nepal_map/wms",
+  params: {
+    layers: "nepal_map:corona_points",
+    TILED: true
+  },
+  crossOrigin: "anonymous",
+  serverType: "geoserver",
+  attributions: mapAttribution
+});
+var corona = new ol_layer_Tile__WEBPACK_IMPORTED_MODULE_4__["default"]({
+  source: sourceCorona,
+  title: "corona",
+  visible: false
 });
 
 /***/ }),
@@ -80510,7 +80526,7 @@ var nepalWard = new ol_layer_Tile__WEBPACK_IMPORTED_MODULE_4__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! c:\xampp\htdocs\laravel_projects\map_with_webpack\resources\js\map.js */"./resources/js/map.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\laravel_projects\map_with_webpack\resources\js\map.js */"./resources/js/map.js");
 
 
 /***/ })
