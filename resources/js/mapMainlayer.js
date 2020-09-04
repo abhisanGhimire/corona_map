@@ -108,3 +108,20 @@ export const corona = new TileLayer({
     title: "corona",
     visible: false
 });
+
+//Population
+const sourcePopulation = new TileWMS({
+    url: "http://localhost:8080/geoserver/nepal_map/wms",
+    params: {
+        layers: "nepal_map:NPL_ppp_2020_adj_v2_int16",
+        TILED: true
+    },
+    crossOrigin: "anonymous",
+    serverType: "geoserver",
+    attributions: mapAttribution
+});
+export const population = new TileLayer({
+    source: sourcePopulation,
+    title: "population",
+    visible: false
+});

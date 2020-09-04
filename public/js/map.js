@@ -34753,6 +34753,1091 @@ function getGeometryType(type, numEnds) {
 
 /***/ }),
 
+/***/ "./node_modules/ol/format/TextFeature.js":
+/*!***********************************************!*\
+  !*** ./node_modules/ol/format/TextFeature.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _format_Feature_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../format/Feature.js */ "./node_modules/ol/format/Feature.js");
+/* harmony import */ var _format_FormatType_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../format/FormatType.js */ "./node_modules/ol/format/FormatType.js");
+/* harmony import */ var _util_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../util.js */ "./node_modules/ol/util.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+/**
+ * @module ol/format/TextFeature
+ */
+
+
+
+/**
+ * @classdesc
+ * Abstract base class; normally only used for creating subclasses and not
+ * instantiated in apps.
+ * Base class for text feature formats.
+ *
+ * @abstract
+ */
+var TextFeature = /** @class */ (function (_super) {
+    __extends(TextFeature, _super);
+    function TextFeature() {
+        return _super.call(this) || this;
+    }
+    /**
+     * @return {import("./FormatType.js").default} Format.
+     */
+    TextFeature.prototype.getType = function () {
+        return _format_FormatType_js__WEBPACK_IMPORTED_MODULE_1__["default"].TEXT;
+    };
+    /**
+     * Read the feature from the source.
+     *
+     * @param {Document|Element|Object|string} source Source.
+     * @param {import("./Feature.js").ReadOptions=} opt_options Read options.
+     * @return {import("../Feature.js").default} Feature.
+     * @api
+     */
+    TextFeature.prototype.readFeature = function (source, opt_options) {
+        return this.readFeatureFromText(getText(source), this.adaptOptions(opt_options));
+    };
+    /**
+     * @abstract
+     * @param {string} text Text.
+     * @param {import("./Feature.js").ReadOptions=} opt_options Read options.
+     * @protected
+     * @return {import("../Feature.js").default} Feature.
+     */
+    TextFeature.prototype.readFeatureFromText = function (text, opt_options) {
+        return Object(_util_js__WEBPACK_IMPORTED_MODULE_2__["abstract"])();
+    };
+    /**
+     * Read the features from the source.
+     *
+     * @param {Document|Element|Object|string} source Source.
+     * @param {import("./Feature.js").ReadOptions=} opt_options Read options.
+     * @return {Array<import("../Feature.js").default>} Features.
+     * @api
+     */
+    TextFeature.prototype.readFeatures = function (source, opt_options) {
+        return this.readFeaturesFromText(getText(source), this.adaptOptions(opt_options));
+    };
+    /**
+     * @abstract
+     * @param {string} text Text.
+     * @param {import("./Feature.js").ReadOptions=} opt_options Read options.
+     * @protected
+     * @return {Array<import("../Feature.js").default>} Features.
+     */
+    TextFeature.prototype.readFeaturesFromText = function (text, opt_options) {
+        return Object(_util_js__WEBPACK_IMPORTED_MODULE_2__["abstract"])();
+    };
+    /**
+     * Read the geometry from the source.
+     *
+     * @param {Document|Element|Object|string} source Source.
+     * @param {import("./Feature.js").ReadOptions=} opt_options Read options.
+     * @return {import("../geom/Geometry.js").default} Geometry.
+     * @api
+     */
+    TextFeature.prototype.readGeometry = function (source, opt_options) {
+        return this.readGeometryFromText(getText(source), this.adaptOptions(opt_options));
+    };
+    /**
+     * @abstract
+     * @param {string} text Text.
+     * @param {import("./Feature.js").ReadOptions=} opt_options Read options.
+     * @protected
+     * @return {import("../geom/Geometry.js").default} Geometry.
+     */
+    TextFeature.prototype.readGeometryFromText = function (text, opt_options) {
+        return Object(_util_js__WEBPACK_IMPORTED_MODULE_2__["abstract"])();
+    };
+    /**
+     * Read the projection from the source.
+     *
+     * @param {Document|Element|Object|string} source Source.
+     * @return {import("../proj/Projection.js").default} Projection.
+     * @api
+     */
+    TextFeature.prototype.readProjection = function (source) {
+        return this.readProjectionFromText(getText(source));
+    };
+    /**
+     * @param {string} text Text.
+     * @protected
+     * @return {import("../proj/Projection.js").default} Projection.
+     */
+    TextFeature.prototype.readProjectionFromText = function (text) {
+        return this.dataProjection;
+    };
+    /**
+     * Encode a feature as a string.
+     *
+     * @param {import("../Feature.js").default} feature Feature.
+     * @param {import("./Feature.js").WriteOptions=} opt_options Write options.
+     * @return {string} Encoded feature.
+     * @api
+     */
+    TextFeature.prototype.writeFeature = function (feature, opt_options) {
+        return this.writeFeatureText(feature, this.adaptOptions(opt_options));
+    };
+    /**
+     * @abstract
+     * @param {import("../Feature.js").default} feature Features.
+     * @param {import("./Feature.js").WriteOptions=} opt_options Write options.
+     * @protected
+     * @return {string} Text.
+     */
+    TextFeature.prototype.writeFeatureText = function (feature, opt_options) {
+        return Object(_util_js__WEBPACK_IMPORTED_MODULE_2__["abstract"])();
+    };
+    /**
+     * Encode an array of features as string.
+     *
+     * @param {Array<import("../Feature.js").default>} features Features.
+     * @param {import("./Feature.js").WriteOptions=} opt_options Write options.
+     * @return {string} Encoded features.
+     * @api
+     */
+    TextFeature.prototype.writeFeatures = function (features, opt_options) {
+        return this.writeFeaturesText(features, this.adaptOptions(opt_options));
+    };
+    /**
+     * @abstract
+     * @param {Array<import("../Feature.js").default>} features Features.
+     * @param {import("./Feature.js").WriteOptions=} opt_options Write options.
+     * @protected
+     * @return {string} Text.
+     */
+    TextFeature.prototype.writeFeaturesText = function (features, opt_options) {
+        return Object(_util_js__WEBPACK_IMPORTED_MODULE_2__["abstract"])();
+    };
+    /**
+     * Write a single geometry.
+     *
+     * @param {import("../geom/Geometry.js").default} geometry Geometry.
+     * @param {import("./Feature.js").WriteOptions=} opt_options Write options.
+     * @return {string} Geometry.
+     * @api
+     */
+    TextFeature.prototype.writeGeometry = function (geometry, opt_options) {
+        return this.writeGeometryText(geometry, this.adaptOptions(opt_options));
+    };
+    /**
+     * @abstract
+     * @param {import("../geom/Geometry.js").default} geometry Geometry.
+     * @param {import("./Feature.js").WriteOptions=} opt_options Write options.
+     * @protected
+     * @return {string} Text.
+     */
+    TextFeature.prototype.writeGeometryText = function (geometry, opt_options) {
+        return Object(_util_js__WEBPACK_IMPORTED_MODULE_2__["abstract"])();
+    };
+    return TextFeature;
+}(_format_Feature_js__WEBPACK_IMPORTED_MODULE_0__["default"]));
+/**
+ * @param {Document|Element|Object|string} source Source.
+ * @return {string} Text.
+ */
+function getText(source) {
+    if (typeof source === 'string') {
+        return source;
+    }
+    else {
+        return '';
+    }
+}
+/* harmony default export */ __webpack_exports__["default"] = (TextFeature);
+//# sourceMappingURL=TextFeature.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/format/WKT.js":
+/*!***************************************!*\
+  !*** ./node_modules/ol/format/WKT.js ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Feature_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Feature.js */ "./node_modules/ol/Feature.js");
+/* harmony import */ var _geom_GeometryCollection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../geom/GeometryCollection.js */ "./node_modules/ol/geom/GeometryCollection.js");
+/* harmony import */ var _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../geom/GeometryLayout.js */ "./node_modules/ol/geom/GeometryLayout.js");
+/* harmony import */ var _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../geom/GeometryType.js */ "./node_modules/ol/geom/GeometryType.js");
+/* harmony import */ var _geom_LineString_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../geom/LineString.js */ "./node_modules/ol/geom/LineString.js");
+/* harmony import */ var _geom_MultiLineString_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../geom/MultiLineString.js */ "./node_modules/ol/geom/MultiLineString.js");
+/* harmony import */ var _geom_MultiPoint_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../geom/MultiPoint.js */ "./node_modules/ol/geom/MultiPoint.js");
+/* harmony import */ var _geom_MultiPolygon_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../geom/MultiPolygon.js */ "./node_modules/ol/geom/MultiPolygon.js");
+/* harmony import */ var _geom_Point_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../geom/Point.js */ "./node_modules/ol/geom/Point.js");
+/* harmony import */ var _geom_Polygon_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../geom/Polygon.js */ "./node_modules/ol/geom/Polygon.js");
+/* harmony import */ var _TextFeature_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./TextFeature.js */ "./node_modules/ol/format/TextFeature.js");
+/* harmony import */ var _Feature_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Feature.js */ "./node_modules/ol/format/Feature.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+/**
+ * @module ol/format/WKT
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * Geometry constructors
+ * @enum {function (new:import("../geom/Geometry.js").default, Array, import("../geom/GeometryLayout.js").default)}
+ */
+var GeometryConstructor = {
+    'POINT': _geom_Point_js__WEBPACK_IMPORTED_MODULE_8__["default"],
+    'LINESTRING': _geom_LineString_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+    'POLYGON': _geom_Polygon_js__WEBPACK_IMPORTED_MODULE_9__["default"],
+    'MULTIPOINT': _geom_MultiPoint_js__WEBPACK_IMPORTED_MODULE_6__["default"],
+    'MULTILINESTRING': _geom_MultiLineString_js__WEBPACK_IMPORTED_MODULE_5__["default"],
+    'MULTIPOLYGON': _geom_MultiPolygon_js__WEBPACK_IMPORTED_MODULE_7__["default"],
+};
+/**
+ * @typedef {Object} Options
+ * @property {boolean} [splitCollection=false] Whether to split GeometryCollections into
+ * multiple features on reading.
+ */
+/**
+ * @typedef {Object} Token
+ * @property {number} type
+ * @property {number|string} [value]
+ * @property {number} position
+ */
+/**
+ * @const
+ * @type {string}
+ */
+var EMPTY = 'EMPTY';
+/**
+ * @const
+ * @type {string}
+ */
+var Z = 'Z';
+/**
+ * @const
+ * @type {string}
+ */
+var M = 'M';
+/**
+ * @const
+ * @type {string}
+ */
+var ZM = 'ZM';
+/**
+ * @const
+ * @enum {number}
+ */
+var TokenType = {
+    TEXT: 1,
+    LEFT_PAREN: 2,
+    RIGHT_PAREN: 3,
+    NUMBER: 4,
+    COMMA: 5,
+    EOF: 6,
+};
+/**
+ * @const
+ * @type {Object<string, string>}
+ */
+var WKTGeometryType = {};
+for (var type in _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_3__["default"]) {
+    WKTGeometryType[type] = _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_3__["default"][type].toUpperCase();
+}
+/**
+ * Class to tokenize a WKT string.
+ */
+var Lexer = /** @class */ (function () {
+    /**
+     * @param {string} wkt WKT string.
+     */
+    function Lexer(wkt) {
+        /**
+         * @type {string}
+         */
+        this.wkt = wkt;
+        /**
+         * @type {number}
+         * @private
+         */
+        this.index_ = -1;
+    }
+    /**
+     * @param {string} c Character.
+     * @return {boolean} Whether the character is alphabetic.
+     * @private
+     */
+    Lexer.prototype.isAlpha_ = function (c) {
+        return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z');
+    };
+    /**
+     * @param {string} c Character.
+     * @param {boolean=} opt_decimal Whether the string number
+     *     contains a dot, i.e. is a decimal number.
+     * @return {boolean} Whether the character is numeric.
+     * @private
+     */
+    Lexer.prototype.isNumeric_ = function (c, opt_decimal) {
+        var decimal = opt_decimal !== undefined ? opt_decimal : false;
+        return (c >= '0' && c <= '9') || (c == '.' && !decimal);
+    };
+    /**
+     * @param {string} c Character.
+     * @return {boolean} Whether the character is whitespace.
+     * @private
+     */
+    Lexer.prototype.isWhiteSpace_ = function (c) {
+        return c == ' ' || c == '\t' || c == '\r' || c == '\n';
+    };
+    /**
+     * @return {string} Next string character.
+     * @private
+     */
+    Lexer.prototype.nextChar_ = function () {
+        return this.wkt.charAt(++this.index_);
+    };
+    /**
+     * Fetch and return the next token.
+     * @return {!Token} Next string token.
+     */
+    Lexer.prototype.nextToken = function () {
+        var c = this.nextChar_();
+        var position = this.index_;
+        /** @type {number|string} */
+        var value = c;
+        var type;
+        if (c == '(') {
+            type = TokenType.LEFT_PAREN;
+        }
+        else if (c == ',') {
+            type = TokenType.COMMA;
+        }
+        else if (c == ')') {
+            type = TokenType.RIGHT_PAREN;
+        }
+        else if (this.isNumeric_(c) || c == '-') {
+            type = TokenType.NUMBER;
+            value = this.readNumber_();
+        }
+        else if (this.isAlpha_(c)) {
+            type = TokenType.TEXT;
+            value = this.readText_();
+        }
+        else if (this.isWhiteSpace_(c)) {
+            return this.nextToken();
+        }
+        else if (c === '') {
+            type = TokenType.EOF;
+        }
+        else {
+            throw new Error('Unexpected character: ' + c);
+        }
+        return { position: position, value: value, type: type };
+    };
+    /**
+     * @return {number} Numeric token value.
+     * @private
+     */
+    Lexer.prototype.readNumber_ = function () {
+        var c;
+        var index = this.index_;
+        var decimal = false;
+        var scientificNotation = false;
+        do {
+            if (c == '.') {
+                decimal = true;
+            }
+            else if (c == 'e' || c == 'E') {
+                scientificNotation = true;
+            }
+            c = this.nextChar_();
+        } while (this.isNumeric_(c, decimal) ||
+            // if we haven't detected a scientific number before, 'e' or 'E'
+            // hint that we should continue to read
+            (!scientificNotation && (c == 'e' || c == 'E')) ||
+            // once we know that we have a scientific number, both '-' and '+'
+            // are allowed
+            (scientificNotation && (c == '-' || c == '+')));
+        return parseFloat(this.wkt.substring(index, this.index_--));
+    };
+    /**
+     * @return {string} String token value.
+     * @private
+     */
+    Lexer.prototype.readText_ = function () {
+        var c;
+        var index = this.index_;
+        do {
+            c = this.nextChar_();
+        } while (this.isAlpha_(c));
+        return this.wkt.substring(index, this.index_--).toUpperCase();
+    };
+    return Lexer;
+}());
+/**
+ * Class to parse the tokens from the WKT string.
+ */
+var Parser = /** @class */ (function () {
+    /**
+     * @param {Lexer} lexer The lexer.
+     */
+    function Parser(lexer) {
+        /**
+         * @type {Lexer}
+         * @private
+         */
+        this.lexer_ = lexer;
+        /**
+         * @type {Token}
+         * @private
+         */
+        this.token_;
+        /**
+         * @type {import("../geom/GeometryLayout.js").default}
+         * @private
+         */
+        this.layout_ = _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_2__["default"].XY;
+    }
+    /**
+     * Fetch the next token form the lexer and replace the active token.
+     * @private
+     */
+    Parser.prototype.consume_ = function () {
+        this.token_ = this.lexer_.nextToken();
+    };
+    /**
+     * Tests if the given type matches the type of the current token.
+     * @param {TokenType} type Token type.
+     * @return {boolean} Whether the token matches the given type.
+     */
+    Parser.prototype.isTokenType = function (type) {
+        var isMatch = this.token_.type == type;
+        return isMatch;
+    };
+    /**
+     * If the given type matches the current token, consume it.
+     * @param {TokenType} type Token type.
+     * @return {boolean} Whether the token matches the given type.
+     */
+    Parser.prototype.match = function (type) {
+        var isMatch = this.isTokenType(type);
+        if (isMatch) {
+            this.consume_();
+        }
+        return isMatch;
+    };
+    /**
+     * Try to parse the tokens provided by the lexer.
+     * @return {import("../geom/Geometry.js").default} The geometry.
+     */
+    Parser.prototype.parse = function () {
+        this.consume_();
+        var geometry = this.parseGeometry_();
+        return geometry;
+    };
+    /**
+     * Try to parse the dimensional info.
+     * @return {import("../geom/GeometryLayout.js").default} The layout.
+     * @private
+     */
+    Parser.prototype.parseGeometryLayout_ = function () {
+        var layout = _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_2__["default"].XY;
+        var dimToken = this.token_;
+        if (this.isTokenType(TokenType.TEXT)) {
+            var dimInfo = dimToken.value;
+            if (dimInfo === Z) {
+                layout = _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_2__["default"].XYZ;
+            }
+            else if (dimInfo === M) {
+                layout = _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_2__["default"].XYM;
+            }
+            else if (dimInfo === ZM) {
+                layout = _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_2__["default"].XYZM;
+            }
+            if (layout !== _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_2__["default"].XY) {
+                this.consume_();
+            }
+        }
+        return layout;
+    };
+    /**
+     * @return {!Array<import("../geom/Geometry.js").default>} A collection of geometries.
+     * @private
+     */
+    Parser.prototype.parseGeometryCollectionText_ = function () {
+        if (this.match(TokenType.LEFT_PAREN)) {
+            var geometries = [];
+            do {
+                geometries.push(this.parseGeometry_());
+            } while (this.match(TokenType.COMMA));
+            if (this.match(TokenType.RIGHT_PAREN)) {
+                return geometries;
+            }
+        }
+        else if (this.isEmptyGeometry_()) {
+            return [];
+        }
+        throw new Error(this.formatErrorMessage_());
+    };
+    /**
+     * @return {Array<number>} All values in a point.
+     * @private
+     */
+    Parser.prototype.parsePointText_ = function () {
+        if (this.match(TokenType.LEFT_PAREN)) {
+            var coordinates = this.parsePoint_();
+            if (this.match(TokenType.RIGHT_PAREN)) {
+                return coordinates;
+            }
+        }
+        else if (this.isEmptyGeometry_()) {
+            return null;
+        }
+        throw new Error(this.formatErrorMessage_());
+    };
+    /**
+     * @return {!Array<!Array<number>>} All points in a linestring.
+     * @private
+     */
+    Parser.prototype.parseLineStringText_ = function () {
+        if (this.match(TokenType.LEFT_PAREN)) {
+            var coordinates = this.parsePointList_();
+            if (this.match(TokenType.RIGHT_PAREN)) {
+                return coordinates;
+            }
+        }
+        else if (this.isEmptyGeometry_()) {
+            return [];
+        }
+        throw new Error(this.formatErrorMessage_());
+    };
+    /**
+     * @return {!Array<!Array<!Array<number>>>} All points in a polygon.
+     * @private
+     */
+    Parser.prototype.parsePolygonText_ = function () {
+        if (this.match(TokenType.LEFT_PAREN)) {
+            var coordinates = this.parseLineStringTextList_();
+            if (this.match(TokenType.RIGHT_PAREN)) {
+                return coordinates;
+            }
+        }
+        else if (this.isEmptyGeometry_()) {
+            return [];
+        }
+        throw new Error(this.formatErrorMessage_());
+    };
+    /**
+     * @return {!Array<!Array<number>>} All points in a multipoint.
+     * @private
+     */
+    Parser.prototype.parseMultiPointText_ = function () {
+        if (this.match(TokenType.LEFT_PAREN)) {
+            var coordinates = void 0;
+            if (this.token_.type == TokenType.LEFT_PAREN) {
+                coordinates = this.parsePointTextList_();
+            }
+            else {
+                coordinates = this.parsePointList_();
+            }
+            if (this.match(TokenType.RIGHT_PAREN)) {
+                return coordinates;
+            }
+        }
+        else if (this.isEmptyGeometry_()) {
+            return [];
+        }
+        throw new Error(this.formatErrorMessage_());
+    };
+    /**
+     * @return {!Array<!Array<!Array<number>>>} All linestring points
+     *                                          in a multilinestring.
+     * @private
+     */
+    Parser.prototype.parseMultiLineStringText_ = function () {
+        if (this.match(TokenType.LEFT_PAREN)) {
+            var coordinates = this.parseLineStringTextList_();
+            if (this.match(TokenType.RIGHT_PAREN)) {
+                return coordinates;
+            }
+        }
+        else if (this.isEmptyGeometry_()) {
+            return [];
+        }
+        throw new Error(this.formatErrorMessage_());
+    };
+    /**
+     * @return {!Array<!Array<!Array<!Array<number>>>>} All polygon points in a multipolygon.
+     * @private
+     */
+    Parser.prototype.parseMultiPolygonText_ = function () {
+        if (this.match(TokenType.LEFT_PAREN)) {
+            var coordinates = this.parsePolygonTextList_();
+            if (this.match(TokenType.RIGHT_PAREN)) {
+                return coordinates;
+            }
+        }
+        else if (this.isEmptyGeometry_()) {
+            return [];
+        }
+        throw new Error(this.formatErrorMessage_());
+    };
+    /**
+     * @return {!Array<number>} A point.
+     * @private
+     */
+    Parser.prototype.parsePoint_ = function () {
+        var coordinates = [];
+        var dimensions = this.layout_.length;
+        for (var i = 0; i < dimensions; ++i) {
+            var token = this.token_;
+            if (this.match(TokenType.NUMBER)) {
+                coordinates.push(/** @type {number} */ (token.value));
+            }
+            else {
+                break;
+            }
+        }
+        if (coordinates.length == dimensions) {
+            return coordinates;
+        }
+        throw new Error(this.formatErrorMessage_());
+    };
+    /**
+     * @return {!Array<!Array<number>>} An array of points.
+     * @private
+     */
+    Parser.prototype.parsePointList_ = function () {
+        var coordinates = [this.parsePoint_()];
+        while (this.match(TokenType.COMMA)) {
+            coordinates.push(this.parsePoint_());
+        }
+        return coordinates;
+    };
+    /**
+     * @return {!Array<!Array<number>>} An array of points.
+     * @private
+     */
+    Parser.prototype.parsePointTextList_ = function () {
+        var coordinates = [this.parsePointText_()];
+        while (this.match(TokenType.COMMA)) {
+            coordinates.push(this.parsePointText_());
+        }
+        return coordinates;
+    };
+    /**
+     * @return {!Array<!Array<!Array<number>>>} An array of points.
+     * @private
+     */
+    Parser.prototype.parseLineStringTextList_ = function () {
+        var coordinates = [this.parseLineStringText_()];
+        while (this.match(TokenType.COMMA)) {
+            coordinates.push(this.parseLineStringText_());
+        }
+        return coordinates;
+    };
+    /**
+     * @return {!Array<!Array<!Array<!Array<number>>>>} An array of points.
+     * @private
+     */
+    Parser.prototype.parsePolygonTextList_ = function () {
+        var coordinates = [this.parsePolygonText_()];
+        while (this.match(TokenType.COMMA)) {
+            coordinates.push(this.parsePolygonText_());
+        }
+        return coordinates;
+    };
+    /**
+     * @return {boolean} Whether the token implies an empty geometry.
+     * @private
+     */
+    Parser.prototype.isEmptyGeometry_ = function () {
+        var isEmpty = this.isTokenType(TokenType.TEXT) && this.token_.value == EMPTY;
+        if (isEmpty) {
+            this.consume_();
+        }
+        return isEmpty;
+    };
+    /**
+     * Create an error message for an unexpected token error.
+     * @return {string} Error message.
+     * @private
+     */
+    Parser.prototype.formatErrorMessage_ = function () {
+        return ('Unexpected `' +
+            this.token_.value +
+            '` at position ' +
+            this.token_.position +
+            ' in `' +
+            this.lexer_.wkt +
+            '`');
+    };
+    /**
+     * @return {!import("../geom/Geometry.js").default} The geometry.
+     * @private
+     */
+    Parser.prototype.parseGeometry_ = function () {
+        var token = this.token_;
+        if (this.match(TokenType.TEXT)) {
+            var geomType = token.value;
+            this.layout_ = this.parseGeometryLayout_();
+            if (geomType == 'GEOMETRYCOLLECTION') {
+                var geometries = this.parseGeometryCollectionText_();
+                return new _geom_GeometryCollection_js__WEBPACK_IMPORTED_MODULE_1__["default"](geometries);
+            }
+            else {
+                var ctor = GeometryConstructor[geomType];
+                if (!ctor) {
+                    throw new Error('Invalid geometry type: ' + geomType);
+                }
+                var coordinates = void 0;
+                switch (geomType) {
+                    case 'POINT': {
+                        coordinates = this.parsePointText_();
+                        break;
+                    }
+                    case 'LINESTRING': {
+                        coordinates = this.parseLineStringText_();
+                        break;
+                    }
+                    case 'POLYGON': {
+                        coordinates = this.parsePolygonText_();
+                        break;
+                    }
+                    case 'MULTIPOINT': {
+                        coordinates = this.parseMultiPointText_();
+                        break;
+                    }
+                    case 'MULTILINESTRING': {
+                        coordinates = this.parseMultiLineStringText_();
+                        break;
+                    }
+                    case 'MULTIPOLYGON': {
+                        coordinates = this.parseMultiPolygonText_();
+                        break;
+                    }
+                    default: {
+                        throw new Error('Invalid geometry type: ' + geomType);
+                    }
+                }
+                if (!coordinates) {
+                    if (ctor === GeometryConstructor['POINT']) {
+                        coordinates = [NaN, NaN];
+                    }
+                    else {
+                        coordinates = [];
+                    }
+                }
+                return new ctor(coordinates, this.layout_);
+            }
+        }
+        throw new Error(this.formatErrorMessage_());
+    };
+    return Parser;
+}());
+/**
+ * @classdesc
+ * Geometry format for reading and writing data in the `WellKnownText` (WKT)
+ * format.
+ *
+ * @api
+ */
+var WKT = /** @class */ (function (_super) {
+    __extends(WKT, _super);
+    /**
+     * @param {Options=} opt_options Options.
+     */
+    function WKT(opt_options) {
+        var _this = _super.call(this) || this;
+        var options = opt_options ? opt_options : {};
+        /**
+         * Split GeometryCollection into multiple features.
+         * @type {boolean}
+         * @private
+         */
+        _this.splitCollection_ =
+            options.splitCollection !== undefined ? options.splitCollection : false;
+        return _this;
+    }
+    /**
+     * Parse a WKT string.
+     * @param {string} wkt WKT string.
+     * @return {import("../geom/Geometry.js").default|undefined}
+     *     The geometry created.
+     * @private
+     */
+    WKT.prototype.parse_ = function (wkt) {
+        var lexer = new Lexer(wkt);
+        var parser = new Parser(lexer);
+        return parser.parse();
+    };
+    /**
+     * @protected
+     * @param {string} text Text.
+     * @param {import("./Feature.js").ReadOptions=} opt_options Read options.
+     * @return {import("../Feature.js").default} Feature.
+     */
+    WKT.prototype.readFeatureFromText = function (text, opt_options) {
+        var geom = this.readGeometryFromText(text, opt_options);
+        if (geom) {
+            var feature = new _Feature_js__WEBPACK_IMPORTED_MODULE_0__["default"]();
+            feature.setGeometry(geom);
+            return feature;
+        }
+        return null;
+    };
+    /**
+     * @param {string} text Text.
+     * @param {import("./Feature.js").ReadOptions=} opt_options Read options.
+     * @protected
+     * @return {Array<Feature>} Features.
+     */
+    WKT.prototype.readFeaturesFromText = function (text, opt_options) {
+        var geometries = [];
+        var geometry = this.readGeometryFromText(text, opt_options);
+        if (this.splitCollection_ &&
+            geometry.getType() == _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_3__["default"].GEOMETRY_COLLECTION) {
+            geometries = /** @type {GeometryCollection} */ (geometry).getGeometriesArray();
+        }
+        else {
+            geometries = [geometry];
+        }
+        var features = [];
+        for (var i = 0, ii = geometries.length; i < ii; ++i) {
+            var feature = new _Feature_js__WEBPACK_IMPORTED_MODULE_0__["default"]();
+            feature.setGeometry(geometries[i]);
+            features.push(feature);
+        }
+        return features;
+    };
+    /**
+     * @param {string} text Text.
+     * @param {import("./Feature.js").ReadOptions=} opt_options Read options.
+     * @protected
+     * @return {import("../geom/Geometry.js").default} Geometry.
+     */
+    WKT.prototype.readGeometryFromText = function (text, opt_options) {
+        var geometry = this.parse_(text);
+        if (geometry) {
+            return Object(_Feature_js__WEBPACK_IMPORTED_MODULE_11__["transformGeometryWithOptions"])(geometry, false, opt_options);
+        }
+        else {
+            return null;
+        }
+    };
+    /**
+     * @param {import("../Feature.js").default} feature Features.
+     * @param {import("./Feature.js").WriteOptions=} opt_options Write options.
+     * @protected
+     * @return {string} Text.
+     */
+    WKT.prototype.writeFeatureText = function (feature, opt_options) {
+        var geometry = feature.getGeometry();
+        if (geometry) {
+            return this.writeGeometryText(geometry, opt_options);
+        }
+        return '';
+    };
+    /**
+     * @param {Array<import("../Feature.js").default>} features Features.
+     * @param {import("./Feature.js").WriteOptions=} opt_options Write options.
+     * @protected
+     * @return {string} Text.
+     */
+    WKT.prototype.writeFeaturesText = function (features, opt_options) {
+        if (features.length == 1) {
+            return this.writeFeatureText(features[0], opt_options);
+        }
+        var geometries = [];
+        for (var i = 0, ii = features.length; i < ii; ++i) {
+            geometries.push(features[i].getGeometry());
+        }
+        var collection = new _geom_GeometryCollection_js__WEBPACK_IMPORTED_MODULE_1__["default"](geometries);
+        return this.writeGeometryText(collection, opt_options);
+    };
+    /**
+     * @param {import("../geom/Geometry.js").default} geometry Geometry.
+     * @param {import("./Feature.js").WriteOptions=} opt_options Write options.
+     * @protected
+     * @return {string} Text.
+     */
+    WKT.prototype.writeGeometryText = function (geometry, opt_options) {
+        return encode(Object(_Feature_js__WEBPACK_IMPORTED_MODULE_11__["transformGeometryWithOptions"])(geometry, true, opt_options));
+    };
+    return WKT;
+}(_TextFeature_js__WEBPACK_IMPORTED_MODULE_10__["default"]));
+/**
+ * @param {Point} geom Point geometry.
+ * @return {string} Coordinates part of Point as WKT.
+ */
+function encodePointGeometry(geom) {
+    var coordinates = geom.getCoordinates();
+    if (coordinates.length === 0) {
+        return '';
+    }
+    return coordinates.join(' ');
+}
+/**
+ * @param {MultiPoint} geom MultiPoint geometry.
+ * @return {string} Coordinates part of MultiPoint as WKT.
+ */
+function encodeMultiPointGeometry(geom) {
+    var array = [];
+    var components = geom.getPoints();
+    for (var i = 0, ii = components.length; i < ii; ++i) {
+        array.push('(' + encodePointGeometry(components[i]) + ')');
+    }
+    return array.join(',');
+}
+/**
+ * @param {GeometryCollection} geom GeometryCollection geometry.
+ * @return {string} Coordinates part of GeometryCollection as WKT.
+ */
+function encodeGeometryCollectionGeometry(geom) {
+    var array = [];
+    var geoms = geom.getGeometries();
+    for (var i = 0, ii = geoms.length; i < ii; ++i) {
+        array.push(encode(geoms[i]));
+    }
+    return array.join(',');
+}
+/**
+ * @param {LineString|import("../geom/LinearRing.js").default} geom LineString geometry.
+ * @return {string} Coordinates part of LineString as WKT.
+ */
+function encodeLineStringGeometry(geom) {
+    var coordinates = geom.getCoordinates();
+    var array = [];
+    for (var i = 0, ii = coordinates.length; i < ii; ++i) {
+        array.push(coordinates[i].join(' '));
+    }
+    return array.join(',');
+}
+/**
+ * @param {MultiLineString} geom MultiLineString geometry.
+ * @return {string} Coordinates part of MultiLineString as WKT.
+ */
+function encodeMultiLineStringGeometry(geom) {
+    var array = [];
+    var components = geom.getLineStrings();
+    for (var i = 0, ii = components.length; i < ii; ++i) {
+        array.push('(' + encodeLineStringGeometry(components[i]) + ')');
+    }
+    return array.join(',');
+}
+/**
+ * @param {Polygon} geom Polygon geometry.
+ * @return {string} Coordinates part of Polygon as WKT.
+ */
+function encodePolygonGeometry(geom) {
+    var array = [];
+    var rings = geom.getLinearRings();
+    for (var i = 0, ii = rings.length; i < ii; ++i) {
+        array.push('(' + encodeLineStringGeometry(rings[i]) + ')');
+    }
+    return array.join(',');
+}
+/**
+ * @param {MultiPolygon} geom MultiPolygon geometry.
+ * @return {string} Coordinates part of MultiPolygon as WKT.
+ */
+function encodeMultiPolygonGeometry(geom) {
+    var array = [];
+    var components = geom.getPolygons();
+    for (var i = 0, ii = components.length; i < ii; ++i) {
+        array.push('(' + encodePolygonGeometry(components[i]) + ')');
+    }
+    return array.join(',');
+}
+/**
+ * @param {import("../geom/SimpleGeometry.js").default} geom SimpleGeometry geometry.
+ * @return {string} Potential dimensional information for WKT type.
+ */
+function encodeGeometryLayout(geom) {
+    var layout = geom.getLayout();
+    var dimInfo = '';
+    if (layout === _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_2__["default"].XYZ || layout === _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_2__["default"].XYZM) {
+        dimInfo += Z;
+    }
+    if (layout === _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_2__["default"].XYM || layout === _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_2__["default"].XYZM) {
+        dimInfo += M;
+    }
+    return dimInfo;
+}
+/**
+ * @const
+ * @type {Object<string, function(import("../geom/Geometry.js").default): string>}
+ */
+var GeometryEncoder = {
+    'Point': encodePointGeometry,
+    'LineString': encodeLineStringGeometry,
+    'Polygon': encodePolygonGeometry,
+    'MultiPoint': encodeMultiPointGeometry,
+    'MultiLineString': encodeMultiLineStringGeometry,
+    'MultiPolygon': encodeMultiPolygonGeometry,
+    'GeometryCollection': encodeGeometryCollectionGeometry,
+};
+/**
+ * Encode a geometry as WKT.
+ * @param {!import("../geom/Geometry.js").default} geom The geometry to encode.
+ * @return {string} WKT string for the geometry.
+ */
+function encode(geom) {
+    var type = geom.getType();
+    var geometryEncoder = GeometryEncoder[type];
+    var enc = geometryEncoder(geom);
+    type = type.toUpperCase();
+    if (typeof ( /** @type {?} */(geom).getFlatCoordinates) === 'function') {
+        var dimInfo = encodeGeometryLayout(
+        /** @type {import("../geom/SimpleGeometry.js").default} */ (geom));
+        if (dimInfo.length > 0) {
+            type += ' ' + dimInfo;
+        }
+    }
+    if (enc.length === 0) {
+        return type + ' ' + EMPTY;
+    }
+    return type + '(' + enc + ')';
+}
+/* harmony default export */ __webpack_exports__["default"] = (WKT);
+//# sourceMappingURL=WKT.js.map
+
+/***/ }),
+
 /***/ "./node_modules/ol/functions.js":
 /*!**************************************!*\
   !*** ./node_modules/ol/functions.js ***!
@@ -80075,7 +81160,6 @@ try {
       _mapLayergroup__WEBPACK_IMPORTED_MODULE_3__["mainLayerGroup"].getLayers().forEach(function (element, index, array) {
         if (mainLayerElementValue === element.get("title")) {
           mainLayer = element;
-          console.log(mainLayer);
         }
       });
       this.checked ? mainLayer.setVisible(true) : mainLayer.setVisible(false);
@@ -80296,17 +81380,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clear", function() { return clear; });
 /* harmony import */ var _mapMain__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./mapMain */ "./resources/js/mapMain.js");
 /* harmony import */ var _mapConstants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./mapConstants */ "./resources/js/mapConstants.js");
-/* harmony import */ var ol_format_GeoJSON__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ol/format/GeoJSON */ "./node_modules/ol/format/GeoJSON.js");
+/* harmony import */ var ol_format_WKT__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ol/format/WKT */ "./node_modules/ol/format/WKT.js");
 
 
 
 function drawline() {
   _mapMain__WEBPACK_IMPORTED_MODULE_0__["map"].addInteraction(_mapConstants__WEBPACK_IMPORTED_MODULE_1__["drawInteraction"]);
   _mapConstants__WEBPACK_IMPORTED_MODULE_1__["drawInteraction"].on("drawend", function (e) {
-    var parser = new ol_format_GeoJSON__WEBPACK_IMPORTED_MODULE_2__["default"]();
-    var drawnfeatures = parser.writeFeaturesObject([e.feature]);
-    var pointOne = drawnfeatures.features[0].geometry.coordinates[0];
-    var pointTwo = drawnfeatures.features[0].geometry.coordinates[1];
+    var format = new ol_format_WKT__WEBPACK_IMPORTED_MODULE_2__["default"]();
+    var geom = format.writeGeometry(e.feature.getGeometry().clone().transform("EPSG:3857", "EPSG:4326"));
     $(document).ready(function () {
       $.ajaxSetup({
         headers: {
@@ -80316,9 +81398,13 @@ function drawline() {
       $.ajax({
         url: "/map/coordinates",
         type: "POST",
-        dataType: "JSON",
-        data: pointOne,
-        pointTwo: pointTwo
+        data: {
+          pointOne: geom
+        },
+        success: function success(data) {
+          console.log(data);
+          console.log("Successful");
+        }
       });
     });
   });
@@ -80350,7 +81436,7 @@ var baseLayerGroup = new ol_layer__WEBPACK_IMPORTED_MODULE_0__["Group"]({
   layers: [_mapBaselayer__WEBPACK_IMPORTED_MODULE_1__["base_no_layer"], _mapBaselayer__WEBPACK_IMPORTED_MODULE_1__["base_osm_standardmap"], _mapBaselayer__WEBPACK_IMPORTED_MODULE_1__["base_osm_humanitarianmap"], _mapBaselayer__WEBPACK_IMPORTED_MODULE_1__["base_bing_map"], _mapBaselayer__WEBPACK_IMPORTED_MODULE_1__["base_cartoDB_map"], _mapBaselayer__WEBPACK_IMPORTED_MODULE_1__["base_stamenwithlabel_map"], _mapBaselayer__WEBPACK_IMPORTED_MODULE_1__["base_stamen_map"], _mapBaselayer__WEBPACK_IMPORTED_MODULE_1__["vector"], _mapBaselayer__WEBPACK_IMPORTED_MODULE_1__["base_gmap"], _mapBaselayer__WEBPACK_IMPORTED_MODULE_1__["base_gsatmap"]]
 });
 var mainLayerGroup = new ol_layer__WEBPACK_IMPORTED_MODULE_0__["Group"]({
-  layers: [_mapMainlayer__WEBPACK_IMPORTED_MODULE_2__["nepalBorder"], _mapMainlayer__WEBPACK_IMPORTED_MODULE_2__["nepalProvince"], _mapMainlayer__WEBPACK_IMPORTED_MODULE_2__["nepalDistrict"], _mapMainlayer__WEBPACK_IMPORTED_MODULE_2__["nepalVDC"], _mapMainlayer__WEBPACK_IMPORTED_MODULE_2__["nepalWard"], _mapMainlayer__WEBPACK_IMPORTED_MODULE_2__["corona"]]
+  layers: [_mapMainlayer__WEBPACK_IMPORTED_MODULE_2__["nepalBorder"], _mapMainlayer__WEBPACK_IMPORTED_MODULE_2__["nepalProvince"], _mapMainlayer__WEBPACK_IMPORTED_MODULE_2__["nepalDistrict"], _mapMainlayer__WEBPACK_IMPORTED_MODULE_2__["nepalVDC"], _mapMainlayer__WEBPACK_IMPORTED_MODULE_2__["nepalWard"], _mapMainlayer__WEBPACK_IMPORTED_MODULE_2__["corona"], _mapMainlayer__WEBPACK_IMPORTED_MODULE_2__["population"]]
 });
 
 /***/ }),
@@ -80398,7 +81484,7 @@ var map = new ol__WEBPACK_IMPORTED_MODULE_0__["Map"]({
 /*!**************************************!*\
   !*** ./resources/js/mapMainlayer.js ***!
   \**************************************/
-/*! exports provided: nepalBorder, nepalProvince, nepalDistrict, nepalVDC, nepalWard, corona */
+/*! exports provided: nepalBorder, nepalProvince, nepalDistrict, nepalVDC, nepalWard, corona, population */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -80409,6 +81495,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "nepalVDC", function() { return nepalVDC; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "nepalWard", function() { return nepalWard; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "corona", function() { return corona; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "population", function() { return population; });
 /* harmony import */ var ol_source_ImageWMS__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ol/source/ImageWMS */ "./node_modules/ol/source/ImageWMS.js");
 /* harmony import */ var ol_layer_Image__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ol/layer/Image */ "./node_modules/ol/layer/Image.js");
 /* harmony import */ var _mapConstants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./mapConstants */ "./resources/js/mapConstants.js");
@@ -80515,6 +81602,22 @@ var corona = new ol_layer_Tile__WEBPACK_IMPORTED_MODULE_4__["default"]({
   source: sourceCorona,
   title: "corona",
   visible: false
+}); //Population
+
+var sourcePopulation = new ol_source_TileWMS__WEBPACK_IMPORTED_MODULE_3__["default"]({
+  url: "http://localhost:8080/geoserver/nepal_map/wms",
+  params: {
+    layers: "nepal_map:NPL_ppp_2020_adj_v2_int16",
+    TILED: true
+  },
+  crossOrigin: "anonymous",
+  serverType: "geoserver",
+  attributions: mapAttribution
+});
+var population = new ol_layer_Tile__WEBPACK_IMPORTED_MODULE_4__["default"]({
+  source: sourcePopulation,
+  title: "population",
+  visible: false
 });
 
 /***/ }),
@@ -80526,7 +81629,7 @@ var corona = new ol_layer_Tile__WEBPACK_IMPORTED_MODULE_4__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\laravel_projects\map_with_webpack\resources\js\map.js */"./resources/js/map.js");
+module.exports = __webpack_require__(/*! c:\xampp\htdocs\laravel_projects\map_with_webpack\resources\js\map.js */"./resources/js/map.js");
 
 
 /***/ })

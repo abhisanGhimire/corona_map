@@ -31,6 +31,8 @@
             id="wardlayerCheckbox" />Ward<br />
         <input class="layer  mr-2" type="checkbox" name="rasterTileLayerCheckbox" value="corona"
             id="coronalayerCheckbox" />Corona<br />
+        <input class="layer  mr-2" type="checkbox" name="rasterTileLayerCheckbox" value="population"
+            id="coronalayerCheckbox" />Population<br />
     </div>
 
 </div>

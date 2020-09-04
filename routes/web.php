@@ -18,3 +18,4 @@ Route::get('/', function () {
 });
 Route::get('/corona','CoronaController@getCoordinates');
 Route::post('/map/coordinates',"MapController@getCoordinates");
+Route::get('/test',"MapController@getCoordinates");

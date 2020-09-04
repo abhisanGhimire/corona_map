@@ -34,7 +34,6 @@ for (let mainLayerElement of mapConstants.mainLayerElements) {
             .forEach(function(element, index, array) {
                 if (mainLayerElementValue === element.get("title")) {
                     mainLayer = element;
-                    console.log(mainLayer);
                 }
             });
         this.checked ? mainLayer.setVisible(true) : mainLayer.setVisible(false);

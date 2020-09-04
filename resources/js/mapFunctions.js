@@ -1,14 +1,17 @@
 import * as mapMain from "./mapMain";
 import * as mapConstants from "./mapConstants";
-import GeoJSON from "ol/format/GeoJSON";
+import WKT from "ol/format/WKT";
 
 export function drawline() {
     mapMain.map.addInteraction(mapConstants.drawInteraction);
     mapConstants.drawInteraction.on("drawend", function(e) {
-        const parser = new GeoJSON();
-        const drawnfeatures = parser.writeFeaturesObject([e.feature]);
-        const pointOne = drawnfeatures.features[0].geometry.coordinates[0];
-        const pointTwo = drawnfeatures.features[0].geometry.coordinates[1];
+        var format = new WKT();
+        var geom = format.writeGeometry(
+            e.feature
+                .getGeometry()
+                .clone()
+                .transform("EPSG:3857", "EPSG:4326")
+        );
         $(document).ready(function() {
             $.ajaxSetup({
                 headers: {
@@ -19,9 +22,11 @@ export function drawline() {
             $.ajax({
                 url: "/map/coordinates",
                 type: "POST",
-                dataType: "JSON",
-                data: pointOne,
-                pointTwo
+                data: { pointOne: geom },
+                success: function(data) {
+                    console.log(data);
+                    console.log("Successful");
+                }
             });
         });
     });
