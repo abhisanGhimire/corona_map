@@ -3,7 +3,10 @@
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/sidebar.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/modal.css') }}" rel="stylesheet">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
     <head>
         <meta charset="UTF-8">
@@ -20,9 +23,19 @@
     </head>
 
     <body>
+
         @include('navbar')
         @include('sidebar')
-        <div id="map"></div>
+        <div id="map">
+            <div id="graphModal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <canvas id="populationChart" width="100" height="100"></canvas>
+                </div>
+
+            </div>
+        </div>
         <script type="text/javascript" src="{{ asset('/js/map.js') }}"></script>
     </body>
     <script>

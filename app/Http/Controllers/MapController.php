@@ -9,21 +9,39 @@ class MapController extends Controller {
     public function getCoordinates( Request $request ) {
         $getPointsQuery = "SELECT ST_AsText( ( dumpPoints ).geom ) As wkt_geom FROM (
             SELECT ST_DumpPoints( ST_Segmentize
-            ( ST_GeomFromText( 'LINESTRING(80.96401969868269 30.30363880492122,83.4732026068399 28.478627816316276)' ),
+            ( ST_GeomFromText( '".$request->geom."' ),
             0.1 ) ) AS dumpPoints
         ) AS foo";
         $getPoints = DB::select( $getPointsQuery );
         $i = 0;
         foreach ( $getPoints as $point ) {
-
             $points[$i] = $point->wkt_geom;
-            $querypointPopulation = "SELECT (ST_SummaryStats(St_Union(ST_Clip(rast,ST_GeomFromText('LINESTRING(80.42117327945793 29.70599591915989,80.64743051918104 29.9459022926482)', 4326),true)))).sum
-            FROM public.corona
-            WHERE ST_Intersects
-             (rast,ST_GeomFromText
-             ('".$points."', 4326))";
+            $i++;
         }
-        dd( $points );
-        return $request->pointOne;
+        for ( $j = 0; $j<count( $points )-1;
+        $j++ ) {
+            $makeLineQuery = "SELECT ST_AsText(ST_MakeLine(ST_GeomFromText('".$points[$j]."', 4326),ST_GeomFromText
+         ('".$points[$j+1]."', 4326)))";
+            $makeLine[$j] = DB::select( $makeLineQuery );
+        }
+
+        for ( $k = 0; $k<count( $makeLine );
+        $k++ ) {
+            $line[$k] = $makeLine[$k][0]->st_astext;
+        }
+        for ( $l = 0; $l<count( $line );
+        $l++ ) {
+            $querypointPopulation = "SELECT (ST_SummaryStats(St_Union(ST_Clip(rast,ST_GeomFromText('".$line[$l]."', 4326),true)))).sum FROM public.corona
+        WHERE ST_Intersects
+         (rast,ST_GeomFromText
+         ('".$line[$l]."', 4326))";
+            $getPopulation[$l] = DB::select( $querypointPopulation );
+        }
+        for ( $m = 0; $m<count( $getPopulation );
+        $m++ ) {
+            $jsonEncodeData[$m] =  [$m=>$getPopulation[$m][0]->sum];
+        }
+
+        return $jsonEncodeData;
     }
 }

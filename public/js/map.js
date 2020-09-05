@@ -81381,6 +81381,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _mapMain__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./mapMain */ "./resources/js/mapMain.js");
 /* harmony import */ var _mapConstants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./mapConstants */ "./resources/js/mapConstants.js");
 /* harmony import */ var ol_format_WKT__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ol/format/WKT */ "./node_modules/ol/format/WKT.js");
+/* harmony import */ var _populationChart__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./populationChart */ "./resources/js/populationChart.js");
+
 
 
 
@@ -81399,10 +81401,37 @@ function drawline() {
         url: "/map/coordinates",
         type: "POST",
         data: {
-          pointOne: geom
+          geom: geom
         },
         success: function success(data) {
-          console.log(data);
+          var population = new Array(),
+              i;
+          console.log(data.length);
+
+          for (i = 0; i < data.length; i++) {
+            population[i] = data[i][i];
+          }
+
+          console.log(population);
+          _populationChart__WEBPACK_IMPORTED_MODULE_3__["chart"](population); // Get the modal
+
+          var modal = document.getElementById("graphModal"); // Get the <span> element that closes the modal
+
+          var span = document.getElementsByClassName("close")[0]; // When the user clicks the button, open the modal
+
+          modal.style.display = "block"; // When the user clicks on <span> (x), close the modal
+
+          span.onclick = function () {
+            modal.style.display = "none";
+          }; // When the user clicks anywhere outside of the modal, close it
+
+
+          window.onclick = function (event) {
+            if (event.target == modal) {
+              modal.style.display = "none";
+            }
+          };
+
           console.log("Successful");
         }
       });
@@ -81619,6 +81648,41 @@ var population = new ol_layer_Tile__WEBPACK_IMPORTED_MODULE_4__["default"]({
   title: "population",
   visible: false
 });
+
+/***/ }),
+
+/***/ "./resources/js/populationChart.js":
+/*!*****************************************!*\
+  !*** ./resources/js/populationChart.js ***!
+  \*****************************************/
+/*! exports provided: chart */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "chart", function() { return chart; });
+function chart(population) {
+  var ctx = document.getElementById("populationChart");
+  console.log(population);
+  var labelForChart = new Array();
+
+  for (var i = 0; i < population.length; i++) {
+    labelForChart[i] = i + "m";
+  }
+
+  var speedData = {
+    labels: labelForChart,
+    datasets: [{
+      label: "Population Distribution",
+      data: population
+    }]
+  };
+  ctx.height = 50;
+  new Chart(ctx, {
+    type: "line",
+    data: speedData
+  });
+}
 
 /***/ }),
 
