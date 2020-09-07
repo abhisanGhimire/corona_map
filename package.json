@@ -23,6 +23,7 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
+        "node-fetch": "^2.6.1",
         "ol": "^6.4.3"
     }
 }

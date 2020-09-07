@@ -17411,6 +17411,42 @@ module.exports = function(fonts, size, lineHeight) {
 
 /***/ }),
 
+/***/ "./node_modules/node-fetch/browser.js":
+/*!********************************************!*\
+  !*** ./node_modules/node-fetch/browser.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+// ref: https://github.com/tc39/proposal-global
+var getGlobal = function () {
+	// the only reliable means to get the global object is
+	// `Function('return this')()`
+	// However, this causes CSP violations in Chrome apps.
+	if (typeof self !== 'undefined') { return self; }
+	if (typeof window !== 'undefined') { return window; }
+	if (typeof global !== 'undefined') { return global; }
+	throw new Error('unable to locate global object');
+}
+
+var global = getGlobal();
+
+module.exports = exports = global.fetch;
+
+// Needed for TypeScript and Webpack.
+if (global.fetch) {
+	exports.default = global.fetch.bind(global);
+}
+
+exports.Headers = global.Headers;
+exports.Request = global.Request;
+exports.Response = global.Response;
+
+/***/ }),
+
 /***/ "./node_modules/ol-mapbox-style/dist/index.js":
 /*!****************************************************!*\
   !*** ./node_modules/ol-mapbox-style/dist/index.js ***!
@@ -35835,6 +35871,843 @@ function encode(geom) {
 }
 /* harmony default export */ __webpack_exports__["default"] = (WKT);
 //# sourceMappingURL=WKT.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/format/WMSCapabilities.js":
+/*!***************************************************!*\
+  !*** ./node_modules/ol/format/WMSCapabilities.js ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _XML_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./XML.js */ "./node_modules/ol/format/XML.js");
+/* harmony import */ var _xml_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../xml.js */ "./node_modules/ol/xml.js");
+/* harmony import */ var _xsd_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./xsd.js */ "./node_modules/ol/format/xsd.js");
+/* harmony import */ var _XLink_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./XLink.js */ "./node_modules/ol/format/XLink.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+/**
+ * @module ol/format/WMSCapabilities
+ */
+
+
+
+
+/**
+ * @const
+ * @type {Array<null|string>}
+ */
+var NAMESPACE_URIS = [null, 'http://www.opengis.net/wms'];
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeStructureNS"])(NAMESPACE_URIS, {
+    'Service': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(readService),
+    'Capability': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(readCapability),
+});
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var CAPABILITY_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeStructureNS"])(NAMESPACE_URIS, {
+    'Request': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(readRequest),
+    'Exception': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(readException),
+    'Layer': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(readCapabilityLayer),
+});
+/**
+ * @classdesc
+ * Format for reading WMS capabilities data
+ *
+ * @api
+ */
+var WMSCapabilities = /** @class */ (function (_super) {
+    __extends(WMSCapabilities, _super);
+    function WMSCapabilities() {
+        var _this = _super.call(this) || this;
+        /**
+         * @type {string|undefined}
+         */
+        _this.version = undefined;
+        return _this;
+    }
+    /**
+     * @param {Element} node Node.
+     * @return {Object} Object
+     */
+    WMSCapabilities.prototype.readFromNode = function (node) {
+        this.version = node.getAttribute('version').trim();
+        var wmsCapabilityObject = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["pushParseAndPop"])({
+            'version': this.version,
+        }, PARSERS, node, []);
+        return wmsCapabilityObject ? wmsCapabilityObject : null;
+    };
+    return WMSCapabilities;
+}(_XML_js__WEBPACK_IMPORTED_MODULE_0__["default"]));
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var SERVICE_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeStructureNS"])(NAMESPACE_URIS, {
+    'Name': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readString"]),
+    'Title': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readString"]),
+    'Abstract': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readString"]),
+    'KeywordList': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(readKeywordList),
+    'OnlineResource': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_XLink_js__WEBPACK_IMPORTED_MODULE_3__["readHref"]),
+    'ContactInformation': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(readContactInformation),
+    'Fees': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readString"]),
+    'AccessConstraints': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readString"]),
+    'LayerLimit': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readNonNegativeInteger"]),
+    'MaxWidth': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readNonNegativeInteger"]),
+    'MaxHeight': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readNonNegativeInteger"]),
+});
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var CONTACT_INFORMATION_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeStructureNS"])(NAMESPACE_URIS, {
+    'ContactPersonPrimary': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(readContactPersonPrimary),
+    'ContactPosition': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readString"]),
+    'ContactAddress': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(readContactAddress),
+    'ContactVoiceTelephone': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readString"]),
+    'ContactFacsimileTelephone': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readString"]),
+    'ContactElectronicMailAddress': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readString"]),
+});
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var CONTACT_PERSON_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeStructureNS"])(NAMESPACE_URIS, {
+    'ContactPerson': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readString"]),
+    'ContactOrganization': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readString"]),
+});
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var CONTACT_ADDRESS_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeStructureNS"])(NAMESPACE_URIS, {
+    'AddressType': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readString"]),
+    'Address': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readString"]),
+    'City': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readString"]),
+    'StateOrProvince': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readString"]),
+    'PostCode': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readString"]),
+    'Country': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readString"]),
+});
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var EXCEPTION_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeStructureNS"])(NAMESPACE_URIS, {
+    'Format': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeArrayPusher"])(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readString"]),
+});
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var LAYER_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeStructureNS"])(NAMESPACE_URIS, {
+    'Name': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readString"]),
+    'Title': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readString"]),
+    'Abstract': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readString"]),
+    'KeywordList': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(readKeywordList),
+    'CRS': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertyPusher"])(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readString"]),
+    'EX_GeographicBoundingBox': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(readEXGeographicBoundingBox),
+    'BoundingBox': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertyPusher"])(readBoundingBox),
+    'Dimension': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertyPusher"])(readDimension),
+    'Attribution': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(readAttribution),
+    'AuthorityURL': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertyPusher"])(readAuthorityURL),
+    'Identifier': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertyPusher"])(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readString"]),
+    'MetadataURL': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertyPusher"])(readMetadataURL),
+    'DataURL': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertyPusher"])(readFormatOnlineresource),
+    'FeatureListURL': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertyPusher"])(readFormatOnlineresource),
+    'Style': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertyPusher"])(readStyle),
+    'MinScaleDenominator': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readDecimal"]),
+    'MaxScaleDenominator': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readDecimal"]),
+    'Layer': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertyPusher"])(readLayer),
+});
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var ATTRIBUTION_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeStructureNS"])(NAMESPACE_URIS, {
+    'Title': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readString"]),
+    'OnlineResource': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_XLink_js__WEBPACK_IMPORTED_MODULE_3__["readHref"]),
+    'LogoURL': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(readSizedFormatOnlineresource),
+});
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var EX_GEOGRAPHIC_BOUNDING_BOX_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeStructureNS"])(NAMESPACE_URIS, {
+    'westBoundLongitude': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readDecimal"]),
+    'eastBoundLongitude': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readDecimal"]),
+    'southBoundLatitude': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readDecimal"]),
+    'northBoundLatitude': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readDecimal"]),
+});
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var REQUEST_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeStructureNS"])(NAMESPACE_URIS, {
+    'GetCapabilities': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(readOperationType),
+    'GetMap': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(readOperationType),
+    'GetFeatureInfo': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(readOperationType),
+});
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var OPERATIONTYPE_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeStructureNS"])(NAMESPACE_URIS, {
+    'Format': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertyPusher"])(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readString"]),
+    'DCPType': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertyPusher"])(readDCPType),
+});
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var DCPTYPE_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeStructureNS"])(NAMESPACE_URIS, {
+    'HTTP': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(readHTTP),
+});
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var HTTP_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeStructureNS"])(NAMESPACE_URIS, {
+    'Get': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(readFormatOnlineresource),
+    'Post': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(readFormatOnlineresource),
+});
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var STYLE_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeStructureNS"])(NAMESPACE_URIS, {
+    'Name': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readString"]),
+    'Title': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readString"]),
+    'Abstract': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readString"]),
+    'LegendURL': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertyPusher"])(readSizedFormatOnlineresource),
+    'StyleSheetURL': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(readFormatOnlineresource),
+    'StyleURL': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(readFormatOnlineresource),
+});
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var FORMAT_ONLINERESOURCE_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeStructureNS"])(NAMESPACE_URIS, {
+    'Format': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readString"]),
+    'OnlineResource': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_XLink_js__WEBPACK_IMPORTED_MODULE_3__["readHref"]),
+});
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var KEYWORDLIST_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeStructureNS"])(NAMESPACE_URIS, {
+    'Keyword': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeArrayPusher"])(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readString"]),
+});
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Object|undefined} Attribution object.
+ */
+function readAttribution(node, objectStack) {
+    return Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["pushParseAndPop"])({}, ATTRIBUTION_PARSERS, node, objectStack);
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Object} Bounding box object.
+ */
+function readBoundingBox(node, objectStack) {
+    var extent = [
+        Object(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readDecimalString"])(node.getAttribute('minx')),
+        Object(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readDecimalString"])(node.getAttribute('miny')),
+        Object(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readDecimalString"])(node.getAttribute('maxx')),
+        Object(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readDecimalString"])(node.getAttribute('maxy')),
+    ];
+    var resolutions = [
+        Object(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readDecimalString"])(node.getAttribute('resx')),
+        Object(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readDecimalString"])(node.getAttribute('resy')),
+    ];
+    return {
+        'crs': node.getAttribute('CRS'),
+        'extent': extent,
+        'res': resolutions,
+    };
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {import("../extent.js").Extent|undefined} Bounding box object.
+ */
+function readEXGeographicBoundingBox(node, objectStack) {
+    var geographicBoundingBox = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["pushParseAndPop"])({}, EX_GEOGRAPHIC_BOUNDING_BOX_PARSERS, node, objectStack);
+    if (!geographicBoundingBox) {
+        return undefined;
+    }
+    var westBoundLongitude = 
+    /** @type {number|undefined} */
+    (geographicBoundingBox['westBoundLongitude']);
+    var southBoundLatitude = 
+    /** @type {number|undefined} */
+    (geographicBoundingBox['southBoundLatitude']);
+    var eastBoundLongitude = 
+    /** @type {number|undefined} */
+    (geographicBoundingBox['eastBoundLongitude']);
+    var northBoundLatitude = 
+    /** @type {number|undefined} */
+    (geographicBoundingBox['northBoundLatitude']);
+    if (westBoundLongitude === undefined ||
+        southBoundLatitude === undefined ||
+        eastBoundLongitude === undefined ||
+        northBoundLatitude === undefined) {
+        return undefined;
+    }
+    return [
+        westBoundLongitude,
+        southBoundLatitude,
+        eastBoundLongitude,
+        northBoundLatitude,
+    ];
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Object|undefined} Capability object.
+ */
+function readCapability(node, objectStack) {
+    return Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["pushParseAndPop"])({}, CAPABILITY_PARSERS, node, objectStack);
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Object|undefined} Service object.
+ */
+function readService(node, objectStack) {
+    return Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["pushParseAndPop"])({}, SERVICE_PARSERS, node, objectStack);
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Object|undefined} Contact information object.
+ */
+function readContactInformation(node, objectStack) {
+    return Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["pushParseAndPop"])({}, CONTACT_INFORMATION_PARSERS, node, objectStack);
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Object|undefined} Contact person object.
+ */
+function readContactPersonPrimary(node, objectStack) {
+    return Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["pushParseAndPop"])({}, CONTACT_PERSON_PARSERS, node, objectStack);
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Object|undefined} Contact address object.
+ */
+function readContactAddress(node, objectStack) {
+    return Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["pushParseAndPop"])({}, CONTACT_ADDRESS_PARSERS, node, objectStack);
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Array<string>|undefined} Format array.
+ */
+function readException(node, objectStack) {
+    return Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["pushParseAndPop"])([], EXCEPTION_PARSERS, node, objectStack);
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Object|undefined} Layer object.
+ */
+function readCapabilityLayer(node, objectStack) {
+    return Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["pushParseAndPop"])({}, LAYER_PARSERS, node, objectStack);
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Object|undefined} Layer object.
+ */
+function readLayer(node, objectStack) {
+    var parentLayerObject = /**  @type {!Object<string,*>} */ (objectStack[objectStack.length - 1]);
+    var layerObject = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["pushParseAndPop"])({}, LAYER_PARSERS, node, objectStack);
+    if (!layerObject) {
+        return undefined;
+    }
+    var queryable = Object(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readBooleanString"])(node.getAttribute('queryable'));
+    if (queryable === undefined) {
+        queryable = parentLayerObject['queryable'];
+    }
+    layerObject['queryable'] = queryable !== undefined ? queryable : false;
+    var cascaded = Object(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readNonNegativeIntegerString"])(node.getAttribute('cascaded'));
+    if (cascaded === undefined) {
+        cascaded = parentLayerObject['cascaded'];
+    }
+    layerObject['cascaded'] = cascaded;
+    var opaque = Object(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readBooleanString"])(node.getAttribute('opaque'));
+    if (opaque === undefined) {
+        opaque = parentLayerObject['opaque'];
+    }
+    layerObject['opaque'] = opaque !== undefined ? opaque : false;
+    var noSubsets = Object(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readBooleanString"])(node.getAttribute('noSubsets'));
+    if (noSubsets === undefined) {
+        noSubsets = parentLayerObject['noSubsets'];
+    }
+    layerObject['noSubsets'] = noSubsets !== undefined ? noSubsets : false;
+    var fixedWidth = Object(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readDecimalString"])(node.getAttribute('fixedWidth'));
+    if (!fixedWidth) {
+        fixedWidth = parentLayerObject['fixedWidth'];
+    }
+    layerObject['fixedWidth'] = fixedWidth;
+    var fixedHeight = Object(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readDecimalString"])(node.getAttribute('fixedHeight'));
+    if (!fixedHeight) {
+        fixedHeight = parentLayerObject['fixedHeight'];
+    }
+    layerObject['fixedHeight'] = fixedHeight;
+    // See 7.2.4.8
+    var addKeys = ['Style', 'CRS', 'AuthorityURL'];
+    addKeys.forEach(function (key) {
+        if (key in parentLayerObject) {
+            var childValue = layerObject[key] || [];
+            layerObject[key] = childValue.concat(parentLayerObject[key]);
+        }
+    });
+    var replaceKeys = [
+        'EX_GeographicBoundingBox',
+        'BoundingBox',
+        'Dimension',
+        'Attribution',
+        'MinScaleDenominator',
+        'MaxScaleDenominator',
+    ];
+    replaceKeys.forEach(function (key) {
+        if (!(key in layerObject)) {
+            var parentValue = parentLayerObject[key];
+            layerObject[key] = parentValue;
+        }
+    });
+    return layerObject;
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Object} Dimension object.
+ */
+function readDimension(node, objectStack) {
+    var dimensionObject = {
+        'name': node.getAttribute('name'),
+        'units': node.getAttribute('units'),
+        'unitSymbol': node.getAttribute('unitSymbol'),
+        'default': node.getAttribute('default'),
+        'multipleValues': Object(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readBooleanString"])(node.getAttribute('multipleValues')),
+        'nearestValue': Object(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readBooleanString"])(node.getAttribute('nearestValue')),
+        'current': Object(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readBooleanString"])(node.getAttribute('current')),
+        'values': Object(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readString"])(node),
+    };
+    return dimensionObject;
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Object|undefined} Online resource object.
+ */
+function readFormatOnlineresource(node, objectStack) {
+    return Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["pushParseAndPop"])({}, FORMAT_ONLINERESOURCE_PARSERS, node, objectStack);
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Object|undefined} Request object.
+ */
+function readRequest(node, objectStack) {
+    return Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["pushParseAndPop"])({}, REQUEST_PARSERS, node, objectStack);
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Object|undefined} DCP type object.
+ */
+function readDCPType(node, objectStack) {
+    return Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["pushParseAndPop"])({}, DCPTYPE_PARSERS, node, objectStack);
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Object|undefined} HTTP object.
+ */
+function readHTTP(node, objectStack) {
+    return Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["pushParseAndPop"])({}, HTTP_PARSERS, node, objectStack);
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Object|undefined} Operation type object.
+ */
+function readOperationType(node, objectStack) {
+    return Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["pushParseAndPop"])({}, OPERATIONTYPE_PARSERS, node, objectStack);
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Object|undefined} Online resource object.
+ */
+function readSizedFormatOnlineresource(node, objectStack) {
+    var formatOnlineresource = readFormatOnlineresource(node, objectStack);
+    if (formatOnlineresource) {
+        var size = [
+            Object(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readNonNegativeIntegerString"])(node.getAttribute('width')),
+            Object(_xsd_js__WEBPACK_IMPORTED_MODULE_2__["readNonNegativeIntegerString"])(node.getAttribute('height')),
+        ];
+        formatOnlineresource['size'] = size;
+        return formatOnlineresource;
+    }
+    return undefined;
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Object|undefined} Authority URL object.
+ */
+function readAuthorityURL(node, objectStack) {
+    var authorityObject = readFormatOnlineresource(node, objectStack);
+    if (authorityObject) {
+        authorityObject['name'] = node.getAttribute('name');
+        return authorityObject;
+    }
+    return undefined;
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Object|undefined} Metadata URL object.
+ */
+function readMetadataURL(node, objectStack) {
+    var metadataObject = readFormatOnlineresource(node, objectStack);
+    if (metadataObject) {
+        metadataObject['type'] = node.getAttribute('type');
+        return metadataObject;
+    }
+    return undefined;
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Object|undefined} Style object.
+ */
+function readStyle(node, objectStack) {
+    return Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["pushParseAndPop"])({}, STYLE_PARSERS, node, objectStack);
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Array<string>|undefined} Keyword list.
+ */
+function readKeywordList(node, objectStack) {
+    return Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["pushParseAndPop"])([], KEYWORDLIST_PARSERS, node, objectStack);
+}
+/* harmony default export */ __webpack_exports__["default"] = (WMSCapabilities);
+//# sourceMappingURL=WMSCapabilities.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/format/XLink.js":
+/*!*****************************************!*\
+  !*** ./node_modules/ol/format/XLink.js ***!
+  \*****************************************/
+/*! exports provided: readHref */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "readHref", function() { return readHref; });
+/**
+ * @module ol/format/XLink
+ */
+/**
+ * @const
+ * @type {string}
+ */
+var NAMESPACE_URI = 'http://www.w3.org/1999/xlink';
+/**
+ * @param {Element} node Node.
+ * @return {string|undefined} href.
+ */
+function readHref(node) {
+    return node.getAttributeNS(NAMESPACE_URI, 'href');
+}
+//# sourceMappingURL=XLink.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/format/XML.js":
+/*!***************************************!*\
+  !*** ./node_modules/ol/format/XML.js ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _xml_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../xml.js */ "./node_modules/ol/xml.js");
+/**
+ * @module ol/format/XML
+ */
+
+/**
+ * @classdesc
+ * Generic format for reading non-feature XML data
+ *
+ * @abstract
+ */
+var XML = /** @class */ (function () {
+    function XML() {
+    }
+    /**
+     * Read the source document.
+     *
+     * @param {Document|Element|string} source The XML source.
+     * @return {Object} An object representing the source.
+     * @api
+     */
+    XML.prototype.read = function (source) {
+        if (!source) {
+            return null;
+        }
+        else if (typeof source === 'string') {
+            var doc = Object(_xml_js__WEBPACK_IMPORTED_MODULE_0__["parse"])(source);
+            return this.readFromDocument(doc);
+        }
+        else if (Object(_xml_js__WEBPACK_IMPORTED_MODULE_0__["isDocument"])(source)) {
+            return this.readFromDocument(/** @type {Document} */ (source));
+        }
+        else {
+            return this.readFromNode(/** @type {Element} */ (source));
+        }
+    };
+    /**
+     * @param {Document} doc Document.
+     * @return {Object} Object
+     */
+    XML.prototype.readFromDocument = function (doc) {
+        for (var n = doc.firstChild; n; n = n.nextSibling) {
+            if (n.nodeType == Node.ELEMENT_NODE) {
+                return this.readFromNode(/** @type {Element} */ (n));
+            }
+        }
+        return null;
+    };
+    /**
+     * @abstract
+     * @param {Element} node Node.
+     * @return {Object} Object
+     */
+    XML.prototype.readFromNode = function (node) { };
+    return XML;
+}());
+/* harmony default export */ __webpack_exports__["default"] = (XML);
+//# sourceMappingURL=XML.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/format/xsd.js":
+/*!***************************************!*\
+  !*** ./node_modules/ol/format/xsd.js ***!
+  \***************************************/
+/*! exports provided: readBoolean, readBooleanString, readDateTime, readDecimal, readDecimalString, readNonNegativeInteger, readNonNegativeIntegerString, readString, writeBooleanTextNode, writeCDATASection, writeDateTimeTextNode, writeDecimalTextNode, writeNonNegativeIntegerTextNode, writeStringTextNode */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "readBoolean", function() { return readBoolean; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "readBooleanString", function() { return readBooleanString; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "readDateTime", function() { return readDateTime; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "readDecimal", function() { return readDecimal; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "readDecimalString", function() { return readDecimalString; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "readNonNegativeInteger", function() { return readNonNegativeInteger; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "readNonNegativeIntegerString", function() { return readNonNegativeIntegerString; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "readString", function() { return readString; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "writeBooleanTextNode", function() { return writeBooleanTextNode; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "writeCDATASection", function() { return writeCDATASection; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "writeDateTimeTextNode", function() { return writeDateTimeTextNode; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "writeDecimalTextNode", function() { return writeDecimalTextNode; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "writeNonNegativeIntegerTextNode", function() { return writeNonNegativeIntegerTextNode; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "writeStringTextNode", function() { return writeStringTextNode; });
+/* harmony import */ var _xml_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../xml.js */ "./node_modules/ol/xml.js");
+/* harmony import */ var _string_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../string.js */ "./node_modules/ol/string.js");
+/**
+ * @module ol/format/xsd
+ */
+
+
+/**
+ * @param {Node} node Node.
+ * @return {boolean|undefined} Boolean.
+ */
+function readBoolean(node) {
+    var s = Object(_xml_js__WEBPACK_IMPORTED_MODULE_0__["getAllTextContent"])(node, false);
+    return readBooleanString(s);
+}
+/**
+ * @param {string} string String.
+ * @return {boolean|undefined} Boolean.
+ */
+function readBooleanString(string) {
+    var m = /^\s*(true|1)|(false|0)\s*$/.exec(string);
+    if (m) {
+        return m[1] !== undefined || false;
+    }
+    else {
+        return undefined;
+    }
+}
+/**
+ * @param {Node} node Node.
+ * @return {number|undefined} DateTime in seconds.
+ */
+function readDateTime(node) {
+    var s = Object(_xml_js__WEBPACK_IMPORTED_MODULE_0__["getAllTextContent"])(node, false);
+    var dateTime = Date.parse(s);
+    return isNaN(dateTime) ? undefined : dateTime / 1000;
+}
+/**
+ * @param {Node} node Node.
+ * @return {number|undefined} Decimal.
+ */
+function readDecimal(node) {
+    var s = Object(_xml_js__WEBPACK_IMPORTED_MODULE_0__["getAllTextContent"])(node, false);
+    return readDecimalString(s);
+}
+/**
+ * @param {string} string String.
+ * @return {number|undefined} Decimal.
+ */
+function readDecimalString(string) {
+    // FIXME check spec
+    var m = /^\s*([+\-]?\d*\.?\d+(?:e[+\-]?\d+)?)\s*$/i.exec(string);
+    if (m) {
+        return parseFloat(m[1]);
+    }
+    else {
+        return undefined;
+    }
+}
+/**
+ * @param {Node} node Node.
+ * @return {number|undefined} Non negative integer.
+ */
+function readNonNegativeInteger(node) {
+    var s = Object(_xml_js__WEBPACK_IMPORTED_MODULE_0__["getAllTextContent"])(node, false);
+    return readNonNegativeIntegerString(s);
+}
+/**
+ * @param {string} string String.
+ * @return {number|undefined} Non negative integer.
+ */
+function readNonNegativeIntegerString(string) {
+    var m = /^\s*(\d+)\s*$/.exec(string);
+    if (m) {
+        return parseInt(m[1], 10);
+    }
+    else {
+        return undefined;
+    }
+}
+/**
+ * @param {Node} node Node.
+ * @return {string|undefined} String.
+ */
+function readString(node) {
+    return Object(_xml_js__WEBPACK_IMPORTED_MODULE_0__["getAllTextContent"])(node, false).trim();
+}
+/**
+ * @param {Node} node Node to append a TextNode with the boolean to.
+ * @param {boolean} bool Boolean.
+ */
+function writeBooleanTextNode(node, bool) {
+    writeStringTextNode(node, bool ? '1' : '0');
+}
+/**
+ * @param {Node} node Node to append a CDATA Section with the string to.
+ * @param {string} string String.
+ */
+function writeCDATASection(node, string) {
+    node.appendChild(Object(_xml_js__WEBPACK_IMPORTED_MODULE_0__["getDocument"])().createCDATASection(string));
+}
+/**
+ * @param {Node} node Node to append a TextNode with the dateTime to.
+ * @param {number} dateTime DateTime in seconds.
+ */
+function writeDateTimeTextNode(node, dateTime) {
+    var date = new Date(dateTime * 1000);
+    var string = date.getUTCFullYear() +
+        '-' +
+        Object(_string_js__WEBPACK_IMPORTED_MODULE_1__["padNumber"])(date.getUTCMonth() + 1, 2) +
+        '-' +
+        Object(_string_js__WEBPACK_IMPORTED_MODULE_1__["padNumber"])(date.getUTCDate(), 2) +
+        'T' +
+        Object(_string_js__WEBPACK_IMPORTED_MODULE_1__["padNumber"])(date.getUTCHours(), 2) +
+        ':' +
+        Object(_string_js__WEBPACK_IMPORTED_MODULE_1__["padNumber"])(date.getUTCMinutes(), 2) +
+        ':' +
+        Object(_string_js__WEBPACK_IMPORTED_MODULE_1__["padNumber"])(date.getUTCSeconds(), 2) +
+        'Z';
+    node.appendChild(Object(_xml_js__WEBPACK_IMPORTED_MODULE_0__["getDocument"])().createTextNode(string));
+}
+/**
+ * @param {Node} node Node to append a TextNode with the decimal to.
+ * @param {number} decimal Decimal.
+ */
+function writeDecimalTextNode(node, decimal) {
+    var string = decimal.toPrecision();
+    node.appendChild(Object(_xml_js__WEBPACK_IMPORTED_MODULE_0__["getDocument"])().createTextNode(string));
+}
+/**
+ * @param {Node} node Node to append a TextNode with the decimal to.
+ * @param {number} nonNegativeInteger Non negative integer.
+ */
+function writeNonNegativeIntegerTextNode(node, nonNegativeInteger) {
+    var string = nonNegativeInteger.toString();
+    node.appendChild(Object(_xml_js__WEBPACK_IMPORTED_MODULE_0__["getDocument"])().createTextNode(string));
+}
+/**
+ * @param {Node} node Node to append a TextNode with the string to.
+ * @param {string} string String.
+ */
+function writeStringTextNode(node, string) {
+    node.appendChild(Object(_xml_js__WEBPACK_IMPORTED_MODULE_0__["getDocument"])().createTextNode(string));
+}
+//# sourceMappingURL=xsd.js.map
 
 /***/ }),
 
@@ -79282,6 +80155,521 @@ function create() {
 
 /***/ }),
 
+/***/ "./node_modules/ol/xml.js":
+/*!********************************!*\
+  !*** ./node_modules/ol/xml.js ***!
+  \********************************/
+/*! exports provided: XML_SCHEMA_INSTANCE_URI, createElementNS, getAllTextContent, getAllTextContent_, isDocument, getAttributeNS, parse, makeArrayExtender, makeArrayPusher, makeReplacer, makeObjectPropertyPusher, makeObjectPropertySetter, makeChildAppender, makeArraySerializer, makeSimpleNodeFactory, OBJECT_PROPERTY_NODE_FACTORY, makeSequence, makeStructureNS, parseNode, pushParseAndPop, serialize, pushSerializeAndPop, registerXMLSerializer, getXMLSerializer, registerDocument, getDocument */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "XML_SCHEMA_INSTANCE_URI", function() { return XML_SCHEMA_INSTANCE_URI; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createElementNS", function() { return createElementNS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getAllTextContent", function() { return getAllTextContent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getAllTextContent_", function() { return getAllTextContent_; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isDocument", function() { return isDocument; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getAttributeNS", function() { return getAttributeNS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "parse", function() { return parse; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "makeArrayExtender", function() { return makeArrayExtender; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "makeArrayPusher", function() { return makeArrayPusher; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "makeReplacer", function() { return makeReplacer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "makeObjectPropertyPusher", function() { return makeObjectPropertyPusher; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "makeObjectPropertySetter", function() { return makeObjectPropertySetter; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "makeChildAppender", function() { return makeChildAppender; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "makeArraySerializer", function() { return makeArraySerializer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "makeSimpleNodeFactory", function() { return makeSimpleNodeFactory; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OBJECT_PROPERTY_NODE_FACTORY", function() { return OBJECT_PROPERTY_NODE_FACTORY; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "makeSequence", function() { return makeSequence; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "makeStructureNS", function() { return makeStructureNS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "parseNode", function() { return parseNode; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "pushParseAndPop", function() { return pushParseAndPop; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "serialize", function() { return serialize; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "pushSerializeAndPop", function() { return pushSerializeAndPop; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "registerXMLSerializer", function() { return registerXMLSerializer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getXMLSerializer", function() { return getXMLSerializer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "registerDocument", function() { return registerDocument; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getDocument", function() { return getDocument; });
+/* harmony import */ var _array_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./array.js */ "./node_modules/ol/array.js");
+/**
+ * @module ol/xml
+ */
+
+/**
+ * When using {@link module:ol/xml~makeChildAppender} or
+ * {@link module:ol/xml~makeSimpleNodeFactory}, the top `objectStack` item needs
+ * to have this structure.
+ * @typedef {Object} NodeStackItem
+ * @property {Node} node
+ */
+/**
+ * @typedef {function(Element, Array<*>): void} Parser
+ */
+/**
+ * @typedef {function(Element, *, Array<*>): void} Serializer
+ */
+/**
+ * @type {string}
+ */
+var XML_SCHEMA_INSTANCE_URI = 'http://www.w3.org/2001/XMLSchema-instance';
+/**
+ * @param {string} namespaceURI Namespace URI.
+ * @param {string} qualifiedName Qualified name.
+ * @return {Element} Node.
+ */
+function createElementNS(namespaceURI, qualifiedName) {
+    return getDocument().createElementNS(namespaceURI, qualifiedName);
+}
+/**
+ * Recursively grab all text content of child nodes into a single string.
+ * @param {Node} node Node.
+ * @param {boolean} normalizeWhitespace Normalize whitespace: remove all line
+ * breaks.
+ * @return {string} All text content.
+ * @api
+ */
+function getAllTextContent(node, normalizeWhitespace) {
+    return getAllTextContent_(node, normalizeWhitespace, []).join('');
+}
+/**
+ * Recursively grab all text content of child nodes into a single string.
+ * @param {Node} node Node.
+ * @param {boolean} normalizeWhitespace Normalize whitespace: remove all line
+ * breaks.
+ * @param {Array<string>} accumulator Accumulator.
+ * @private
+ * @return {Array<string>} Accumulator.
+ */
+function getAllTextContent_(node, normalizeWhitespace, accumulator) {
+    if (node.nodeType == Node.CDATA_SECTION_NODE ||
+        node.nodeType == Node.TEXT_NODE) {
+        if (normalizeWhitespace) {
+            accumulator.push(String(node.nodeValue).replace(/(\r\n|\r|\n)/g, ''));
+        }
+        else {
+            accumulator.push(node.nodeValue);
+        }
+    }
+    else {
+        var n = void 0;
+        for (n = node.firstChild; n; n = n.nextSibling) {
+            getAllTextContent_(n, normalizeWhitespace, accumulator);
+        }
+    }
+    return accumulator;
+}
+/**
+ * @param {Object} object Object.
+ * @return {boolean} Is a document.
+ */
+function isDocument(object) {
+    return 'documentElement' in object;
+}
+/**
+ * @param {Element} node Node.
+ * @param {?string} namespaceURI Namespace URI.
+ * @param {string} name Attribute name.
+ * @return {string} Value
+ */
+function getAttributeNS(node, namespaceURI, name) {
+    return node.getAttributeNS(namespaceURI, name) || '';
+}
+/**
+ * Parse an XML string to an XML Document.
+ * @param {string} xml XML.
+ * @return {Document} Document.
+ * @api
+ */
+function parse(xml) {
+    return new DOMParser().parseFromString(xml, 'application/xml');
+}
+/**
+ * Make an array extender function for extending the array at the top of the
+ * object stack.
+ * @param {function(this: T, Node, Array<*>): (Array<*>|undefined)} valueReader Value reader.
+ * @param {T=} opt_this The object to use as `this` in `valueReader`.
+ * @return {Parser} Parser.
+ * @template T
+ */
+function makeArrayExtender(valueReader, opt_this) {
+    return (
+    /**
+     * @param {Node} node Node.
+     * @param {Array<*>} objectStack Object stack.
+     */
+    function (node, objectStack) {
+        var value = valueReader.call(opt_this !== undefined ? opt_this : this, node, objectStack);
+        if (value !== undefined) {
+            var array = /** @type {Array<*>} */ (objectStack[objectStack.length - 1]);
+            Object(_array_js__WEBPACK_IMPORTED_MODULE_0__["extend"])(array, value);
+        }
+    });
+}
+/**
+ * Make an array pusher function for pushing to the array at the top of the
+ * object stack.
+ * @param {function(this: T, Element, Array<*>): *} valueReader Value reader.
+ * @param {T=} opt_this The object to use as `this` in `valueReader`.
+ * @return {Parser} Parser.
+ * @template T
+ */
+function makeArrayPusher(valueReader, opt_this) {
+    return (
+    /**
+     * @param {Element} node Node.
+     * @param {Array<*>} objectStack Object stack.
+     */
+    function (node, objectStack) {
+        var value = valueReader.call(opt_this !== undefined ? opt_this : this, node, objectStack);
+        if (value !== undefined) {
+            var array = /** @type {Array<*>} */ (objectStack[objectStack.length - 1]);
+            array.push(value);
+        }
+    });
+}
+/**
+ * Make an object stack replacer function for replacing the object at the
+ * top of the stack.
+ * @param {function(this: T, Node, Array<*>): *} valueReader Value reader.
+ * @param {T=} opt_this The object to use as `this` in `valueReader`.
+ * @return {Parser} Parser.
+ * @template T
+ */
+function makeReplacer(valueReader, opt_this) {
+    return (
+    /**
+     * @param {Node} node Node.
+     * @param {Array<*>} objectStack Object stack.
+     */
+    function (node, objectStack) {
+        var value = valueReader.call(opt_this !== undefined ? opt_this : this, node, objectStack);
+        if (value !== undefined) {
+            objectStack[objectStack.length - 1] = value;
+        }
+    });
+}
+/**
+ * Make an object property pusher function for adding a property to the
+ * object at the top of the stack.
+ * @param {function(this: T, Element, Array<*>): *} valueReader Value reader.
+ * @param {string=} opt_property Property.
+ * @param {T=} opt_this The object to use as `this` in `valueReader`.
+ * @return {Parser} Parser.
+ * @template T
+ */
+function makeObjectPropertyPusher(valueReader, opt_property, opt_this) {
+    return (
+    /**
+     * @param {Element} node Node.
+     * @param {Array<*>} objectStack Object stack.
+     */
+    function (node, objectStack) {
+        var value = valueReader.call(opt_this !== undefined ? opt_this : this, node, objectStack);
+        if (value !== undefined) {
+            var object = /** @type {!Object} */ (objectStack[objectStack.length - 1]);
+            var property = opt_property !== undefined ? opt_property : node.localName;
+            var array = void 0;
+            if (property in object) {
+                array = object[property];
+            }
+            else {
+                array = [];
+                object[property] = array;
+            }
+            array.push(value);
+        }
+    });
+}
+/**
+ * Make an object property setter function.
+ * @param {function(this: T, Element, Array<*>): *} valueReader Value reader.
+ * @param {string=} opt_property Property.
+ * @param {T=} opt_this The object to use as `this` in `valueReader`.
+ * @return {Parser} Parser.
+ * @template T
+ */
+function makeObjectPropertySetter(valueReader, opt_property, opt_this) {
+    return (
+    /**
+     * @param {Element} node Node.
+     * @param {Array<*>} objectStack Object stack.
+     */
+    function (node, objectStack) {
+        var value = valueReader.call(opt_this !== undefined ? opt_this : this, node, objectStack);
+        if (value !== undefined) {
+            var object = /** @type {!Object} */ (objectStack[objectStack.length - 1]);
+            var property = opt_property !== undefined ? opt_property : node.localName;
+            object[property] = value;
+        }
+    });
+}
+/**
+ * Create a serializer that appends nodes written by its `nodeWriter` to its
+ * designated parent. The parent is the `node` of the
+ * {@link module:ol/xml~NodeStackItem} at the top of the `objectStack`.
+ * @param {function(this: T, Node, V, Array<*>): void} nodeWriter Node writer.
+ * @param {T=} opt_this The object to use as `this` in `nodeWriter`.
+ * @return {Serializer} Serializer.
+ * @template T, V
+ */
+function makeChildAppender(nodeWriter, opt_this) {
+    return function (node, value, objectStack) {
+        nodeWriter.call(opt_this !== undefined ? opt_this : this, node, value, objectStack);
+        var parent = /** @type {NodeStackItem} */ (objectStack[objectStack.length - 1]);
+        var parentNode = parent.node;
+        parentNode.appendChild(node);
+    };
+}
+/**
+ * Create a serializer that calls the provided `nodeWriter` from
+ * {@link module:ol/xml~serialize}. This can be used by the parent writer to have the
+ * 'nodeWriter' called with an array of values when the `nodeWriter` was
+ * designed to serialize a single item. An example would be a LineString
+ * geometry writer, which could be reused for writing MultiLineString
+ * geometries.
+ * @param {function(this: T, Element, V, Array<*>): void} nodeWriter Node writer.
+ * @param {T=} opt_this The object to use as `this` in `nodeWriter`.
+ * @return {Serializer} Serializer.
+ * @template T, V
+ */
+function makeArraySerializer(nodeWriter, opt_this) {
+    var serializersNS, nodeFactory;
+    return function (node, value, objectStack) {
+        if (serializersNS === undefined) {
+            serializersNS = {};
+            var serializers = {};
+            serializers[node.localName] = nodeWriter;
+            serializersNS[node.namespaceURI] = serializers;
+            nodeFactory = makeSimpleNodeFactory(node.localName);
+        }
+        serialize(serializersNS, nodeFactory, value, objectStack);
+    };
+}
+/**
+ * Create a node factory which can use the `opt_keys` passed to
+ * {@link module:ol/xml~serialize} or {@link module:ol/xml~pushSerializeAndPop} as node names,
+ * or a fixed node name. The namespace of the created nodes can either be fixed,
+ * or the parent namespace will be used.
+ * @param {string=} opt_nodeName Fixed node name which will be used for all
+ *     created nodes. If not provided, the 3rd argument to the resulting node
+ *     factory needs to be provided and will be the nodeName.
+ * @param {string=} opt_namespaceURI Fixed namespace URI which will be used for
+ *     all created nodes. If not provided, the namespace of the parent node will
+ *     be used.
+ * @return {function(*, Array<*>, string=): (Node|undefined)} Node factory.
+ */
+function makeSimpleNodeFactory(opt_nodeName, opt_namespaceURI) {
+    var fixedNodeName = opt_nodeName;
+    return (
+    /**
+     * @param {*} value Value.
+     * @param {Array<*>} objectStack Object stack.
+     * @param {string=} opt_nodeName Node name.
+     * @return {Node} Node.
+     */
+    function (value, objectStack, opt_nodeName) {
+        var context = /** @type {NodeStackItem} */ (objectStack[objectStack.length - 1]);
+        var node = context.node;
+        var nodeName = fixedNodeName;
+        if (nodeName === undefined) {
+            nodeName = opt_nodeName;
+        }
+        var namespaceURI = opt_namespaceURI !== undefined ? opt_namespaceURI : node.namespaceURI;
+        return createElementNS(namespaceURI, /** @type {string} */ (nodeName));
+    });
+}
+/**
+ * A node factory that creates a node using the parent's `namespaceURI` and the
+ * `nodeName` passed by {@link module:ol/xml~serialize} or
+ * {@link module:ol/xml~pushSerializeAndPop} to the node factory.
+ * @const
+ * @type {function(*, Array<*>, string=): (Node|undefined)}
+ */
+var OBJECT_PROPERTY_NODE_FACTORY = makeSimpleNodeFactory();
+/**
+ * Create an array of `values` to be used with {@link module:ol/xml~serialize} or
+ * {@link module:ol/xml~pushSerializeAndPop}, where `orderedKeys` has to be provided as
+ * `opt_key` argument.
+ * @param {Object<string, *>} object Key-value pairs for the sequence. Keys can
+ *     be a subset of the `orderedKeys`.
+ * @param {Array<string>} orderedKeys Keys in the order of the sequence.
+ * @return {Array<*>} Values in the order of the sequence. The resulting array
+ *     has the same length as the `orderedKeys` array. Values that are not
+ *     present in `object` will be `undefined` in the resulting array.
+ */
+function makeSequence(object, orderedKeys) {
+    var length = orderedKeys.length;
+    var sequence = new Array(length);
+    for (var i = 0; i < length; ++i) {
+        sequence[i] = object[orderedKeys[i]];
+    }
+    return sequence;
+}
+/**
+ * Create a namespaced structure, using the same values for each namespace.
+ * This can be used as a starting point for versioned parsers, when only a few
+ * values are version specific.
+ * @param {Array<string>} namespaceURIs Namespace URIs.
+ * @param {T} structure Structure.
+ * @param {Object<string, T>=} opt_structureNS Namespaced structure to add to.
+ * @return {Object<string, T>} Namespaced structure.
+ * @template T
+ */
+function makeStructureNS(namespaceURIs, structure, opt_structureNS) {
+    /**
+     * @type {Object<string, T>}
+     */
+    var structureNS = opt_structureNS !== undefined ? opt_structureNS : {};
+    var i, ii;
+    for (i = 0, ii = namespaceURIs.length; i < ii; ++i) {
+        structureNS[namespaceURIs[i]] = structure;
+    }
+    return structureNS;
+}
+/**
+ * Parse a node using the parsers and object stack.
+ * @param {Object<string, Object<string, Parser>>} parsersNS
+ *     Parsers by namespace.
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @param {*=} opt_this The object to use as `this`.
+ */
+function parseNode(parsersNS, node, objectStack, opt_this) {
+    var n;
+    for (n = node.firstElementChild; n; n = n.nextElementSibling) {
+        var parsers = parsersNS[n.namespaceURI];
+        if (parsers !== undefined) {
+            var parser = parsers[n.localName];
+            if (parser !== undefined) {
+                parser.call(opt_this, n, objectStack);
+            }
+        }
+    }
+}
+/**
+ * Push an object on top of the stack, parse and return the popped object.
+ * @param {T} object Object.
+ * @param {Object<string, Object<string, Parser>>} parsersNS
+ *     Parsers by namespace.
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @param {*=} opt_this The object to use as `this`.
+ * @return {T} Object.
+ * @template T
+ */
+function pushParseAndPop(object, parsersNS, node, objectStack, opt_this) {
+    objectStack.push(object);
+    parseNode(parsersNS, node, objectStack, opt_this);
+    return /** @type {T} */ (objectStack.pop());
+}
+/**
+ * Walk through an array of `values` and call a serializer for each value.
+ * @param {Object<string, Object<string, Serializer>>} serializersNS
+ *     Namespaced serializers.
+ * @param {function(this: T, *, Array<*>, (string|undefined)): (Node|undefined)} nodeFactory
+ *     Node factory. The `nodeFactory` creates the node whose namespace and name
+ *     will be used to choose a node writer from `serializersNS`. This
+ *     separation allows us to decide what kind of node to create, depending on
+ *     the value we want to serialize. An example for this would be different
+ *     geometry writers based on the geometry type.
+ * @param {Array<*>} values Values to serialize. An example would be an array
+ *     of {@link module:ol/Feature~Feature} instances.
+ * @param {Array<*>} objectStack Node stack.
+ * @param {Array<string>=} opt_keys Keys of the `values`. Will be passed to the
+ *     `nodeFactory`. This is used for serializing object literals where the
+ *     node name relates to the property key. The array length of `opt_keys` has
+ *     to match the length of `values`. For serializing a sequence, `opt_keys`
+ *     determines the order of the sequence.
+ * @param {T=} opt_this The object to use as `this` for the node factory and
+ *     serializers.
+ * @template T
+ */
+function serialize(serializersNS, nodeFactory, values, objectStack, opt_keys, opt_this) {
+    var length = (opt_keys !== undefined ? opt_keys : values).length;
+    var value, node;
+    for (var i = 0; i < length; ++i) {
+        value = values[i];
+        if (value !== undefined) {
+            node = nodeFactory.call(opt_this !== undefined ? opt_this : this, value, objectStack, opt_keys !== undefined ? opt_keys[i] : undefined);
+            if (node !== undefined) {
+                serializersNS[node.namespaceURI][node.localName].call(opt_this, node, value, objectStack);
+            }
+        }
+    }
+}
+/**
+ * @param {O} object Object.
+ * @param {Object<string, Object<string, Serializer>>} serializersNS
+ *     Namespaced serializers.
+ * @param {function(this: T, *, Array<*>, (string|undefined)): (Node|undefined)} nodeFactory
+ *     Node factory. The `nodeFactory` creates the node whose namespace and name
+ *     will be used to choose a node writer from `serializersNS`. This
+ *     separation allows us to decide what kind of node to create, depending on
+ *     the value we want to serialize. An example for this would be different
+ *     geometry writers based on the geometry type.
+ * @param {Array<*>} values Values to serialize. An example would be an array
+ *     of {@link module:ol/Feature~Feature} instances.
+ * @param {Array<*>} objectStack Node stack.
+ * @param {Array<string>=} opt_keys Keys of the `values`. Will be passed to the
+ *     `nodeFactory`. This is used for serializing object literals where the
+ *     node name relates to the property key. The array length of `opt_keys` has
+ *     to match the length of `values`. For serializing a sequence, `opt_keys`
+ *     determines the order of the sequence.
+ * @param {T=} opt_this The object to use as `this` for the node factory and
+ *     serializers.
+ * @return {O|undefined} Object.
+ * @template O, T
+ */
+function pushSerializeAndPop(object, serializersNS, nodeFactory, values, objectStack, opt_keys, opt_this) {
+    objectStack.push(object);
+    serialize(serializersNS, nodeFactory, values, objectStack, opt_keys, opt_this);
+    return /** @type {O|undefined} */ (objectStack.pop());
+}
+var xmlSerializer_ = undefined;
+/**
+ * Register a XMLSerializer. Can be used  to inject a XMLSerializer
+ * where there is no globally available implementation.
+ *
+ * @param {XMLSerializer} xmlSerializer A XMLSerializer.
+ * @api
+ */
+function registerXMLSerializer(xmlSerializer) {
+    xmlSerializer_ = xmlSerializer;
+}
+/**
+ * @return {XMLSerializer} The XMLSerializer.
+ */
+function getXMLSerializer() {
+    if (xmlSerializer_ === undefined && typeof XMLSerializer !== 'undefined') {
+        xmlSerializer_ = new XMLSerializer();
+    }
+    return xmlSerializer_;
+}
+var document_ = undefined;
+/**
+ * Register a Document to use when creating nodes for XML serializations. Can be used
+ * to inject a Document where there is no globally available implementation.
+ *
+ * @param {Document} document A Document.
+ * @api
+ */
+function registerDocument(document) {
+    document_ = document;
+}
+/**
+ * Get a document that should be used when creating nodes for XML serializations.
+ * @return {Document} The document.
+ */
+function getDocument() {
+    if (document_ === undefined && typeof document !== 'undefined') {
+        document_ = document.implementation.createDocument('', '', null);
+    }
+    return document_;
+}
+//# sourceMappingURL=xml.js.map
+
+/***/ }),
+
 /***/ "./node_modules/pbf/index.js":
 /*!***********************************!*\
   !*** ./node_modules/pbf/index.js ***!
@@ -81109,6 +82497,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _mapBaselayer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./mapBaselayer */ "./resources/js/mapBaselayer.js");
 /* harmony import */ var _mapLayergroup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./mapLayergroup */ "./resources/js/mapLayergroup.js");
 /* harmony import */ var _mapConstants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./mapConstants */ "./resources/js/mapConstants.js");
+/* harmony import */ var _mapWmscapabilities__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./mapWmscapabilities */ "./resources/js/mapWmscapabilities.js");
 function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
 
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -81119,11 +82508,13 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 
 
+
  //Map baselayer added
 
 _mapMain__WEBPACK_IMPORTED_MODULE_1__["map"].addLayer(_mapLayergroup__WEBPACK_IMPORTED_MODULE_3__["baseLayerGroup"]); //Map mainlayer added
 
-_mapMain__WEBPACK_IMPORTED_MODULE_1__["map"].addLayer(_mapLayergroup__WEBPACK_IMPORTED_MODULE_3__["mainLayerGroup"]); //Layer switcher logic
+_mapMain__WEBPACK_IMPORTED_MODULE_1__["map"].addLayer(_mapLayergroup__WEBPACK_IMPORTED_MODULE_3__["mainLayerGroup"]);
+_mapWmscapabilities__WEBPACK_IMPORTED_MODULE_5__["getMaplLayer"](); //Layer switcher logic
 
 var _iterator = _createForOfIteratorHelper(_mapConstants__WEBPACK_IMPORTED_MODULE_4__["baseLayerElements"]),
     _step;
@@ -81417,7 +82808,7 @@ function drawline() {
 
           var modal = document.getElementById("graphModal"); // Get the <span> element that closes the modal
 
-          var span = document.getElementsByClassName("close")[0]; // When the user clicks the button, open the modal
+          var span = document.getElementsByClassName("closePopulationChart")[0]; // When the user clicks the button, open the modal
 
           modal.style.display = "block"; // When the user clicks on <span> (x), close the modal
 
@@ -81537,7 +82928,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapAttribution = "© Innovative Solution Pvt. Ltd."; //Border of Nepal
 
-var sourceNepalBorder = new ol_source_ImageWMS__WEBPACK_IMPORTED_MODULE_0__["default"]({
+var sourceNepalBorder = new ol_source_TileWMS__WEBPACK_IMPORTED_MODULE_3__["default"]({
   url: _mapConstants__WEBPACK_IMPORTED_MODULE_2__["gurl"],
   params: {
     layers: "nepal_map:maps_nepal",
@@ -81547,7 +82938,7 @@ var sourceNepalBorder = new ol_source_ImageWMS__WEBPACK_IMPORTED_MODULE_0__["def
   serverType: "geoserver",
   attributions: mapAttribution
 });
-var nepalBorder = new ol_layer_Image__WEBPACK_IMPORTED_MODULE_1__["default"]({
+var nepalBorder = new ol_layer_Tile__WEBPACK_IMPORTED_MODULE_4__["default"]({
   source: sourceNepalBorder,
   title: "nepalBorder",
   visible: true
@@ -81651,6 +83042,93 @@ var population = new ol_layer_Tile__WEBPACK_IMPORTED_MODULE_4__["default"]({
 
 /***/ }),
 
+/***/ "./resources/js/mapWmscapabilities.js":
+/*!********************************************!*\
+  !*** ./resources/js/mapWmscapabilities.js ***!
+  \********************************************/
+/*! exports provided: getMaplLayer */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getMaplLayer", function() { return getMaplLayer; });
+/* harmony import */ var ol_format_WMSCapabilities__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ol/format/WMSCapabilities */ "./node_modules/ol/format/WMSCapabilities.js");
+/* harmony import */ var node_fetch__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! node-fetch */ "./node_modules/node-fetch/browser.js");
+/* harmony import */ var node_fetch__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(node_fetch__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _mapMain__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./mapMain */ "./resources/js/mapMain.js");
+/* harmony import */ var ol_source_TileWMS__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ol/source/TileWMS */ "./node_modules/ol/source/TileWMS.js");
+/* harmony import */ var ol_layer_Tile__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ol/layer/Tile */ "./node_modules/ol/layer/Tile.js");
+
+
+
+
+
+function getMaplLayer() {
+  var getLayerButton = document.getElementById("getLayer");
+  getLayerButton.addEventListener("click", function () {
+    var parser = new ol_format_WMSCapabilities__WEBPACK_IMPORTED_MODULE_0__["default"]();
+    node_fetch__WEBPACK_IMPORTED_MODULE_1___default()("http://localhost:8080/geoserver/wms?service=wms&version=1.1.1&request=GetCapabilities").then(function (response) {
+      return response.text();
+    }).then(function (text) {
+      var mapLayer = document.getElementById("mapLayer");
+      var removeMapLayer = document.getElementById("removeMapLayer");
+      var result = parser.read(text);
+      var layers = result.Capability.Layer.Layer;
+      var i;
+      var layerName = [];
+
+      for (i = 0; i < layers.length; i++) {
+        layerName[i] = layers[i].Name;
+        var option = document.createElement("option");
+        option.text = option.value = layers[i].Name;
+        mapLayer.add(option);
+      }
+
+      console.log(layerName); // Get the modal
+
+      var modal = document.getElementById("getLayerModal"); // Get the <span> element that closes the modal
+
+      var span = document.getElementsByClassName("closeLayerOption")[0]; // When the user clicks the button, open the modal
+
+      modal.style.display = "block";
+      mapLayer.addEventListener("change", function () {
+        var source = new ol_source_TileWMS__WEBPACK_IMPORTED_MODULE_3__["default"]({
+          url: "http://localhost:8080/geoserver/nepal_map/wms",
+          params: {
+            layers: mapLayer.value,
+            TILED: true
+          },
+          crossOrigin: "anonymous",
+          serverType: "geoserver",
+          attributions: "This is from getcapabilities"
+        });
+        var layer = new ol_layer_Tile__WEBPACK_IMPORTED_MODULE_4__["default"]({
+          source: source,
+          visible: true
+        });
+        _mapMain__WEBPACK_IMPORTED_MODULE_2__["map"].addLayer(layer);
+        removeMapLayer.addEventListener("click", function () {
+          _mapMain__WEBPACK_IMPORTED_MODULE_2__["map"].removeLayer(layer);
+        });
+      }); // When the user clicks on <span> (x), close the modal
+
+      span.onclick = function () {
+        modal.style.display = "none";
+      }; // When the user clicks anywhere outside of the modal, close it
+
+
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }; // console.log(JSON.stringify(result, null, 2));
+
+    });
+  });
+}
+
+/***/ }),
+
 /***/ "./resources/js/populationChart.js":
 /*!*****************************************!*\
   !*** ./resources/js/populationChart.js ***!
@@ -81667,7 +83145,7 @@ function chart(population) {
   var labelForChart = new Array();
 
   for (var i = 0; i < population.length; i++) {
-    labelForChart[i] = i + "m";
+    labelForChart[i] = i + "mtr(s)";
   }
 
   var speedData = {

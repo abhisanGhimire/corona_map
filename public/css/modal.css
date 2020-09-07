@@ -36,15 +36,24 @@ body {
 }
 
 /* The Close Button */
-.close {
+.closePopulationChart {
     color: #aaaaaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
+.closeLayerOption {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.closePopulationChart:hover,
+.closePopulationChart:focus,
+.closeLayerOption:hover,
+.closeLayerOption:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;

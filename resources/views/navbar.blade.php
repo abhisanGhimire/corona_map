@@ -5,7 +5,10 @@
             <a class="nav-link" href="#" id="drawline">Draw</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Corona Info</a>
+            <a class="nav-link" href="#" id="getLayer">Get Layer</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#" id="removeMapLayer">Remove Layer</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#" id="clear">Clear</a>

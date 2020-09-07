@@ -3,7 +3,7 @@ export function chart(population) {
     console.log(population);
     let labelForChart = new Array();
     for (let i = 0; i < population.length; i++) {
-        labelForChart[i] = i + "m";
+        labelForChart[i] = i + "mtr(s)";
     }
     var speedData = {
         labels: labelForChart,

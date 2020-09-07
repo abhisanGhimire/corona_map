@@ -7,7 +7,7 @@ import TileLayer from "ol/layer/Tile";
 const mapAttribution = "© Innovative Solution Pvt. Ltd.";
 
 //Border of Nepal
-const sourceNepalBorder = new ImageWMS({
+const sourceNepalBorder = new TileWMS({
     url: mapConstants.gurl,
     params: {
         layers: "nepal_map:maps_nepal",
@@ -17,7 +17,7 @@ const sourceNepalBorder = new ImageWMS({
     serverType: "geoserver",
     attributions: mapAttribution
 });
-export const nepalBorder = new ImageLayer({
+export const nepalBorder = new TileLayer({
     source: sourceNepalBorder,
     title: "nepalBorder",
     visible: true

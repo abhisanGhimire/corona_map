@@ -3,12 +3,12 @@ import * as mapMain from "./mapMain";
 import * as mapBaselayer from "./mapBaselayer";
 import * as mapLayergroup from "./mapLayergroup";
 import * as mapConstants from "./mapConstants";
-
+import * as mapWmscapabilities from "./mapWmscapabilities";
 //Map baselayer added
 mapMain.map.addLayer(mapLayergroup.baseLayerGroup);
 //Map mainlayer added
 mapMain.map.addLayer(mapLayergroup.mainLayerGroup);
-
+mapWmscapabilities.getMaplLayer();
 //Layer switcher logic
 for (let baseLayerElement of mapConstants.baseLayerElements) {
     baseLayerElement.addEventListener("change", function() {
