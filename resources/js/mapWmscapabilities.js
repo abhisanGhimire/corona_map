@@ -4,7 +4,7 @@ import * as mapMain from "./mapMain";
 import TileWMS from "ol/source/TileWMS";
 import TileLayer from "ol/layer/Tile";
 
-export function getMaplLayer() {
+export function getMapLayer() {
     var getLayerButton = document.getElementById("getLayer");
     getLayerButton.addEventListener("click", function() {
         var parser = new WMSCapabilities();

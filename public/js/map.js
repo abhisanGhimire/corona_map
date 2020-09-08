@@ -33264,6 +33264,665 @@ function setWithCredentials(xhrWithCredentials) {
 
 /***/ }),
 
+/***/ "./node_modules/ol/format.js":
+/*!***********************************!*\
+  !*** ./node_modules/ol/format.js ***!
+  \***********************************/
+/*! exports provided: EsriJSON, GeoJSON, GML, GPX, IGC, IIIFInfo, KML, MVT, OWS, Polyline, TopoJSON, WFS, WKT, WMSCapabilities, WMSGetFeatureInfo, WMTSCapabilities */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _format_EsriJSON_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./format/EsriJSON.js */ "./node_modules/ol/format/EsriJSON.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "EsriJSON", function() { return _format_EsriJSON_js__WEBPACK_IMPORTED_MODULE_0__["default"]; });
+
+/* harmony import */ var _format_GeoJSON_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./format/GeoJSON.js */ "./node_modules/ol/format/GeoJSON.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "GeoJSON", function() { return _format_GeoJSON_js__WEBPACK_IMPORTED_MODULE_1__["default"]; });
+
+/* harmony import */ var _format_GML_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./format/GML.js */ "./node_modules/ol/format/GML.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "GML", function() { return _format_GML_js__WEBPACK_IMPORTED_MODULE_2__["default"]; });
+
+/* harmony import */ var _format_GPX_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./format/GPX.js */ "./node_modules/ol/format/GPX.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "GPX", function() { return _format_GPX_js__WEBPACK_IMPORTED_MODULE_3__["default"]; });
+
+/* harmony import */ var _format_IGC_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./format/IGC.js */ "./node_modules/ol/format/IGC.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "IGC", function() { return _format_IGC_js__WEBPACK_IMPORTED_MODULE_4__["default"]; });
+
+/* harmony import */ var _format_IIIFInfo_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./format/IIIFInfo.js */ "./node_modules/ol/format/IIIFInfo.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "IIIFInfo", function() { return _format_IIIFInfo_js__WEBPACK_IMPORTED_MODULE_5__["default"]; });
+
+/* harmony import */ var _format_KML_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./format/KML.js */ "./node_modules/ol/format/KML.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "KML", function() { return _format_KML_js__WEBPACK_IMPORTED_MODULE_6__["default"]; });
+
+/* harmony import */ var _format_MVT_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./format/MVT.js */ "./node_modules/ol/format/MVT.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MVT", function() { return _format_MVT_js__WEBPACK_IMPORTED_MODULE_7__["default"]; });
+
+/* harmony import */ var _format_OWS_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./format/OWS.js */ "./node_modules/ol/format/OWS.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "OWS", function() { return _format_OWS_js__WEBPACK_IMPORTED_MODULE_8__["default"]; });
+
+/* harmony import */ var _format_Polyline_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./format/Polyline.js */ "./node_modules/ol/format/Polyline.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Polyline", function() { return _format_Polyline_js__WEBPACK_IMPORTED_MODULE_9__["default"]; });
+
+/* harmony import */ var _format_TopoJSON_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./format/TopoJSON.js */ "./node_modules/ol/format/TopoJSON.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TopoJSON", function() { return _format_TopoJSON_js__WEBPACK_IMPORTED_MODULE_10__["default"]; });
+
+/* harmony import */ var _format_WFS_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./format/WFS.js */ "./node_modules/ol/format/WFS.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "WFS", function() { return _format_WFS_js__WEBPACK_IMPORTED_MODULE_11__["default"]; });
+
+/* harmony import */ var _format_WKT_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./format/WKT.js */ "./node_modules/ol/format/WKT.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "WKT", function() { return _format_WKT_js__WEBPACK_IMPORTED_MODULE_12__["default"]; });
+
+/* harmony import */ var _format_WMSCapabilities_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./format/WMSCapabilities.js */ "./node_modules/ol/format/WMSCapabilities.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "WMSCapabilities", function() { return _format_WMSCapabilities_js__WEBPACK_IMPORTED_MODULE_13__["default"]; });
+
+/* harmony import */ var _format_WMSGetFeatureInfo_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./format/WMSGetFeatureInfo.js */ "./node_modules/ol/format/WMSGetFeatureInfo.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "WMSGetFeatureInfo", function() { return _format_WMSGetFeatureInfo_js__WEBPACK_IMPORTED_MODULE_14__["default"]; });
+
+/* harmony import */ var _format_WMTSCapabilities_js__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./format/WMTSCapabilities.js */ "./node_modules/ol/format/WMTSCapabilities.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "WMTSCapabilities", function() { return _format_WMTSCapabilities_js__WEBPACK_IMPORTED_MODULE_15__["default"]; });
+
+/**
+ * @module ol/format
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//# sourceMappingURL=format.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/format/EsriJSON.js":
+/*!********************************************!*\
+  !*** ./node_modules/ol/format/EsriJSON.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Feature_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Feature.js */ "./node_modules/ol/Feature.js");
+/* harmony import */ var _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../geom/GeometryLayout.js */ "./node_modules/ol/geom/GeometryLayout.js");
+/* harmony import */ var _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../geom/GeometryType.js */ "./node_modules/ol/geom/GeometryType.js");
+/* harmony import */ var _JSONFeature_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./JSONFeature.js */ "./node_modules/ol/format/JSONFeature.js");
+/* harmony import */ var _geom_LineString_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../geom/LineString.js */ "./node_modules/ol/geom/LineString.js");
+/* harmony import */ var _geom_LinearRing_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../geom/LinearRing.js */ "./node_modules/ol/geom/LinearRing.js");
+/* harmony import */ var _geom_MultiLineString_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../geom/MultiLineString.js */ "./node_modules/ol/geom/MultiLineString.js");
+/* harmony import */ var _geom_MultiPoint_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../geom/MultiPoint.js */ "./node_modules/ol/geom/MultiPoint.js");
+/* harmony import */ var _geom_MultiPolygon_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../geom/MultiPolygon.js */ "./node_modules/ol/geom/MultiPolygon.js");
+/* harmony import */ var _geom_Point_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../geom/Point.js */ "./node_modules/ol/geom/Point.js");
+/* harmony import */ var _geom_Polygon_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../geom/Polygon.js */ "./node_modules/ol/geom/Polygon.js");
+/* harmony import */ var _asserts_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../asserts.js */ "./node_modules/ol/asserts.js");
+/* harmony import */ var _obj_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../obj.js */ "./node_modules/ol/obj.js");
+/* harmony import */ var _extent_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../extent.js */ "./node_modules/ol/extent.js");
+/* harmony import */ var _geom_flat_deflate_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../geom/flat/deflate.js */ "./node_modules/ol/geom/flat/deflate.js");
+/* harmony import */ var _proj_js__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../proj.js */ "./node_modules/ol/proj.js");
+/* harmony import */ var _geom_flat_orient_js__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../geom/flat/orient.js */ "./node_modules/ol/geom/flat/orient.js");
+/* harmony import */ var _Feature_js__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./Feature.js */ "./node_modules/ol/format/Feature.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+/**
+ * @module ol/format/EsriJSON
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * @typedef {import("arcgis-rest-api").Feature} EsriJSONFeature
+ * @typedef {import("arcgis-rest-api").FeatureSet} EsriJSONFeatureSet
+ * @typedef {import("arcgis-rest-api").Geometry} EsriJSONGeometry
+ * @typedef {import("arcgis-rest-api").Point} EsriJSONPoint
+ * @typedef {import("arcgis-rest-api").Polyline} EsriJSONPolyline
+ * @typedef {import("arcgis-rest-api").Polygon} EsriJSONPolygon
+ * @typedef {import("arcgis-rest-api").Multipoint} EsriJSONMultipoint
+ * @typedef {import("arcgis-rest-api").HasZM} EsriJSONHasZM
+ * @typedef {import("arcgis-rest-api").Position} EsriJSONPosition
+ * @typedef {import("arcgis-rest-api").SpatialReferenceWkid} EsriJSONSpatialReferenceWkid
+ */
+/**
+ * @typedef {Object} EsriJSONMultiPolygon
+ * @property {Array<Array<Array<Array<number>>>>} rings Rings for the MultiPolygon.
+ * @property {boolean} [hasM] If the polygon coordinates have an M value.
+ * @property {boolean} [hasZ] If the polygon coordinates have a Z value.
+ * @property {EsriJSONSpatialReferenceWkid} [spatialReference] The coordinate reference system.
+ */
+/**
+ * @const
+ * @type {Object<import("../geom/GeometryType.js").default, function(EsriJSONGeometry): import("../geom/Geometry.js").default>}
+ */
+var GEOMETRY_READERS = {};
+GEOMETRY_READERS[_geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_2__["default"].POINT] = readPointGeometry;
+GEOMETRY_READERS[_geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_2__["default"].LINE_STRING] = readLineStringGeometry;
+GEOMETRY_READERS[_geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_2__["default"].POLYGON] = readPolygonGeometry;
+GEOMETRY_READERS[_geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_2__["default"].MULTI_POINT] = readMultiPointGeometry;
+GEOMETRY_READERS[_geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_2__["default"].MULTI_LINE_STRING] = readMultiLineStringGeometry;
+GEOMETRY_READERS[_geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_2__["default"].MULTI_POLYGON] = readMultiPolygonGeometry;
+/**
+ * @const
+ * @type {Object<string, function(import("../geom/Geometry.js").default, import("./Feature.js").WriteOptions=): (EsriJSONGeometry)>}
+ */
+var GEOMETRY_WRITERS = {};
+GEOMETRY_WRITERS[_geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_2__["default"].POINT] = writePointGeometry;
+GEOMETRY_WRITERS[_geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_2__["default"].LINE_STRING] = writeLineStringGeometry;
+GEOMETRY_WRITERS[_geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_2__["default"].POLYGON] = writePolygonGeometry;
+GEOMETRY_WRITERS[_geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_2__["default"].MULTI_POINT] = writeMultiPointGeometry;
+GEOMETRY_WRITERS[_geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_2__["default"].MULTI_LINE_STRING] = writeMultiLineStringGeometry;
+GEOMETRY_WRITERS[_geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_2__["default"].MULTI_POLYGON] = writeMultiPolygonGeometry;
+/**
+ * @typedef {Object} Options
+ * @property {string} [geometryName] Geometry name to use when creating features.
+ */
+/**
+ * @classdesc
+ * Feature format for reading and writing data in the EsriJSON format.
+ *
+ * @api
+ */
+var EsriJSON = /** @class */ (function (_super) {
+    __extends(EsriJSON, _super);
+    /**
+     * @param {Options=} opt_options Options.
+     */
+    function EsriJSON(opt_options) {
+        var _this = this;
+        var options = opt_options ? opt_options : {};
+        _this = _super.call(this) || this;
+        /**
+         * Name of the geometry attribute for features.
+         * @type {string|undefined}
+         * @private
+         */
+        _this.geometryName_ = options.geometryName;
+        return _this;
+    }
+    /**
+     * @param {Object} object Object.
+     * @param {import("./Feature.js").ReadOptions=} opt_options Read options.
+     * @param {string=} opt_idField Name of the field where to get the id from.
+     * @protected
+     * @return {import("../Feature.js").default} Feature.
+     */
+    EsriJSON.prototype.readFeatureFromObject = function (object, opt_options, opt_idField) {
+        var esriJSONFeature = /** @type {EsriJSONFeature} */ (object);
+        var geometry = readGeometry(esriJSONFeature.geometry, opt_options);
+        var feature = new _Feature_js__WEBPACK_IMPORTED_MODULE_0__["default"]();
+        if (this.geometryName_) {
+            feature.setGeometryName(this.geometryName_);
+        }
+        feature.setGeometry(geometry);
+        if (esriJSONFeature.attributes) {
+            feature.setProperties(esriJSONFeature.attributes, true);
+            var id = esriJSONFeature.attributes[opt_idField];
+            if (id !== undefined) {
+                feature.setId(/** @type {number} */ (id));
+            }
+        }
+        return feature;
+    };
+    /**
+     * @param {Object} object Object.
+     * @param {import("./Feature.js").ReadOptions=} opt_options Read options.
+     * @protected
+     * @return {Array<Feature>} Features.
+     */
+    EsriJSON.prototype.readFeaturesFromObject = function (object, opt_options) {
+        var options = opt_options ? opt_options : {};
+        if (object['features']) {
+            var esriJSONFeatureSet = /** @type {EsriJSONFeatureSet} */ (object);
+            /** @type {Array<import("../Feature.js").default>} */
+            var features = [];
+            var esriJSONFeatures = esriJSONFeatureSet.features;
+            for (var i = 0, ii = esriJSONFeatures.length; i < ii; ++i) {
+                features.push(this.readFeatureFromObject(esriJSONFeatures[i], options, object.objectIdFieldName));
+            }
+            return features;
+        }
+        else {
+            return [this.readFeatureFromObject(object, options)];
+        }
+    };
+    /**
+     * @param {EsriJSONGeometry} object Object.
+     * @param {import("./Feature.js").ReadOptions=} opt_options Read options.
+     * @protected
+     * @return {import("../geom/Geometry.js").default} Geometry.
+     */
+    EsriJSON.prototype.readGeometryFromObject = function (object, opt_options) {
+        return readGeometry(object, opt_options);
+    };
+    /**
+     * @param {Object} object Object.
+     * @protected
+     * @return {import("../proj/Projection.js").default} Projection.
+     */
+    EsriJSON.prototype.readProjectionFromObject = function (object) {
+        if (object['spatialReference'] &&
+            object['spatialReference']['wkid'] !== undefined) {
+            var spatialReference = /** @type {EsriJSONSpatialReferenceWkid} */ (object['spatialReference']);
+            var crs = spatialReference.wkid;
+            return Object(_proj_js__WEBPACK_IMPORTED_MODULE_15__["get"])('EPSG:' + crs);
+        }
+        else {
+            return null;
+        }
+    };
+    /**
+     * Encode a geometry as a EsriJSON object.
+     *
+     * @param {import("../geom/Geometry.js").default} geometry Geometry.
+     * @param {import("./Feature.js").WriteOptions=} opt_options Write options.
+     * @return {EsriJSONGeometry} Object.
+     * @api
+     */
+    EsriJSON.prototype.writeGeometryObject = function (geometry, opt_options) {
+        return writeGeometry(geometry, this.adaptOptions(opt_options));
+    };
+    /**
+     * Encode a feature as a esriJSON Feature object.
+     *
+     * @param {import("../Feature.js").default} feature Feature.
+     * @param {import("./Feature.js").WriteOptions=} opt_options Write options.
+     * @return {Object} Object.
+     * @api
+     */
+    EsriJSON.prototype.writeFeatureObject = function (feature, opt_options) {
+        opt_options = this.adaptOptions(opt_options);
+        var object = {};
+        if (!feature.hasProperties()) {
+            object['attributes'] = {};
+            return object;
+        }
+        var properties = feature.getProperties();
+        var geometry = feature.getGeometry();
+        if (geometry) {
+            object['geometry'] = writeGeometry(geometry, opt_options);
+            if (opt_options && opt_options.featureProjection) {
+                object['geometry']['spatialReference'] = /** @type {EsriJSONSpatialReferenceWkid} */ ({
+                    wkid: Number(Object(_proj_js__WEBPACK_IMPORTED_MODULE_15__["get"])(opt_options.featureProjection)
+                        .getCode()
+                        .split(':')
+                        .pop()),
+                });
+            }
+            delete properties[feature.getGeometryName()];
+        }
+        if (!Object(_obj_js__WEBPACK_IMPORTED_MODULE_12__["isEmpty"])(properties)) {
+            object['attributes'] = properties;
+        }
+        else {
+            object['attributes'] = {};
+        }
+        return object;
+    };
+    /**
+     * Encode an array of features as a EsriJSON object.
+     *
+     * @param {Array<import("../Feature.js").default>} features Features.
+     * @param {import("./Feature.js").WriteOptions=} opt_options Write options.
+     * @return {EsriJSONFeatureSet} EsriJSON Object.
+     * @api
+     */
+    EsriJSON.prototype.writeFeaturesObject = function (features, opt_options) {
+        opt_options = this.adaptOptions(opt_options);
+        var objects = [];
+        for (var i = 0, ii = features.length; i < ii; ++i) {
+            objects.push(this.writeFeatureObject(features[i], opt_options));
+        }
+        return {
+            'features': objects,
+        };
+    };
+    return EsriJSON;
+}(_JSONFeature_js__WEBPACK_IMPORTED_MODULE_3__["default"]));
+/**
+ * @param {EsriJSONGeometry} object Object.
+ * @param {import("./Feature.js").ReadOptions=} opt_options Read options.
+ * @return {import("../geom/Geometry.js").default} Geometry.
+ */
+function readGeometry(object, opt_options) {
+    var _a, _b;
+    if (!object) {
+        return null;
+    }
+    /** @type {import("../geom/GeometryType.js").default} */
+    var type;
+    if (typeof object['x'] === 'number' && typeof object['y'] === 'number') {
+        type = _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_2__["default"].POINT;
+    }
+    else if (object['points']) {
+        type = _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_2__["default"].MULTI_POINT;
+    }
+    else if (object['paths']) {
+        var esriJSONPolyline = /** @type {EsriJSONPolyline} */ (object);
+        if (esriJSONPolyline.paths.length === 1) {
+            type = _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_2__["default"].LINE_STRING;
+        }
+        else {
+            type = _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_2__["default"].MULTI_LINE_STRING;
+        }
+    }
+    else if (object['rings']) {
+        var esriJSONPolygon = /** @type {EsriJSONPolygon} */ (object);
+        var layout = getGeometryLayout(esriJSONPolygon);
+        var rings = convertRings(esriJSONPolygon.rings, layout);
+        if (rings.length === 1) {
+            type = _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_2__["default"].POLYGON;
+            object = Object(_obj_js__WEBPACK_IMPORTED_MODULE_12__["assign"])({}, object, (_a = {}, _a['rings'] = rings[0], _a));
+        }
+        else {
+            type = _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_2__["default"].MULTI_POLYGON;
+            object = Object(_obj_js__WEBPACK_IMPORTED_MODULE_12__["assign"])({}, object, (_b = {}, _b['rings'] = rings, _b));
+        }
+    }
+    var geometryReader = GEOMETRY_READERS[type];
+    return Object(_Feature_js__WEBPACK_IMPORTED_MODULE_17__["transformGeometryWithOptions"])(geometryReader(object), false, opt_options);
+}
+/**
+ * Determines inner and outer rings.
+ * Checks if any polygons in this array contain any other polygons in this
+ * array. It is used for checking for holes.
+ * Logic inspired by: https://github.com/Esri/terraformer-arcgis-parser
+ * @param {Array<!Array<!Array<number>>>} rings Rings.
+ * @param {import("../geom/GeometryLayout.js").default} layout Geometry layout.
+ * @return {Array<!Array<!Array<!Array<number>>>>} Transformed rings.
+ */
+function convertRings(rings, layout) {
+    var flatRing = [];
+    var outerRings = [];
+    var holes = [];
+    var i, ii;
+    for (i = 0, ii = rings.length; i < ii; ++i) {
+        flatRing.length = 0;
+        Object(_geom_flat_deflate_js__WEBPACK_IMPORTED_MODULE_14__["deflateCoordinates"])(flatRing, 0, rings[i], layout.length);
+        // is this ring an outer ring? is it clockwise?
+        var clockwise = Object(_geom_flat_orient_js__WEBPACK_IMPORTED_MODULE_16__["linearRingIsClockwise"])(flatRing, 0, flatRing.length, layout.length);
+        if (clockwise) {
+            outerRings.push([rings[i]]);
+        }
+        else {
+            holes.push(rings[i]);
+        }
+    }
+    while (holes.length) {
+        var hole = holes.shift();
+        var matched = false;
+        // loop over all outer rings and see if they contain our hole.
+        for (i = outerRings.length - 1; i >= 0; i--) {
+            var outerRing = outerRings[i][0];
+            var containsHole = Object(_extent_js__WEBPACK_IMPORTED_MODULE_13__["containsExtent"])(new _geom_LinearRing_js__WEBPACK_IMPORTED_MODULE_5__["default"](outerRing).getExtent(), new _geom_LinearRing_js__WEBPACK_IMPORTED_MODULE_5__["default"](hole).getExtent());
+            if (containsHole) {
+                // the hole is contained push it into our polygon
+                outerRings[i].push(hole);
+                matched = true;
+                break;
+            }
+        }
+        if (!matched) {
+            // no outer rings contain this hole turn it into and outer
+            // ring (reverse it)
+            outerRings.push([hole.reverse()]);
+        }
+    }
+    return outerRings;
+}
+/**
+ * @param {EsriJSONPoint} object Object.
+ * @return {import("../geom/Geometry.js").default} Point.
+ */
+function readPointGeometry(object) {
+    var point;
+    if (object.m !== undefined && object.z !== undefined) {
+        point = new _geom_Point_js__WEBPACK_IMPORTED_MODULE_9__["default"]([object.x, object.y, object.z, object.m], _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_1__["default"].XYZM);
+    }
+    else if (object.z !== undefined) {
+        point = new _geom_Point_js__WEBPACK_IMPORTED_MODULE_9__["default"]([object.x, object.y, object.z], _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_1__["default"].XYZ);
+    }
+    else if (object.m !== undefined) {
+        point = new _geom_Point_js__WEBPACK_IMPORTED_MODULE_9__["default"]([object.x, object.y, object.m], _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_1__["default"].XYM);
+    }
+    else {
+        point = new _geom_Point_js__WEBPACK_IMPORTED_MODULE_9__["default"]([object.x, object.y]);
+    }
+    return point;
+}
+/**
+ * @param {EsriJSONPolyline} object Object.
+ * @return {import("../geom/Geometry.js").default} LineString.
+ */
+function readLineStringGeometry(object) {
+    var layout = getGeometryLayout(object);
+    return new _geom_LineString_js__WEBPACK_IMPORTED_MODULE_4__["default"](object.paths[0], layout);
+}
+/**
+ * @param {EsriJSONPolyline} object Object.
+ * @return {import("../geom/Geometry.js").default} MultiLineString.
+ */
+function readMultiLineStringGeometry(object) {
+    var layout = getGeometryLayout(object);
+    return new _geom_MultiLineString_js__WEBPACK_IMPORTED_MODULE_6__["default"](object.paths, layout);
+}
+/**
+ * @param {EsriJSONHasZM} object Object.
+ * @return {import("../geom/GeometryLayout.js").default} The geometry layout to use.
+ */
+function getGeometryLayout(object) {
+    var layout = _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_1__["default"].XY;
+    if (object.hasZ === true && object.hasM === true) {
+        layout = _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_1__["default"].XYZM;
+    }
+    else if (object.hasZ === true) {
+        layout = _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_1__["default"].XYZ;
+    }
+    else if (object.hasM === true) {
+        layout = _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_1__["default"].XYM;
+    }
+    return layout;
+}
+/**
+ * @param {EsriJSONMultipoint} object Object.
+ * @return {import("../geom/Geometry.js").default} MultiPoint.
+ */
+function readMultiPointGeometry(object) {
+    var layout = getGeometryLayout(object);
+    return new _geom_MultiPoint_js__WEBPACK_IMPORTED_MODULE_7__["default"](object.points, layout);
+}
+/**
+ * @param {EsriJSONMultiPolygon} object Object.
+ * @return {import("../geom/Geometry.js").default} MultiPolygon.
+ */
+function readMultiPolygonGeometry(object) {
+    var layout = getGeometryLayout(object);
+    return new _geom_MultiPolygon_js__WEBPACK_IMPORTED_MODULE_8__["default"](object.rings, layout);
+}
+/**
+ * @param {EsriJSONPolygon} object Object.
+ * @return {import("../geom/Geometry.js").default} Polygon.
+ */
+function readPolygonGeometry(object) {
+    var layout = getGeometryLayout(object);
+    return new _geom_Polygon_js__WEBPACK_IMPORTED_MODULE_10__["default"](object.rings, layout);
+}
+/**
+ * @param {import("../geom/Point.js").default} geometry Geometry.
+ * @param {import("./Feature.js").WriteOptions=} opt_options Write options.
+ * @return {EsriJSONPoint} EsriJSON geometry.
+ */
+function writePointGeometry(geometry, opt_options) {
+    var coordinates = geometry.getCoordinates();
+    /** @type {EsriJSONPoint} */
+    var esriJSON;
+    var layout = geometry.getLayout();
+    if (layout === _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_1__["default"].XYZ) {
+        esriJSON = {
+            x: coordinates[0],
+            y: coordinates[1],
+            z: coordinates[2],
+        };
+    }
+    else if (layout === _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_1__["default"].XYM) {
+        esriJSON = {
+            x: coordinates[0],
+            y: coordinates[1],
+            m: coordinates[2],
+        };
+    }
+    else if (layout === _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_1__["default"].XYZM) {
+        esriJSON = {
+            x: coordinates[0],
+            y: coordinates[1],
+            z: coordinates[2],
+            m: coordinates[3],
+        };
+    }
+    else if (layout === _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_1__["default"].XY) {
+        esriJSON = {
+            x: coordinates[0],
+            y: coordinates[1],
+        };
+    }
+    else {
+        Object(_asserts_js__WEBPACK_IMPORTED_MODULE_11__["assert"])(false, 34); // Invalid geometry layout
+    }
+    return esriJSON;
+}
+/**
+ * @param {import("../geom/SimpleGeometry.js").default} geometry Geometry.
+ * @return {Object} Object with boolean hasZ and hasM keys.
+ */
+function getHasZM(geometry) {
+    var layout = geometry.getLayout();
+    return {
+        hasZ: layout === _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_1__["default"].XYZ || layout === _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_1__["default"].XYZM,
+        hasM: layout === _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_1__["default"].XYM || layout === _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_1__["default"].XYZM,
+    };
+}
+/**
+ * @param {import("../geom/LineString.js").default} lineString Geometry.
+ * @param {import("./Feature.js").WriteOptions=} opt_options Write options.
+ * @return {EsriJSONPolyline} EsriJSON geometry.
+ */
+function writeLineStringGeometry(lineString, opt_options) {
+    var hasZM = getHasZM(lineString);
+    return {
+        hasZ: hasZM.hasZ,
+        hasM: hasZM.hasM,
+        paths: [
+            /** @type {Array<EsriJSONPosition>} */ (lineString.getCoordinates()),
+        ],
+    };
+}
+/**
+ * @param {import("../geom/Polygon.js").default} polygon Geometry.
+ * @param {import("./Feature.js").WriteOptions=} opt_options Write options.
+ * @return {EsriJSONPolygon} EsriJSON geometry.
+ */
+function writePolygonGeometry(polygon, opt_options) {
+    // Esri geometries use the left-hand rule
+    var hasZM = getHasZM(polygon);
+    return {
+        hasZ: hasZM.hasZ,
+        hasM: hasZM.hasM,
+        rings: /** @type {Array<Array<EsriJSONPosition>>} */ (polygon.getCoordinates(false)),
+    };
+}
+/**
+ * @param {import("../geom/MultiLineString.js").default} multiLineString Geometry.
+ * @param {import("./Feature.js").WriteOptions=} opt_options Write options.
+ * @return {EsriJSONPolyline} EsriJSON geometry.
+ */
+function writeMultiLineStringGeometry(multiLineString, opt_options) {
+    var hasZM = getHasZM(multiLineString);
+    return {
+        hasZ: hasZM.hasZ,
+        hasM: hasZM.hasM,
+        paths: /** @type {Array<Array<EsriJSONPosition>>} */ (multiLineString.getCoordinates()),
+    };
+}
+/**
+ * @param {import("../geom/MultiPoint.js").default} multiPoint Geometry.
+ * @param {import("./Feature.js").WriteOptions=} opt_options Write options.
+ * @return {EsriJSONMultipoint} EsriJSON geometry.
+ */
+function writeMultiPointGeometry(multiPoint, opt_options) {
+    var hasZM = getHasZM(multiPoint);
+    return {
+        hasZ: hasZM.hasZ,
+        hasM: hasZM.hasM,
+        points: /** @type {Array<EsriJSONPosition>} */ (multiPoint.getCoordinates()),
+    };
+}
+/**
+ * @param {import("../geom/MultiPolygon.js").default} geometry Geometry.
+ * @param {import("./Feature.js").WriteOptions=} opt_options Write options.
+ * @return {EsriJSONPolygon} EsriJSON geometry.
+ */
+function writeMultiPolygonGeometry(geometry, opt_options) {
+    var hasZM = getHasZM(geometry);
+    var coordinates = geometry.getCoordinates(false);
+    var output = [];
+    for (var i = 0; i < coordinates.length; i++) {
+        for (var x = coordinates[i].length - 1; x >= 0; x--) {
+            output.push(coordinates[i][x]);
+        }
+    }
+    return {
+        hasZ: hasZM.hasZ,
+        hasM: hasZM.hasM,
+        rings: /** @type {Array<Array<EsriJSONPosition>>} */ (output),
+    };
+}
+/**
+ * @param {import("../geom/Geometry.js").default} geometry Geometry.
+ * @param {import("./Feature.js").WriteOptions=} opt_options Write options.
+ * @return {EsriJSONGeometry} EsriJSON geometry.
+ */
+function writeGeometry(geometry, opt_options) {
+    var geometryWriter = GEOMETRY_WRITERS[geometry.getType()];
+    return geometryWriter(Object(_Feature_js__WEBPACK_IMPORTED_MODULE_17__["transformGeometryWithOptions"])(geometry, true, opt_options), opt_options);
+}
+/* harmony default export */ __webpack_exports__["default"] = (EsriJSON);
+//# sourceMappingURL=EsriJSON.js.map
+
+/***/ }),
+
 /***/ "./node_modules/ol/format/Feature.js":
 /*!*******************************************!*\
   !*** ./node_modules/ol/format/Feature.js ***!
@@ -33569,6 +34228,3213 @@ __webpack_require__.r(__webpack_exports__);
     XML: 'xml',
 });
 //# sourceMappingURL=FormatType.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/format/GML.js":
+/*!***************************************!*\
+  !*** ./node_modules/ol/format/GML.js ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _GML3_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./GML3.js */ "./node_modules/ol/format/GML3.js");
+/**
+ * @module ol/format/GML
+ */
+
+/**
+ * @classdesc
+ * Feature format for reading and writing data in the GML format
+ * version 3.1.1.
+ * Currently only supports GML 3.1.1 Simple Features profile.
+ *
+ * @param {import("./GMLBase.js").Options=} opt_options
+ *     Optional configuration object.
+ * @api
+ */
+var GML = _GML3_js__WEBPACK_IMPORTED_MODULE_0__["default"];
+/**
+ * Encode an array of features in GML 3.1.1 Simple Features.
+ *
+ * @function
+ * @param {Array<import("../Feature.js").default>} features Features.
+ * @param {import("./Feature.js").WriteOptions=} opt_options Options.
+ * @return {string} Result.
+ * @api
+ */
+GML.prototype.writeFeatures;
+/**
+ * Encode an array of features in the GML 3.1.1 format as an XML node.
+ *
+ * @function
+ * @param {Array<import("../Feature.js").default>} features Features.
+ * @param {import("./Feature.js").WriteOptions=} opt_options Options.
+ * @return {Node} Node.
+ * @api
+ */
+GML.prototype.writeFeaturesNode;
+/* harmony default export */ __webpack_exports__["default"] = (GML);
+//# sourceMappingURL=GML.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/format/GML2.js":
+/*!****************************************!*\
+  !*** ./node_modules/ol/format/GML2.js ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _GMLBase_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./GMLBase.js */ "./node_modules/ol/format/GMLBase.js");
+/* harmony import */ var _xml_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../xml.js */ "./node_modules/ol/xml.js");
+/* harmony import */ var _obj_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../obj.js */ "./node_modules/ol/obj.js");
+/* harmony import */ var _extent_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../extent.js */ "./node_modules/ol/extent.js");
+/* harmony import */ var _proj_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../proj.js */ "./node_modules/ol/proj.js");
+/* harmony import */ var _Feature_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Feature.js */ "./node_modules/ol/format/Feature.js");
+/* harmony import */ var _xsd_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./xsd.js */ "./node_modules/ol/format/xsd.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+/**
+ * @module ol/format/GML2
+ */
+
+
+
+
+
+
+
+/**
+ * @const
+ * @type {string}
+ */
+var schemaLocation = _GMLBase_js__WEBPACK_IMPORTED_MODULE_0__["GMLNS"] + ' http://schemas.opengis.net/gml/2.1.2/feature.xsd';
+/**
+ * @const
+ * @type {Object<string, string>}
+ */
+var MULTIGEOMETRY_TO_MEMBER_NODENAME = {
+    'MultiLineString': 'lineStringMember',
+    'MultiCurve': 'curveMember',
+    'MultiPolygon': 'polygonMember',
+    'MultiSurface': 'surfaceMember',
+};
+/**
+ * @classdesc
+ * Feature format for reading and writing data in the GML format,
+ * version 2.1.2.
+ *
+ * @api
+ */
+var GML2 = /** @class */ (function (_super) {
+    __extends(GML2, _super);
+    /**
+     * @param {import("./GMLBase.js").Options=} opt_options Optional configuration object.
+     */
+    function GML2(opt_options) {
+        var _this = this;
+        var options = 
+        /** @type {import("./GMLBase.js").Options} */
+        (opt_options ? opt_options : {});
+        _this = _super.call(this, options) || this;
+        _this.FEATURE_COLLECTION_PARSERS[_GMLBase_js__WEBPACK_IMPORTED_MODULE_0__["GMLNS"]]['featureMember'] = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeArrayPusher"])(_this.readFeaturesInternal);
+        /**
+         * @type {string}
+         */
+        _this.schemaLocation = options.schemaLocation
+            ? options.schemaLocation
+            : schemaLocation;
+        return _this;
+    }
+    /**
+     * @param {Node} node Node.
+     * @param {Array<*>} objectStack Object stack.
+     * @return {Array<number>|undefined} Flat coordinates.
+     */
+    GML2.prototype.readFlatCoordinates = function (node, objectStack) {
+        var s = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["getAllTextContent"])(node, false).replace(/^\s*|\s*$/g, '');
+        var context = /** @type {import("../xml.js").NodeStackItem} */ (objectStack[0]);
+        var containerSrs = context['srsName'];
+        var axisOrientation = 'enu';
+        if (containerSrs) {
+            var proj = Object(_proj_js__WEBPACK_IMPORTED_MODULE_4__["get"])(containerSrs);
+            if (proj) {
+                axisOrientation = proj.getAxisOrientation();
+            }
+        }
+        var coordsGroups = s.trim().split(/\s+/);
+        var flatCoordinates = [];
+        for (var i = 0, ii = coordsGroups.length; i < ii; i++) {
+            var coords = coordsGroups[i].split(/,+/);
+            var x = parseFloat(coords[0]);
+            var y = parseFloat(coords[1]);
+            var z = coords.length === 3 ? parseFloat(coords[2]) : 0;
+            if (axisOrientation.substr(0, 2) === 'en') {
+                flatCoordinates.push(x, y, z);
+            }
+            else {
+                flatCoordinates.push(y, x, z);
+            }
+        }
+        return flatCoordinates;
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {Array<*>} objectStack Object stack.
+     * @return {import("../extent.js").Extent|undefined} Envelope.
+     */
+    GML2.prototype.readBox = function (node, objectStack) {
+        /** @type {Array<number>} */
+        var flatCoordinates = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["pushParseAndPop"])([null], this.BOX_PARSERS_, node, objectStack, this);
+        return Object(_extent_js__WEBPACK_IMPORTED_MODULE_3__["createOrUpdate"])(flatCoordinates[1][0], flatCoordinates[1][1], flatCoordinates[1][3], flatCoordinates[1][4]);
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {Array<*>} objectStack Object stack.
+     */
+    GML2.prototype.innerBoundaryIsParser = function (node, objectStack) {
+        /** @type {Array<number>|undefined} */
+        var flatLinearRing = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["pushParseAndPop"])(undefined, this.RING_PARSERS, node, objectStack, this);
+        if (flatLinearRing) {
+            var flatLinearRings = 
+            /** @type {Array<Array<number>>} */
+            (objectStack[objectStack.length - 1]);
+            flatLinearRings.push(flatLinearRing);
+        }
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {Array<*>} objectStack Object stack.
+     */
+    GML2.prototype.outerBoundaryIsParser = function (node, objectStack) {
+        /** @type {Array<number>|undefined} */
+        var flatLinearRing = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["pushParseAndPop"])(undefined, this.RING_PARSERS, node, objectStack, this);
+        if (flatLinearRing) {
+            var flatLinearRings = 
+            /** @type {Array<Array<number>>} */
+            (objectStack[objectStack.length - 1]);
+            flatLinearRings[0] = flatLinearRing;
+        }
+    };
+    /**
+     * @const
+     * @param {*} value Value.
+     * @param {Array<*>} objectStack Object stack.
+     * @param {string=} opt_nodeName Node name.
+     * @return {Element|undefined} Node.
+     * @private
+     */
+    GML2.prototype.GEOMETRY_NODE_FACTORY_ = function (value, objectStack, opt_nodeName) {
+        var context = objectStack[objectStack.length - 1];
+        var multiSurface = context['multiSurface'];
+        var surface = context['surface'];
+        var multiCurve = context['multiCurve'];
+        var nodeName;
+        if (!Array.isArray(value)) {
+            nodeName = /** @type {import("../geom/Geometry.js").default} */ (value).getType();
+            if (nodeName === 'MultiPolygon' && multiSurface === true) {
+                nodeName = 'MultiSurface';
+            }
+            else if (nodeName === 'Polygon' && surface === true) {
+                nodeName = 'Surface';
+            }
+            else if (nodeName === 'MultiLineString' && multiCurve === true) {
+                nodeName = 'MultiCurve';
+            }
+        }
+        else {
+            nodeName = 'Envelope';
+        }
+        return Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["createElementNS"])('http://www.opengis.net/gml', nodeName);
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {import("../Feature.js").default} feature Feature.
+     * @param {Array<*>} objectStack Node stack.
+     */
+    GML2.prototype.writeFeatureElement = function (node, feature, objectStack) {
+        var fid = feature.getId();
+        if (fid) {
+            node.setAttribute('fid', /** @type {string} */ (fid));
+        }
+        var context = /** @type {Object} */ (objectStack[objectStack.length - 1]);
+        var featureNS = context['featureNS'];
+        var geometryName = feature.getGeometryName();
+        if (!context.serializers) {
+            context.serializers = {};
+            context.serializers[featureNS] = {};
+        }
+        var keys = [];
+        var values = [];
+        if (feature.hasProperties()) {
+            var properties = feature.getProperties();
+            for (var key in properties) {
+                var value = properties[key];
+                if (value !== null) {
+                    keys.push(key);
+                    values.push(value);
+                    if (key == geometryName ||
+                        typeof ( /** @type {?} */(value).getSimplifiedGeometry) ===
+                            'function') {
+                        if (!(key in context.serializers[featureNS])) {
+                            context.serializers[featureNS][key] = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeChildAppender"])(this.writeGeometryElement, this);
+                        }
+                    }
+                    else {
+                        if (!(key in context.serializers[featureNS])) {
+                            context.serializers[featureNS][key] = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_6__["writeStringTextNode"]);
+                        }
+                    }
+                }
+            }
+        }
+        var item = Object(_obj_js__WEBPACK_IMPORTED_MODULE_2__["assign"])({}, context);
+        item.node = node;
+        Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["pushSerializeAndPop"])(
+        /** @type {import("../xml.js").NodeStackItem} */
+        (item), context.serializers, Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeSimpleNodeFactory"])(undefined, featureNS), values, objectStack, keys);
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {import("../geom/LineString.js").default} geometry LineString geometry.
+     * @param {Array<*>} objectStack Node stack.
+     */
+    GML2.prototype.writeCurveOrLineString = function (node, geometry, objectStack) {
+        var context = objectStack[objectStack.length - 1];
+        var srsName = context['srsName'];
+        if (node.nodeName !== 'LineStringSegment' && srsName) {
+            node.setAttribute('srsName', srsName);
+        }
+        if (node.nodeName === 'LineString' ||
+            node.nodeName === 'LineStringSegment') {
+            var coordinates = this.createCoordinatesNode_(node.namespaceURI);
+            node.appendChild(coordinates);
+            this.writeCoordinates_(coordinates, geometry, objectStack);
+        }
+        else if (node.nodeName === 'Curve') {
+            var segments = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["createElementNS"])(node.namespaceURI, 'segments');
+            node.appendChild(segments);
+            this.writeCurveSegments_(segments, geometry, objectStack);
+        }
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {import("../geom/LineString.js").default} line LineString geometry.
+     * @param {Array<*>} objectStack Node stack.
+     */
+    GML2.prototype.writeLineStringOrCurveMember = function (node, line, objectStack) {
+        var child = this.GEOMETRY_NODE_FACTORY_(line, objectStack);
+        if (child) {
+            node.appendChild(child);
+            this.writeCurveOrLineString(child, line, objectStack);
+        }
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {import("../geom/MultiLineString.js").default} geometry MultiLineString geometry.
+     * @param {Array<*>} objectStack Node stack.
+     */
+    GML2.prototype.writeMultiCurveOrLineString = function (node, geometry, objectStack) {
+        var context = objectStack[objectStack.length - 1];
+        var hasZ = context['hasZ'];
+        var srsName = context['srsName'];
+        var curve = context['curve'];
+        if (srsName) {
+            node.setAttribute('srsName', srsName);
+        }
+        var lines = geometry.getLineStrings();
+        Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["pushSerializeAndPop"])({ node: node, hasZ: hasZ, srsName: srsName, curve: curve }, this.LINESTRINGORCURVEMEMBER_SERIALIZERS, this.MULTIGEOMETRY_MEMBER_NODE_FACTORY_, lines, objectStack, undefined, this);
+    };
+    /**
+     * @param {Node} node Node.
+     * @param {import("../geom/Geometry.js").default|import("../extent.js").Extent} geometry Geometry.
+     * @param {Array<*>} objectStack Node stack.
+     */
+    GML2.prototype.writeGeometryElement = function (node, geometry, objectStack) {
+        var context = /** @type {import("./Feature.js").WriteOptions} */ (objectStack[objectStack.length - 1]);
+        var item = Object(_obj_js__WEBPACK_IMPORTED_MODULE_2__["assign"])({}, context);
+        item['node'] = node;
+        var value;
+        if (Array.isArray(geometry)) {
+            value = Object(_Feature_js__WEBPACK_IMPORTED_MODULE_5__["transformExtentWithOptions"])(
+            /** @type {import("../extent.js").Extent} */ (geometry), context);
+        }
+        else {
+            value = Object(_Feature_js__WEBPACK_IMPORTED_MODULE_5__["transformGeometryWithOptions"])(
+            /** @type {import("../geom/Geometry.js").default} */ (geometry), true, context);
+        }
+        Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["pushSerializeAndPop"])(
+        /** @type {import("../xml.js").NodeStackItem} */
+        (item), this.GEOMETRY_SERIALIZERS, this.GEOMETRY_NODE_FACTORY_, [value], objectStack, undefined, this);
+    };
+    /**
+     * @param {string} namespaceURI XML namespace.
+     * @returns {Element} coordinates node.
+     * @private
+     */
+    GML2.prototype.createCoordinatesNode_ = function (namespaceURI) {
+        var coordinates = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["createElementNS"])(namespaceURI, 'coordinates');
+        coordinates.setAttribute('decimal', '.');
+        coordinates.setAttribute('cs', ',');
+        coordinates.setAttribute('ts', ' ');
+        return coordinates;
+    };
+    /**
+     * @param {Node} node Node.
+     * @param {import("../geom/LineString.js").default|import("../geom/LinearRing.js").default} value Geometry.
+     * @param {Array<*>} objectStack Node stack.
+     * @private
+     */
+    GML2.prototype.writeCoordinates_ = function (node, value, objectStack) {
+        var context = objectStack[objectStack.length - 1];
+        var hasZ = context['hasZ'];
+        var srsName = context['srsName'];
+        // only 2d for simple features profile
+        var points = value.getCoordinates();
+        var len = points.length;
+        var parts = new Array(len);
+        for (var i = 0; i < len; ++i) {
+            var point = points[i];
+            parts[i] = this.getCoords_(point, srsName, hasZ);
+        }
+        Object(_xsd_js__WEBPACK_IMPORTED_MODULE_6__["writeStringTextNode"])(node, parts.join(' '));
+    };
+    /**
+     * @param {Node} node Node.
+     * @param {import("../geom/LineString.js").default} line LineString geometry.
+     * @param {Array<*>} objectStack Node stack.
+     * @private
+     */
+    GML2.prototype.writeCurveSegments_ = function (node, line, objectStack) {
+        var child = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["createElementNS"])(node.namespaceURI, 'LineStringSegment');
+        node.appendChild(child);
+        this.writeCurveOrLineString(child, line, objectStack);
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {import("../geom/Polygon.js").default} geometry Polygon geometry.
+     * @param {Array<*>} objectStack Node stack.
+     */
+    GML2.prototype.writeSurfaceOrPolygon = function (node, geometry, objectStack) {
+        var context = objectStack[objectStack.length - 1];
+        var hasZ = context['hasZ'];
+        var srsName = context['srsName'];
+        if (node.nodeName !== 'PolygonPatch' && srsName) {
+            node.setAttribute('srsName', srsName);
+        }
+        if (node.nodeName === 'Polygon' || node.nodeName === 'PolygonPatch') {
+            var rings = geometry.getLinearRings();
+            Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["pushSerializeAndPop"])({ node: node, hasZ: hasZ, srsName: srsName }, this.RING_SERIALIZERS, this.RING_NODE_FACTORY_, rings, objectStack, undefined, this);
+        }
+        else if (node.nodeName === 'Surface') {
+            var patches = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["createElementNS"])(node.namespaceURI, 'patches');
+            node.appendChild(patches);
+            this.writeSurfacePatches_(patches, geometry, objectStack);
+        }
+    };
+    /**
+     * @param {*} value Value.
+     * @param {Array<*>} objectStack Object stack.
+     * @param {string=} opt_nodeName Node name.
+     * @return {Node} Node.
+     * @private
+     */
+    GML2.prototype.RING_NODE_FACTORY_ = function (value, objectStack, opt_nodeName) {
+        var context = objectStack[objectStack.length - 1];
+        var parentNode = context.node;
+        var exteriorWritten = context['exteriorWritten'];
+        if (exteriorWritten === undefined) {
+            context['exteriorWritten'] = true;
+        }
+        return Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["createElementNS"])(parentNode.namespaceURI, exteriorWritten !== undefined ? 'innerBoundaryIs' : 'outerBoundaryIs');
+    };
+    /**
+     * @param {Node} node Node.
+     * @param {import("../geom/Polygon.js").default} polygon Polygon geometry.
+     * @param {Array<*>} objectStack Node stack.
+     * @private
+     */
+    GML2.prototype.writeSurfacePatches_ = function (node, polygon, objectStack) {
+        var child = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["createElementNS"])(node.namespaceURI, 'PolygonPatch');
+        node.appendChild(child);
+        this.writeSurfaceOrPolygon(child, polygon, objectStack);
+    };
+    /**
+     * @param {Node} node Node.
+     * @param {import("../geom/LinearRing.js").default} ring LinearRing geometry.
+     * @param {Array<*>} objectStack Node stack.
+     */
+    GML2.prototype.writeRing = function (node, ring, objectStack) {
+        var linearRing = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["createElementNS"])(node.namespaceURI, 'LinearRing');
+        node.appendChild(linearRing);
+        this.writeLinearRing(linearRing, ring, objectStack);
+    };
+    /**
+     * @param {Array<number>} point Point geometry.
+     * @param {string=} opt_srsName Optional srsName
+     * @param {boolean=} opt_hasZ whether the geometry has a Z coordinate (is 3D) or not.
+     * @return {string} The coords string.
+     * @private
+     */
+    GML2.prototype.getCoords_ = function (point, opt_srsName, opt_hasZ) {
+        var axisOrientation = 'enu';
+        if (opt_srsName) {
+            axisOrientation = Object(_proj_js__WEBPACK_IMPORTED_MODULE_4__["get"])(opt_srsName).getAxisOrientation();
+        }
+        var coords = axisOrientation.substr(0, 2) === 'en'
+            ? point[0] + ',' + point[1]
+            : point[1] + ',' + point[0];
+        if (opt_hasZ) {
+            // For newly created points, Z can be undefined.
+            var z = point[2] || 0;
+            coords += ',' + z;
+        }
+        return coords;
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {import("../geom/Point.js").default} geometry Point geometry.
+     * @param {Array<*>} objectStack Node stack.
+     */
+    GML2.prototype.writePoint = function (node, geometry, objectStack) {
+        var context = objectStack[objectStack.length - 1];
+        var hasZ = context['hasZ'];
+        var srsName = context['srsName'];
+        if (srsName) {
+            node.setAttribute('srsName', srsName);
+        }
+        var coordinates = this.createCoordinatesNode_(node.namespaceURI);
+        node.appendChild(coordinates);
+        var point = geometry.getCoordinates();
+        var coord = this.getCoords_(point, srsName, hasZ);
+        Object(_xsd_js__WEBPACK_IMPORTED_MODULE_6__["writeStringTextNode"])(coordinates, coord);
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {import("../geom/MultiPoint.js").default} geometry MultiPoint geometry.
+     * @param {Array<*>} objectStack Node stack.
+     */
+    GML2.prototype.writeMultiPoint = function (node, geometry, objectStack) {
+        var context = objectStack[objectStack.length - 1];
+        var hasZ = context['hasZ'];
+        var srsName = context['srsName'];
+        if (srsName) {
+            node.setAttribute('srsName', srsName);
+        }
+        var points = geometry.getPoints();
+        Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["pushSerializeAndPop"])({ node: node, hasZ: hasZ, srsName: srsName }, this.POINTMEMBER_SERIALIZERS, Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeSimpleNodeFactory"])('pointMember'), points, objectStack, undefined, this);
+    };
+    /**
+     * @param {Node} node Node.
+     * @param {import("../geom/Point.js").default} point Point geometry.
+     * @param {Array<*>} objectStack Node stack.
+     */
+    GML2.prototype.writePointMember = function (node, point, objectStack) {
+        var child = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["createElementNS"])(node.namespaceURI, 'Point');
+        node.appendChild(child);
+        this.writePoint(child, point, objectStack);
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {import("../geom/LinearRing.js").default} geometry LinearRing geometry.
+     * @param {Array<*>} objectStack Node stack.
+     */
+    GML2.prototype.writeLinearRing = function (node, geometry, objectStack) {
+        var context = objectStack[objectStack.length - 1];
+        var srsName = context['srsName'];
+        if (srsName) {
+            node.setAttribute('srsName', srsName);
+        }
+        var coordinates = this.createCoordinatesNode_(node.namespaceURI);
+        node.appendChild(coordinates);
+        this.writeCoordinates_(coordinates, geometry, objectStack);
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {import("../geom/MultiPolygon.js").default} geometry MultiPolygon geometry.
+     * @param {Array<*>} objectStack Node stack.
+     */
+    GML2.prototype.writeMultiSurfaceOrPolygon = function (node, geometry, objectStack) {
+        var context = objectStack[objectStack.length - 1];
+        var hasZ = context['hasZ'];
+        var srsName = context['srsName'];
+        var surface = context['surface'];
+        if (srsName) {
+            node.setAttribute('srsName', srsName);
+        }
+        var polygons = geometry.getPolygons();
+        Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["pushSerializeAndPop"])({ node: node, hasZ: hasZ, srsName: srsName, surface: surface }, this.SURFACEORPOLYGONMEMBER_SERIALIZERS, this.MULTIGEOMETRY_MEMBER_NODE_FACTORY_, polygons, objectStack, undefined, this);
+    };
+    /**
+     * @param {Node} node Node.
+     * @param {import("../geom/Polygon.js").default} polygon Polygon geometry.
+     * @param {Array<*>} objectStack Node stack.
+     */
+    GML2.prototype.writeSurfaceOrPolygonMember = function (node, polygon, objectStack) {
+        var child = this.GEOMETRY_NODE_FACTORY_(polygon, objectStack);
+        if (child) {
+            node.appendChild(child);
+            this.writeSurfaceOrPolygon(child, polygon, objectStack);
+        }
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {import("../extent.js").Extent} extent Extent.
+     * @param {Array<*>} objectStack Node stack.
+     */
+    GML2.prototype.writeEnvelope = function (node, extent, objectStack) {
+        var context = objectStack[objectStack.length - 1];
+        var srsName = context['srsName'];
+        if (srsName) {
+            node.setAttribute('srsName', srsName);
+        }
+        var keys = ['lowerCorner', 'upperCorner'];
+        var values = [extent[0] + ' ' + extent[1], extent[2] + ' ' + extent[3]];
+        Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["pushSerializeAndPop"])(
+        /** @type {import("../xml.js").NodeStackItem} */
+        ({ node: node }), this.ENVELOPE_SERIALIZERS, _xml_js__WEBPACK_IMPORTED_MODULE_1__["OBJECT_PROPERTY_NODE_FACTORY"], values, objectStack, keys, this);
+    };
+    /**
+     * @const
+     * @param {*} value Value.
+     * @param {Array<*>} objectStack Object stack.
+     * @param {string=} opt_nodeName Node name.
+     * @return {Node|undefined} Node.
+     * @private
+     */
+    GML2.prototype.MULTIGEOMETRY_MEMBER_NODE_FACTORY_ = function (value, objectStack, opt_nodeName) {
+        var parentNode = objectStack[objectStack.length - 1].node;
+        return Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["createElementNS"])('http://www.opengis.net/gml', MULTIGEOMETRY_TO_MEMBER_NODENAME[parentNode.nodeName]);
+    };
+    return GML2;
+}(_GMLBase_js__WEBPACK_IMPORTED_MODULE_0__["default"]));
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+GML2.prototype.GEOMETRY_FLAT_COORDINATES_PARSERS = {
+    'http://www.opengis.net/gml': {
+        'coordinates': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeReplacer"])(GML2.prototype.readFlatCoordinates),
+    },
+};
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+GML2.prototype.FLAT_LINEAR_RINGS_PARSERS = {
+    'http://www.opengis.net/gml': {
+        'innerBoundaryIs': GML2.prototype.innerBoundaryIsParser,
+        'outerBoundaryIs': GML2.prototype.outerBoundaryIsParser,
+    },
+};
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+GML2.prototype.BOX_PARSERS_ = {
+    'http://www.opengis.net/gml': {
+        'coordinates': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeArrayPusher"])(GML2.prototype.readFlatCoordinates),
+    },
+};
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+GML2.prototype.GEOMETRY_PARSERS = {
+    'http://www.opengis.net/gml': {
+        'Point': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeReplacer"])(_GMLBase_js__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.readPoint),
+        'MultiPoint': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeReplacer"])(_GMLBase_js__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.readMultiPoint),
+        'LineString': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeReplacer"])(_GMLBase_js__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.readLineString),
+        'MultiLineString': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeReplacer"])(_GMLBase_js__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.readMultiLineString),
+        'LinearRing': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeReplacer"])(_GMLBase_js__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.readLinearRing),
+        'Polygon': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeReplacer"])(_GMLBase_js__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.readPolygon),
+        'MultiPolygon': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeReplacer"])(_GMLBase_js__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.readMultiPolygon),
+        'Box': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeReplacer"])(GML2.prototype.readBox),
+    },
+};
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Serializer>>}
+ */
+GML2.prototype.GEOMETRY_SERIALIZERS = {
+    'http://www.opengis.net/gml': {
+        'Curve': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeChildAppender"])(GML2.prototype.writeCurveOrLineString),
+        'MultiCurve': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeChildAppender"])(GML2.prototype.writeMultiCurveOrLineString),
+        'Point': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeChildAppender"])(GML2.prototype.writePoint),
+        'MultiPoint': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeChildAppender"])(GML2.prototype.writeMultiPoint),
+        'LineString': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeChildAppender"])(GML2.prototype.writeCurveOrLineString),
+        'MultiLineString': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeChildAppender"])(GML2.prototype.writeMultiCurveOrLineString),
+        'LinearRing': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeChildAppender"])(GML2.prototype.writeLinearRing),
+        'Polygon': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeChildAppender"])(GML2.prototype.writeSurfaceOrPolygon),
+        'MultiPolygon': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeChildAppender"])(GML2.prototype.writeMultiSurfaceOrPolygon),
+        'Surface': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeChildAppender"])(GML2.prototype.writeSurfaceOrPolygon),
+        'MultiSurface': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeChildAppender"])(GML2.prototype.writeMultiSurfaceOrPolygon),
+        'Envelope': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeChildAppender"])(GML2.prototype.writeEnvelope),
+    },
+};
+/**
+ * @type {Object<string, Object<string, import("../xml.js").Serializer>>}
+ */
+GML2.prototype.LINESTRINGORCURVEMEMBER_SERIALIZERS = {
+    'http://www.opengis.net/gml': {
+        'lineStringMember': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeChildAppender"])(GML2.prototype.writeLineStringOrCurveMember),
+        'curveMember': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeChildAppender"])(GML2.prototype.writeLineStringOrCurveMember),
+    },
+};
+/**
+ * @type {Object<string, Object<string, import("../xml.js").Serializer>>}
+ */
+GML2.prototype.RING_SERIALIZERS = {
+    'http://www.opengis.net/gml': {
+        'outerBoundaryIs': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeChildAppender"])(GML2.prototype.writeRing),
+        'innerBoundaryIs': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeChildAppender"])(GML2.prototype.writeRing),
+    },
+};
+/**
+ * @type {Object<string, Object<string, import("../xml.js").Serializer>>}
+ */
+GML2.prototype.POINTMEMBER_SERIALIZERS = {
+    'http://www.opengis.net/gml': {
+        'pointMember': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeChildAppender"])(GML2.prototype.writePointMember),
+    },
+};
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Serializer>>}
+ */
+GML2.prototype.SURFACEORPOLYGONMEMBER_SERIALIZERS = {
+    'http://www.opengis.net/gml': {
+        'surfaceMember': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeChildAppender"])(GML2.prototype.writeSurfaceOrPolygonMember),
+        'polygonMember': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeChildAppender"])(GML2.prototype.writeSurfaceOrPolygonMember),
+    },
+};
+/**
+ * @type {Object<string, Object<string, import("../xml.js").Serializer>>}
+ */
+GML2.prototype.ENVELOPE_SERIALIZERS = {
+    'http://www.opengis.net/gml': {
+        'lowerCorner': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_6__["writeStringTextNode"]),
+        'upperCorner': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_6__["writeStringTextNode"]),
+    },
+};
+/* harmony default export */ __webpack_exports__["default"] = (GML2);
+//# sourceMappingURL=GML2.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/format/GML3.js":
+/*!****************************************!*\
+  !*** ./node_modules/ol/format/GML3.js ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _GMLBase_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./GMLBase.js */ "./node_modules/ol/format/GMLBase.js");
+/* harmony import */ var _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../geom/GeometryLayout.js */ "./node_modules/ol/geom/GeometryLayout.js");
+/* harmony import */ var _geom_LineString_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../geom/LineString.js */ "./node_modules/ol/geom/LineString.js");
+/* harmony import */ var _geom_MultiLineString_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../geom/MultiLineString.js */ "./node_modules/ol/geom/MultiLineString.js");
+/* harmony import */ var _geom_MultiPolygon_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../geom/MultiPolygon.js */ "./node_modules/ol/geom/MultiPolygon.js");
+/* harmony import */ var _geom_Polygon_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../geom/Polygon.js */ "./node_modules/ol/geom/Polygon.js");
+/* harmony import */ var _xml_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../xml.js */ "./node_modules/ol/xml.js");
+/* harmony import */ var _obj_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../obj.js */ "./node_modules/ol/obj.js");
+/* harmony import */ var _extent_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../extent.js */ "./node_modules/ol/extent.js");
+/* harmony import */ var _array_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../array.js */ "./node_modules/ol/array.js");
+/* harmony import */ var _proj_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../proj.js */ "./node_modules/ol/proj.js");
+/* harmony import */ var _xsd_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./xsd.js */ "./node_modules/ol/format/xsd.js");
+/* harmony import */ var _Feature_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./Feature.js */ "./node_modules/ol/format/Feature.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+/**
+ * @module ol/format/GML3
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * @const
+ * @type {string}
+ * @private
+ */
+var schemaLocation = _GMLBase_js__WEBPACK_IMPORTED_MODULE_0__["GMLNS"] +
+    ' http://schemas.opengis.net/gml/3.1.1/profiles/gmlsfProfile/' +
+    '1.0.0/gmlsf.xsd';
+/**
+ * @const
+ * @type {Object<string, string>}
+ */
+var MULTIGEOMETRY_TO_MEMBER_NODENAME = {
+    'MultiLineString': 'lineStringMember',
+    'MultiCurve': 'curveMember',
+    'MultiPolygon': 'polygonMember',
+    'MultiSurface': 'surfaceMember',
+};
+/**
+ * @classdesc
+ * Feature format for reading and writing data in the GML format
+ * version 3.1.1.
+ * Currently only supports GML 3.1.1 Simple Features profile.
+ *
+ * @api
+ */
+var GML3 = /** @class */ (function (_super) {
+    __extends(GML3, _super);
+    /**
+     * @param {import("./GMLBase.js").Options=} opt_options Optional configuration object.
+     */
+    function GML3(opt_options) {
+        var _this = this;
+        var options = 
+        /** @type {import("./GMLBase.js").Options} */
+        (opt_options ? opt_options : {});
+        _this = _super.call(this, options) || this;
+        /**
+         * @private
+         * @type {boolean}
+         */
+        _this.surface_ = options.surface !== undefined ? options.surface : false;
+        /**
+         * @private
+         * @type {boolean}
+         */
+        _this.curve_ = options.curve !== undefined ? options.curve : false;
+        /**
+         * @private
+         * @type {boolean}
+         */
+        _this.multiCurve_ =
+            options.multiCurve !== undefined ? options.multiCurve : true;
+        /**
+         * @private
+         * @type {boolean}
+         */
+        _this.multiSurface_ =
+            options.multiSurface !== undefined ? options.multiSurface : true;
+        /**
+         * @type {string}
+         */
+        _this.schemaLocation = options.schemaLocation
+            ? options.schemaLocation
+            : schemaLocation;
+        /**
+         * @private
+         * @type {boolean}
+         */
+        _this.hasZ = options.hasZ !== undefined ? options.hasZ : false;
+        return _this;
+    }
+    /**
+     * @param {Element} node Node.
+     * @param {Array<*>} objectStack Object stack.
+     * @return {MultiLineString|undefined} MultiLineString.
+     */
+    GML3.prototype.readMultiCurve = function (node, objectStack) {
+        /** @type {Array<LineString>} */
+        var lineStrings = Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["pushParseAndPop"])([], this.MULTICURVE_PARSERS, node, objectStack, this);
+        if (lineStrings) {
+            var multiLineString = new _geom_MultiLineString_js__WEBPACK_IMPORTED_MODULE_3__["default"](lineStrings);
+            return multiLineString;
+        }
+        else {
+            return undefined;
+        }
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {Array<*>} objectStack Object stack.
+     * @return {MultiPolygon|undefined} MultiPolygon.
+     */
+    GML3.prototype.readMultiSurface = function (node, objectStack) {
+        /** @type {Array<Polygon>} */
+        var polygons = Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["pushParseAndPop"])([], this.MULTISURFACE_PARSERS, node, objectStack, this);
+        if (polygons) {
+            return new _geom_MultiPolygon_js__WEBPACK_IMPORTED_MODULE_4__["default"](polygons);
+        }
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {Array<*>} objectStack Object stack.
+     */
+    GML3.prototype.curveMemberParser = function (node, objectStack) {
+        Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["parseNode"])(this.CURVEMEMBER_PARSERS, node, objectStack, this);
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {Array<*>} objectStack Object stack.
+     */
+    GML3.prototype.surfaceMemberParser = function (node, objectStack) {
+        Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["parseNode"])(this.SURFACEMEMBER_PARSERS, node, objectStack, this);
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {Array<*>} objectStack Object stack.
+     * @return {Array<(Array<number>)>|undefined} flat coordinates.
+     */
+    GML3.prototype.readPatch = function (node, objectStack) {
+        return Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["pushParseAndPop"])([null], this.PATCHES_PARSERS, node, objectStack, this);
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {Array<*>} objectStack Object stack.
+     * @return {Array<number>|undefined} flat coordinates.
+     */
+    GML3.prototype.readSegment = function (node, objectStack) {
+        return Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["pushParseAndPop"])([null], this.SEGMENTS_PARSERS, node, objectStack, this);
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {Array<*>} objectStack Object stack.
+     * @return {Array<(Array<number>)>|undefined} flat coordinates.
+     */
+    GML3.prototype.readPolygonPatch = function (node, objectStack) {
+        return Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["pushParseAndPop"])([null], this.FLAT_LINEAR_RINGS_PARSERS, node, objectStack, this);
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {Array<*>} objectStack Object stack.
+     * @return {Array<number>|undefined} flat coordinates.
+     */
+    GML3.prototype.readLineStringSegment = function (node, objectStack) {
+        return Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["pushParseAndPop"])([null], this.GEOMETRY_FLAT_COORDINATES_PARSERS, node, objectStack, this);
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {Array<*>} objectStack Object stack.
+     */
+    GML3.prototype.interiorParser = function (node, objectStack) {
+        /** @type {Array<number>|undefined} */
+        var flatLinearRing = Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["pushParseAndPop"])(undefined, this.RING_PARSERS, node, objectStack, this);
+        if (flatLinearRing) {
+            var flatLinearRings = 
+            /** @type {Array<Array<number>>} */
+            (objectStack[objectStack.length - 1]);
+            flatLinearRings.push(flatLinearRing);
+        }
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {Array<*>} objectStack Object stack.
+     */
+    GML3.prototype.exteriorParser = function (node, objectStack) {
+        /** @type {Array<number>|undefined} */
+        var flatLinearRing = Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["pushParseAndPop"])(undefined, this.RING_PARSERS, node, objectStack, this);
+        if (flatLinearRing) {
+            var flatLinearRings = 
+            /** @type {Array<Array<number>>} */
+            (objectStack[objectStack.length - 1]);
+            flatLinearRings[0] = flatLinearRing;
+        }
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {Array<*>} objectStack Object stack.
+     * @return {Polygon|undefined} Polygon.
+     */
+    GML3.prototype.readSurface = function (node, objectStack) {
+        /** @type {Array<Array<number>>} */
+        var flatLinearRings = Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["pushParseAndPop"])([null], this.SURFACE_PARSERS, node, objectStack, this);
+        if (flatLinearRings && flatLinearRings[0]) {
+            var flatCoordinates = flatLinearRings[0];
+            var ends = [flatCoordinates.length];
+            var i = void 0, ii = void 0;
+            for (i = 1, ii = flatLinearRings.length; i < ii; ++i) {
+                Object(_array_js__WEBPACK_IMPORTED_MODULE_9__["extend"])(flatCoordinates, flatLinearRings[i]);
+                ends.push(flatCoordinates.length);
+            }
+            return new _geom_Polygon_js__WEBPACK_IMPORTED_MODULE_5__["default"](flatCoordinates, _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_1__["default"].XYZ, ends);
+        }
+        else {
+            return undefined;
+        }
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {Array<*>} objectStack Object stack.
+     * @return {LineString|undefined} LineString.
+     */
+    GML3.prototype.readCurve = function (node, objectStack) {
+        /** @type {Array<number>} */
+        var flatCoordinates = Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["pushParseAndPop"])([null], this.CURVE_PARSERS, node, objectStack, this);
+        if (flatCoordinates) {
+            var lineString = new _geom_LineString_js__WEBPACK_IMPORTED_MODULE_2__["default"](flatCoordinates, _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_1__["default"].XYZ);
+            return lineString;
+        }
+        else {
+            return undefined;
+        }
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {Array<*>} objectStack Object stack.
+     * @return {import("../extent.js").Extent|undefined} Envelope.
+     */
+    GML3.prototype.readEnvelope = function (node, objectStack) {
+        /** @type {Array<number>} */
+        var flatCoordinates = Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["pushParseAndPop"])([null], this.ENVELOPE_PARSERS, node, objectStack, this);
+        return Object(_extent_js__WEBPACK_IMPORTED_MODULE_8__["createOrUpdate"])(flatCoordinates[1][0], flatCoordinates[1][1], flatCoordinates[2][0], flatCoordinates[2][1]);
+    };
+    /**
+     * @param {Node} node Node.
+     * @param {Array<*>} objectStack Object stack.
+     * @return {Array<number>|undefined} Flat coordinates.
+     */
+    GML3.prototype.readFlatPos = function (node, objectStack) {
+        var s = Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["getAllTextContent"])(node, false);
+        var re = /^\s*([+\-]?\d*\.?\d+(?:[eE][+\-]?\d+)?)\s*/;
+        /** @type {Array<number>} */
+        var flatCoordinates = [];
+        var m;
+        while ((m = re.exec(s))) {
+            flatCoordinates.push(parseFloat(m[1]));
+            s = s.substr(m[0].length);
+        }
+        if (s !== '') {
+            return undefined;
+        }
+        var context = objectStack[0];
+        var containerSrs = context['srsName'];
+        var axisOrientation = 'enu';
+        if (containerSrs) {
+            var proj = Object(_proj_js__WEBPACK_IMPORTED_MODULE_10__["get"])(containerSrs);
+            axisOrientation = proj.getAxisOrientation();
+        }
+        if (axisOrientation === 'neu') {
+            var i = void 0, ii = void 0;
+            for (i = 0, ii = flatCoordinates.length; i < ii; i += 3) {
+                var y = flatCoordinates[i];
+                var x = flatCoordinates[i + 1];
+                flatCoordinates[i] = x;
+                flatCoordinates[i + 1] = y;
+            }
+        }
+        var len = flatCoordinates.length;
+        if (len == 2) {
+            flatCoordinates.push(0);
+        }
+        if (len === 0) {
+            return undefined;
+        }
+        return flatCoordinates;
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {Array<*>} objectStack Object stack.
+     * @return {Array<number>|undefined} Flat coordinates.
+     */
+    GML3.prototype.readFlatPosList = function (node, objectStack) {
+        var s = Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["getAllTextContent"])(node, false).replace(/^\s*|\s*$/g, '');
+        var context = objectStack[0];
+        var containerSrs = context['srsName'];
+        var contextDimension = context['srsDimension'];
+        var axisOrientation = 'enu';
+        if (containerSrs) {
+            var proj = Object(_proj_js__WEBPACK_IMPORTED_MODULE_10__["get"])(containerSrs);
+            axisOrientation = proj.getAxisOrientation();
+        }
+        var coords = s.split(/\s+/);
+        // The "dimension" attribute is from the GML 3.0.1 spec.
+        var dim = 2;
+        if (node.getAttribute('srsDimension')) {
+            dim = Object(_xsd_js__WEBPACK_IMPORTED_MODULE_11__["readNonNegativeIntegerString"])(node.getAttribute('srsDimension'));
+        }
+        else if (node.getAttribute('dimension')) {
+            dim = Object(_xsd_js__WEBPACK_IMPORTED_MODULE_11__["readNonNegativeIntegerString"])(node.getAttribute('dimension'));
+        }
+        else if (
+        /** @type {Element} */ (node.parentNode).getAttribute('srsDimension')) {
+            dim = Object(_xsd_js__WEBPACK_IMPORTED_MODULE_11__["readNonNegativeIntegerString"])(
+            /** @type {Element} */ (node.parentNode).getAttribute('srsDimension'));
+        }
+        else if (contextDimension) {
+            dim = Object(_xsd_js__WEBPACK_IMPORTED_MODULE_11__["readNonNegativeIntegerString"])(contextDimension);
+        }
+        var x, y, z;
+        var flatCoordinates = [];
+        for (var i = 0, ii = coords.length; i < ii; i += dim) {
+            x = parseFloat(coords[i]);
+            y = parseFloat(coords[i + 1]);
+            z = dim === 3 ? parseFloat(coords[i + 2]) : 0;
+            if (axisOrientation.substr(0, 2) === 'en') {
+                flatCoordinates.push(x, y, z);
+            }
+            else {
+                flatCoordinates.push(y, x, z);
+            }
+        }
+        return flatCoordinates;
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {import("../geom/Point.js").default} value Point geometry.
+     * @param {Array<*>} objectStack Node stack.
+     * @private
+     */
+    GML3.prototype.writePos_ = function (node, value, objectStack) {
+        var context = objectStack[objectStack.length - 1];
+        var hasZ = context['hasZ'];
+        var srsDimension = hasZ ? '3' : '2';
+        node.setAttribute('srsDimension', srsDimension);
+        var srsName = context['srsName'];
+        var axisOrientation = 'enu';
+        if (srsName) {
+            axisOrientation = Object(_proj_js__WEBPACK_IMPORTED_MODULE_10__["get"])(srsName).getAxisOrientation();
+        }
+        var point = value.getCoordinates();
+        var coords;
+        // only 2d for simple features profile
+        if (axisOrientation.substr(0, 2) === 'en') {
+            coords = point[0] + ' ' + point[1];
+        }
+        else {
+            coords = point[1] + ' ' + point[0];
+        }
+        if (hasZ) {
+            // For newly created points, Z can be undefined.
+            var z = point[2] || 0;
+            coords += ' ' + z;
+        }
+        Object(_xsd_js__WEBPACK_IMPORTED_MODULE_11__["writeStringTextNode"])(node, coords);
+    };
+    /**
+     * @param {Array<number>} point Point geometry.
+     * @param {string=} opt_srsName Optional srsName
+     * @param {boolean=} opt_hasZ whether the geometry has a Z coordinate (is 3D) or not.
+     * @return {string} The coords string.
+     * @private
+     */
+    GML3.prototype.getCoords_ = function (point, opt_srsName, opt_hasZ) {
+        var axisOrientation = 'enu';
+        if (opt_srsName) {
+            axisOrientation = Object(_proj_js__WEBPACK_IMPORTED_MODULE_10__["get"])(opt_srsName).getAxisOrientation();
+        }
+        var coords = axisOrientation.substr(0, 2) === 'en'
+            ? point[0] + ' ' + point[1]
+            : point[1] + ' ' + point[0];
+        if (opt_hasZ) {
+            // For newly created points, Z can be undefined.
+            var z = point[2] || 0;
+            coords += ' ' + z;
+        }
+        return coords;
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {LineString|import("../geom/LinearRing.js").default} value Geometry.
+     * @param {Array<*>} objectStack Node stack.
+     * @private
+     */
+    GML3.prototype.writePosList_ = function (node, value, objectStack) {
+        var context = objectStack[objectStack.length - 1];
+        var hasZ = context['hasZ'];
+        var srsDimension = hasZ ? '3' : '2';
+        node.setAttribute('srsDimension', srsDimension);
+        var srsName = context['srsName'];
+        // only 2d for simple features profile
+        var points = value.getCoordinates();
+        var len = points.length;
+        var parts = new Array(len);
+        var point;
+        for (var i = 0; i < len; ++i) {
+            point = points[i];
+            parts[i] = this.getCoords_(point, srsName, hasZ);
+        }
+        Object(_xsd_js__WEBPACK_IMPORTED_MODULE_11__["writeStringTextNode"])(node, parts.join(' '));
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {import("../geom/Point.js").default} geometry Point geometry.
+     * @param {Array<*>} objectStack Node stack.
+     */
+    GML3.prototype.writePoint = function (node, geometry, objectStack) {
+        var context = objectStack[objectStack.length - 1];
+        var srsName = context['srsName'];
+        if (srsName) {
+            node.setAttribute('srsName', srsName);
+        }
+        var pos = Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["createElementNS"])(node.namespaceURI, 'pos');
+        node.appendChild(pos);
+        this.writePos_(pos, geometry, objectStack);
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {import("../extent.js").Extent} extent Extent.
+     * @param {Array<*>} objectStack Node stack.
+     */
+    GML3.prototype.writeEnvelope = function (node, extent, objectStack) {
+        var context = objectStack[objectStack.length - 1];
+        var srsName = context['srsName'];
+        if (srsName) {
+            node.setAttribute('srsName', srsName);
+        }
+        var keys = ['lowerCorner', 'upperCorner'];
+        var values = [extent[0] + ' ' + extent[1], extent[2] + ' ' + extent[3]];
+        Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["pushSerializeAndPop"])(
+        /** @type {import("../xml.js").NodeStackItem} */
+        ({ node: node }), this.ENVELOPE_SERIALIZERS, _xml_js__WEBPACK_IMPORTED_MODULE_6__["OBJECT_PROPERTY_NODE_FACTORY"], values, objectStack, keys, this);
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {import("../geom/LinearRing.js").default} geometry LinearRing geometry.
+     * @param {Array<*>} objectStack Node stack.
+     */
+    GML3.prototype.writeLinearRing = function (node, geometry, objectStack) {
+        var context = objectStack[objectStack.length - 1];
+        var srsName = context['srsName'];
+        if (srsName) {
+            node.setAttribute('srsName', srsName);
+        }
+        var posList = Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["createElementNS"])(node.namespaceURI, 'posList');
+        node.appendChild(posList);
+        this.writePosList_(posList, geometry, objectStack);
+    };
+    /**
+     * @param {*} value Value.
+     * @param {Array<*>} objectStack Object stack.
+     * @param {string=} opt_nodeName Node name.
+     * @return {Node} Node.
+     * @private
+     */
+    GML3.prototype.RING_NODE_FACTORY_ = function (value, objectStack, opt_nodeName) {
+        var context = objectStack[objectStack.length - 1];
+        var parentNode = context.node;
+        var exteriorWritten = context['exteriorWritten'];
+        if (exteriorWritten === undefined) {
+            context['exteriorWritten'] = true;
+        }
+        return Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["createElementNS"])(parentNode.namespaceURI, exteriorWritten !== undefined ? 'interior' : 'exterior');
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {Polygon} geometry Polygon geometry.
+     * @param {Array<*>} objectStack Node stack.
+     */
+    GML3.prototype.writeSurfaceOrPolygon = function (node, geometry, objectStack) {
+        var context = objectStack[objectStack.length - 1];
+        var hasZ = context['hasZ'];
+        var srsName = context['srsName'];
+        if (node.nodeName !== 'PolygonPatch' && srsName) {
+            node.setAttribute('srsName', srsName);
+        }
+        if (node.nodeName === 'Polygon' || node.nodeName === 'PolygonPatch') {
+            var rings = geometry.getLinearRings();
+            Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["pushSerializeAndPop"])({ node: node, hasZ: hasZ, srsName: srsName }, this.RING_SERIALIZERS, this.RING_NODE_FACTORY_, rings, objectStack, undefined, this);
+        }
+        else if (node.nodeName === 'Surface') {
+            var patches = Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["createElementNS"])(node.namespaceURI, 'patches');
+            node.appendChild(patches);
+            this.writeSurfacePatches_(patches, geometry, objectStack);
+        }
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {LineString} geometry LineString geometry.
+     * @param {Array<*>} objectStack Node stack.
+     */
+    GML3.prototype.writeCurveOrLineString = function (node, geometry, objectStack) {
+        var context = objectStack[objectStack.length - 1];
+        var srsName = context['srsName'];
+        if (node.nodeName !== 'LineStringSegment' && srsName) {
+            node.setAttribute('srsName', srsName);
+        }
+        if (node.nodeName === 'LineString' ||
+            node.nodeName === 'LineStringSegment') {
+            var posList = Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["createElementNS"])(node.namespaceURI, 'posList');
+            node.appendChild(posList);
+            this.writePosList_(posList, geometry, objectStack);
+        }
+        else if (node.nodeName === 'Curve') {
+            var segments = Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["createElementNS"])(node.namespaceURI, 'segments');
+            node.appendChild(segments);
+            this.writeCurveSegments_(segments, geometry, objectStack);
+        }
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {MultiPolygon} geometry MultiPolygon geometry.
+     * @param {Array<*>} objectStack Node stack.
+     */
+    GML3.prototype.writeMultiSurfaceOrPolygon = function (node, geometry, objectStack) {
+        var context = objectStack[objectStack.length - 1];
+        var hasZ = context['hasZ'];
+        var srsName = context['srsName'];
+        var surface = context['surface'];
+        if (srsName) {
+            node.setAttribute('srsName', srsName);
+        }
+        var polygons = geometry.getPolygons();
+        Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["pushSerializeAndPop"])({ node: node, hasZ: hasZ, srsName: srsName, surface: surface }, this.SURFACEORPOLYGONMEMBER_SERIALIZERS, this.MULTIGEOMETRY_MEMBER_NODE_FACTORY_, polygons, objectStack, undefined, this);
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {import("../geom/MultiPoint.js").default} geometry MultiPoint geometry.
+     * @param {Array<*>} objectStack Node stack.
+     */
+    GML3.prototype.writeMultiPoint = function (node, geometry, objectStack) {
+        var context = objectStack[objectStack.length - 1];
+        var srsName = context['srsName'];
+        var hasZ = context['hasZ'];
+        if (srsName) {
+            node.setAttribute('srsName', srsName);
+        }
+        var points = geometry.getPoints();
+        Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["pushSerializeAndPop"])({ node: node, hasZ: hasZ, srsName: srsName }, this.POINTMEMBER_SERIALIZERS, Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeSimpleNodeFactory"])('pointMember'), points, objectStack, undefined, this);
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {MultiLineString} geometry MultiLineString geometry.
+     * @param {Array<*>} objectStack Node stack.
+     */
+    GML3.prototype.writeMultiCurveOrLineString = function (node, geometry, objectStack) {
+        var context = objectStack[objectStack.length - 1];
+        var hasZ = context['hasZ'];
+        var srsName = context['srsName'];
+        var curve = context['curve'];
+        if (srsName) {
+            node.setAttribute('srsName', srsName);
+        }
+        var lines = geometry.getLineStrings();
+        Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["pushSerializeAndPop"])({ node: node, hasZ: hasZ, srsName: srsName, curve: curve }, this.LINESTRINGORCURVEMEMBER_SERIALIZERS, this.MULTIGEOMETRY_MEMBER_NODE_FACTORY_, lines, objectStack, undefined, this);
+    };
+    /**
+     * @param {Node} node Node.
+     * @param {import("../geom/LinearRing.js").default} ring LinearRing geometry.
+     * @param {Array<*>} objectStack Node stack.
+     */
+    GML3.prototype.writeRing = function (node, ring, objectStack) {
+        var linearRing = Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["createElementNS"])(node.namespaceURI, 'LinearRing');
+        node.appendChild(linearRing);
+        this.writeLinearRing(linearRing, ring, objectStack);
+    };
+    /**
+     * @param {Node} node Node.
+     * @param {Polygon} polygon Polygon geometry.
+     * @param {Array<*>} objectStack Node stack.
+     */
+    GML3.prototype.writeSurfaceOrPolygonMember = function (node, polygon, objectStack) {
+        var child = this.GEOMETRY_NODE_FACTORY_(polygon, objectStack);
+        if (child) {
+            node.appendChild(child);
+            this.writeSurfaceOrPolygon(child, polygon, objectStack);
+        }
+    };
+    /**
+     * @param {Node} node Node.
+     * @param {import("../geom/Point.js").default} point Point geometry.
+     * @param {Array<*>} objectStack Node stack.
+     */
+    GML3.prototype.writePointMember = function (node, point, objectStack) {
+        var child = Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["createElementNS"])(node.namespaceURI, 'Point');
+        node.appendChild(child);
+        this.writePoint(child, point, objectStack);
+    };
+    /**
+     * @param {Node} node Node.
+     * @param {LineString} line LineString geometry.
+     * @param {Array<*>} objectStack Node stack.
+     */
+    GML3.prototype.writeLineStringOrCurveMember = function (node, line, objectStack) {
+        var child = this.GEOMETRY_NODE_FACTORY_(line, objectStack);
+        if (child) {
+            node.appendChild(child);
+            this.writeCurveOrLineString(child, line, objectStack);
+        }
+    };
+    /**
+     * @param {Node} node Node.
+     * @param {Polygon} polygon Polygon geometry.
+     * @param {Array<*>} objectStack Node stack.
+     * @private
+     */
+    GML3.prototype.writeSurfacePatches_ = function (node, polygon, objectStack) {
+        var child = Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["createElementNS"])(node.namespaceURI, 'PolygonPatch');
+        node.appendChild(child);
+        this.writeSurfaceOrPolygon(child, polygon, objectStack);
+    };
+    /**
+     * @param {Node} node Node.
+     * @param {LineString} line LineString geometry.
+     * @param {Array<*>} objectStack Node stack.
+     * @private
+     */
+    GML3.prototype.writeCurveSegments_ = function (node, line, objectStack) {
+        var child = Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["createElementNS"])(node.namespaceURI, 'LineStringSegment');
+        node.appendChild(child);
+        this.writeCurveOrLineString(child, line, objectStack);
+    };
+    /**
+     * @param {Node} node Node.
+     * @param {import("../geom/Geometry.js").default|import("../extent.js").Extent} geometry Geometry.
+     * @param {Array<*>} objectStack Node stack.
+     */
+    GML3.prototype.writeGeometryElement = function (node, geometry, objectStack) {
+        var context = /** @type {import("./Feature.js").WriteOptions} */ (objectStack[objectStack.length - 1]);
+        var item = Object(_obj_js__WEBPACK_IMPORTED_MODULE_7__["assign"])({}, context);
+        item['node'] = node;
+        var value;
+        if (Array.isArray(geometry)) {
+            value = Object(_Feature_js__WEBPACK_IMPORTED_MODULE_12__["transformExtentWithOptions"])(
+            /** @type {import("../extent.js").Extent} */ (geometry), context);
+        }
+        else {
+            value = Object(_Feature_js__WEBPACK_IMPORTED_MODULE_12__["transformGeometryWithOptions"])(
+            /** @type {import("../geom/Geometry.js").default} */ (geometry), true, context);
+        }
+        Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["pushSerializeAndPop"])(
+        /** @type {import("../xml.js").NodeStackItem} */
+        (item), this.GEOMETRY_SERIALIZERS, this.GEOMETRY_NODE_FACTORY_, [value], objectStack, undefined, this);
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {import("../Feature.js").default} feature Feature.
+     * @param {Array<*>} objectStack Node stack.
+     */
+    GML3.prototype.writeFeatureElement = function (node, feature, objectStack) {
+        var fid = feature.getId();
+        if (fid) {
+            node.setAttribute('fid', /** @type {string} */ (fid));
+        }
+        var context = /** @type {Object} */ (objectStack[objectStack.length - 1]);
+        var featureNS = context['featureNS'];
+        var geometryName = feature.getGeometryName();
+        if (!context.serializers) {
+            context.serializers = {};
+            context.serializers[featureNS] = {};
+        }
+        var keys = [];
+        var values = [];
+        if (feature.hasProperties()) {
+            var properties = feature.getProperties();
+            for (var key in properties) {
+                var value = properties[key];
+                if (value !== null) {
+                    keys.push(key);
+                    values.push(value);
+                    if (key == geometryName ||
+                        typeof ( /** @type {?} */(value).getSimplifiedGeometry) ===
+                            'function') {
+                        if (!(key in context.serializers[featureNS])) {
+                            context.serializers[featureNS][key] = Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeChildAppender"])(this.writeGeometryElement, this);
+                        }
+                    }
+                    else {
+                        if (!(key in context.serializers[featureNS])) {
+                            context.serializers[featureNS][key] = Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_11__["writeStringTextNode"]);
+                        }
+                    }
+                }
+            }
+        }
+        var item = Object(_obj_js__WEBPACK_IMPORTED_MODULE_7__["assign"])({}, context);
+        item.node = node;
+        Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["pushSerializeAndPop"])(
+        /** @type {import("../xml.js").NodeStackItem} */
+        (item), context.serializers, Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeSimpleNodeFactory"])(undefined, featureNS), values, objectStack, keys);
+    };
+    /**
+     * @param {Node} node Node.
+     * @param {Array<import("../Feature.js").default>} features Features.
+     * @param {Array<*>} objectStack Node stack.
+     * @private
+     */
+    GML3.prototype.writeFeatureMembers_ = function (node, features, objectStack) {
+        var context = /** @type {Object} */ (objectStack[objectStack.length - 1]);
+        var featureType = context['featureType'];
+        var featureNS = context['featureNS'];
+        /** @type {Object<string, Object<string, import("../xml.js").Serializer>>} */
+        var serializers = {};
+        serializers[featureNS] = {};
+        serializers[featureNS][featureType] = Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeChildAppender"])(this.writeFeatureElement, this);
+        var item = Object(_obj_js__WEBPACK_IMPORTED_MODULE_7__["assign"])({}, context);
+        item.node = node;
+        Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["pushSerializeAndPop"])(
+        /** @type {import("../xml.js").NodeStackItem} */
+        (item), serializers, Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeSimpleNodeFactory"])(featureType, featureNS), features, objectStack);
+    };
+    /**
+     * @const
+     * @param {*} value Value.
+     * @param {Array<*>} objectStack Object stack.
+     * @param {string=} opt_nodeName Node name.
+     * @return {Node|undefined} Node.
+     * @private
+     */
+    GML3.prototype.MULTIGEOMETRY_MEMBER_NODE_FACTORY_ = function (value, objectStack, opt_nodeName) {
+        var parentNode = objectStack[objectStack.length - 1].node;
+        return Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["createElementNS"])(this.namespace, MULTIGEOMETRY_TO_MEMBER_NODENAME[parentNode.nodeName]);
+    };
+    /**
+     * @const
+     * @param {*} value Value.
+     * @param {Array<*>} objectStack Object stack.
+     * @param {string=} opt_nodeName Node name.
+     * @return {Element|undefined} Node.
+     * @private
+     */
+    GML3.prototype.GEOMETRY_NODE_FACTORY_ = function (value, objectStack, opt_nodeName) {
+        var context = objectStack[objectStack.length - 1];
+        var multiSurface = context['multiSurface'];
+        var surface = context['surface'];
+        var curve = context['curve'];
+        var multiCurve = context['multiCurve'];
+        var nodeName;
+        if (!Array.isArray(value)) {
+            nodeName = /** @type {import("../geom/Geometry.js").default} */ (value).getType();
+            if (nodeName === 'MultiPolygon' && multiSurface === true) {
+                nodeName = 'MultiSurface';
+            }
+            else if (nodeName === 'Polygon' && surface === true) {
+                nodeName = 'Surface';
+            }
+            else if (nodeName === 'LineString' && curve === true) {
+                nodeName = 'Curve';
+            }
+            else if (nodeName === 'MultiLineString' && multiCurve === true) {
+                nodeName = 'MultiCurve';
+            }
+        }
+        else {
+            nodeName = 'Envelope';
+        }
+        return Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["createElementNS"])(this.namespace, nodeName);
+    };
+    /**
+     * Encode a geometry in GML 3.1.1 Simple Features.
+     *
+     * @param {import("../geom/Geometry.js").default} geometry Geometry.
+     * @param {import("./Feature.js").WriteOptions=} opt_options Options.
+     * @return {Node} Node.
+     * @api
+     */
+    GML3.prototype.writeGeometryNode = function (geometry, opt_options) {
+        opt_options = this.adaptOptions(opt_options);
+        var geom = Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["createElementNS"])(this.namespace, 'geom');
+        var context = {
+            node: geom,
+            hasZ: this.hasZ,
+            srsName: this.srsName,
+            curve: this.curve_,
+            surface: this.surface_,
+            multiSurface: this.multiSurface_,
+            multiCurve: this.multiCurve_,
+        };
+        if (opt_options) {
+            Object(_obj_js__WEBPACK_IMPORTED_MODULE_7__["assign"])(context, opt_options);
+        }
+        this.writeGeometryElement(geom, geometry, [context]);
+        return geom;
+    };
+    /**
+     * Encode an array of features in the GML 3.1.1 format as an XML node.
+     *
+     * @param {Array<import("../Feature.js").default>} features Features.
+     * @param {import("./Feature.js").WriteOptions=} opt_options Options.
+     * @return {Element} Node.
+     * @api
+     */
+    GML3.prototype.writeFeaturesNode = function (features, opt_options) {
+        opt_options = this.adaptOptions(opt_options);
+        var node = Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["createElementNS"])(this.namespace, 'featureMembers');
+        node.setAttributeNS(_xml_js__WEBPACK_IMPORTED_MODULE_6__["XML_SCHEMA_INSTANCE_URI"], 'xsi:schemaLocation', this.schemaLocation);
+        var context = {
+            srsName: this.srsName,
+            hasZ: this.hasZ,
+            curve: this.curve_,
+            surface: this.surface_,
+            multiSurface: this.multiSurface_,
+            multiCurve: this.multiCurve_,
+            featureNS: this.featureNS,
+            featureType: this.featureType,
+        };
+        if (opt_options) {
+            Object(_obj_js__WEBPACK_IMPORTED_MODULE_7__["assign"])(context, opt_options);
+        }
+        this.writeFeatureMembers_(node, features, [context]);
+        return node;
+    };
+    return GML3;
+}(_GMLBase_js__WEBPACK_IMPORTED_MODULE_0__["default"]));
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+GML3.prototype.GEOMETRY_FLAT_COORDINATES_PARSERS = {
+    'http://www.opengis.net/gml': {
+        'pos': Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeReplacer"])(GML3.prototype.readFlatPos),
+        'posList': Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeReplacer"])(GML3.prototype.readFlatPosList),
+    },
+};
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+GML3.prototype.FLAT_LINEAR_RINGS_PARSERS = {
+    'http://www.opengis.net/gml': {
+        'interior': GML3.prototype.interiorParser,
+        'exterior': GML3.prototype.exteriorParser,
+    },
+};
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+GML3.prototype.GEOMETRY_PARSERS = {
+    'http://www.opengis.net/gml': {
+        'Point': Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeReplacer"])(_GMLBase_js__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.readPoint),
+        'MultiPoint': Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeReplacer"])(_GMLBase_js__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.readMultiPoint),
+        'LineString': Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeReplacer"])(_GMLBase_js__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.readLineString),
+        'MultiLineString': Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeReplacer"])(_GMLBase_js__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.readMultiLineString),
+        'LinearRing': Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeReplacer"])(_GMLBase_js__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.readLinearRing),
+        'Polygon': Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeReplacer"])(_GMLBase_js__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.readPolygon),
+        'MultiPolygon': Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeReplacer"])(_GMLBase_js__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.readMultiPolygon),
+        'Surface': Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeReplacer"])(GML3.prototype.readSurface),
+        'MultiSurface': Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeReplacer"])(GML3.prototype.readMultiSurface),
+        'Curve': Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeReplacer"])(GML3.prototype.readCurve),
+        'MultiCurve': Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeReplacer"])(GML3.prototype.readMultiCurve),
+        'Envelope': Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeReplacer"])(GML3.prototype.readEnvelope),
+    },
+};
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+GML3.prototype.MULTICURVE_PARSERS = {
+    'http://www.opengis.net/gml': {
+        'curveMember': Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeArrayPusher"])(GML3.prototype.curveMemberParser),
+        'curveMembers': Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeArrayPusher"])(GML3.prototype.curveMemberParser),
+    },
+};
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+GML3.prototype.MULTISURFACE_PARSERS = {
+    'http://www.opengis.net/gml': {
+        'surfaceMember': Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeArrayPusher"])(GML3.prototype.surfaceMemberParser),
+        'surfaceMembers': Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeArrayPusher"])(GML3.prototype.surfaceMemberParser),
+    },
+};
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+GML3.prototype.CURVEMEMBER_PARSERS = {
+    'http://www.opengis.net/gml': {
+        'LineString': Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeArrayPusher"])(_GMLBase_js__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.readLineString),
+        'Curve': Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeArrayPusher"])(GML3.prototype.readCurve),
+    },
+};
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+GML3.prototype.SURFACEMEMBER_PARSERS = {
+    'http://www.opengis.net/gml': {
+        'Polygon': Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeArrayPusher"])(_GMLBase_js__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.readPolygon),
+        'Surface': Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeArrayPusher"])(GML3.prototype.readSurface),
+    },
+};
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+GML3.prototype.SURFACE_PARSERS = {
+    'http://www.opengis.net/gml': {
+        'patches': Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeReplacer"])(GML3.prototype.readPatch),
+    },
+};
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+GML3.prototype.CURVE_PARSERS = {
+    'http://www.opengis.net/gml': {
+        'segments': Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeReplacer"])(GML3.prototype.readSegment),
+    },
+};
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+GML3.prototype.ENVELOPE_PARSERS = {
+    'http://www.opengis.net/gml': {
+        'lowerCorner': Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeArrayPusher"])(GML3.prototype.readFlatPosList),
+        'upperCorner': Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeArrayPusher"])(GML3.prototype.readFlatPosList),
+    },
+};
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+GML3.prototype.PATCHES_PARSERS = {
+    'http://www.opengis.net/gml': {
+        'PolygonPatch': Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeReplacer"])(GML3.prototype.readPolygonPatch),
+    },
+};
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+GML3.prototype.SEGMENTS_PARSERS = {
+    'http://www.opengis.net/gml': {
+        'LineStringSegment': Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeReplacer"])(GML3.prototype.readLineStringSegment),
+    },
+};
+/**
+ * Encode an array of features in GML 3.1.1 Simple Features.
+ *
+ * @function
+ * @param {Array<import("../Feature.js").default>} features Features.
+ * @param {import("./Feature.js").WriteOptions=} opt_options Options.
+ * @return {string} Result.
+ * @api
+ */
+GML3.prototype.writeFeatures;
+/**
+ * @type {Object<string, Object<string, import("../xml.js").Serializer>>}
+ */
+GML3.prototype.RING_SERIALIZERS = {
+    'http://www.opengis.net/gml': {
+        'exterior': Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeChildAppender"])(GML3.prototype.writeRing),
+        'interior': Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeChildAppender"])(GML3.prototype.writeRing),
+    },
+};
+/**
+ * @type {Object<string, Object<string, import("../xml.js").Serializer>>}
+ */
+GML3.prototype.ENVELOPE_SERIALIZERS = {
+    'http://www.opengis.net/gml': {
+        'lowerCorner': Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_11__["writeStringTextNode"]),
+        'upperCorner': Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_11__["writeStringTextNode"]),
+    },
+};
+/**
+ * @type {Object<string, Object<string, import("../xml.js").Serializer>>}
+ */
+GML3.prototype.SURFACEORPOLYGONMEMBER_SERIALIZERS = {
+    'http://www.opengis.net/gml': {
+        'surfaceMember': Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeChildAppender"])(GML3.prototype.writeSurfaceOrPolygonMember),
+        'polygonMember': Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeChildAppender"])(GML3.prototype.writeSurfaceOrPolygonMember),
+    },
+};
+/**
+ * @type {Object<string, Object<string, import("../xml.js").Serializer>>}
+ */
+GML3.prototype.POINTMEMBER_SERIALIZERS = {
+    'http://www.opengis.net/gml': {
+        'pointMember': Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeChildAppender"])(GML3.prototype.writePointMember),
+    },
+};
+/**
+ * @type {Object<string, Object<string, import("../xml.js").Serializer>>}
+ */
+GML3.prototype.LINESTRINGORCURVEMEMBER_SERIALIZERS = {
+    'http://www.opengis.net/gml': {
+        'lineStringMember': Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeChildAppender"])(GML3.prototype.writeLineStringOrCurveMember),
+        'curveMember': Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeChildAppender"])(GML3.prototype.writeLineStringOrCurveMember),
+    },
+};
+/**
+ * @type {Object<string, Object<string, import("../xml.js").Serializer>>}
+ */
+GML3.prototype.GEOMETRY_SERIALIZERS = {
+    'http://www.opengis.net/gml': {
+        'Curve': Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeChildAppender"])(GML3.prototype.writeCurveOrLineString),
+        'MultiCurve': Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeChildAppender"])(GML3.prototype.writeMultiCurveOrLineString),
+        'Point': Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeChildAppender"])(GML3.prototype.writePoint),
+        'MultiPoint': Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeChildAppender"])(GML3.prototype.writeMultiPoint),
+        'LineString': Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeChildAppender"])(GML3.prototype.writeCurveOrLineString),
+        'MultiLineString': Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeChildAppender"])(GML3.prototype.writeMultiCurveOrLineString),
+        'LinearRing': Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeChildAppender"])(GML3.prototype.writeLinearRing),
+        'Polygon': Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeChildAppender"])(GML3.prototype.writeSurfaceOrPolygon),
+        'MultiPolygon': Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeChildAppender"])(GML3.prototype.writeMultiSurfaceOrPolygon),
+        'Surface': Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeChildAppender"])(GML3.prototype.writeSurfaceOrPolygon),
+        'MultiSurface': Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeChildAppender"])(GML3.prototype.writeMultiSurfaceOrPolygon),
+        'Envelope': Object(_xml_js__WEBPACK_IMPORTED_MODULE_6__["makeChildAppender"])(GML3.prototype.writeEnvelope),
+    },
+};
+/* harmony default export */ __webpack_exports__["default"] = (GML3);
+//# sourceMappingURL=GML3.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/format/GMLBase.js":
+/*!*******************************************!*\
+  !*** ./node_modules/ol/format/GMLBase.js ***!
+  \*******************************************/
+/*! exports provided: GMLNS, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GMLNS", function() { return GMLNS; });
+/* harmony import */ var _Feature_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Feature.js */ "./node_modules/ol/Feature.js");
+/* harmony import */ var _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../geom/GeometryLayout.js */ "./node_modules/ol/geom/GeometryLayout.js");
+/* harmony import */ var _geom_LineString_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../geom/LineString.js */ "./node_modules/ol/geom/LineString.js");
+/* harmony import */ var _geom_LinearRing_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../geom/LinearRing.js */ "./node_modules/ol/geom/LinearRing.js");
+/* harmony import */ var _geom_MultiLineString_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../geom/MultiLineString.js */ "./node_modules/ol/geom/MultiLineString.js");
+/* harmony import */ var _geom_MultiPoint_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../geom/MultiPoint.js */ "./node_modules/ol/geom/MultiPoint.js");
+/* harmony import */ var _geom_MultiPolygon_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../geom/MultiPolygon.js */ "./node_modules/ol/geom/MultiPolygon.js");
+/* harmony import */ var _geom_Point_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../geom/Point.js */ "./node_modules/ol/geom/Point.js");
+/* harmony import */ var _geom_Polygon_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../geom/Polygon.js */ "./node_modules/ol/geom/Polygon.js");
+/* harmony import */ var _XMLFeature_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./XMLFeature.js */ "./node_modules/ol/format/XMLFeature.js");
+/* harmony import */ var _obj_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../obj.js */ "./node_modules/ol/obj.js");
+/* harmony import */ var _array_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../array.js */ "./node_modules/ol/array.js");
+/* harmony import */ var _xml_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../xml.js */ "./node_modules/ol/xml.js");
+/* harmony import */ var _proj_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../proj.js */ "./node_modules/ol/proj.js");
+/* harmony import */ var _Feature_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./Feature.js */ "./node_modules/ol/format/Feature.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+/**
+ * @module ol/format/GMLBase
+ */
+// FIXME Envelopes should not be treated as geometries! readEnvelope_ is part
+// of GEOMETRY_PARSERS_ and methods using GEOMETRY_PARSERS_ do not expect
+// envelopes/extents, only geometries!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * @const
+ * @type {string}
+ */
+var GMLNS = 'http://www.opengis.net/gml';
+/**
+ * A regular expression that matches if a string only contains whitespace
+ * characters. It will e.g. match `''`, `' '`, `'\n'` etc. The non-breaking
+ * space (0xa0) is explicitly included as IE doesn't include it in its
+ * definition of `\s`.
+ *
+ * Information from `goog.string.isEmptyOrWhitespace`: https://github.com/google/closure-library/blob/e877b1e/closure/goog/string/string.js#L156-L160
+ *
+ * @const
+ * @type {RegExp}
+ */
+var ONLY_WHITESPACE_RE = /^[\s\xa0]*$/;
+/**
+ * @typedef {Object} Options
+ * @property {Object<string, string>|string} [featureNS] Feature
+ * namespace. If not defined will be derived from GML. If multiple
+ * feature types have been configured which come from different feature
+ * namespaces, this will be an object with the keys being the prefixes used
+ * in the entries of featureType array. The values of the object will be the
+ * feature namespaces themselves. So for instance there might be a featureType
+ * item `topp:states` in the `featureType` array and then there will be a key
+ * `topp` in the featureNS object with value `http://www.openplans.org/topp`.
+ * @property {Array<string>|string} [featureType] Feature type(s) to parse.
+ * If multiple feature types need to be configured
+ * which come from different feature namespaces, `featureNS` will be an object
+ * with the keys being the prefixes used in the entries of featureType array.
+ * The values of the object will be the feature namespaces themselves.
+ * So for instance there might be a featureType item `topp:states` and then
+ * there will be a key named `topp` in the featureNS object with value
+ * `http://www.openplans.org/topp`.
+ * @property {string} srsName srsName to use when writing geometries.
+ * @property {boolean} [surface=false] Write gml:Surface instead of gml:Polygon
+ * elements. This also affects the elements in multi-part geometries.
+ * @property {boolean} [curve=false] Write gml:Curve instead of gml:LineString
+ * elements. This also affects the elements in multi-part geometries.
+ * @property {boolean} [multiCurve=true] Write gml:MultiCurve instead of gml:MultiLineString.
+ * Since the latter is deprecated in GML 3.
+ * @property {boolean} [multiSurface=true] Write gml:multiSurface instead of
+ * gml:MultiPolygon. Since the latter is deprecated in GML 3.
+ * @property {string} [schemaLocation] Optional schemaLocation to use when
+ * writing out the GML, this will override the default provided.
+ * @property {boolean} [hasZ=false] If coordinates have a Z value.
+ */
+/**
+ * @classdesc
+ * Abstract base class; normally only used for creating subclasses and not
+ * instantiated in apps.
+ * Feature base format for reading and writing data in the GML format.
+ * This class cannot be instantiated, it contains only base content that
+ * is shared with versioned format classes GML2 and GML3.
+ *
+ * @abstract
+ */
+var GMLBase = /** @class */ (function (_super) {
+    __extends(GMLBase, _super);
+    /**
+     * @param {Options=} opt_options Optional configuration object.
+     */
+    function GMLBase(opt_options) {
+        var _this = _super.call(this) || this;
+        var options = /** @type {Options} */ (opt_options ? opt_options : {});
+        /**
+         * @protected
+         * @type {Array<string>|string|undefined}
+         */
+        _this.featureType = options.featureType;
+        /**
+         * @protected
+         * @type {Object<string, string>|string|undefined}
+         */
+        _this.featureNS = options.featureNS;
+        /**
+         * @protected
+         * @type {string}
+         */
+        _this.srsName = options.srsName;
+        /**
+         * @protected
+         * @type {string}
+         */
+        _this.schemaLocation = '';
+        /**
+         * @type {Object<string, Object<string, Object>>}
+         */
+        _this.FEATURE_COLLECTION_PARSERS = {};
+        _this.FEATURE_COLLECTION_PARSERS[_this.namespace] = {
+            'featureMember': Object(_xml_js__WEBPACK_IMPORTED_MODULE_12__["makeArrayPusher"])(_this.readFeaturesInternal),
+            'featureMembers': Object(_xml_js__WEBPACK_IMPORTED_MODULE_12__["makeReplacer"])(_this.readFeaturesInternal),
+        };
+        return _this;
+    }
+    /**
+     * @param {Element} node Node.
+     * @param {Array<*>} objectStack Object stack.
+     * @return {Array<Feature> | undefined} Features.
+     */
+    GMLBase.prototype.readFeaturesInternal = function (node, objectStack) {
+        var localName = node.localName;
+        var features = null;
+        if (localName == 'FeatureCollection') {
+            features = Object(_xml_js__WEBPACK_IMPORTED_MODULE_12__["pushParseAndPop"])([], this.FEATURE_COLLECTION_PARSERS, node, objectStack, this);
+        }
+        else if (localName == 'featureMembers' || localName == 'featureMember') {
+            var context = objectStack[0];
+            var featureType = context['featureType'];
+            var featureNS = context['featureNS'];
+            var prefix = 'p';
+            var defaultPrefix = 'p0';
+            if (!featureType && node.childNodes) {
+                (featureType = []), (featureNS = {});
+                for (var i = 0, ii = node.childNodes.length; i < ii; ++i) {
+                    var child = node.childNodes[i];
+                    if (child.nodeType === 1) {
+                        var ft = child.nodeName.split(':').pop();
+                        if (featureType.indexOf(ft) === -1) {
+                            var key = '';
+                            var count = 0;
+                            var uri = child.namespaceURI;
+                            for (var candidate in featureNS) {
+                                if (featureNS[candidate] === uri) {
+                                    key = candidate;
+                                    break;
+                                }
+                                ++count;
+                            }
+                            if (!key) {
+                                key = prefix + count;
+                                featureNS[key] = uri;
+                            }
+                            featureType.push(key + ':' + ft);
+                        }
+                    }
+                }
+                if (localName != 'featureMember') {
+                    // recheck featureType for each featureMember
+                    context['featureType'] = featureType;
+                    context['featureNS'] = featureNS;
+                }
+            }
+            if (typeof featureNS === 'string') {
+                var ns = featureNS;
+                featureNS = {};
+                featureNS[defaultPrefix] = ns;
+            }
+            /** @type {Object<string, Object<string, import("../xml.js").Parser>>} */
+            var parsersNS = {};
+            var featureTypes = Array.isArray(featureType)
+                ? featureType
+                : [featureType];
+            for (var p in featureNS) {
+                /** @type {Object<string, import("../xml.js").Parser>} */
+                var parsers = {};
+                for (var i = 0, ii = featureTypes.length; i < ii; ++i) {
+                    var featurePrefix = featureTypes[i].indexOf(':') === -1
+                        ? defaultPrefix
+                        : featureTypes[i].split(':')[0];
+                    if (featurePrefix === p) {
+                        parsers[featureTypes[i].split(':').pop()] =
+                            localName == 'featureMembers'
+                                ? Object(_xml_js__WEBPACK_IMPORTED_MODULE_12__["makeArrayPusher"])(this.readFeatureElement, this)
+                                : Object(_xml_js__WEBPACK_IMPORTED_MODULE_12__["makeReplacer"])(this.readFeatureElement, this);
+                    }
+                }
+                parsersNS[featureNS[p]] = parsers;
+            }
+            if (localName == 'featureMember') {
+                features = Object(_xml_js__WEBPACK_IMPORTED_MODULE_12__["pushParseAndPop"])(undefined, parsersNS, node, objectStack);
+            }
+            else {
+                features = Object(_xml_js__WEBPACK_IMPORTED_MODULE_12__["pushParseAndPop"])([], parsersNS, node, objectStack);
+            }
+        }
+        if (features === null) {
+            features = [];
+        }
+        return features;
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {Array<*>} objectStack Object stack.
+     * @return {import("../geom/Geometry.js").default|import("../extent.js").Extent|undefined} Geometry.
+     */
+    GMLBase.prototype.readGeometryElement = function (node, objectStack) {
+        var context = /** @type {Object} */ (objectStack[0]);
+        context['srsName'] = node.firstElementChild.getAttribute('srsName');
+        context['srsDimension'] = node.firstElementChild.getAttribute('srsDimension');
+        var geometry = Object(_xml_js__WEBPACK_IMPORTED_MODULE_12__["pushParseAndPop"])(null, this.GEOMETRY_PARSERS, node, objectStack, this);
+        if (geometry) {
+            if (Array.isArray(geometry)) {
+                return Object(_Feature_js__WEBPACK_IMPORTED_MODULE_14__["transformExtentWithOptions"])(
+                /** @type {import("../extent.js").Extent} */ (geometry), context);
+            }
+            else {
+                return Object(_Feature_js__WEBPACK_IMPORTED_MODULE_14__["transformGeometryWithOptions"])(
+                /** @type {import("../geom/Geometry.js").default} */ (geometry), false, context);
+            }
+        }
+        else {
+            return undefined;
+        }
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {Array<*>} objectStack Object stack.
+     * @param {boolean} asFeature whether result should be wrapped as a feature.
+     * @return {Feature|Object} Feature
+     */
+    GMLBase.prototype.readFeatureElementInternal = function (node, objectStack, asFeature) {
+        var geometryName;
+        var values = {};
+        for (var n = node.firstElementChild; n; n = n.nextElementSibling) {
+            var value = void 0;
+            var localName = n.localName;
+            // first, check if it is simple attribute
+            if (n.childNodes.length === 0 ||
+                (n.childNodes.length === 1 &&
+                    (n.firstChild.nodeType === 3 || n.firstChild.nodeType === 4))) {
+                value = Object(_xml_js__WEBPACK_IMPORTED_MODULE_12__["getAllTextContent"])(n, false);
+                if (ONLY_WHITESPACE_RE.test(value)) {
+                    value = undefined;
+                }
+            }
+            else {
+                if (asFeature) {
+                    //if feature, try it as a geometry
+                    value = this.readGeometryElement(n, objectStack);
+                }
+                if (!value) {
+                    //if not a geometry or not a feature, treat it as a complex attribute
+                    value = this.readFeatureElementInternal(n, objectStack, false);
+                }
+                else if (localName !== 'boundedBy') {
+                    // boundedBy is an extent and must not be considered as a geometry
+                    geometryName = localName;
+                }
+            }
+            if (values[localName]) {
+                if (!(values[localName] instanceof Array)) {
+                    values[localName] = [values[localName]];
+                }
+                values[localName].push(value);
+            }
+            else {
+                values[localName] = value;
+            }
+            var len = n.attributes.length;
+            if (len > 0) {
+                values[localName] = { _content_: values[localName] };
+                for (var i = 0; i < len; i++) {
+                    var attName = n.attributes[i].name;
+                    values[localName][attName] = n.attributes[i].value;
+                }
+            }
+        }
+        if (!asFeature) {
+            return values;
+        }
+        else {
+            var feature = new _Feature_js__WEBPACK_IMPORTED_MODULE_0__["default"](values);
+            if (geometryName) {
+                feature.setGeometryName(geometryName);
+            }
+            var fid = node.getAttribute('fid') || Object(_xml_js__WEBPACK_IMPORTED_MODULE_12__["getAttributeNS"])(node, this.namespace, 'id');
+            if (fid) {
+                feature.setId(fid);
+            }
+            return feature;
+        }
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {Array<*>} objectStack Object stack.
+     * @return {Feature} Feature.
+     */
+    GMLBase.prototype.readFeatureElement = function (node, objectStack) {
+        return this.readFeatureElementInternal(node, objectStack, true);
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {Array<*>} objectStack Object stack.
+     * @return {Point|undefined} Point.
+     */
+    GMLBase.prototype.readPoint = function (node, objectStack) {
+        var flatCoordinates = this.readFlatCoordinatesFromNode(node, objectStack);
+        if (flatCoordinates) {
+            return new _geom_Point_js__WEBPACK_IMPORTED_MODULE_7__["default"](flatCoordinates, _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_1__["default"].XYZ);
+        }
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {Array<*>} objectStack Object stack.
+     * @return {MultiPoint|undefined} MultiPoint.
+     */
+    GMLBase.prototype.readMultiPoint = function (node, objectStack) {
+        /** @type {Array<Array<number>>} */
+        var coordinates = Object(_xml_js__WEBPACK_IMPORTED_MODULE_12__["pushParseAndPop"])([], this.MULTIPOINT_PARSERS, node, objectStack, this);
+        if (coordinates) {
+            return new _geom_MultiPoint_js__WEBPACK_IMPORTED_MODULE_5__["default"](coordinates);
+        }
+        else {
+            return undefined;
+        }
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {Array<*>} objectStack Object stack.
+     * @return {MultiLineString|undefined} MultiLineString.
+     */
+    GMLBase.prototype.readMultiLineString = function (node, objectStack) {
+        /** @type {Array<LineString>} */
+        var lineStrings = Object(_xml_js__WEBPACK_IMPORTED_MODULE_12__["pushParseAndPop"])([], this.MULTILINESTRING_PARSERS, node, objectStack, this);
+        if (lineStrings) {
+            return new _geom_MultiLineString_js__WEBPACK_IMPORTED_MODULE_4__["default"](lineStrings);
+        }
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {Array<*>} objectStack Object stack.
+     * @return {MultiPolygon|undefined} MultiPolygon.
+     */
+    GMLBase.prototype.readMultiPolygon = function (node, objectStack) {
+        /** @type {Array<Polygon>} */
+        var polygons = Object(_xml_js__WEBPACK_IMPORTED_MODULE_12__["pushParseAndPop"])([], this.MULTIPOLYGON_PARSERS, node, objectStack, this);
+        if (polygons) {
+            return new _geom_MultiPolygon_js__WEBPACK_IMPORTED_MODULE_6__["default"](polygons);
+        }
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {Array<*>} objectStack Object stack.
+     */
+    GMLBase.prototype.pointMemberParser = function (node, objectStack) {
+        Object(_xml_js__WEBPACK_IMPORTED_MODULE_12__["parseNode"])(this.POINTMEMBER_PARSERS, node, objectStack, this);
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {Array<*>} objectStack Object stack.
+     */
+    GMLBase.prototype.lineStringMemberParser = function (node, objectStack) {
+        Object(_xml_js__WEBPACK_IMPORTED_MODULE_12__["parseNode"])(this.LINESTRINGMEMBER_PARSERS, node, objectStack, this);
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {Array<*>} objectStack Object stack.
+     */
+    GMLBase.prototype.polygonMemberParser = function (node, objectStack) {
+        Object(_xml_js__WEBPACK_IMPORTED_MODULE_12__["parseNode"])(this.POLYGONMEMBER_PARSERS, node, objectStack, this);
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {Array<*>} objectStack Object stack.
+     * @return {LineString|undefined} LineString.
+     */
+    GMLBase.prototype.readLineString = function (node, objectStack) {
+        var flatCoordinates = this.readFlatCoordinatesFromNode(node, objectStack);
+        if (flatCoordinates) {
+            var lineString = new _geom_LineString_js__WEBPACK_IMPORTED_MODULE_2__["default"](flatCoordinates, _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_1__["default"].XYZ);
+            return lineString;
+        }
+        else {
+            return undefined;
+        }
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {Array<*>} objectStack Object stack.
+     * @return {Array<number>|undefined} LinearRing flat coordinates.
+     */
+    GMLBase.prototype.readFlatLinearRing = function (node, objectStack) {
+        var ring = Object(_xml_js__WEBPACK_IMPORTED_MODULE_12__["pushParseAndPop"])(null, this.GEOMETRY_FLAT_COORDINATES_PARSERS, node, objectStack, this);
+        if (ring) {
+            return ring;
+        }
+        else {
+            return undefined;
+        }
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {Array<*>} objectStack Object stack.
+     * @return {LinearRing|undefined} LinearRing.
+     */
+    GMLBase.prototype.readLinearRing = function (node, objectStack) {
+        var flatCoordinates = this.readFlatCoordinatesFromNode(node, objectStack);
+        if (flatCoordinates) {
+            return new _geom_LinearRing_js__WEBPACK_IMPORTED_MODULE_3__["default"](flatCoordinates, _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_1__["default"].XYZ);
+        }
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {Array<*>} objectStack Object stack.
+     * @return {Polygon|undefined} Polygon.
+     */
+    GMLBase.prototype.readPolygon = function (node, objectStack) {
+        /** @type {Array<Array<number>>} */
+        var flatLinearRings = Object(_xml_js__WEBPACK_IMPORTED_MODULE_12__["pushParseAndPop"])([null], this.FLAT_LINEAR_RINGS_PARSERS, node, objectStack, this);
+        if (flatLinearRings && flatLinearRings[0]) {
+            var flatCoordinates = flatLinearRings[0];
+            var ends = [flatCoordinates.length];
+            var i = void 0, ii = void 0;
+            for (i = 1, ii = flatLinearRings.length; i < ii; ++i) {
+                Object(_array_js__WEBPACK_IMPORTED_MODULE_11__["extend"])(flatCoordinates, flatLinearRings[i]);
+                ends.push(flatCoordinates.length);
+            }
+            return new _geom_Polygon_js__WEBPACK_IMPORTED_MODULE_8__["default"](flatCoordinates, _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_1__["default"].XYZ, ends);
+        }
+        else {
+            return undefined;
+        }
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {Array<*>} objectStack Object stack.
+     * @return {Array<number>} Flat coordinates.
+     */
+    GMLBase.prototype.readFlatCoordinatesFromNode = function (node, objectStack) {
+        return Object(_xml_js__WEBPACK_IMPORTED_MODULE_12__["pushParseAndPop"])(null, this.GEOMETRY_FLAT_COORDINATES_PARSERS, node, objectStack, this);
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {import("./Feature.js").ReadOptions=} opt_options Options.
+     * @protected
+     * @return {import("../geom/Geometry.js").default|import("../extent.js").Extent} Geometry.
+     */
+    //@ts-ignore
+    GMLBase.prototype.readGeometryFromNode = function (node, opt_options) {
+        var geometry = this.readGeometryElement(node, [
+            this.getReadOptions(node, opt_options ? opt_options : {}),
+        ]);
+        return geometry ? geometry : null;
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {import("./Feature.js").ReadOptions=} opt_options Options.
+     * @return {Array<import("../Feature.js").default>} Features.
+     */
+    GMLBase.prototype.readFeaturesFromNode = function (node, opt_options) {
+        var options = {
+            featureType: this.featureType,
+            featureNS: this.featureNS,
+        };
+        if (opt_options) {
+            Object(_obj_js__WEBPACK_IMPORTED_MODULE_10__["assign"])(options, this.getReadOptions(node, opt_options));
+        }
+        var features = this.readFeaturesInternal(node, [options]);
+        return features || [];
+    };
+    /**
+     * @param {Element} node Node.
+     * @return {import("../proj/Projection.js").default} Projection.
+     */
+    GMLBase.prototype.readProjectionFromNode = function (node) {
+        return Object(_proj_js__WEBPACK_IMPORTED_MODULE_13__["get"])(this.srsName
+            ? this.srsName
+            : node.firstElementChild.getAttribute('srsName'));
+    };
+    return GMLBase;
+}(_XMLFeature_js__WEBPACK_IMPORTED_MODULE_9__["default"]));
+GMLBase.prototype.namespace = GMLNS;
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+GMLBase.prototype.FLAT_LINEAR_RINGS_PARSERS = {
+    'http://www.opengis.net/gml': {},
+};
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+GMLBase.prototype.GEOMETRY_FLAT_COORDINATES_PARSERS = {
+    'http://www.opengis.net/gml': {},
+};
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+GMLBase.prototype.GEOMETRY_PARSERS = {
+    'http://www.opengis.net/gml': {},
+};
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+GMLBase.prototype.MULTIPOINT_PARSERS = {
+    'http://www.opengis.net/gml': {
+        'pointMember': Object(_xml_js__WEBPACK_IMPORTED_MODULE_12__["makeArrayPusher"])(GMLBase.prototype.pointMemberParser),
+        'pointMembers': Object(_xml_js__WEBPACK_IMPORTED_MODULE_12__["makeArrayPusher"])(GMLBase.prototype.pointMemberParser),
+    },
+};
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+GMLBase.prototype.MULTILINESTRING_PARSERS = {
+    'http://www.opengis.net/gml': {
+        'lineStringMember': Object(_xml_js__WEBPACK_IMPORTED_MODULE_12__["makeArrayPusher"])(GMLBase.prototype.lineStringMemberParser),
+        'lineStringMembers': Object(_xml_js__WEBPACK_IMPORTED_MODULE_12__["makeArrayPusher"])(GMLBase.prototype.lineStringMemberParser),
+    },
+};
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+GMLBase.prototype.MULTIPOLYGON_PARSERS = {
+    'http://www.opengis.net/gml': {
+        'polygonMember': Object(_xml_js__WEBPACK_IMPORTED_MODULE_12__["makeArrayPusher"])(GMLBase.prototype.polygonMemberParser),
+        'polygonMembers': Object(_xml_js__WEBPACK_IMPORTED_MODULE_12__["makeArrayPusher"])(GMLBase.prototype.polygonMemberParser),
+    },
+};
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+GMLBase.prototype.POINTMEMBER_PARSERS = {
+    'http://www.opengis.net/gml': {
+        'Point': Object(_xml_js__WEBPACK_IMPORTED_MODULE_12__["makeArrayPusher"])(GMLBase.prototype.readFlatCoordinatesFromNode),
+    },
+};
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+GMLBase.prototype.LINESTRINGMEMBER_PARSERS = {
+    'http://www.opengis.net/gml': {
+        'LineString': Object(_xml_js__WEBPACK_IMPORTED_MODULE_12__["makeArrayPusher"])(GMLBase.prototype.readLineString),
+    },
+};
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+GMLBase.prototype.POLYGONMEMBER_PARSERS = {
+    'http://www.opengis.net/gml': {
+        'Polygon': Object(_xml_js__WEBPACK_IMPORTED_MODULE_12__["makeArrayPusher"])(GMLBase.prototype.readPolygon),
+    },
+};
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+GMLBase.prototype.RING_PARSERS = {
+    'http://www.opengis.net/gml': {
+        'LinearRing': Object(_xml_js__WEBPACK_IMPORTED_MODULE_12__["makeReplacer"])(GMLBase.prototype.readFlatLinearRing),
+    },
+};
+/* harmony default export */ __webpack_exports__["default"] = (GMLBase);
+//# sourceMappingURL=GMLBase.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/format/GPX.js":
+/*!***************************************!*\
+  !*** ./node_modules/ol/format/GPX.js ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Feature_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Feature.js */ "./node_modules/ol/Feature.js");
+/* harmony import */ var _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../geom/GeometryLayout.js */ "./node_modules/ol/geom/GeometryLayout.js");
+/* harmony import */ var _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../geom/GeometryType.js */ "./node_modules/ol/geom/GeometryType.js");
+/* harmony import */ var _geom_LineString_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../geom/LineString.js */ "./node_modules/ol/geom/LineString.js");
+/* harmony import */ var _geom_MultiLineString_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../geom/MultiLineString.js */ "./node_modules/ol/geom/MultiLineString.js");
+/* harmony import */ var _geom_Point_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../geom/Point.js */ "./node_modules/ol/geom/Point.js");
+/* harmony import */ var _XMLFeature_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./XMLFeature.js */ "./node_modules/ol/format/XMLFeature.js");
+/* harmony import */ var _xml_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../xml.js */ "./node_modules/ol/xml.js");
+/* harmony import */ var _proj_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../proj.js */ "./node_modules/ol/proj.js");
+/* harmony import */ var _array_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../array.js */ "./node_modules/ol/array.js");
+/* harmony import */ var _xsd_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./xsd.js */ "./node_modules/ol/format/xsd.js");
+/* harmony import */ var _Feature_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Feature.js */ "./node_modules/ol/format/Feature.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+/**
+ * @module ol/format/GPX
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * @const
+ * @type {Array<null|string>}
+ */
+var NAMESPACE_URIS = [
+    null,
+    'http://www.topografix.com/GPX/1/0',
+    'http://www.topografix.com/GPX/1/1',
+];
+/**
+ * @const
+ * @type {string}
+ */
+var SCHEMA_LOCATION = 'http://www.topografix.com/GPX/1/1 ' +
+    'http://www.topografix.com/GPX/1/1/gpx.xsd';
+/**
+ * @const
+ * @type {Object<string, function(Node, Array<*>): (Feature|undefined)>}
+ */
+var FEATURE_READER = {
+    'rte': readRte,
+    'trk': readTrk,
+    'wpt': readWpt,
+};
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var GPX_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeStructureNS"])(NAMESPACE_URIS, {
+    'rte': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeArrayPusher"])(readRte),
+    'trk': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeArrayPusher"])(readTrk),
+    'wpt': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeArrayPusher"])(readWpt),
+});
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var LINK_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeStructureNS"])(NAMESPACE_URIS, {
+    'text': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["readString"], 'linkText'),
+    'type': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["readString"], 'linkType'),
+});
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Serializer>>}
+ */
+// @ts-ignore
+var GPX_SERIALIZERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeStructureNS"])(NAMESPACE_URIS, {
+    'rte': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeChildAppender"])(writeRte),
+    'trk': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeChildAppender"])(writeTrk),
+    'wpt': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeChildAppender"])(writeWpt),
+});
+/**
+ * @typedef {Object} Options
+ * @property {function(Feature, Node):void} [readExtensions] Callback function
+ * to process `extensions` nodes. To prevent memory leaks, this callback function must
+ * not store any references to the node. Note that the `extensions`
+ * node is not allowed in GPX 1.0. Moreover, only `extensions`
+ * nodes from `wpt`, `rte` and `trk` can be processed, as those are
+ * directly mapped to a feature.
+ */
+/**
+ * @typedef {Object} LayoutOptions
+ * @property {boolean} [hasZ]
+ * @property {boolean} [hasM]
+ */
+/**
+ * @classdesc
+ * Feature format for reading and writing data in the GPX format.
+ *
+ * Note that {@link module:ol/format/GPX~GPX#readFeature} only reads the first
+ * feature of the source.
+ *
+ * When reading, routes (`<rte>`) are converted into LineString geometries, and
+ * tracks (`<trk>`) into MultiLineString. Any properties on route and track
+ * waypoints are ignored.
+ *
+ * When writing, LineString geometries are output as routes (`<rte>`), and
+ * MultiLineString as tracks (`<trk>`).
+ *
+ * @api
+ */
+var GPX = /** @class */ (function (_super) {
+    __extends(GPX, _super);
+    /**
+     * @param {Options=} opt_options Options.
+     */
+    function GPX(opt_options) {
+        var _this = _super.call(this) || this;
+        var options = opt_options ? opt_options : {};
+        /**
+         * @type {import("../proj/Projection.js").default}
+         */
+        _this.dataProjection = Object(_proj_js__WEBPACK_IMPORTED_MODULE_8__["get"])('EPSG:4326');
+        /**
+         * @type {function(Feature, Node): void|undefined}
+         * @private
+         */
+        _this.readExtensions_ = options.readExtensions;
+        return _this;
+    }
+    /**
+     * @param {Array<Feature>} features List of features.
+     * @private
+     */
+    GPX.prototype.handleReadExtensions_ = function (features) {
+        if (!features) {
+            features = [];
+        }
+        for (var i = 0, ii = features.length; i < ii; ++i) {
+            var feature = features[i];
+            if (this.readExtensions_) {
+                var extensionsNode = feature.get('extensionsNode_') || null;
+                this.readExtensions_(feature, extensionsNode);
+            }
+            feature.set('extensionsNode_', undefined);
+        }
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {import("./Feature.js").ReadOptions=} opt_options Options.
+     * @return {import("../Feature.js").default} Feature.
+     */
+    GPX.prototype.readFeatureFromNode = function (node, opt_options) {
+        if (!Object(_array_js__WEBPACK_IMPORTED_MODULE_9__["includes"])(NAMESPACE_URIS, node.namespaceURI)) {
+            return null;
+        }
+        var featureReader = FEATURE_READER[node.localName];
+        if (!featureReader) {
+            return null;
+        }
+        var feature = featureReader(node, [
+            this.getReadOptions(node, opt_options),
+        ]);
+        if (!feature) {
+            return null;
+        }
+        this.handleReadExtensions_([feature]);
+        return feature;
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {import("./Feature.js").ReadOptions=} opt_options Options.
+     * @return {Array<import("../Feature.js").default>} Features.
+     */
+    GPX.prototype.readFeaturesFromNode = function (node, opt_options) {
+        if (!Object(_array_js__WEBPACK_IMPORTED_MODULE_9__["includes"])(NAMESPACE_URIS, node.namespaceURI)) {
+            return [];
+        }
+        if (node.localName == 'gpx') {
+            /** @type {Array<Feature>} */
+            var features = Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["pushParseAndPop"])([], GPX_PARSERS, node, [
+                this.getReadOptions(node, opt_options),
+            ]);
+            if (features) {
+                this.handleReadExtensions_(features);
+                return features;
+            }
+            else {
+                return [];
+            }
+        }
+        return [];
+    };
+    /**
+     * Encode an array of features in the GPX format as an XML node.
+     * LineString geometries are output as routes (`<rte>`), and MultiLineString
+     * as tracks (`<trk>`).
+     *
+     * @param {Array<Feature>} features Features.
+     * @param {import("./Feature.js").WriteOptions=} opt_options Options.
+     * @return {Node} Node.
+     * @api
+     */
+    GPX.prototype.writeFeaturesNode = function (features, opt_options) {
+        opt_options = this.adaptOptions(opt_options);
+        //FIXME Serialize metadata
+        var gpx = Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["createElementNS"])('http://www.topografix.com/GPX/1/1', 'gpx');
+        var xmlnsUri = 'http://www.w3.org/2000/xmlns/';
+        gpx.setAttributeNS(xmlnsUri, 'xmlns:xsi', _xml_js__WEBPACK_IMPORTED_MODULE_7__["XML_SCHEMA_INSTANCE_URI"]);
+        gpx.setAttributeNS(_xml_js__WEBPACK_IMPORTED_MODULE_7__["XML_SCHEMA_INSTANCE_URI"], 'xsi:schemaLocation', SCHEMA_LOCATION);
+        gpx.setAttribute('version', '1.1');
+        gpx.setAttribute('creator', 'OpenLayers');
+        Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["pushSerializeAndPop"])(
+        /** @type {import("../xml.js").NodeStackItem} */
+        ({ node: gpx }), GPX_SERIALIZERS, GPX_NODE_FACTORY, features, [opt_options]);
+        return gpx;
+    };
+    return GPX;
+}(_XMLFeature_js__WEBPACK_IMPORTED_MODULE_6__["default"]));
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var RTE_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeStructureNS"])(NAMESPACE_URIS, {
+    'name': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["readString"]),
+    'cmt': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["readString"]),
+    'desc': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["readString"]),
+    'src': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["readString"]),
+    'link': parseLink,
+    'number': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["readNonNegativeInteger"]),
+    'extensions': parseExtensions,
+    'type': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["readString"]),
+    'rtept': parseRtePt,
+});
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var RTEPT_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeStructureNS"])(NAMESPACE_URIS, {
+    'ele': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["readDecimal"]),
+    'time': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["readDateTime"]),
+});
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var TRK_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeStructureNS"])(NAMESPACE_URIS, {
+    'name': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["readString"]),
+    'cmt': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["readString"]),
+    'desc': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["readString"]),
+    'src': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["readString"]),
+    'link': parseLink,
+    'number': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["readNonNegativeInteger"]),
+    'type': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["readString"]),
+    'extensions': parseExtensions,
+    'trkseg': parseTrkSeg,
+});
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var TRKSEG_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeStructureNS"])(NAMESPACE_URIS, {
+    'trkpt': parseTrkPt,
+});
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var TRKPT_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeStructureNS"])(NAMESPACE_URIS, {
+    'ele': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["readDecimal"]),
+    'time': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["readDateTime"]),
+});
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var WPT_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeStructureNS"])(NAMESPACE_URIS, {
+    'ele': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["readDecimal"]),
+    'time': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["readDateTime"]),
+    'magvar': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["readDecimal"]),
+    'geoidheight': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["readDecimal"]),
+    'name': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["readString"]),
+    'cmt': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["readString"]),
+    'desc': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["readString"]),
+    'src': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["readString"]),
+    'link': parseLink,
+    'sym': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["readString"]),
+    'type': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["readString"]),
+    'fix': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["readString"]),
+    'sat': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["readNonNegativeInteger"]),
+    'hdop': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["readDecimal"]),
+    'vdop': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["readDecimal"]),
+    'pdop': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["readDecimal"]),
+    'ageofdgpsdata': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["readDecimal"]),
+    'dgpsid': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["readNonNegativeInteger"]),
+    'extensions': parseExtensions,
+});
+/**
+ * @const
+ * @type {Array<string>}
+ */
+var LINK_SEQUENCE = ['text', 'type'];
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Serializer>>}
+ */
+// @ts-ignore
+var LINK_SERIALIZERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeStructureNS"])(NAMESPACE_URIS, {
+    'text': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["writeStringTextNode"]),
+    'type': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["writeStringTextNode"]),
+});
+/**
+ * @const
+ * @type {Object<string, Array<string>>}
+ */
+// @ts-ignore
+var RTE_SEQUENCE = Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeStructureNS"])(NAMESPACE_URIS, [
+    'name',
+    'cmt',
+    'desc',
+    'src',
+    'link',
+    'number',
+    'type',
+    'rtept',
+]);
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Serializer>>}
+ */
+// @ts-ignore
+var RTE_SERIALIZERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeStructureNS"])(NAMESPACE_URIS, {
+    'name': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["writeStringTextNode"]),
+    'cmt': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["writeStringTextNode"]),
+    'desc': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["writeStringTextNode"]),
+    'src': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["writeStringTextNode"]),
+    'link': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeChildAppender"])(writeLink),
+    'number': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["writeNonNegativeIntegerTextNode"]),
+    'type': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["writeStringTextNode"]),
+    'rtept': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeArraySerializer"])(Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeChildAppender"])(writeWptType)),
+});
+/**
+ * @const
+ * @type {Object<string, Array<string>>}
+ */
+// @ts-ignore
+var RTEPT_TYPE_SEQUENCE = Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeStructureNS"])(NAMESPACE_URIS, ['ele', 'time']);
+/**
+ * @const
+ * @type {Object<string, Array<string>>}
+ */
+// @ts-ignore
+var TRK_SEQUENCE = Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeStructureNS"])(NAMESPACE_URIS, [
+    'name',
+    'cmt',
+    'desc',
+    'src',
+    'link',
+    'number',
+    'type',
+    'trkseg',
+]);
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Serializer>>}
+ */
+// @ts-ignore
+var TRK_SERIALIZERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeStructureNS"])(NAMESPACE_URIS, {
+    'name': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["writeStringTextNode"]),
+    'cmt': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["writeStringTextNode"]),
+    'desc': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["writeStringTextNode"]),
+    'src': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["writeStringTextNode"]),
+    'link': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeChildAppender"])(writeLink),
+    'number': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["writeNonNegativeIntegerTextNode"]),
+    'type': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["writeStringTextNode"]),
+    'trkseg': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeArraySerializer"])(Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeChildAppender"])(writeTrkSeg)),
+});
+/**
+ * @const
+ * @type {function(*, Array<*>, string=): (Node|undefined)}
+ */
+var TRKSEG_NODE_FACTORY = Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeSimpleNodeFactory"])('trkpt');
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Serializer>>}
+ */
+// @ts-ignore
+var TRKSEG_SERIALIZERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeStructureNS"])(NAMESPACE_URIS, {
+    'trkpt': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeChildAppender"])(writeWptType),
+});
+/**
+ * @const
+ * @type {Object<string, Array<string>>}
+ */
+// @ts-ignore
+var WPT_TYPE_SEQUENCE = Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeStructureNS"])(NAMESPACE_URIS, [
+    'ele',
+    'time',
+    'magvar',
+    'geoidheight',
+    'name',
+    'cmt',
+    'desc',
+    'src',
+    'link',
+    'sym',
+    'type',
+    'fix',
+    'sat',
+    'hdop',
+    'vdop',
+    'pdop',
+    'ageofdgpsdata',
+    'dgpsid',
+]);
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Serializer>>}
+ */
+// @ts-ignore
+var WPT_TYPE_SERIALIZERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeStructureNS"])(NAMESPACE_URIS, {
+    'ele': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["writeDecimalTextNode"]),
+    'time': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["writeDateTimeTextNode"]),
+    'magvar': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["writeDecimalTextNode"]),
+    'geoidheight': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["writeDecimalTextNode"]),
+    'name': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["writeStringTextNode"]),
+    'cmt': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["writeStringTextNode"]),
+    'desc': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["writeStringTextNode"]),
+    'src': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["writeStringTextNode"]),
+    'link': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeChildAppender"])(writeLink),
+    'sym': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["writeStringTextNode"]),
+    'type': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["writeStringTextNode"]),
+    'fix': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["writeStringTextNode"]),
+    'sat': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["writeNonNegativeIntegerTextNode"]),
+    'hdop': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["writeDecimalTextNode"]),
+    'vdop': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["writeDecimalTextNode"]),
+    'pdop': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["writeDecimalTextNode"]),
+    'ageofdgpsdata': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["writeDecimalTextNode"]),
+    'dgpsid': Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_10__["writeNonNegativeIntegerTextNode"]),
+});
+/**
+ * @const
+ * @type {Object<string, string>}
+ */
+var GEOMETRY_TYPE_TO_NODENAME = {
+    'Point': 'wpt',
+    'LineString': 'rte',
+    'MultiLineString': 'trk',
+};
+/**
+ * @param {*} value Value.
+ * @param {Array<*>} objectStack Object stack.
+ * @param {string=} opt_nodeName Node name.
+ * @return {Node|undefined} Node.
+ */
+function GPX_NODE_FACTORY(value, objectStack, opt_nodeName) {
+    var geometry = /** @type {Feature} */ (value).getGeometry();
+    if (geometry) {
+        var nodeName = GEOMETRY_TYPE_TO_NODENAME[geometry.getType()];
+        if (nodeName) {
+            var parentNode = objectStack[objectStack.length - 1].node;
+            return Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["createElementNS"])(parentNode.namespaceURI, nodeName);
+        }
+    }
+}
+/**
+ * @param {Array<number>} flatCoordinates Flat coordinates.
+ * @param {LayoutOptions} layoutOptions Layout options.
+ * @param {Element} node Node.
+ * @param {!Object} values Values.
+ * @return {Array<number>} Flat coordinates.
+ */
+function appendCoordinate(flatCoordinates, layoutOptions, node, values) {
+    flatCoordinates.push(parseFloat(node.getAttribute('lon')), parseFloat(node.getAttribute('lat')));
+    if ('ele' in values) {
+        flatCoordinates.push(/** @type {number} */ (values['ele']));
+        delete values['ele'];
+        layoutOptions.hasZ = true;
+    }
+    else {
+        flatCoordinates.push(0);
+    }
+    if ('time' in values) {
+        flatCoordinates.push(/** @type {number} */ (values['time']));
+        delete values['time'];
+        layoutOptions.hasM = true;
+    }
+    else {
+        flatCoordinates.push(0);
+    }
+    return flatCoordinates;
+}
+/**
+ * Choose GeometryLayout based on flags in layoutOptions and adjust flatCoordinates
+ * and ends arrays by shrinking them accordingly (removing unused zero entries).
+ *
+ * @param {LayoutOptions} layoutOptions Layout options.
+ * @param {Array<number>} flatCoordinates Flat coordinates.
+ * @param {Array<number>=} ends Ends.
+ * @return {import("../geom/GeometryLayout.js").default} Layout.
+ */
+function applyLayoutOptions(layoutOptions, flatCoordinates, ends) {
+    var layout = _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_1__["default"].XY;
+    var stride = 2;
+    if (layoutOptions.hasZ && layoutOptions.hasM) {
+        layout = _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_1__["default"].XYZM;
+        stride = 4;
+    }
+    else if (layoutOptions.hasZ) {
+        layout = _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_1__["default"].XYZ;
+        stride = 3;
+    }
+    else if (layoutOptions.hasM) {
+        layout = _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_1__["default"].XYM;
+        stride = 3;
+    }
+    if (stride !== 4) {
+        for (var i = 0, ii = flatCoordinates.length / 4; i < ii; i++) {
+            flatCoordinates[i * stride] = flatCoordinates[i * 4];
+            flatCoordinates[i * stride + 1] = flatCoordinates[i * 4 + 1];
+            if (layoutOptions.hasZ) {
+                flatCoordinates[i * stride + 2] = flatCoordinates[i * 4 + 2];
+            }
+            if (layoutOptions.hasM) {
+                flatCoordinates[i * stride + 2] = flatCoordinates[i * 4 + 3];
+            }
+        }
+        flatCoordinates.length = (flatCoordinates.length / 4) * stride;
+        if (ends) {
+            for (var i = 0, ii = ends.length; i < ii; i++) {
+                ends[i] = (ends[i] / 4) * stride;
+            }
+        }
+    }
+    return layout;
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ */
+function parseLink(node, objectStack) {
+    var values = /** @type {Object} */ (objectStack[objectStack.length - 1]);
+    var href = node.getAttribute('href');
+    if (href !== null) {
+        values['link'] = href;
+    }
+    Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["parseNode"])(LINK_PARSERS, node, objectStack);
+}
+/**
+ * @param {Node} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ */
+function parseExtensions(node, objectStack) {
+    var values = /** @type {Object} */ (objectStack[objectStack.length - 1]);
+    values['extensionsNode_'] = node;
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ */
+function parseRtePt(node, objectStack) {
+    var values = Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["pushParseAndPop"])({}, RTEPT_PARSERS, node, objectStack);
+    if (values) {
+        var rteValues = /** @type {!Object} */ (objectStack[objectStack.length - 1]);
+        var flatCoordinates = /** @type {Array<number>} */ (rteValues['flatCoordinates']);
+        var layoutOptions = /** @type {LayoutOptions} */ (rteValues['layoutOptions']);
+        appendCoordinate(flatCoordinates, layoutOptions, node, values);
+    }
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ */
+function parseTrkPt(node, objectStack) {
+    var values = Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["pushParseAndPop"])({}, TRKPT_PARSERS, node, objectStack);
+    if (values) {
+        var trkValues = /** @type {!Object} */ (objectStack[objectStack.length - 1]);
+        var flatCoordinates = /** @type {Array<number>} */ (trkValues['flatCoordinates']);
+        var layoutOptions = /** @type {LayoutOptions} */ (trkValues['layoutOptions']);
+        appendCoordinate(flatCoordinates, layoutOptions, node, values);
+    }
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ */
+function parseTrkSeg(node, objectStack) {
+    var values = /** @type {Object} */ (objectStack[objectStack.length - 1]);
+    Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["parseNode"])(TRKSEG_PARSERS, node, objectStack);
+    var flatCoordinates = 
+    /** @type {Array<number>} */
+    (values['flatCoordinates']);
+    var ends = /** @type {Array<number>} */ (values['ends']);
+    ends.push(flatCoordinates.length);
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Feature|undefined} Track.
+ */
+function readRte(node, objectStack) {
+    var options = /** @type {import("./Feature.js").ReadOptions} */ (objectStack[0]);
+    var values = Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["pushParseAndPop"])({
+        'flatCoordinates': [],
+        'layoutOptions': {},
+    }, RTE_PARSERS, node, objectStack);
+    if (!values) {
+        return undefined;
+    }
+    var flatCoordinates = 
+    /** @type {Array<number>} */
+    (values['flatCoordinates']);
+    delete values['flatCoordinates'];
+    var layoutOptions = /** @type {LayoutOptions} */ (values['layoutOptions']);
+    delete values['layoutOptions'];
+    var layout = applyLayoutOptions(layoutOptions, flatCoordinates);
+    var geometry = new _geom_LineString_js__WEBPACK_IMPORTED_MODULE_3__["default"](flatCoordinates, layout);
+    Object(_Feature_js__WEBPACK_IMPORTED_MODULE_11__["transformGeometryWithOptions"])(geometry, false, options);
+    var feature = new _Feature_js__WEBPACK_IMPORTED_MODULE_0__["default"](geometry);
+    feature.setProperties(values, true);
+    return feature;
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Feature|undefined} Track.
+ */
+function readTrk(node, objectStack) {
+    var options = /** @type {import("./Feature.js").ReadOptions} */ (objectStack[0]);
+    var values = Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["pushParseAndPop"])({
+        'flatCoordinates': [],
+        'ends': [],
+        'layoutOptions': {},
+    }, TRK_PARSERS, node, objectStack);
+    if (!values) {
+        return undefined;
+    }
+    var flatCoordinates = 
+    /** @type {Array<number>} */
+    (values['flatCoordinates']);
+    delete values['flatCoordinates'];
+    var ends = /** @type {Array<number>} */ (values['ends']);
+    delete values['ends'];
+    var layoutOptions = /** @type {LayoutOptions} */ (values['layoutOptions']);
+    delete values['layoutOptions'];
+    var layout = applyLayoutOptions(layoutOptions, flatCoordinates, ends);
+    var geometry = new _geom_MultiLineString_js__WEBPACK_IMPORTED_MODULE_4__["default"](flatCoordinates, layout, ends);
+    Object(_Feature_js__WEBPACK_IMPORTED_MODULE_11__["transformGeometryWithOptions"])(geometry, false, options);
+    var feature = new _Feature_js__WEBPACK_IMPORTED_MODULE_0__["default"](geometry);
+    feature.setProperties(values, true);
+    return feature;
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Feature|undefined} Waypoint.
+ */
+function readWpt(node, objectStack) {
+    var options = /** @type {import("./Feature.js").ReadOptions} */ (objectStack[0]);
+    var values = Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["pushParseAndPop"])({}, WPT_PARSERS, node, objectStack);
+    if (!values) {
+        return undefined;
+    }
+    var layoutOptions = /** @type {LayoutOptions} */ ({});
+    var coordinates = appendCoordinate([], layoutOptions, node, values);
+    var layout = applyLayoutOptions(layoutOptions, coordinates);
+    var geometry = new _geom_Point_js__WEBPACK_IMPORTED_MODULE_5__["default"](coordinates, layout);
+    Object(_Feature_js__WEBPACK_IMPORTED_MODULE_11__["transformGeometryWithOptions"])(geometry, false, options);
+    var feature = new _Feature_js__WEBPACK_IMPORTED_MODULE_0__["default"](geometry);
+    feature.setProperties(values, true);
+    return feature;
+}
+/**
+ * @param {Element} node Node.
+ * @param {string} value Value for the link's `href` attribute.
+ * @param {Array<*>} objectStack Node stack.
+ */
+function writeLink(node, value, objectStack) {
+    node.setAttribute('href', value);
+    var context = objectStack[objectStack.length - 1];
+    var properties = context['properties'];
+    var link = [properties['linkText'], properties['linkType']];
+    Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["pushSerializeAndPop"])(
+    /** @type {import("../xml.js").NodeStackItem} */ ({ node: node }), LINK_SERIALIZERS, _xml_js__WEBPACK_IMPORTED_MODULE_7__["OBJECT_PROPERTY_NODE_FACTORY"], link, objectStack, LINK_SEQUENCE);
+}
+/**
+ * @param {Element} node Node.
+ * @param {import("../coordinate.js").Coordinate} coordinate Coordinate.
+ * @param {Array<*>} objectStack Object stack.
+ */
+function writeWptType(node, coordinate, objectStack) {
+    var context = objectStack[objectStack.length - 1];
+    var parentNode = context.node;
+    var namespaceURI = parentNode.namespaceURI;
+    var properties = context['properties'];
+    //FIXME Projection handling
+    node.setAttributeNS(null, 'lat', String(coordinate[1]));
+    node.setAttributeNS(null, 'lon', String(coordinate[0]));
+    var geometryLayout = context['geometryLayout'];
+    switch (geometryLayout) {
+        case _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_1__["default"].XYZM:
+            if (coordinate[3] !== 0) {
+                properties['time'] = coordinate[3];
+            }
+        // fall through
+        case _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_1__["default"].XYZ:
+            if (coordinate[2] !== 0) {
+                properties['ele'] = coordinate[2];
+            }
+            break;
+        case _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_1__["default"].XYM:
+            if (coordinate[2] !== 0) {
+                properties['time'] = coordinate[2];
+            }
+            break;
+        default:
+        // pass
+    }
+    var orderedKeys = node.nodeName == 'rtept'
+        ? RTEPT_TYPE_SEQUENCE[namespaceURI]
+        : WPT_TYPE_SEQUENCE[namespaceURI];
+    var values = Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeSequence"])(properties, orderedKeys);
+    Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["pushSerializeAndPop"])(
+    /** @type {import("../xml.js").NodeStackItem} */
+    ({ node: node, 'properties': properties }), WPT_TYPE_SERIALIZERS, _xml_js__WEBPACK_IMPORTED_MODULE_7__["OBJECT_PROPERTY_NODE_FACTORY"], values, objectStack, orderedKeys);
+}
+/**
+ * @param {Node} node Node.
+ * @param {Feature} feature Feature.
+ * @param {Array<*>} objectStack Object stack.
+ */
+function writeRte(node, feature, objectStack) {
+    var options = /** @type {import("./Feature.js").WriteOptions} */ (objectStack[0]);
+    var properties = feature.getProperties();
+    var context = { node: node };
+    context['properties'] = properties;
+    var geometry = feature.getGeometry();
+    if (geometry.getType() == _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_2__["default"].LINE_STRING) {
+        var lineString = /** @type {LineString} */ (Object(_Feature_js__WEBPACK_IMPORTED_MODULE_11__["transformGeometryWithOptions"])(geometry, true, options));
+        context['geometryLayout'] = lineString.getLayout();
+        properties['rtept'] = lineString.getCoordinates();
+    }
+    var parentNode = objectStack[objectStack.length - 1].node;
+    var orderedKeys = RTE_SEQUENCE[parentNode.namespaceURI];
+    var values = Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeSequence"])(properties, orderedKeys);
+    Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["pushSerializeAndPop"])(context, RTE_SERIALIZERS, _xml_js__WEBPACK_IMPORTED_MODULE_7__["OBJECT_PROPERTY_NODE_FACTORY"], values, objectStack, orderedKeys);
+}
+/**
+ * @param {Node} node Node.
+ * @param {Feature} feature Feature.
+ * @param {Array<*>} objectStack Object stack.
+ */
+function writeTrk(node, feature, objectStack) {
+    var options = /** @type {import("./Feature.js").WriteOptions} */ (objectStack[0]);
+    var properties = feature.getProperties();
+    /** @type {import("../xml.js").NodeStackItem} */
+    var context = { node: node };
+    context['properties'] = properties;
+    var geometry = feature.getGeometry();
+    if (geometry.getType() == _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_2__["default"].MULTI_LINE_STRING) {
+        var multiLineString = /** @type {MultiLineString} */ (Object(_Feature_js__WEBPACK_IMPORTED_MODULE_11__["transformGeometryWithOptions"])(geometry, true, options));
+        properties['trkseg'] = multiLineString.getLineStrings();
+    }
+    var parentNode = objectStack[objectStack.length - 1].node;
+    var orderedKeys = TRK_SEQUENCE[parentNode.namespaceURI];
+    var values = Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["makeSequence"])(properties, orderedKeys);
+    Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["pushSerializeAndPop"])(context, TRK_SERIALIZERS, _xml_js__WEBPACK_IMPORTED_MODULE_7__["OBJECT_PROPERTY_NODE_FACTORY"], values, objectStack, orderedKeys);
+}
+/**
+ * @param {Node} node Node.
+ * @param {LineString} lineString LineString.
+ * @param {Array<*>} objectStack Object stack.
+ */
+function writeTrkSeg(node, lineString, objectStack) {
+    /** @type {import("../xml.js").NodeStackItem} */
+    var context = { node: node };
+    context['geometryLayout'] = lineString.getLayout();
+    context['properties'] = {};
+    Object(_xml_js__WEBPACK_IMPORTED_MODULE_7__["pushSerializeAndPop"])(context, TRKSEG_SERIALIZERS, TRKSEG_NODE_FACTORY, lineString.getCoordinates(), objectStack);
+}
+/**
+ * @param {Element} node Node.
+ * @param {Feature} feature Feature.
+ * @param {Array<*>} objectStack Object stack.
+ */
+function writeWpt(node, feature, objectStack) {
+    var options = /** @type {import("./Feature.js").WriteOptions} */ (objectStack[0]);
+    var context = objectStack[objectStack.length - 1];
+    context['properties'] = feature.getProperties();
+    var geometry = feature.getGeometry();
+    if (geometry.getType() == _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_2__["default"].POINT) {
+        var point = /** @type {Point} */ (Object(_Feature_js__WEBPACK_IMPORTED_MODULE_11__["transformGeometryWithOptions"])(geometry, true, options));
+        context['geometryLayout'] = point.getLayout();
+        writeWptType(node, point.getCoordinates(), objectStack);
+    }
+}
+/* harmony default export */ __webpack_exports__["default"] = (GPX);
+//# sourceMappingURL=GPX.js.map
 
 /***/ }),
 
@@ -34111,6 +37977,663 @@ function writePolygonGeometry(geometry, opt_options) {
 
 /***/ }),
 
+/***/ "./node_modules/ol/format/IGC.js":
+/*!***************************************!*\
+  !*** ./node_modules/ol/format/IGC.js ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Feature_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Feature.js */ "./node_modules/ol/Feature.js");
+/* harmony import */ var _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../geom/GeometryLayout.js */ "./node_modules/ol/geom/GeometryLayout.js");
+/* harmony import */ var _geom_LineString_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../geom/LineString.js */ "./node_modules/ol/geom/LineString.js");
+/* harmony import */ var _TextFeature_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./TextFeature.js */ "./node_modules/ol/format/TextFeature.js");
+/* harmony import */ var _proj_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../proj.js */ "./node_modules/ol/proj.js");
+/* harmony import */ var _Feature_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Feature.js */ "./node_modules/ol/format/Feature.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+/**
+ * @module ol/format/IGC
+ */
+
+
+
+
+
+
+/**
+ * IGC altitude/z. One of 'barometric', 'gps', 'none'.
+ * @enum {string}
+ */
+var IGCZ = {
+    BAROMETRIC: 'barometric',
+    GPS: 'gps',
+    NONE: 'none',
+};
+/**
+ * @const
+ * @type {RegExp}
+ */
+var B_RECORD_RE = /^B(\d{2})(\d{2})(\d{2})(\d{2})(\d{5})([NS])(\d{3})(\d{5})([EW])([AV])(\d{5})(\d{5})/;
+/**
+ * @const
+ * @type {RegExp}
+ */
+var H_RECORD_RE = /^H.([A-Z]{3}).*?:(.*)/;
+/**
+ * @const
+ * @type {RegExp}
+ */
+var HFDTE_RECORD_RE = /^HFDTE(\d{2})(\d{2})(\d{2})/;
+/**
+ * A regular expression matching the newline characters `\r\n`, `\r` and `\n`.
+ *
+ * @const
+ * @type {RegExp}
+ */
+var NEWLINE_RE = /\r\n|\r|\n/;
+/**
+ * @typedef {Object} Options
+ * @property {IGCZ|string} [altitudeMode='none'] Altitude mode. Possible
+ * values are `'barometric'`, `'gps'`, and `'none'`.
+ */
+/**
+ * @classdesc
+ * Feature format for `*.igc` flight recording files.
+ *
+ * As IGC sources contain a single feature,
+ * {@link module:ol/format/IGC~IGC#readFeatures} will return the feature in an
+ * array
+ *
+ * @api
+ */
+var IGC = /** @class */ (function (_super) {
+    __extends(IGC, _super);
+    /**
+     * @param {Options=} opt_options Options.
+     */
+    function IGC(opt_options) {
+        var _this = _super.call(this) || this;
+        var options = opt_options ? opt_options : {};
+        /**
+         * @type {import("../proj/Projection.js").default}
+         */
+        _this.dataProjection = Object(_proj_js__WEBPACK_IMPORTED_MODULE_4__["get"])('EPSG:4326');
+        /**
+         * @private
+         * @type {IGCZ}
+         */
+        _this.altitudeMode_ = options.altitudeMode
+            ? options.altitudeMode
+            : IGCZ.NONE;
+        return _this;
+    }
+    /**
+     * @protected
+     * @param {string} text Text.
+     * @param {import("./Feature.js").ReadOptions=} opt_options Read options.
+     * @return {import("../Feature.js").default} Feature.
+     */
+    IGC.prototype.readFeatureFromText = function (text, opt_options) {
+        var altitudeMode = this.altitudeMode_;
+        var lines = text.split(NEWLINE_RE);
+        /** @type {Object<string, string>} */
+        var properties = {};
+        var flatCoordinates = [];
+        var year = 2000;
+        var month = 0;
+        var day = 1;
+        var lastDateTime = -1;
+        var i, ii;
+        for (i = 0, ii = lines.length; i < ii; ++i) {
+            var line = lines[i];
+            var m = void 0;
+            if (line.charAt(0) == 'B') {
+                m = B_RECORD_RE.exec(line);
+                if (m) {
+                    var hour = parseInt(m[1], 10);
+                    var minute = parseInt(m[2], 10);
+                    var second = parseInt(m[3], 10);
+                    var y = parseInt(m[4], 10) + parseInt(m[5], 10) / 60000;
+                    if (m[6] == 'S') {
+                        y = -y;
+                    }
+                    var x = parseInt(m[7], 10) + parseInt(m[8], 10) / 60000;
+                    if (m[9] == 'W') {
+                        x = -x;
+                    }
+                    flatCoordinates.push(x, y);
+                    if (altitudeMode != IGCZ.NONE) {
+                        var z = void 0;
+                        if (altitudeMode == IGCZ.GPS) {
+                            z = parseInt(m[11], 10);
+                        }
+                        else if (altitudeMode == IGCZ.BAROMETRIC) {
+                            z = parseInt(m[12], 10);
+                        }
+                        else {
+                            z = 0;
+                        }
+                        flatCoordinates.push(z);
+                    }
+                    var dateTime = Date.UTC(year, month, day, hour, minute, second);
+                    // Detect UTC midnight wrap around.
+                    if (dateTime < lastDateTime) {
+                        dateTime = Date.UTC(year, month, day + 1, hour, minute, second);
+                    }
+                    flatCoordinates.push(dateTime / 1000);
+                    lastDateTime = dateTime;
+                }
+            }
+            else if (line.charAt(0) == 'H') {
+                m = HFDTE_RECORD_RE.exec(line);
+                if (m) {
+                    day = parseInt(m[1], 10);
+                    month = parseInt(m[2], 10) - 1;
+                    year = 2000 + parseInt(m[3], 10);
+                }
+                else {
+                    m = H_RECORD_RE.exec(line);
+                    if (m) {
+                        properties[m[1]] = m[2].trim();
+                    }
+                }
+            }
+        }
+        if (flatCoordinates.length === 0) {
+            return null;
+        }
+        var layout = altitudeMode == IGCZ.NONE ? _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_1__["default"].XYM : _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_1__["default"].XYZM;
+        var lineString = new _geom_LineString_js__WEBPACK_IMPORTED_MODULE_2__["default"](flatCoordinates, layout);
+        var feature = new _Feature_js__WEBPACK_IMPORTED_MODULE_0__["default"](Object(_Feature_js__WEBPACK_IMPORTED_MODULE_5__["transformGeometryWithOptions"])(lineString, false, opt_options));
+        feature.setProperties(properties, true);
+        return feature;
+    };
+    /**
+     * @param {string} text Text.
+     * @param {import("./Feature.js").ReadOptions=} opt_options Read options.
+     * @protected
+     * @return {Array<Feature>} Features.
+     */
+    IGC.prototype.readFeaturesFromText = function (text, opt_options) {
+        var feature = this.readFeatureFromText(text, opt_options);
+        if (feature) {
+            return [feature];
+        }
+        else {
+            return [];
+        }
+    };
+    return IGC;
+}(_TextFeature_js__WEBPACK_IMPORTED_MODULE_3__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (IGC);
+//# sourceMappingURL=IGC.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/format/IIIFInfo.js":
+/*!********************************************!*\
+  !*** ./node_modules/ol/format/IIIFInfo.js ***!
+  \********************************************/
+/*! exports provided: Versions, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Versions", function() { return Versions; });
+/* harmony import */ var _asserts_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../asserts.js */ "./node_modules/ol/asserts.js");
+/**
+ * @module ol/format/IIIFInfo
+ */
+var __spreadArrays = (undefined && undefined.__spreadArrays) || function () {
+    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+    for (var r = Array(s), k = 0, i = 0; i < il; i++)
+        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+            r[k] = a[j];
+    return r;
+};
+
+/**
+ * @typedef {Object} PreferredOptions
+ * @property {string} [format] Preferred image format. Will be used if the image information
+ * indicates support for that format.
+ * @property {string} [quality] IIIF image qualitiy.  Will be used if the image information
+ * indicates support for that quality.
+ */
+/**
+ * @typedef {Object} SupportedFeatures
+ * @property {Array<string>} [supports] Supported IIIF image size and region
+ * calculation features.
+ * @property {Array<string>} [formats] Supported image formats.
+ * @property {Array<string>} [qualities] Supported IIIF image qualities.
+ */
+/**
+ * @typedef {Object} TileInfo
+ * @property {Array<number>} scaleFactors Supported resolution scaling factors.
+ * @property {number} width Tile width in pixels.
+ * @property {number} [height] Tile height in pixels. Same as tile width if height is
+ * not given.
+ */
+/**
+ * @typedef {Object} IiifProfile
+ * @property {Array<string>} [formats] Supported image formats for the image service.
+ * @property {Array<string>} [qualities] Supported IIIF image qualities.
+ * @property {Array<string>} [supports] Supported features.
+ * @property {number} [maxArea] Maximum area (pixels) available for this image service.
+ * @property {number} [maxHeight] Maximum height.
+ * @property {number} [maxWidth] Maximum width.
+ */
+/**
+ * @typedef {Object<string,string|number|Array<number|string|IiifProfile>|Object<string, number>|TileInfo>}
+ *    ImageInformationResponse
+ */
+/**
+ * Enum representing the major IIIF Image API versions
+ * @enum {string}
+ */
+var Versions = {
+    VERSION1: 'version1',
+    VERSION2: 'version2',
+    VERSION3: 'version3',
+};
+/**
+ * Supported image formats, qualities and supported region / size calculation features
+ * for different image API versions and compliance levels
+ * @const
+ * @type {Object<string, Object<string, SupportedFeatures>>}
+ */
+var IIIF_PROFILE_VALUES = {};
+IIIF_PROFILE_VALUES[Versions.VERSION1] = {
+    'level0': {
+        supports: [],
+        formats: [],
+        qualities: ['native'],
+    },
+    'level1': {
+        supports: ['regionByPx', 'sizeByW', 'sizeByH', 'sizeByPct'],
+        formats: ['jpg'],
+        qualities: ['native'],
+    },
+    'level2': {
+        supports: [
+            'regionByPx',
+            'regionByPct',
+            'sizeByW',
+            'sizeByH',
+            'sizeByPct',
+            'sizeByConfinedWh',
+            'sizeByWh',
+        ],
+        formats: ['jpg', 'png'],
+        qualities: ['native', 'color', 'grey', 'bitonal'],
+    },
+};
+IIIF_PROFILE_VALUES[Versions.VERSION2] = {
+    'level0': {
+        supports: [],
+        formats: ['jpg'],
+        qualities: ['default'],
+    },
+    'level1': {
+        supports: ['regionByPx', 'sizeByW', 'sizeByH', 'sizeByPct'],
+        formats: ['jpg'],
+        qualities: ['default'],
+    },
+    'level2': {
+        supports: [
+            'regionByPx',
+            'regionByPct',
+            'sizeByW',
+            'sizeByH',
+            'sizeByPct',
+            'sizeByConfinedWh',
+            'sizeByDistortedWh',
+            'sizeByWh',
+        ],
+        formats: ['jpg', 'png'],
+        qualities: ['default', 'bitonal'],
+    },
+};
+IIIF_PROFILE_VALUES[Versions.VERSION3] = {
+    'level0': {
+        supports: [],
+        formats: ['jpg'],
+        qualities: ['default'],
+    },
+    'level1': {
+        supports: ['regionByPx', 'regionSquare', 'sizeByW', 'sizeByH', 'sizeByWh'],
+        formats: ['jpg'],
+        qualities: ['default'],
+    },
+    'level2': {
+        supports: [
+            'regionByPx',
+            'regionSquare',
+            'regionByPct',
+            'sizeByW',
+            'sizeByH',
+            'sizeByPct',
+            'sizeByConfinedWh',
+            'sizeByWh',
+        ],
+        formats: ['jpg', 'png'],
+        qualities: ['default'],
+    },
+};
+IIIF_PROFILE_VALUES['none'] = {
+    'none': {
+        supports: [],
+        formats: [],
+        qualities: [],
+    },
+};
+var COMPLIANCE_VERSION1 = /^https?:\/\/library\.stanford\.edu\/iiif\/image-api\/(?:1\.1\/)?compliance\.html#level[0-2]$/;
+var COMPLIANCE_VERSION2 = /^https?:\/\/iiif\.io\/api\/image\/2\/level[0-2](?:\.json)?$/;
+var COMPLIANCE_VERSION3 = /(^https?:\/\/iiif\.io\/api\/image\/3\/level[0-2](?:\.json)?$)|(^level[0-2]$)/;
+function generateVersion1Options(iiifInfo) {
+    var levelProfile = iiifInfo.getComplianceLevelSupportedFeatures();
+    // Version 1.0 and 1.1 do not require a profile.
+    if (levelProfile === undefined) {
+        levelProfile = IIIF_PROFILE_VALUES[Versions.VERSION1]['level0'];
+    }
+    return {
+        url: iiifInfo.imageInfo['@id'] === undefined
+            ? undefined
+            : iiifInfo.imageInfo['@id'].replace(/\/?(?:info\.json)?$/g, ''),
+        supports: levelProfile.supports,
+        formats: __spreadArrays(levelProfile.formats, [
+            iiifInfo.imageInfo.formats === undefined
+                ? []
+                : iiifInfo.imageInfo.formats,
+        ]),
+        qualities: __spreadArrays(levelProfile.qualities, [
+            iiifInfo.imageInfo.qualities === undefined
+                ? []
+                : iiifInfo.imageInfo.qualities,
+        ]),
+        resolutions: iiifInfo.imageInfo.scale_factors,
+        tileSize: iiifInfo.imageInfo.tile_width !== undefined
+            ? iiifInfo.imageInfo.tile_height !== undefined
+                ? [iiifInfo.imageInfo.tile_width, iiifInfo.imageInfo.tile_height]
+                : [iiifInfo.imageInfo.tile_width, iiifInfo.imageInfo.tile_width]
+            : iiifInfo.imageInfo.tile_height != undefined
+                ? [iiifInfo.imageInfo.tile_height, iiifInfo.imageInfo.tile_height]
+                : undefined,
+    };
+}
+function generateVersion2Options(iiifInfo) {
+    var levelProfile = iiifInfo.getComplianceLevelSupportedFeatures(), additionalProfile = Array.isArray(iiifInfo.imageInfo.profile) &&
+        iiifInfo.imageInfo.profile.length > 1, profileSupports = additionalProfile && iiifInfo.imageInfo.profile[1].supports
+        ? iiifInfo.imageInfo.profile[1].supports
+        : [], profileFormats = additionalProfile && iiifInfo.imageInfo.profile[1].formats
+        ? iiifInfo.imageInfo.profile[1].formats
+        : [], profileQualities = additionalProfile && iiifInfo.imageInfo.profile[1].qualities
+        ? iiifInfo.imageInfo.profile[1].qualities
+        : [];
+    return {
+        url: iiifInfo.imageInfo['@id'].replace(/\/?(?:info\.json)?$/g, ''),
+        sizes: iiifInfo.imageInfo.sizes === undefined
+            ? undefined
+            : iiifInfo.imageInfo.sizes.map(function (size) {
+                return [size.width, size.height];
+            }),
+        tileSize: iiifInfo.imageInfo.tiles === undefined
+            ? undefined
+            : [
+                iiifInfo.imageInfo.tiles.map(function (tile) {
+                    return tile.width;
+                })[0],
+                iiifInfo.imageInfo.tiles.map(function (tile) {
+                    return tile.height === undefined ? tile.width : tile.height;
+                })[0],
+            ],
+        resolutions: iiifInfo.imageInfo.tiles === undefined
+            ? undefined
+            : iiifInfo.imageInfo.tiles.map(function (tile) {
+                return tile.scaleFactors;
+            })[0],
+        supports: __spreadArrays(levelProfile.supports, profileSupports),
+        formats: __spreadArrays(levelProfile.formats, profileFormats),
+        qualities: __spreadArrays(levelProfile.qualities, profileQualities),
+    };
+}
+function generateVersion3Options(iiifInfo) {
+    var levelProfile = iiifInfo.getComplianceLevelSupportedFeatures(), formats = iiifInfo.imageInfo.extraFormats === undefined
+        ? levelProfile.formats
+        : __spreadArrays(levelProfile.formats, iiifInfo.imageInfo.extraFormats), preferredFormat = iiifInfo.imageInfo.preferredFormats !== undefined &&
+        Array.isArray(iiifInfo.imageInfo.preferredFormats) &&
+        iiifInfo.imageInfo.preferredFormats.length > 0
+        ? iiifInfo.imageInfo.preferredFormats
+            .filter(function (format) {
+            return ['jpg', 'png', 'gif'].includes(format);
+        })
+            .reduce(function (acc, format) {
+            return acc === undefined && formats.includes(format)
+                ? format
+                : acc;
+        }, undefined)
+        : undefined;
+    return {
+        url: iiifInfo.imageInfo['id'],
+        sizes: iiifInfo.imageInfo.sizes === undefined
+            ? undefined
+            : iiifInfo.imageInfo.sizes.map(function (size) {
+                return [size.width, size.height];
+            }),
+        tileSize: iiifInfo.imageInfo.tiles === undefined
+            ? undefined
+            : [
+                iiifInfo.imageInfo.tiles.map(function (tile) {
+                    return tile.width;
+                })[0],
+                iiifInfo.imageInfo.tiles.map(function (tile) {
+                    return tile.height;
+                })[0],
+            ],
+        resolutions: iiifInfo.imageInfo.tiles === undefined
+            ? undefined
+            : iiifInfo.imageInfo.tiles.map(function (tile) {
+                return tile.scaleFactors;
+            })[0],
+        supports: iiifInfo.imageInfo.extraFeatures === undefined
+            ? levelProfile.supports
+            : __spreadArrays(levelProfile.supports, iiifInfo.imageInfo.extraFeatures),
+        formats: formats,
+        qualities: iiifInfo.imageInfo.extraQualities === undefined
+            ? levelProfile.qualities
+            : __spreadArrays(levelProfile.qualities, iiifInfo.imageInfo.extraQualities),
+        preferredFormat: preferredFormat,
+    };
+}
+var versionFunctions = {};
+versionFunctions[Versions.VERSION1] = generateVersion1Options;
+versionFunctions[Versions.VERSION2] = generateVersion2Options;
+versionFunctions[Versions.VERSION3] = generateVersion3Options;
+/**
+ * @classdesc
+ * Format for transforming IIIF Image API image information responses into
+ * IIIF tile source ready options
+ *
+ * @api
+ */
+var IIIFInfo = /** @class */ (function () {
+    /**
+     * @param {string|ImageInformationResponse} imageInfo
+     * Deserialized image information JSON response object or JSON response as string
+     */
+    function IIIFInfo(imageInfo) {
+        this.setImageInfo(imageInfo);
+    }
+    /**
+     * @param {string|ImageInformationResponse} imageInfo
+     * Deserialized image information JSON response object or JSON response as string
+     * @api
+     */
+    IIIFInfo.prototype.setImageInfo = function (imageInfo) {
+        if (typeof imageInfo == 'string') {
+            this.imageInfo = JSON.parse(imageInfo);
+        }
+        else {
+            this.imageInfo = imageInfo;
+        }
+    };
+    /**
+     * @returns {Versions} Major IIIF version.
+     * @api
+     */
+    IIIFInfo.prototype.getImageApiVersion = function () {
+        if (this.imageInfo === undefined) {
+            return;
+        }
+        var context = this.imageInfo['@context'] || 'ol-no-context';
+        if (typeof context == 'string') {
+            context = [context];
+        }
+        for (var i = 0; i < context.length; i++) {
+            switch (context[i]) {
+                case 'http://library.stanford.edu/iiif/image-api/1.1/context.json':
+                case 'http://iiif.io/api/image/1/context.json':
+                    return Versions.VERSION1;
+                case 'http://iiif.io/api/image/2/context.json':
+                    return Versions.VERSION2;
+                case 'http://iiif.io/api/image/3/context.json':
+                    return Versions.VERSION3;
+                case 'ol-no-context':
+                    // Image API 1.0 has no '@context'
+                    if (this.getComplianceLevelEntryFromProfile(Versions.VERSION1) &&
+                        this.imageInfo.identifier) {
+                        return Versions.VERSION1;
+                    }
+                    break;
+                default:
+            }
+        }
+        Object(_asserts_js__WEBPACK_IMPORTED_MODULE_0__["assert"])(false, 61);
+    };
+    /**
+     * @param {Versions} version Optional IIIF image API version
+     * @returns {string} Compliance level as it appears in the IIIF image information
+     * response.
+     */
+    IIIFInfo.prototype.getComplianceLevelEntryFromProfile = function (version) {
+        if (this.imageInfo === undefined || this.imageInfo.profile === undefined) {
+            return;
+        }
+        if (version === undefined) {
+            version = this.getImageApiVersion();
+        }
+        switch (version) {
+            case Versions.VERSION1:
+                if (COMPLIANCE_VERSION1.test(this.imageInfo.profile)) {
+                    return this.imageInfo.profile;
+                }
+                break;
+            case Versions.VERSION3:
+                if (COMPLIANCE_VERSION3.test(this.imageInfo.profile)) {
+                    return this.imageInfo.profile;
+                }
+                break;
+            case Versions.VERSION2:
+                if (typeof this.imageInfo.profile === 'string' &&
+                    COMPLIANCE_VERSION2.test(this.imageInfo.profile)) {
+                    return this.imageInfo.profile;
+                }
+                if (Array.isArray(this.imageInfo.profile) &&
+                    this.imageInfo.profile.length > 0 &&
+                    typeof this.imageInfo.profile[0] === 'string' &&
+                    COMPLIANCE_VERSION2.test(this.imageInfo.profile[0])) {
+                    return this.imageInfo.profile[0];
+                }
+                break;
+            default:
+        }
+    };
+    /**
+     * @param {Versions} version Optional IIIF image API version
+     * @returns {string} Compliance level, on of 'level0', 'level1' or 'level2' or undefined
+     */
+    IIIFInfo.prototype.getComplianceLevelFromProfile = function (version) {
+        var complianceLevel = this.getComplianceLevelEntryFromProfile(version);
+        if (complianceLevel === undefined) {
+            return undefined;
+        }
+        var level = complianceLevel.match(/level[0-2](?:\.json)?$/g);
+        return Array.isArray(level) ? level[0].replace('.json', '') : undefined;
+    };
+    /**
+     * @returns {SupportedFeatures} Image formats, qualities and region / size calculation
+     * methods that are supported by the IIIF service.
+     */
+    IIIFInfo.prototype.getComplianceLevelSupportedFeatures = function () {
+        if (this.imageInfo === undefined) {
+            return;
+        }
+        var version = this.getImageApiVersion();
+        var level = this.getComplianceLevelFromProfile(version);
+        if (level === undefined) {
+            return IIIF_PROFILE_VALUES['none']['none'];
+        }
+        return IIIF_PROFILE_VALUES[version][level];
+    };
+    /**
+     * @param {PreferredOptions=} opt_preferredOptions Optional options for preferred format and quality.
+     * @returns {import("../source/IIIF.js").Options} IIIF tile source ready constructor options.
+     * @api
+     */
+    IIIFInfo.prototype.getTileSourceOptions = function (opt_preferredOptions) {
+        var options = opt_preferredOptions || {}, version = this.getImageApiVersion();
+        if (version === undefined) {
+            return;
+        }
+        var imageOptions = version === undefined ? undefined : versionFunctions[version](this);
+        if (imageOptions === undefined) {
+            return;
+        }
+        return {
+            url: imageOptions.url,
+            version: version,
+            size: [this.imageInfo.width, this.imageInfo.height],
+            sizes: imageOptions.sizes,
+            format: options.format !== undefined &&
+                imageOptions.formats.includes(options.format)
+                ? options.format
+                : imageOptions.preferredFormat !== undefined
+                    ? imageOptions.preferredFormat
+                    : 'jpg',
+            supports: imageOptions.supports,
+            quality: options.quality && imageOptions.qualities.includes(options.quality)
+                ? options.quality
+                : imageOptions.qualities.includes('native')
+                    ? 'native'
+                    : 'default',
+            resolutions: Array.isArray(imageOptions.resolutions)
+                ? imageOptions.resolutions.sort(function (a, b) {
+                    return b - a;
+                })
+                : undefined,
+            tileSize: imageOptions.tileSize,
+        };
+    };
+    return IIIFInfo;
+}());
+/* harmony default export */ __webpack_exports__["default"] = (IIIFInfo);
+//# sourceMappingURL=IIIFInfo.js.map
+
+/***/ }),
+
 /***/ "./node_modules/ol/format/JSONFeature.js":
 /*!***********************************************!*\
   !*** ./node_modules/ol/format/JSONFeature.js ***!
@@ -34325,6 +38848,2841 @@ function getObject(source) {
 }
 /* harmony default export */ __webpack_exports__["default"] = (JSONFeature);
 //# sourceMappingURL=JSONFeature.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/format/KML.js":
+/*!***************************************!*\
+  !*** ./node_modules/ol/format/KML.js ***!
+  \***************************************/
+/*! exports provided: getDefaultFillStyle, getDefaultImageStyle, getDefaultStrokeStyle, getDefaultTextStyle, getDefaultStyle, getDefaultStyleArray, readFlatCoordinates, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getDefaultFillStyle", function() { return getDefaultFillStyle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getDefaultImageStyle", function() { return getDefaultImageStyle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getDefaultStrokeStyle", function() { return getDefaultStrokeStyle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getDefaultTextStyle", function() { return getDefaultTextStyle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getDefaultStyle", function() { return getDefaultStyle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getDefaultStyleArray", function() { return getDefaultStyleArray; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "readFlatCoordinates", function() { return readFlatCoordinates; });
+/* harmony import */ var _Feature_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Feature.js */ "./node_modules/ol/Feature.js");
+/* harmony import */ var _style_Fill_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../style/Fill.js */ "./node_modules/ol/style/Fill.js");
+/* harmony import */ var _geom_GeometryCollection_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../geom/GeometryCollection.js */ "./node_modules/ol/geom/GeometryCollection.js");
+/* harmony import */ var _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../geom/GeometryLayout.js */ "./node_modules/ol/geom/GeometryLayout.js");
+/* harmony import */ var _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../geom/GeometryType.js */ "./node_modules/ol/geom/GeometryType.js");
+/* harmony import */ var _style_Icon_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../style/Icon.js */ "./node_modules/ol/style/Icon.js");
+/* harmony import */ var _style_IconAnchorUnits_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../style/IconAnchorUnits.js */ "./node_modules/ol/style/IconAnchorUnits.js");
+/* harmony import */ var _style_IconOrigin_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../style/IconOrigin.js */ "./node_modules/ol/style/IconOrigin.js");
+/* harmony import */ var _geom_LineString_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../geom/LineString.js */ "./node_modules/ol/geom/LineString.js");
+/* harmony import */ var _geom_MultiLineString_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../geom/MultiLineString.js */ "./node_modules/ol/geom/MultiLineString.js");
+/* harmony import */ var _geom_MultiPoint_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../geom/MultiPoint.js */ "./node_modules/ol/geom/MultiPoint.js");
+/* harmony import */ var _geom_MultiPolygon_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../geom/MultiPolygon.js */ "./node_modules/ol/geom/MultiPolygon.js");
+/* harmony import */ var _geom_Point_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../geom/Point.js */ "./node_modules/ol/geom/Point.js");
+/* harmony import */ var _geom_Polygon_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../geom/Polygon.js */ "./node_modules/ol/geom/Polygon.js");
+/* harmony import */ var _style_Stroke_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../style/Stroke.js */ "./node_modules/ol/style/Stroke.js");
+/* harmony import */ var _style_Style_js__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../style/Style.js */ "./node_modules/ol/style/Style.js");
+/* harmony import */ var _style_Text_js__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../style/Text.js */ "./node_modules/ol/style/Text.js");
+/* harmony import */ var _XMLFeature_js__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./XMLFeature.js */ "./node_modules/ol/format/XMLFeature.js");
+/* harmony import */ var _xml_js__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../xml.js */ "./node_modules/ol/xml.js");
+/* harmony import */ var _color_js__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../color.js */ "./node_modules/ol/color.js");
+/* harmony import */ var _asserts_js__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../asserts.js */ "./node_modules/ol/asserts.js");
+/* harmony import */ var _array_js__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../array.js */ "./node_modules/ol/array.js");
+/* harmony import */ var _proj_js__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../proj.js */ "./node_modules/ol/proj.js");
+/* harmony import */ var _xsd_js__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./xsd.js */ "./node_modules/ol/format/xsd.js");
+/* harmony import */ var _math_js__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ../math.js */ "./node_modules/ol/math.js");
+/* harmony import */ var _Feature_js__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./Feature.js */ "./node_modules/ol/format/Feature.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+/**
+ * @module ol/format/KML
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * @typedef {Object} Vec2
+ * @property {number} x
+ * @property {import("../style/IconAnchorUnits").default} xunits
+ * @property {number} y
+ * @property {import("../style/IconAnchorUnits").default} yunits
+ * @property {import("../style/IconOrigin.js").default} origin
+ */
+/**
+ * @typedef {Object} GxTrackObject
+ * @property {Array<number>} flatCoordinates
+ * @property {Array<number>} whens
+ */
+/**
+ * @const
+ * @type {Array<string>}
+ */
+var GX_NAMESPACE_URIS = ['http://www.google.com/kml/ext/2.2'];
+/**
+ * @const
+ * @type {Array<null|string>}
+ */
+var NAMESPACE_URIS = [
+    null,
+    'http://earth.google.com/kml/2.0',
+    'http://earth.google.com/kml/2.1',
+    'http://earth.google.com/kml/2.2',
+    'http://www.opengis.net/kml/2.2',
+];
+/**
+ * @const
+ * @type {string}
+ */
+var SCHEMA_LOCATION = 'http://www.opengis.net/kml/2.2 ' +
+    'https://developers.google.com/kml/schema/kml22gx.xsd';
+/**
+ * @type {Object<string, import("../style/IconAnchorUnits").default>}
+ */
+var ICON_ANCHOR_UNITS_MAP = {
+    'fraction': _style_IconAnchorUnits_js__WEBPACK_IMPORTED_MODULE_6__["default"].FRACTION,
+    'pixels': _style_IconAnchorUnits_js__WEBPACK_IMPORTED_MODULE_6__["default"].PIXELS,
+    'insetPixels': _style_IconAnchorUnits_js__WEBPACK_IMPORTED_MODULE_6__["default"].PIXELS,
+};
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var PLACEMARK_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(NAMESPACE_URIS, {
+    'ExtendedData': extendedDataParser,
+    'Region': regionParser,
+    'MultiGeometry': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(readMultiGeometry, 'geometry'),
+    'LineString': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(readLineString, 'geometry'),
+    'LinearRing': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(readLinearRing, 'geometry'),
+    'Point': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(readPoint, 'geometry'),
+    'Polygon': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(readPolygon, 'geometry'),
+    'Style': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(readStyle),
+    'StyleMap': placemarkStyleMapParser,
+    'address': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["readString"]),
+    'description': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["readString"]),
+    'name': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["readString"]),
+    'open': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["readBoolean"]),
+    'phoneNumber': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["readString"]),
+    'styleUrl': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(readURI),
+    'visibility': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["readBoolean"]),
+}, Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(GX_NAMESPACE_URIS, {
+    'MultiTrack': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(readGxMultiTrack, 'geometry'),
+    'Track': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(readGxTrack, 'geometry'),
+}));
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var NETWORK_LINK_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(NAMESPACE_URIS, {
+    'ExtendedData': extendedDataParser,
+    'Region': regionParser,
+    'Link': linkParser,
+    'address': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["readString"]),
+    'description': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["readString"]),
+    'name': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["readString"]),
+    'open': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["readBoolean"]),
+    'phoneNumber': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["readString"]),
+    'visibility': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["readBoolean"]),
+});
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var LINK_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(NAMESPACE_URIS, {
+    'href': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(readURI),
+});
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var REGION_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(NAMESPACE_URIS, {
+    'LatLonAltBox': latLonAltBoxParser,
+    'Lod': lodParser,
+});
+/**
+ * @const
+ * @type {Object<string, Array<string>>}
+ */
+// @ts-ignore
+var KML_SEQUENCE = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(NAMESPACE_URIS, ['Document', 'Placemark']);
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Serializer>>}
+ */
+// @ts-ignore
+var KML_SERIALIZERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(NAMESPACE_URIS, {
+    'Document': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(writeDocument),
+    'Placemark': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(writePlacemark),
+});
+/**
+ * @type {import("../color.js").Color}
+ */
+var DEFAULT_COLOR;
+/**
+ * @type {Fill}
+ */
+var DEFAULT_FILL_STYLE = null;
+/**
+ * Get the default fill style (or null if not yet set).
+ * @return {Fill} The default fill style.
+ */
+function getDefaultFillStyle() {
+    return DEFAULT_FILL_STYLE;
+}
+/**
+ * @type {import("../size.js").Size}
+ */
+var DEFAULT_IMAGE_STYLE_ANCHOR;
+/**
+ * @type {import("../style/IconAnchorUnits").default}
+ */
+var DEFAULT_IMAGE_STYLE_ANCHOR_X_UNITS;
+/**
+ * @type {import("../style/IconAnchorUnits").default}
+ */
+var DEFAULT_IMAGE_STYLE_ANCHOR_Y_UNITS;
+/**
+ * @type {import("../size.js").Size}
+ */
+var DEFAULT_IMAGE_STYLE_SIZE;
+/**
+ * @type {string}
+ */
+var DEFAULT_IMAGE_STYLE_SRC;
+/**
+ * @type {number}
+ */
+var DEFAULT_IMAGE_SCALE_MULTIPLIER;
+/**
+ * @type {import("../style/Image.js").default}
+ */
+var DEFAULT_IMAGE_STYLE = null;
+/**
+ * Get the default image style (or null if not yet set).
+ * @return {import("../style/Image.js").default} The default image style.
+ */
+function getDefaultImageStyle() {
+    return DEFAULT_IMAGE_STYLE;
+}
+/**
+ * @type {string}
+ */
+var DEFAULT_NO_IMAGE_STYLE;
+/**
+ * @type {Stroke}
+ */
+var DEFAULT_STROKE_STYLE = null;
+/**
+ * Get the default stroke style (or null if not yet set).
+ * @return {Stroke} The default stroke style.
+ */
+function getDefaultStrokeStyle() {
+    return DEFAULT_STROKE_STYLE;
+}
+/**
+ * @type {Stroke}
+ */
+var DEFAULT_TEXT_STROKE_STYLE;
+/**
+ * @type {Text}
+ */
+var DEFAULT_TEXT_STYLE = null;
+/**
+ * Get the default text style (or null if not yet set).
+ * @return {Text} The default text style.
+ */
+function getDefaultTextStyle() {
+    return DEFAULT_TEXT_STYLE;
+}
+/**
+ * @type {Style}
+ */
+var DEFAULT_STYLE = null;
+/**
+ * Get the default style (or null if not yet set).
+ * @return {Style} The default style.
+ */
+function getDefaultStyle() {
+    return DEFAULT_STYLE;
+}
+/**
+ * @type {Array<Style>}
+ */
+var DEFAULT_STYLE_ARRAY = null;
+/**
+ * Get the default style array (or null if not yet set).
+ * @return {Array<Style>} The default style.
+ */
+function getDefaultStyleArray() {
+    return DEFAULT_STYLE_ARRAY;
+}
+function createStyleDefaults() {
+    DEFAULT_COLOR = [255, 255, 255, 1];
+    DEFAULT_FILL_STYLE = new _style_Fill_js__WEBPACK_IMPORTED_MODULE_1__["default"]({
+        color: DEFAULT_COLOR,
+    });
+    DEFAULT_IMAGE_STYLE_ANCHOR = [20, 2]; // FIXME maybe [8, 32] ?
+    DEFAULT_IMAGE_STYLE_ANCHOR_X_UNITS = _style_IconAnchorUnits_js__WEBPACK_IMPORTED_MODULE_6__["default"].PIXELS;
+    DEFAULT_IMAGE_STYLE_ANCHOR_Y_UNITS = _style_IconAnchorUnits_js__WEBPACK_IMPORTED_MODULE_6__["default"].PIXELS;
+    DEFAULT_IMAGE_STYLE_SIZE = [64, 64];
+    DEFAULT_IMAGE_STYLE_SRC =
+        'https://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png';
+    DEFAULT_IMAGE_SCALE_MULTIPLIER = 0.5;
+    DEFAULT_IMAGE_STYLE = new _style_Icon_js__WEBPACK_IMPORTED_MODULE_5__["default"]({
+        anchor: DEFAULT_IMAGE_STYLE_ANCHOR,
+        anchorOrigin: _style_IconOrigin_js__WEBPACK_IMPORTED_MODULE_7__["default"].BOTTOM_LEFT,
+        anchorXUnits: DEFAULT_IMAGE_STYLE_ANCHOR_X_UNITS,
+        anchorYUnits: DEFAULT_IMAGE_STYLE_ANCHOR_Y_UNITS,
+        crossOrigin: 'anonymous',
+        rotation: 0,
+        scale: DEFAULT_IMAGE_SCALE_MULTIPLIER,
+        size: DEFAULT_IMAGE_STYLE_SIZE,
+        src: DEFAULT_IMAGE_STYLE_SRC,
+    });
+    DEFAULT_NO_IMAGE_STYLE = 'NO_IMAGE';
+    DEFAULT_STROKE_STYLE = new _style_Stroke_js__WEBPACK_IMPORTED_MODULE_14__["default"]({
+        color: DEFAULT_COLOR,
+        width: 1,
+    });
+    DEFAULT_TEXT_STROKE_STYLE = new _style_Stroke_js__WEBPACK_IMPORTED_MODULE_14__["default"]({
+        color: [51, 51, 51, 1],
+        width: 2,
+    });
+    DEFAULT_TEXT_STYLE = new _style_Text_js__WEBPACK_IMPORTED_MODULE_16__["default"]({
+        font: 'bold 16px Helvetica',
+        fill: DEFAULT_FILL_STYLE,
+        stroke: DEFAULT_TEXT_STROKE_STYLE,
+        scale: 0.8,
+    });
+    DEFAULT_STYLE = new _style_Style_js__WEBPACK_IMPORTED_MODULE_15__["default"]({
+        fill: DEFAULT_FILL_STYLE,
+        image: DEFAULT_IMAGE_STYLE,
+        text: DEFAULT_TEXT_STYLE,
+        stroke: DEFAULT_STROKE_STYLE,
+        zIndex: 0,
+    });
+    DEFAULT_STYLE_ARRAY = [DEFAULT_STYLE];
+}
+/**
+ * @type {HTMLTextAreaElement}
+ */
+var TEXTAREA;
+/**
+ * @typedef {Object} Options
+ * @property {boolean} [extractStyles=true] Extract styles from the KML.
+ * @property {boolean} [showPointNames=true] Show names as labels for placemarks which contain points.
+ * @property {Array<Style>} [defaultStyle] Default style. The
+ * default default style is the same as Google Earth.
+ * @property {boolean} [writeStyles=true] Write styles into KML.
+ * @property {null|string} [crossOrigin='anonymous'] The `crossOrigin` attribute for loaded images. Note that you must provide a
+ * `crossOrigin` value if you want to access pixel data with the Canvas renderer.
+ */
+/**
+ * @classdesc
+ * Feature format for reading and writing data in the KML format.
+ *
+ * {@link module:ol/format/KML~KML#readFeature} will read the first feature from
+ * a KML source.
+ *
+ * MultiGeometries are converted into GeometryCollections if they are a mix of
+ * geometry types, and into MultiPoint/MultiLineString/MultiPolygon if they are
+ * all of the same type.
+ *
+ * Note that the KML format uses the URL() constructor. Older browsers such as IE
+ * which do not support this will need a URL polyfill to be loaded before use.
+ *
+ * @api
+ */
+var KML = /** @class */ (function (_super) {
+    __extends(KML, _super);
+    /**
+     * @param {Options=} opt_options Options.
+     */
+    function KML(opt_options) {
+        var _this = _super.call(this) || this;
+        var options = opt_options ? opt_options : {};
+        if (!DEFAULT_STYLE_ARRAY) {
+            createStyleDefaults();
+        }
+        /**
+         * @type {import("../proj/Projection.js").default}
+         */
+        _this.dataProjection = Object(_proj_js__WEBPACK_IMPORTED_MODULE_22__["get"])('EPSG:4326');
+        /**
+         * @private
+         * @type {Array<Style>}
+         */
+        _this.defaultStyle_ = options.defaultStyle
+            ? options.defaultStyle
+            : DEFAULT_STYLE_ARRAY;
+        /**
+         * @private
+         * @type {boolean}
+         */
+        _this.extractStyles_ =
+            options.extractStyles !== undefined ? options.extractStyles : true;
+        /**
+         * @type {boolean}
+         */
+        _this.writeStyles_ =
+            options.writeStyles !== undefined ? options.writeStyles : true;
+        /**
+         * @private
+         * @type {!Object<string, (Array<Style>|string)>}
+         */
+        _this.sharedStyles_ = {};
+        /**
+         * @private
+         * @type {boolean}
+         */
+        _this.showPointNames_ =
+            options.showPointNames !== undefined ? options.showPointNames : true;
+        /**
+         * @type {null|string}
+         */
+        _this.crossOrigin_ =
+            options.crossOrigin !== undefined ? options.crossOrigin : 'anonymous';
+        return _this;
+    }
+    /**
+     * @param {Node} node Node.
+     * @param {Array<*>} objectStack Object stack.
+     * @private
+     * @return {Array<Feature>|undefined} Features.
+     */
+    KML.prototype.readDocumentOrFolder_ = function (node, objectStack) {
+        // FIXME use scope somehow
+        var parsersNS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(NAMESPACE_URIS, {
+            'Document': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeArrayExtender"])(this.readDocumentOrFolder_, this),
+            'Folder': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeArrayExtender"])(this.readDocumentOrFolder_, this),
+            'Placemark': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeArrayPusher"])(this.readPlacemark_, this),
+            'Style': this.readSharedStyle_.bind(this),
+            'StyleMap': this.readSharedStyleMap_.bind(this),
+        });
+        /** @type {Array<Feature>} */
+        // @ts-ignore
+        var features = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["pushParseAndPop"])([], parsersNS, node, objectStack, this);
+        if (features) {
+            return features;
+        }
+        else {
+            return undefined;
+        }
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {Array<*>} objectStack Object stack.
+     * @private
+     * @return {Feature|undefined} Feature.
+     */
+    KML.prototype.readPlacemark_ = function (node, objectStack) {
+        var object = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["pushParseAndPop"])({ 'geometry': null }, PLACEMARK_PARSERS, node, objectStack, this);
+        if (!object) {
+            return undefined;
+        }
+        var feature = new _Feature_js__WEBPACK_IMPORTED_MODULE_0__["default"]();
+        var id = node.getAttribute('id');
+        if (id !== null) {
+            feature.setId(id);
+        }
+        var options = /** @type {import("./Feature.js").ReadOptions} */ (objectStack[0]);
+        var geometry = object['geometry'];
+        if (geometry) {
+            Object(_Feature_js__WEBPACK_IMPORTED_MODULE_25__["transformGeometryWithOptions"])(geometry, false, options);
+        }
+        feature.setGeometry(geometry);
+        delete object['geometry'];
+        if (this.extractStyles_) {
+            var style = object['Style'];
+            var styleUrl = object['styleUrl'];
+            var styleFunction = createFeatureStyleFunction(style, styleUrl, this.defaultStyle_, this.sharedStyles_, this.showPointNames_);
+            feature.setStyle(styleFunction);
+        }
+        delete object['Style'];
+        // we do not remove the styleUrl property from the object, so it
+        // gets stored on feature when setProperties is called
+        feature.setProperties(object, true);
+        return feature;
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {Array<*>} objectStack Object stack.
+     * @private
+     */
+    KML.prototype.readSharedStyle_ = function (node, objectStack) {
+        var id = node.getAttribute('id');
+        if (id !== null) {
+            var style = readStyle.call(this, node, objectStack);
+            if (style) {
+                var styleUri = void 0;
+                var baseURI = node.baseURI;
+                if (!baseURI || baseURI == 'about:blank') {
+                    baseURI = window.location.href;
+                }
+                if (baseURI) {
+                    var url = new URL('#' + id, baseURI);
+                    styleUri = url.href;
+                }
+                else {
+                    styleUri = '#' + id;
+                }
+                this.sharedStyles_[styleUri] = style;
+            }
+        }
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {Array<*>} objectStack Object stack.
+     * @private
+     */
+    KML.prototype.readSharedStyleMap_ = function (node, objectStack) {
+        var id = node.getAttribute('id');
+        if (id === null) {
+            return;
+        }
+        var styleMapValue = readStyleMapValue.call(this, node, objectStack);
+        if (!styleMapValue) {
+            return;
+        }
+        var styleUri;
+        var baseURI = node.baseURI;
+        if (!baseURI || baseURI == 'about:blank') {
+            baseURI = window.location.href;
+        }
+        if (baseURI) {
+            var url = new URL('#' + id, baseURI);
+            styleUri = url.href;
+        }
+        else {
+            styleUri = '#' + id;
+        }
+        this.sharedStyles_[styleUri] = styleMapValue;
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {import("./Feature.js").ReadOptions=} opt_options Options.
+     * @return {import("../Feature.js").default} Feature.
+     */
+    KML.prototype.readFeatureFromNode = function (node, opt_options) {
+        if (!Object(_array_js__WEBPACK_IMPORTED_MODULE_21__["includes"])(NAMESPACE_URIS, node.namespaceURI)) {
+            return null;
+        }
+        var feature = this.readPlacemark_(node, [
+            this.getReadOptions(node, opt_options),
+        ]);
+        if (feature) {
+            return feature;
+        }
+        else {
+            return null;
+        }
+    };
+    /**
+     * @protected
+     * @param {Element} node Node.
+     * @param {import("./Feature.js").ReadOptions=} opt_options Options.
+     * @return {Array<import("../Feature.js").default>} Features.
+     */
+    KML.prototype.readFeaturesFromNode = function (node, opt_options) {
+        if (!Object(_array_js__WEBPACK_IMPORTED_MODULE_21__["includes"])(NAMESPACE_URIS, node.namespaceURI)) {
+            return [];
+        }
+        var features;
+        var localName = node.localName;
+        if (localName == 'Document' || localName == 'Folder') {
+            features = this.readDocumentOrFolder_(node, [
+                this.getReadOptions(node, opt_options),
+            ]);
+            if (features) {
+                return features;
+            }
+            else {
+                return [];
+            }
+        }
+        else if (localName == 'Placemark') {
+            var feature = this.readPlacemark_(node, [
+                this.getReadOptions(node, opt_options),
+            ]);
+            if (feature) {
+                return [feature];
+            }
+            else {
+                return [];
+            }
+        }
+        else if (localName == 'kml') {
+            features = [];
+            for (var n = node.firstElementChild; n; n = n.nextElementSibling) {
+                var fs = this.readFeaturesFromNode(n, opt_options);
+                if (fs) {
+                    Object(_array_js__WEBPACK_IMPORTED_MODULE_21__["extend"])(features, fs);
+                }
+            }
+            return features;
+        }
+        else {
+            return [];
+        }
+    };
+    /**
+     * Read the name of the KML.
+     *
+     * @param {Document|Element|string} source Source.
+     * @return {string|undefined} Name.
+     * @api
+     */
+    KML.prototype.readName = function (source) {
+        if (!source) {
+            return undefined;
+        }
+        else if (typeof source === 'string') {
+            var doc = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["parse"])(source);
+            return this.readNameFromDocument(doc);
+        }
+        else if (Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["isDocument"])(source)) {
+            return this.readNameFromDocument(/** @type {Document} */ (source));
+        }
+        else {
+            return this.readNameFromNode(/** @type {Element} */ (source));
+        }
+    };
+    /**
+     * @param {Document} doc Document.
+     * @return {string|undefined} Name.
+     */
+    KML.prototype.readNameFromDocument = function (doc) {
+        for (var n = /** @type {Node} */ (doc.firstChild); n; n = n.nextSibling) {
+            if (n.nodeType == Node.ELEMENT_NODE) {
+                var name_1 = this.readNameFromNode(/** @type {Element} */ (n));
+                if (name_1) {
+                    return name_1;
+                }
+            }
+        }
+        return undefined;
+    };
+    /**
+     * @param {Element} node Node.
+     * @return {string|undefined} Name.
+     */
+    KML.prototype.readNameFromNode = function (node) {
+        for (var n = node.firstElementChild; n; n = n.nextElementSibling) {
+            if (Object(_array_js__WEBPACK_IMPORTED_MODULE_21__["includes"])(NAMESPACE_URIS, n.namespaceURI) && n.localName == 'name') {
+                return Object(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["readString"])(n);
+            }
+        }
+        for (var n = node.firstElementChild; n; n = n.nextElementSibling) {
+            var localName = n.localName;
+            if (Object(_array_js__WEBPACK_IMPORTED_MODULE_21__["includes"])(NAMESPACE_URIS, n.namespaceURI) &&
+                (localName == 'Document' ||
+                    localName == 'Folder' ||
+                    localName == 'Placemark' ||
+                    localName == 'kml')) {
+                var name_2 = this.readNameFromNode(n);
+                if (name_2) {
+                    return name_2;
+                }
+            }
+        }
+        return undefined;
+    };
+    /**
+     * Read the network links of the KML.
+     *
+     * @param {Document|Element|string} source Source.
+     * @return {Array<Object>} Network links.
+     * @api
+     */
+    KML.prototype.readNetworkLinks = function (source) {
+        var networkLinks = [];
+        if (typeof source === 'string') {
+            var doc = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["parse"])(source);
+            Object(_array_js__WEBPACK_IMPORTED_MODULE_21__["extend"])(networkLinks, this.readNetworkLinksFromDocument(doc));
+        }
+        else if (Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["isDocument"])(source)) {
+            Object(_array_js__WEBPACK_IMPORTED_MODULE_21__["extend"])(networkLinks, this.readNetworkLinksFromDocument(/** @type {Document} */ (source)));
+        }
+        else {
+            Object(_array_js__WEBPACK_IMPORTED_MODULE_21__["extend"])(networkLinks, this.readNetworkLinksFromNode(/** @type {Element} */ (source)));
+        }
+        return networkLinks;
+    };
+    /**
+     * @param {Document} doc Document.
+     * @return {Array<Object>} Network links.
+     */
+    KML.prototype.readNetworkLinksFromDocument = function (doc) {
+        var networkLinks = [];
+        for (var n = /** @type {Node} */ (doc.firstChild); n; n = n.nextSibling) {
+            if (n.nodeType == Node.ELEMENT_NODE) {
+                Object(_array_js__WEBPACK_IMPORTED_MODULE_21__["extend"])(networkLinks, this.readNetworkLinksFromNode(/** @type {Element} */ (n)));
+            }
+        }
+        return networkLinks;
+    };
+    /**
+     * @param {Element} node Node.
+     * @return {Array<Object>} Network links.
+     */
+    KML.prototype.readNetworkLinksFromNode = function (node) {
+        var networkLinks = [];
+        for (var n = node.firstElementChild; n; n = n.nextElementSibling) {
+            if (Object(_array_js__WEBPACK_IMPORTED_MODULE_21__["includes"])(NAMESPACE_URIS, n.namespaceURI) &&
+                n.localName == 'NetworkLink') {
+                var obj = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["pushParseAndPop"])({}, NETWORK_LINK_PARSERS, n, []);
+                networkLinks.push(obj);
+            }
+        }
+        for (var n = node.firstElementChild; n; n = n.nextElementSibling) {
+            var localName = n.localName;
+            if (Object(_array_js__WEBPACK_IMPORTED_MODULE_21__["includes"])(NAMESPACE_URIS, n.namespaceURI) &&
+                (localName == 'Document' || localName == 'Folder' || localName == 'kml')) {
+                Object(_array_js__WEBPACK_IMPORTED_MODULE_21__["extend"])(networkLinks, this.readNetworkLinksFromNode(n));
+            }
+        }
+        return networkLinks;
+    };
+    /**
+     * Read the regions of the KML.
+     *
+     * @param {Document|Element|string} source Source.
+     * @return {Array<Object>} Regions.
+     * @api
+     */
+    KML.prototype.readRegion = function (source) {
+        var regions = [];
+        if (typeof source === 'string') {
+            var doc = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["parse"])(source);
+            Object(_array_js__WEBPACK_IMPORTED_MODULE_21__["extend"])(regions, this.readRegionFromDocument(doc));
+        }
+        else if (Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["isDocument"])(source)) {
+            Object(_array_js__WEBPACK_IMPORTED_MODULE_21__["extend"])(regions, this.readRegionFromDocument(/** @type {Document} */ (source)));
+        }
+        else {
+            Object(_array_js__WEBPACK_IMPORTED_MODULE_21__["extend"])(regions, this.readRegionFromNode(/** @type {Element} */ (source)));
+        }
+        return regions;
+    };
+    /**
+     * @param {Document} doc Document.
+     * @return {Array<Object>} Region.
+     */
+    KML.prototype.readRegionFromDocument = function (doc) {
+        var regions = [];
+        for (var n = /** @type {Node} */ (doc.firstChild); n; n = n.nextSibling) {
+            if (n.nodeType == Node.ELEMENT_NODE) {
+                Object(_array_js__WEBPACK_IMPORTED_MODULE_21__["extend"])(regions, this.readRegionFromNode(/** @type {Element} */ (n)));
+            }
+        }
+        return regions;
+    };
+    /**
+     * @param {Element} node Node.
+     * @return {Array<Object>} Region.
+     * @api
+     */
+    KML.prototype.readRegionFromNode = function (node) {
+        var regions = [];
+        for (var n = node.firstElementChild; n; n = n.nextElementSibling) {
+            if (Object(_array_js__WEBPACK_IMPORTED_MODULE_21__["includes"])(NAMESPACE_URIS, n.namespaceURI) && n.localName == 'Region') {
+                var obj = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["pushParseAndPop"])({}, REGION_PARSERS, n, []);
+                regions.push(obj);
+            }
+        }
+        for (var n = node.firstElementChild; n; n = n.nextElementSibling) {
+            var localName = n.localName;
+            if (Object(_array_js__WEBPACK_IMPORTED_MODULE_21__["includes"])(NAMESPACE_URIS, n.namespaceURI) &&
+                (localName == 'Document' || localName == 'Folder' || localName == 'kml')) {
+                Object(_array_js__WEBPACK_IMPORTED_MODULE_21__["extend"])(regions, this.readRegionFromNode(n));
+            }
+        }
+        return regions;
+    };
+    /**
+     * Encode an array of features in the KML format as an XML node. GeometryCollections,
+     * MultiPoints, MultiLineStrings, and MultiPolygons are output as MultiGeometries.
+     *
+     * @param {Array<Feature>} features Features.
+     * @param {import("./Feature.js").WriteOptions=} opt_options Options.
+     * @return {Node} Node.
+     * @api
+     */
+    KML.prototype.writeFeaturesNode = function (features, opt_options) {
+        opt_options = this.adaptOptions(opt_options);
+        var kml = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["createElementNS"])(NAMESPACE_URIS[4], 'kml');
+        var xmlnsUri = 'http://www.w3.org/2000/xmlns/';
+        kml.setAttributeNS(xmlnsUri, 'xmlns:gx', GX_NAMESPACE_URIS[0]);
+        kml.setAttributeNS(xmlnsUri, 'xmlns:xsi', _xml_js__WEBPACK_IMPORTED_MODULE_18__["XML_SCHEMA_INSTANCE_URI"]);
+        kml.setAttributeNS(_xml_js__WEBPACK_IMPORTED_MODULE_18__["XML_SCHEMA_INSTANCE_URI"], 'xsi:schemaLocation', SCHEMA_LOCATION);
+        var /** @type {import("../xml.js").NodeStackItem} */ context = {
+            node: kml,
+        };
+        /** @type {!Object<string, (Array<Feature>|Feature|undefined)>} */
+        var properties = {};
+        if (features.length > 1) {
+            properties['Document'] = features;
+        }
+        else if (features.length == 1) {
+            properties['Placemark'] = features[0];
+        }
+        var orderedKeys = KML_SEQUENCE[kml.namespaceURI];
+        var values = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeSequence"])(properties, orderedKeys);
+        Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["pushSerializeAndPop"])(context, KML_SERIALIZERS, _xml_js__WEBPACK_IMPORTED_MODULE_18__["OBJECT_PROPERTY_NODE_FACTORY"], values, [opt_options], orderedKeys, this);
+        return kml;
+    };
+    return KML;
+}(_XMLFeature_js__WEBPACK_IMPORTED_MODULE_17__["default"]));
+/**
+ * @param {Style|undefined} foundStyle Style.
+ * @param {string} name Name.
+ * @return {Style} style Style.
+ */
+function createNameStyleFunction(foundStyle, name) {
+    var textOffset = [0, 0];
+    var textAlign = 'start';
+    var imageStyle = foundStyle.getImage();
+    if (imageStyle) {
+        var imageSize = imageStyle.getImageSize();
+        if (imageSize === null) {
+            imageSize = DEFAULT_IMAGE_STYLE_SIZE;
+        }
+        if (imageSize.length == 2) {
+            var imageScale = imageStyle.getScaleArray();
+            // Offset the label to be centered to the right of the icon,
+            // if there is one.
+            textOffset[0] = (imageScale[0] * imageSize[0]) / 2;
+            textOffset[1] = (-imageScale[1] * imageSize[1]) / 2;
+            textAlign = 'left';
+        }
+    }
+    var textStyle = foundStyle.getText();
+    if (textStyle) {
+        // clone the text style, customizing it with name, alignments and offset.
+        // Note that kml does not support many text options that OpenLayers does (rotation, textBaseline).
+        textStyle = textStyle.clone();
+        textStyle.setFont(textStyle.getFont() || DEFAULT_TEXT_STYLE.getFont());
+        textStyle.setScale(textStyle.getScale() || DEFAULT_TEXT_STYLE.getScale());
+        textStyle.setFill(textStyle.getFill() || DEFAULT_TEXT_STYLE.getFill());
+        textStyle.setStroke(textStyle.getStroke() || DEFAULT_TEXT_STROKE_STYLE);
+    }
+    else {
+        textStyle = DEFAULT_TEXT_STYLE.clone();
+    }
+    textStyle.setText(name);
+    textStyle.setOffsetX(textOffset[0]);
+    textStyle.setOffsetY(textOffset[1]);
+    textStyle.setTextAlign(textAlign);
+    var nameStyle = new _style_Style_js__WEBPACK_IMPORTED_MODULE_15__["default"]({
+        image: imageStyle,
+        text: textStyle,
+    });
+    return nameStyle;
+}
+/**
+ * @param {Array<Style>|undefined} style Style.
+ * @param {string} styleUrl Style URL.
+ * @param {Array<Style>} defaultStyle Default style.
+ * @param {!Object<string, (Array<Style>|string)>} sharedStyles Shared styles.
+ * @param {boolean|undefined} showPointNames true to show names for point placemarks.
+ * @return {import("../style/Style.js").StyleFunction} Feature style function.
+ */
+function createFeatureStyleFunction(style, styleUrl, defaultStyle, sharedStyles, showPointNames) {
+    return (
+    /**
+     * @param {Feature} feature feature.
+     * @param {number} resolution Resolution.
+     * @return {Array<Style>|Style} Style.
+     */
+    function (feature, resolution) {
+        var drawName = showPointNames;
+        var name = '';
+        var multiGeometryPoints = [];
+        if (drawName) {
+            var geometry = feature.getGeometry();
+            if (geometry) {
+                var type = geometry.getType();
+                if (type === _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_4__["default"].GEOMETRY_COLLECTION) {
+                    multiGeometryPoints = geometry
+                        .getGeometriesArrayRecursive()
+                        .filter(function (geometry) {
+                        var type = geometry.getType();
+                        return (type === _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_4__["default"].POINT ||
+                            type === _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_4__["default"].MULTI_POINT);
+                    });
+                    drawName = multiGeometryPoints.length > 0;
+                }
+                else {
+                    drawName =
+                        type === _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_4__["default"].POINT || type === _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_4__["default"].MULTI_POINT;
+                }
+            }
+        }
+        if (drawName) {
+            name = /** @type {string} */ (feature.get('name'));
+            drawName = drawName && !!name;
+            // convert any html character codes
+            if (drawName && name.search(/&[^&]+;/) > -1) {
+                if (!TEXTAREA) {
+                    TEXTAREA = document.createElement('textarea');
+                }
+                TEXTAREA.innerHTML = name;
+                name = TEXTAREA.value;
+            }
+        }
+        var featureStyle = defaultStyle;
+        if (style) {
+            featureStyle = style;
+        }
+        else if (styleUrl) {
+            featureStyle = findStyle(styleUrl, defaultStyle, sharedStyles);
+        }
+        if (drawName) {
+            var nameStyle = createNameStyleFunction(featureStyle[0], name);
+            if (multiGeometryPoints.length > 0) {
+                // in multigeometries restrict the name style to points and create a
+                // style without image or text for geometries requiring fill or stroke
+                // including any polygon specific style if there is one
+                nameStyle.setGeometry(new _geom_GeometryCollection_js__WEBPACK_IMPORTED_MODULE_2__["default"](multiGeometryPoints));
+                var baseStyle = new _style_Style_js__WEBPACK_IMPORTED_MODULE_15__["default"]({
+                    geometry: featureStyle[0].getGeometry(),
+                    image: null,
+                    fill: featureStyle[0].getFill(),
+                    stroke: featureStyle[0].getStroke(),
+                    text: null,
+                });
+                return [nameStyle, baseStyle].concat(featureStyle.slice(1));
+            }
+            return nameStyle;
+        }
+        return featureStyle;
+    });
+}
+/**
+ * @param {Array<Style>|string|undefined} styleValue Style value.
+ * @param {Array<Style>} defaultStyle Default style.
+ * @param {!Object<string, (Array<Style>|string)>} sharedStyles
+ * Shared styles.
+ * @return {Array<Style>} Style.
+ */
+function findStyle(styleValue, defaultStyle, sharedStyles) {
+    if (Array.isArray(styleValue)) {
+        return styleValue;
+    }
+    else if (typeof styleValue === 'string') {
+        // KML files in the wild occasionally forget the leading `#` on styleUrls
+        // defined in the same document.  Add a leading `#` if it enables to find
+        // a style.
+        if (!(styleValue in sharedStyles) && '#' + styleValue in sharedStyles) {
+            styleValue = '#' + styleValue;
+        }
+        return findStyle(sharedStyles[styleValue], defaultStyle, sharedStyles);
+    }
+    else {
+        return defaultStyle;
+    }
+}
+/**
+ * @param {Node} node Node.
+ * @return {import("../color.js").Color|undefined} Color.
+ */
+function readColor(node) {
+    var s = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["getAllTextContent"])(node, false);
+    // The KML specification states that colors should not include a leading `#`
+    // but we tolerate them.
+    var m = /^\s*#?\s*([0-9A-Fa-f]{8})\s*$/.exec(s);
+    if (m) {
+        var hexColor = m[1];
+        return [
+            parseInt(hexColor.substr(6, 2), 16),
+            parseInt(hexColor.substr(4, 2), 16),
+            parseInt(hexColor.substr(2, 2), 16),
+            parseInt(hexColor.substr(0, 2), 16) / 255,
+        ];
+    }
+    else {
+        return undefined;
+    }
+}
+/**
+ * @param {Node} node Node.
+ * @return {Array<number>|undefined} Flat coordinates.
+ */
+function readFlatCoordinates(node) {
+    var s = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["getAllTextContent"])(node, false);
+    var flatCoordinates = [];
+    // The KML specification states that coordinate tuples should not include
+    // spaces, but we tolerate them.
+    var re = /^\s*([+\-]?\d*\.?\d+(?:e[+\-]?\d+)?)\s*,\s*([+\-]?\d*\.?\d+(?:e[+\-]?\d+)?)(?:\s*,\s*([+\-]?\d*\.?\d+(?:e[+\-]?\d+)?))?\s*/i;
+    var m;
+    while ((m = re.exec(s))) {
+        var x = parseFloat(m[1]);
+        var y = parseFloat(m[2]);
+        var z = m[3] ? parseFloat(m[3]) : 0;
+        flatCoordinates.push(x, y, z);
+        s = s.substr(m[0].length);
+    }
+    if (s !== '') {
+        return undefined;
+    }
+    return flatCoordinates;
+}
+/**
+ * @param {Node} node Node.
+ * @return {string} URI.
+ */
+function readURI(node) {
+    var s = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["getAllTextContent"])(node, false).trim();
+    var baseURI = node.baseURI;
+    if (!baseURI || baseURI == 'about:blank') {
+        baseURI = window.location.href;
+    }
+    if (baseURI) {
+        var url = new URL(s, baseURI);
+        return url.href;
+    }
+    else {
+        return s;
+    }
+}
+/**
+ * @param {Element} node Node.
+ * @return {Vec2} Vec2.
+ */
+function readVec2(node) {
+    var xunits = node.getAttribute('xunits');
+    var yunits = node.getAttribute('yunits');
+    var origin;
+    if (xunits !== 'insetPixels') {
+        if (yunits !== 'insetPixels') {
+            origin = _style_IconOrigin_js__WEBPACK_IMPORTED_MODULE_7__["default"].BOTTOM_LEFT;
+        }
+        else {
+            origin = _style_IconOrigin_js__WEBPACK_IMPORTED_MODULE_7__["default"].TOP_LEFT;
+        }
+    }
+    else {
+        if (yunits !== 'insetPixels') {
+            origin = _style_IconOrigin_js__WEBPACK_IMPORTED_MODULE_7__["default"].BOTTOM_RIGHT;
+        }
+        else {
+            origin = _style_IconOrigin_js__WEBPACK_IMPORTED_MODULE_7__["default"].TOP_RIGHT;
+        }
+    }
+    return {
+        x: parseFloat(node.getAttribute('x')),
+        xunits: ICON_ANCHOR_UNITS_MAP[xunits],
+        y: parseFloat(node.getAttribute('y')),
+        yunits: ICON_ANCHOR_UNITS_MAP[yunits],
+        origin: origin,
+    };
+}
+/**
+ * @param {Node} node Node.
+ * @return {number|undefined} Scale.
+ */
+function readScale(node) {
+    return Object(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["readDecimal"])(node);
+}
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var STYLE_MAP_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(NAMESPACE_URIS, {
+    'Pair': pairDataParser,
+});
+/**
+ * @this {KML}
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Array<Style>|string|undefined} StyleMap.
+ */
+function readStyleMapValue(node, objectStack) {
+    return Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["pushParseAndPop"])(undefined, STYLE_MAP_PARSERS, node, objectStack, this);
+}
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var ICON_STYLE_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(NAMESPACE_URIS, {
+    'Icon': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(readIcon),
+    'color': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(readColor),
+    'heading': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["readDecimal"]),
+    'hotSpot': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(readVec2),
+    'scale': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(readScale),
+});
+/**
+ * @this {KML}
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ */
+function iconStyleParser(node, objectStack) {
+    // FIXME refreshMode
+    // FIXME refreshInterval
+    // FIXME viewRefreshTime
+    // FIXME viewBoundScale
+    // FIXME viewFormat
+    // FIXME httpQuery
+    var object = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["pushParseAndPop"])({}, ICON_STYLE_PARSERS, node, objectStack);
+    if (!object) {
+        return;
+    }
+    var styleObject = /** @type {Object} */ (objectStack[objectStack.length - 1]);
+    var IconObject = 'Icon' in object ? object['Icon'] : {};
+    var drawIcon = !('Icon' in object) || Object.keys(IconObject).length > 0;
+    var src;
+    var href = /** @type {string|undefined} */ (IconObject['href']);
+    if (href) {
+        src = href;
+    }
+    else if (drawIcon) {
+        src = DEFAULT_IMAGE_STYLE_SRC;
+    }
+    var anchor, anchorXUnits, anchorYUnits;
+    var anchorOrigin = _style_IconOrigin_js__WEBPACK_IMPORTED_MODULE_7__["default"].BOTTOM_LEFT;
+    var hotSpot = /** @type {Vec2|undefined} */ (object['hotSpot']);
+    if (hotSpot) {
+        anchor = [hotSpot.x, hotSpot.y];
+        anchorXUnits = hotSpot.xunits;
+        anchorYUnits = hotSpot.yunits;
+        anchorOrigin = hotSpot.origin;
+    }
+    else if (src === DEFAULT_IMAGE_STYLE_SRC) {
+        anchor = DEFAULT_IMAGE_STYLE_ANCHOR;
+        anchorXUnits = DEFAULT_IMAGE_STYLE_ANCHOR_X_UNITS;
+        anchorYUnits = DEFAULT_IMAGE_STYLE_ANCHOR_Y_UNITS;
+    }
+    else if (/^http:\/\/maps\.(?:google|gstatic)\.com\//.test(src)) {
+        anchor = [0.5, 0];
+        anchorXUnits = _style_IconAnchorUnits_js__WEBPACK_IMPORTED_MODULE_6__["default"].FRACTION;
+        anchorYUnits = _style_IconAnchorUnits_js__WEBPACK_IMPORTED_MODULE_6__["default"].FRACTION;
+    }
+    var offset;
+    var x = /** @type {number|undefined} */ (IconObject['x']);
+    var y = /** @type {number|undefined} */ (IconObject['y']);
+    if (x !== undefined && y !== undefined) {
+        offset = [x, y];
+    }
+    var size;
+    var w = /** @type {number|undefined} */ (IconObject['w']);
+    var h = /** @type {number|undefined} */ (IconObject['h']);
+    if (w !== undefined && h !== undefined) {
+        size = [w, h];
+    }
+    var rotation;
+    var heading = /** @type {number} */ (object['heading']);
+    if (heading !== undefined) {
+        rotation = Object(_math_js__WEBPACK_IMPORTED_MODULE_24__["toRadians"])(heading);
+    }
+    var scale = /** @type {number|undefined} */ (object['scale']);
+    var color = /** @type {Array<number>|undefined} */ (object['color']);
+    if (drawIcon) {
+        if (src == DEFAULT_IMAGE_STYLE_SRC) {
+            size = DEFAULT_IMAGE_STYLE_SIZE;
+            if (scale === undefined) {
+                scale = DEFAULT_IMAGE_SCALE_MULTIPLIER;
+            }
+        }
+        var imageStyle = new _style_Icon_js__WEBPACK_IMPORTED_MODULE_5__["default"]({
+            anchor: anchor,
+            anchorOrigin: anchorOrigin,
+            anchorXUnits: anchorXUnits,
+            anchorYUnits: anchorYUnits,
+            crossOrigin: this.crossOrigin_,
+            offset: offset,
+            offsetOrigin: _style_IconOrigin_js__WEBPACK_IMPORTED_MODULE_7__["default"].BOTTOM_LEFT,
+            rotation: rotation,
+            scale: scale,
+            size: size,
+            src: src,
+            color: color,
+        });
+        styleObject['imageStyle'] = imageStyle;
+    }
+    else {
+        // handle the case when we explicitly want to draw no icon.
+        styleObject['imageStyle'] = DEFAULT_NO_IMAGE_STYLE;
+    }
+}
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var LABEL_STYLE_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(NAMESPACE_URIS, {
+    'color': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(readColor),
+    'scale': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(readScale),
+});
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ */
+function labelStyleParser(node, objectStack) {
+    // FIXME colorMode
+    var object = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["pushParseAndPop"])({}, LABEL_STYLE_PARSERS, node, objectStack);
+    if (!object) {
+        return;
+    }
+    var styleObject = objectStack[objectStack.length - 1];
+    var textStyle = new _style_Text_js__WEBPACK_IMPORTED_MODULE_16__["default"]({
+        fill: new _style_Fill_js__WEBPACK_IMPORTED_MODULE_1__["default"]({
+            color: 
+            /** @type {import("../color.js").Color} */
+            ('color' in object ? object['color'] : DEFAULT_COLOR),
+        }),
+        scale: /** @type {number|undefined} */ (object['scale']),
+    });
+    styleObject['textStyle'] = textStyle;
+}
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var LINE_STYLE_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(NAMESPACE_URIS, {
+    'color': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(readColor),
+    'width': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["readDecimal"]),
+});
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ */
+function lineStyleParser(node, objectStack) {
+    // FIXME colorMode
+    // FIXME gx:outerColor
+    // FIXME gx:outerWidth
+    // FIXME gx:physicalWidth
+    // FIXME gx:labelVisibility
+    var object = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["pushParseAndPop"])({}, LINE_STYLE_PARSERS, node, objectStack);
+    if (!object) {
+        return;
+    }
+    var styleObject = objectStack[objectStack.length - 1];
+    var strokeStyle = new _style_Stroke_js__WEBPACK_IMPORTED_MODULE_14__["default"]({
+        color: 
+        /** @type {import("../color.js").Color} */
+        ('color' in object ? object['color'] : DEFAULT_COLOR),
+        width: /** @type {number} */ ('width' in object ? object['width'] : 1),
+    });
+    styleObject['strokeStyle'] = strokeStyle;
+}
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var POLY_STYLE_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(NAMESPACE_URIS, {
+    'color': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(readColor),
+    'fill': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["readBoolean"]),
+    'outline': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["readBoolean"]),
+});
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ */
+function polyStyleParser(node, objectStack) {
+    // FIXME colorMode
+    var object = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["pushParseAndPop"])({}, POLY_STYLE_PARSERS, node, objectStack);
+    if (!object) {
+        return;
+    }
+    var styleObject = objectStack[objectStack.length - 1];
+    var fillStyle = new _style_Fill_js__WEBPACK_IMPORTED_MODULE_1__["default"]({
+        color: 
+        /** @type {import("../color.js").Color} */
+        ('color' in object ? object['color'] : DEFAULT_COLOR),
+    });
+    styleObject['fillStyle'] = fillStyle;
+    var fill = /** @type {boolean|undefined} */ (object['fill']);
+    if (fill !== undefined) {
+        styleObject['fill'] = fill;
+    }
+    var outline = /** @type {boolean|undefined} */ (object['outline']);
+    if (outline !== undefined) {
+        styleObject['outline'] = outline;
+    }
+}
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var FLAT_LINEAR_RING_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(NAMESPACE_URIS, {
+    'coordinates': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeReplacer"])(readFlatCoordinates),
+});
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Array<number>} LinearRing flat coordinates.
+ */
+function readFlatLinearRing(node, objectStack) {
+    return Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["pushParseAndPop"])(null, FLAT_LINEAR_RING_PARSERS, node, objectStack);
+}
+/**
+ * @param {Node} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ */
+function gxCoordParser(node, objectStack) {
+    var gxTrackObject = 
+    /** @type {GxTrackObject} */
+    (objectStack[objectStack.length - 1]);
+    var flatCoordinates = gxTrackObject.flatCoordinates;
+    var s = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["getAllTextContent"])(node, false);
+    var re = /^\s*([+\-]?\d+(?:\.\d*)?(?:e[+\-]?\d*)?)\s+([+\-]?\d+(?:\.\d*)?(?:e[+\-]?\d*)?)\s+([+\-]?\d+(?:\.\d*)?(?:e[+\-]?\d*)?)\s*$/i;
+    var m = re.exec(s);
+    if (m) {
+        var x = parseFloat(m[1]);
+        var y = parseFloat(m[2]);
+        var z = parseFloat(m[3]);
+        flatCoordinates.push(x, y, z, 0);
+    }
+    else {
+        flatCoordinates.push(0, 0, 0, 0);
+    }
+}
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var GX_MULTITRACK_GEOMETRY_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(GX_NAMESPACE_URIS, {
+    'Track': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeArrayPusher"])(readGxTrack),
+});
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {MultiLineString|undefined} MultiLineString.
+ */
+function readGxMultiTrack(node, objectStack) {
+    var lineStrings = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["pushParseAndPop"])([], GX_MULTITRACK_GEOMETRY_PARSERS, node, objectStack);
+    if (!lineStrings) {
+        return undefined;
+    }
+    return new _geom_MultiLineString_js__WEBPACK_IMPORTED_MODULE_9__["default"](lineStrings);
+}
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var GX_TRACK_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(NAMESPACE_URIS, {
+    'when': whenParser,
+}, Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(GX_NAMESPACE_URIS, {
+    'coord': gxCoordParser,
+}));
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {LineString|undefined} LineString.
+ */
+function readGxTrack(node, objectStack) {
+    var gxTrackObject = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["pushParseAndPop"])(
+    /** @type {GxTrackObject} */ ({
+        flatCoordinates: [],
+        whens: [],
+    }), GX_TRACK_PARSERS, node, objectStack);
+    if (!gxTrackObject) {
+        return undefined;
+    }
+    var flatCoordinates = gxTrackObject.flatCoordinates;
+    var whens = gxTrackObject.whens;
+    for (var i = 0, ii = Math.min(flatCoordinates.length, whens.length); i < ii; ++i) {
+        flatCoordinates[4 * i + 3] = whens[i];
+    }
+    return new _geom_LineString_js__WEBPACK_IMPORTED_MODULE_8__["default"](flatCoordinates, _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_3__["default"].XYZM);
+}
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var ICON_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(NAMESPACE_URIS, {
+    'href': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(readURI),
+}, Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(GX_NAMESPACE_URIS, {
+    'x': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["readDecimal"]),
+    'y': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["readDecimal"]),
+    'w': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["readDecimal"]),
+    'h': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["readDecimal"]),
+}));
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Object} Icon object.
+ */
+function readIcon(node, objectStack) {
+    var iconObject = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["pushParseAndPop"])({}, ICON_PARSERS, node, objectStack);
+    if (iconObject) {
+        return iconObject;
+    }
+    else {
+        return null;
+    }
+}
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var GEOMETRY_FLAT_COORDINATES_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(NAMESPACE_URIS, {
+    'coordinates': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeReplacer"])(readFlatCoordinates),
+});
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Array<number>} Flat coordinates.
+ */
+function readFlatCoordinatesFromNode(node, objectStack) {
+    return Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["pushParseAndPop"])(null, GEOMETRY_FLAT_COORDINATES_PARSERS, node, objectStack);
+}
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var EXTRUDE_AND_ALTITUDE_MODE_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(NAMESPACE_URIS, {
+    'extrude': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["readBoolean"]),
+    'tessellate': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["readBoolean"]),
+    'altitudeMode': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["readString"]),
+});
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {LineString|undefined} LineString.
+ */
+function readLineString(node, objectStack) {
+    var properties = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["pushParseAndPop"])({}, EXTRUDE_AND_ALTITUDE_MODE_PARSERS, node, objectStack);
+    var flatCoordinates = readFlatCoordinatesFromNode(node, objectStack);
+    if (flatCoordinates) {
+        var lineString = new _geom_LineString_js__WEBPACK_IMPORTED_MODULE_8__["default"](flatCoordinates, _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_3__["default"].XYZ);
+        lineString.setProperties(properties, true);
+        return lineString;
+    }
+    else {
+        return undefined;
+    }
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Polygon|undefined} Polygon.
+ */
+function readLinearRing(node, objectStack) {
+    var properties = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["pushParseAndPop"])({}, EXTRUDE_AND_ALTITUDE_MODE_PARSERS, node, objectStack);
+    var flatCoordinates = readFlatCoordinatesFromNode(node, objectStack);
+    if (flatCoordinates) {
+        var polygon = new _geom_Polygon_js__WEBPACK_IMPORTED_MODULE_13__["default"](flatCoordinates, _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_3__["default"].XYZ, [
+            flatCoordinates.length,
+        ]);
+        polygon.setProperties(properties, true);
+        return polygon;
+    }
+    else {
+        return undefined;
+    }
+}
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var MULTI_GEOMETRY_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(NAMESPACE_URIS, {
+    'LineString': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeArrayPusher"])(readLineString),
+    'LinearRing': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeArrayPusher"])(readLinearRing),
+    'MultiGeometry': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeArrayPusher"])(readMultiGeometry),
+    'Point': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeArrayPusher"])(readPoint),
+    'Polygon': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeArrayPusher"])(readPolygon),
+});
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {import("../geom/Geometry.js").default} Geometry.
+ */
+function readMultiGeometry(node, objectStack) {
+    var geometries = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["pushParseAndPop"])([], MULTI_GEOMETRY_PARSERS, node, objectStack);
+    if (!geometries) {
+        return null;
+    }
+    if (geometries.length === 0) {
+        return new _geom_GeometryCollection_js__WEBPACK_IMPORTED_MODULE_2__["default"](geometries);
+    }
+    var multiGeometry;
+    var homogeneous = true;
+    var type = geometries[0].getType();
+    var geometry;
+    for (var i = 1, ii = geometries.length; i < ii; ++i) {
+        geometry = geometries[i];
+        if (geometry.getType() != type) {
+            homogeneous = false;
+            break;
+        }
+    }
+    if (homogeneous) {
+        var layout = void 0;
+        var flatCoordinates = void 0;
+        if (type == _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_4__["default"].POINT) {
+            var point = geometries[0];
+            layout = point.getLayout();
+            flatCoordinates = point.getFlatCoordinates();
+            for (var i = 1, ii = geometries.length; i < ii; ++i) {
+                geometry = geometries[i];
+                Object(_array_js__WEBPACK_IMPORTED_MODULE_21__["extend"])(flatCoordinates, geometry.getFlatCoordinates());
+            }
+            multiGeometry = new _geom_MultiPoint_js__WEBPACK_IMPORTED_MODULE_10__["default"](flatCoordinates, layout);
+            setCommonGeometryProperties(multiGeometry, geometries);
+        }
+        else if (type == _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_4__["default"].LINE_STRING) {
+            multiGeometry = new _geom_MultiLineString_js__WEBPACK_IMPORTED_MODULE_9__["default"](geometries);
+            setCommonGeometryProperties(multiGeometry, geometries);
+        }
+        else if (type == _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_4__["default"].POLYGON) {
+            multiGeometry = new _geom_MultiPolygon_js__WEBPACK_IMPORTED_MODULE_11__["default"](geometries);
+            setCommonGeometryProperties(multiGeometry, geometries);
+        }
+        else if (type == _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_4__["default"].GEOMETRY_COLLECTION) {
+            multiGeometry = new _geom_GeometryCollection_js__WEBPACK_IMPORTED_MODULE_2__["default"](geometries);
+        }
+        else {
+            Object(_asserts_js__WEBPACK_IMPORTED_MODULE_20__["assert"])(false, 37); // Unknown geometry type found
+        }
+    }
+    else {
+        multiGeometry = new _geom_GeometryCollection_js__WEBPACK_IMPORTED_MODULE_2__["default"](geometries);
+    }
+    return /** @type {import("../geom/Geometry.js").default} */ (multiGeometry);
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Point|undefined} Point.
+ */
+function readPoint(node, objectStack) {
+    var properties = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["pushParseAndPop"])({}, EXTRUDE_AND_ALTITUDE_MODE_PARSERS, node, objectStack);
+    var flatCoordinates = readFlatCoordinatesFromNode(node, objectStack);
+    if (flatCoordinates) {
+        var point = new _geom_Point_js__WEBPACK_IMPORTED_MODULE_12__["default"](flatCoordinates, _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_3__["default"].XYZ);
+        point.setProperties(properties, true);
+        return point;
+    }
+    else {
+        return undefined;
+    }
+}
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var FLAT_LINEAR_RINGS_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(NAMESPACE_URIS, {
+    'innerBoundaryIs': innerBoundaryIsParser,
+    'outerBoundaryIs': outerBoundaryIsParser,
+});
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Polygon|undefined} Polygon.
+ */
+function readPolygon(node, objectStack) {
+    var properties = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["pushParseAndPop"])(
+    /** @type {Object<string,*>} */ ({}), EXTRUDE_AND_ALTITUDE_MODE_PARSERS, node, objectStack);
+    var flatLinearRings = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["pushParseAndPop"])([null], FLAT_LINEAR_RINGS_PARSERS, node, objectStack);
+    if (flatLinearRings && flatLinearRings[0]) {
+        var flatCoordinates = flatLinearRings[0];
+        var ends = [flatCoordinates.length];
+        for (var i = 1, ii = flatLinearRings.length; i < ii; ++i) {
+            Object(_array_js__WEBPACK_IMPORTED_MODULE_21__["extend"])(flatCoordinates, flatLinearRings[i]);
+            ends.push(flatCoordinates.length);
+        }
+        var polygon = new _geom_Polygon_js__WEBPACK_IMPORTED_MODULE_13__["default"](flatCoordinates, _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_3__["default"].XYZ, ends);
+        polygon.setProperties(properties, true);
+        return polygon;
+    }
+    else {
+        return undefined;
+    }
+}
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var STYLE_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(NAMESPACE_URIS, {
+    'IconStyle': iconStyleParser,
+    'LabelStyle': labelStyleParser,
+    'LineStyle': lineStyleParser,
+    'PolyStyle': polyStyleParser,
+});
+/**
+ * @this {KML}
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Array<Style>} Style.
+ */
+function readStyle(node, objectStack) {
+    var styleObject = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["pushParseAndPop"])({}, STYLE_PARSERS, node, objectStack, this);
+    if (!styleObject) {
+        return null;
+    }
+    var fillStyle = 
+    /** @type {Fill} */
+    ('fillStyle' in styleObject
+        ? styleObject['fillStyle']
+        : DEFAULT_FILL_STYLE);
+    var fill = /** @type {boolean|undefined} */ (styleObject['fill']);
+    if (fill !== undefined && !fill) {
+        fillStyle = null;
+    }
+    var imageStyle;
+    if ('imageStyle' in styleObject) {
+        if (styleObject['imageStyle'] != DEFAULT_NO_IMAGE_STYLE) {
+            imageStyle = styleObject['imageStyle'];
+        }
+    }
+    else {
+        imageStyle = DEFAULT_IMAGE_STYLE;
+    }
+    var textStyle = 
+    /** @type {Text} */
+    ('textStyle' in styleObject
+        ? styleObject['textStyle']
+        : DEFAULT_TEXT_STYLE);
+    var strokeStyle = 
+    /** @type {Stroke} */
+    ('strokeStyle' in styleObject
+        ? styleObject['strokeStyle']
+        : DEFAULT_STROKE_STYLE);
+    var outline = /** @type {boolean|undefined} */ (styleObject['outline']);
+    if (outline !== undefined && !outline) {
+        // if the polystyle specifies no outline two styles are needed,
+        // one for non-polygon geometries where linestrings require a stroke
+        // and one for polygons where there should be no stroke
+        return [
+            new _style_Style_js__WEBPACK_IMPORTED_MODULE_15__["default"]({
+                geometry: function (feature) {
+                    var geometry = feature.getGeometry();
+                    var type = geometry.getType();
+                    if (type === _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_4__["default"].GEOMETRY_COLLECTION) {
+                        return new _geom_GeometryCollection_js__WEBPACK_IMPORTED_MODULE_2__["default"](geometry
+                            .getGeometriesArrayRecursive()
+                            .filter(function (geometry) {
+                            var type = geometry.getType();
+                            return (type !== _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_4__["default"].POLYGON &&
+                                type !== _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_4__["default"].MULTI_POLYGON);
+                        }));
+                    }
+                    else if (type !== _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_4__["default"].POLYGON &&
+                        type !== _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_4__["default"].MULTI_POLYGON) {
+                        return geometry;
+                    }
+                },
+                fill: fillStyle,
+                image: imageStyle,
+                stroke: strokeStyle,
+                text: textStyle,
+                zIndex: undefined,
+            }),
+            new _style_Style_js__WEBPACK_IMPORTED_MODULE_15__["default"]({
+                geometry: function (feature) {
+                    var geometry = feature.getGeometry();
+                    var type = geometry.getType();
+                    if (type === _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_4__["default"].GEOMETRY_COLLECTION) {
+                        return new _geom_GeometryCollection_js__WEBPACK_IMPORTED_MODULE_2__["default"](geometry
+                            .getGeometriesArrayRecursive()
+                            .filter(function (geometry) {
+                            var type = geometry.getType();
+                            return (type === _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_4__["default"].POLYGON ||
+                                type === _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_4__["default"].MULTI_POLYGON);
+                        }));
+                    }
+                    else if (type === _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_4__["default"].POLYGON ||
+                        type === _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_4__["default"].MULTI_POLYGON) {
+                        return geometry;
+                    }
+                },
+                fill: fillStyle,
+                stroke: null,
+                zIndex: undefined,
+            }),
+        ];
+    }
+    return [
+        new _style_Style_js__WEBPACK_IMPORTED_MODULE_15__["default"]({
+            fill: fillStyle,
+            image: imageStyle,
+            stroke: strokeStyle,
+            text: textStyle,
+            zIndex: undefined,
+        }),
+    ];
+}
+/**
+ * Reads an array of geometries and creates arrays for common geometry
+ * properties. Then sets them to the multi geometry.
+ * @param {MultiPoint|MultiLineString|MultiPolygon} multiGeometry A multi-geometry.
+ * @param {Array<import("../geom/Geometry.js").default>} geometries List of geometries.
+ */
+function setCommonGeometryProperties(multiGeometry, geometries) {
+    var ii = geometries.length;
+    var extrudes = new Array(geometries.length);
+    var tessellates = new Array(geometries.length);
+    var altitudeModes = new Array(geometries.length);
+    var hasExtrude, hasTessellate, hasAltitudeMode;
+    hasExtrude = false;
+    hasTessellate = false;
+    hasAltitudeMode = false;
+    for (var i = 0; i < ii; ++i) {
+        var geometry = geometries[i];
+        extrudes[i] = geometry.get('extrude');
+        tessellates[i] = geometry.get('tessellate');
+        altitudeModes[i] = geometry.get('altitudeMode');
+        hasExtrude = hasExtrude || extrudes[i] !== undefined;
+        hasTessellate = hasTessellate || tessellates[i] !== undefined;
+        hasAltitudeMode = hasAltitudeMode || altitudeModes[i];
+    }
+    if (hasExtrude) {
+        multiGeometry.set('extrude', extrudes);
+    }
+    if (hasTessellate) {
+        multiGeometry.set('tessellate', tessellates);
+    }
+    if (hasAltitudeMode) {
+        multiGeometry.set('altitudeMode', altitudeModes);
+    }
+}
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var DATA_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(NAMESPACE_URIS, {
+    'displayName': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["readString"]),
+    'value': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["readString"]),
+});
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ */
+function dataParser(node, objectStack) {
+    var name = node.getAttribute('name');
+    Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["parseNode"])(DATA_PARSERS, node, objectStack);
+    var featureObject = /** @type {Object} */ (objectStack[objectStack.length - 1]);
+    if (name && featureObject.displayName) {
+        featureObject[name] = {
+            value: featureObject.value,
+            displayName: featureObject.displayName,
+            toString: function () {
+                return featureObject.value;
+            },
+        };
+    }
+    else if (name !== null) {
+        featureObject[name] = featureObject.value;
+    }
+    else if (featureObject.displayName !== null) {
+        featureObject[featureObject.displayName] = featureObject.value;
+    }
+    delete featureObject['value'];
+}
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var EXTENDED_DATA_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(NAMESPACE_URIS, {
+    'Data': dataParser,
+    'SchemaData': schemaDataParser,
+});
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ */
+function extendedDataParser(node, objectStack) {
+    Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["parseNode"])(EXTENDED_DATA_PARSERS, node, objectStack);
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ */
+function regionParser(node, objectStack) {
+    Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["parseNode"])(REGION_PARSERS, node, objectStack);
+}
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var PAIR_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(NAMESPACE_URIS, {
+    'Style': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(readStyle),
+    'key': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["readString"]),
+    'styleUrl': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(readURI),
+});
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ */
+function pairDataParser(node, objectStack) {
+    var pairObject = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["pushParseAndPop"])({}, PAIR_PARSERS, node, objectStack, this);
+    if (!pairObject) {
+        return;
+    }
+    var key = /** @type {string|undefined} */ (pairObject['key']);
+    if (key && key == 'normal') {
+        var styleUrl = /** @type {string|undefined} */ (pairObject['styleUrl']);
+        if (styleUrl) {
+            objectStack[objectStack.length - 1] = styleUrl;
+        }
+        var style = /** @type {Style} */ (pairObject['Style']);
+        if (style) {
+            objectStack[objectStack.length - 1] = style;
+        }
+    }
+}
+/**
+ * @this {KML}
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ */
+function placemarkStyleMapParser(node, objectStack) {
+    var styleMapValue = readStyleMapValue.call(this, node, objectStack);
+    if (!styleMapValue) {
+        return;
+    }
+    var placemarkObject = objectStack[objectStack.length - 1];
+    if (Array.isArray(styleMapValue)) {
+        placemarkObject['Style'] = styleMapValue;
+    }
+    else if (typeof styleMapValue === 'string') {
+        placemarkObject['styleUrl'] = styleMapValue;
+    }
+    else {
+        Object(_asserts_js__WEBPACK_IMPORTED_MODULE_20__["assert"])(false, 38); // `styleMapValue` has an unknown type
+    }
+}
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var SCHEMA_DATA_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(NAMESPACE_URIS, {
+    'SimpleData': simpleDataParser,
+});
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ */
+function schemaDataParser(node, objectStack) {
+    Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["parseNode"])(SCHEMA_DATA_PARSERS, node, objectStack);
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ */
+function simpleDataParser(node, objectStack) {
+    var name = node.getAttribute('name');
+    if (name !== null) {
+        var data = Object(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["readString"])(node);
+        var featureObject = /** @type {Object} */ (objectStack[objectStack.length - 1]);
+        featureObject[name] = data;
+    }
+}
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var LAT_LON_ALT_BOX_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(NAMESPACE_URIS, {
+    'altitudeMode': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["readString"]),
+    'minAltitude': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["readDecimal"]),
+    'maxAltitude': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["readDecimal"]),
+    'north': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["readDecimal"]),
+    'south': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["readDecimal"]),
+    'east': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["readDecimal"]),
+    'west': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["readDecimal"]),
+});
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ */
+function latLonAltBoxParser(node, objectStack) {
+    var object = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["pushParseAndPop"])({}, LAT_LON_ALT_BOX_PARSERS, node, objectStack);
+    if (!object) {
+        return;
+    }
+    var regionObject = /** @type {Object} */ (objectStack[objectStack.length - 1]);
+    var extent = [
+        parseFloat(object['west']),
+        parseFloat(object['south']),
+        parseFloat(object['east']),
+        parseFloat(object['north']),
+    ];
+    regionObject['extent'] = extent;
+    regionObject['altitudeMode'] = object['altitudeMode'];
+    regionObject['minAltitude'] = parseFloat(object['minAltitude']);
+    regionObject['maxAltitude'] = parseFloat(object['maxAltitude']);
+}
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var LOD_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(NAMESPACE_URIS, {
+    'minLodPixels': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["readDecimal"]),
+    'maxLodPixels': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["readDecimal"]),
+    'minFadeExtent': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["readDecimal"]),
+    'maxFadeExtent': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["readDecimal"]),
+});
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ */
+function lodParser(node, objectStack) {
+    var object = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["pushParseAndPop"])({}, LOD_PARSERS, node, objectStack);
+    if (!object) {
+        return;
+    }
+    var lodObject = /** @type {Object} */ (objectStack[objectStack.length - 1]);
+    lodObject['minLodPixels'] = parseFloat(object['minLodPixels']);
+    lodObject['maxLodPixels'] = parseFloat(object['maxLodPixels']);
+    lodObject['minFadeExtent'] = parseFloat(object['minFadeExtent']);
+    lodObject['maxFadeExtent'] = parseFloat(object['maxFadeExtent']);
+}
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var INNER_BOUNDARY_IS_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(NAMESPACE_URIS, {
+    'LinearRing': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeReplacer"])(readFlatLinearRing),
+});
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ */
+function innerBoundaryIsParser(node, objectStack) {
+    /** @type {Array<number>|undefined} */
+    var flatLinearRing = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["pushParseAndPop"])(undefined, INNER_BOUNDARY_IS_PARSERS, node, objectStack);
+    if (flatLinearRing) {
+        var flatLinearRings = 
+        /** @type {Array<Array<number>>} */
+        (objectStack[objectStack.length - 1]);
+        flatLinearRings.push(flatLinearRing);
+    }
+}
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var OUTER_BOUNDARY_IS_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(NAMESPACE_URIS, {
+    'LinearRing': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeReplacer"])(readFlatLinearRing),
+});
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ */
+function outerBoundaryIsParser(node, objectStack) {
+    /** @type {Array<number>|undefined} */
+    var flatLinearRing = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["pushParseAndPop"])(undefined, OUTER_BOUNDARY_IS_PARSERS, node, objectStack);
+    if (flatLinearRing) {
+        var flatLinearRings = 
+        /** @type {Array<Array<number>>} */
+        (objectStack[objectStack.length - 1]);
+        flatLinearRings[0] = flatLinearRing;
+    }
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ */
+function linkParser(node, objectStack) {
+    Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["parseNode"])(LINK_PARSERS, node, objectStack);
+}
+/**
+ * @param {Node} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ */
+function whenParser(node, objectStack) {
+    var gxTrackObject = 
+    /** @type {GxTrackObject} */
+    (objectStack[objectStack.length - 1]);
+    var whens = gxTrackObject.whens;
+    var s = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["getAllTextContent"])(node, false);
+    var when = Date.parse(s);
+    whens.push(isNaN(when) ? 0 : when);
+}
+/**
+ * @param {Node} node Node to append a TextNode with the color to.
+ * @param {import("../color.js").Color|string} color Color.
+ */
+function writeColorTextNode(node, color) {
+    var rgba = Object(_color_js__WEBPACK_IMPORTED_MODULE_19__["asArray"])(color);
+    var opacity = rgba.length == 4 ? rgba[3] : 1;
+    /** @type {Array<string|number>} */
+    var abgr = [opacity * 255, rgba[2], rgba[1], rgba[0]];
+    for (var i = 0; i < 4; ++i) {
+        var hex = Math.floor(/** @type {number} */ (abgr[i])).toString(16);
+        abgr[i] = hex.length == 1 ? '0' + hex : hex;
+    }
+    Object(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["writeStringTextNode"])(node, abgr.join(''));
+}
+/**
+ * @param {Node} node Node to append a TextNode with the coordinates to.
+ * @param {Array<number>} coordinates Coordinates.
+ * @param {Array<*>} objectStack Object stack.
+ */
+function writeCoordinatesTextNode(node, coordinates, objectStack) {
+    var context = objectStack[objectStack.length - 1];
+    var layout = context['layout'];
+    var stride = context['stride'];
+    var dimension;
+    if (layout == _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_3__["default"].XY || layout == _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_3__["default"].XYM) {
+        dimension = 2;
+    }
+    else if (layout == _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_3__["default"].XYZ || layout == _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_3__["default"].XYZM) {
+        dimension = 3;
+    }
+    else {
+        Object(_asserts_js__WEBPACK_IMPORTED_MODULE_20__["assert"])(false, 34); // Invalid geometry layout
+    }
+    var ii = coordinates.length;
+    var text = '';
+    if (ii > 0) {
+        text += coordinates[0];
+        for (var d = 1; d < dimension; ++d) {
+            text += ',' + coordinates[d];
+        }
+        for (var i = stride; i < ii; i += stride) {
+            text += ' ' + coordinates[i];
+            for (var d = 1; d < dimension; ++d) {
+                text += ',' + coordinates[i + d];
+            }
+        }
+    }
+    Object(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["writeStringTextNode"])(node, text);
+}
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Serializer>>}
+ */
+// @ts-ignore
+var EXTENDEDDATA_NODE_SERIALIZERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(NAMESPACE_URIS, {
+    'Data': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(writeDataNode),
+    'value': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(writeDataNodeValue),
+    'displayName': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(writeDataNodeName),
+});
+/**
+ * @param {Element} node Node.
+ * @param {{name: *, value: *}} pair Name value pair.
+ * @param {Array<*>} objectStack Object stack.
+ */
+function writeDataNode(node, pair, objectStack) {
+    node.setAttribute('name', pair.name);
+    var /** @type {import("../xml.js").NodeStackItem} */ context = { node: node };
+    var value = pair.value;
+    if (typeof value == 'object') {
+        if (value !== null && value.displayName) {
+            Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["pushSerializeAndPop"])(context, EXTENDEDDATA_NODE_SERIALIZERS, _xml_js__WEBPACK_IMPORTED_MODULE_18__["OBJECT_PROPERTY_NODE_FACTORY"], [value.displayName], objectStack, ['displayName']);
+        }
+        if (value !== null && value.value) {
+            Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["pushSerializeAndPop"])(context, EXTENDEDDATA_NODE_SERIALIZERS, _xml_js__WEBPACK_IMPORTED_MODULE_18__["OBJECT_PROPERTY_NODE_FACTORY"], [value.value], objectStack, ['value']);
+        }
+    }
+    else {
+        Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["pushSerializeAndPop"])(context, EXTENDEDDATA_NODE_SERIALIZERS, _xml_js__WEBPACK_IMPORTED_MODULE_18__["OBJECT_PROPERTY_NODE_FACTORY"], [value], objectStack, ['value']);
+    }
+}
+/**
+ * @param {Node} node Node to append a TextNode with the name to.
+ * @param {string} name DisplayName.
+ */
+function writeDataNodeName(node, name) {
+    Object(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["writeCDATASection"])(node, name);
+}
+/**
+ * @param {Node} node Node to append a CDATA Section with the value to.
+ * @param {string} value Value.
+ */
+function writeDataNodeValue(node, value) {
+    Object(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["writeStringTextNode"])(node, value);
+}
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Serializer>>}
+ */
+// @ts-ignore
+var DOCUMENT_SERIALIZERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(NAMESPACE_URIS, {
+    'Placemark': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(writePlacemark),
+});
+/**
+ * @const
+ * @param {*} value Value.
+ * @param {Array<*>} objectStack Object stack.
+ * @param {string=} opt_nodeName Node name.
+ * @return {Node|undefined} Node.
+ */
+var DOCUMENT_NODE_FACTORY = function (value, objectStack, opt_nodeName) {
+    var parentNode = objectStack[objectStack.length - 1].node;
+    return Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["createElementNS"])(parentNode.namespaceURI, 'Placemark');
+};
+/**
+ * @param {Node} node Node.
+ * @param {Array<Feature>} features Features.
+ * @param {Array<*>} objectStack Object stack.
+ * @this {KML}
+ */
+function writeDocument(node, features, objectStack) {
+    var /** @type {import("../xml.js").NodeStackItem} */ context = { node: node };
+    Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["pushSerializeAndPop"])(context, DOCUMENT_SERIALIZERS, DOCUMENT_NODE_FACTORY, features, objectStack, undefined, this);
+}
+/**
+ * A factory for creating Data nodes.
+ * @const
+ * @type {function(*, Array<*>): (Node|undefined)}
+ */
+var DATA_NODE_FACTORY = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeSimpleNodeFactory"])('Data');
+/**
+ * @param {Node} node Node.
+ * @param {{names: Array<string>, values: (Array<*>)}} namesAndValues Names and values.
+ * @param {Array<*>} objectStack Object stack.
+ */
+function writeExtendedData(node, namesAndValues, objectStack) {
+    var /** @type {import("../xml.js").NodeStackItem} */ context = { node: node };
+    var names = namesAndValues.names;
+    var values = namesAndValues.values;
+    var length = names.length;
+    for (var i = 0; i < length; i++) {
+        Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["pushSerializeAndPop"])(context, EXTENDEDDATA_NODE_SERIALIZERS, DATA_NODE_FACTORY, [{ name: names[i], value: values[i] }], objectStack);
+    }
+}
+/**
+ * @const
+ * @type {Object<string, Array<string>>}
+ */
+// @ts-ignore
+var ICON_SEQUENCE = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(NAMESPACE_URIS, ['href'], Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(GX_NAMESPACE_URIS, ['x', 'y', 'w', 'h']));
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Serializer>>}
+ */
+// @ts-ignore
+var ICON_SERIALIZERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(NAMESPACE_URIS, {
+    'href': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["writeStringTextNode"]),
+}, Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(GX_NAMESPACE_URIS, {
+    'x': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["writeDecimalTextNode"]),
+    'y': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["writeDecimalTextNode"]),
+    'w': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["writeDecimalTextNode"]),
+    'h': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["writeDecimalTextNode"]),
+}));
+/**
+ * @const
+ * @param {*} value Value.
+ * @param {Array<*>} objectStack Object stack.
+ * @param {string=} opt_nodeName Node name.
+ * @return {Node|undefined} Node.
+ */
+var GX_NODE_FACTORY = function (value, objectStack, opt_nodeName) {
+    return Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["createElementNS"])(GX_NAMESPACE_URIS[0], 'gx:' + opt_nodeName);
+};
+/**
+ * @param {Node} node Node.
+ * @param {Object} icon Icon object.
+ * @param {Array<*>} objectStack Object stack.
+ */
+function writeIcon(node, icon, objectStack) {
+    var /** @type {import("../xml.js").NodeStackItem} */ context = { node: node };
+    var parentNode = objectStack[objectStack.length - 1].node;
+    var orderedKeys = ICON_SEQUENCE[parentNode.namespaceURI];
+    var values = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeSequence"])(icon, orderedKeys);
+    Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["pushSerializeAndPop"])(context, ICON_SERIALIZERS, _xml_js__WEBPACK_IMPORTED_MODULE_18__["OBJECT_PROPERTY_NODE_FACTORY"], values, objectStack, orderedKeys);
+    orderedKeys = ICON_SEQUENCE[GX_NAMESPACE_URIS[0]];
+    values = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeSequence"])(icon, orderedKeys);
+    Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["pushSerializeAndPop"])(context, ICON_SERIALIZERS, GX_NODE_FACTORY, values, objectStack, orderedKeys);
+}
+/**
+ * @const
+ * @type {Object<string, Array<string>>}
+ */
+// @ts-ignore
+var ICON_STYLE_SEQUENCE = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(NAMESPACE_URIS, [
+    'scale',
+    'heading',
+    'Icon',
+    'color',
+    'hotSpot',
+]);
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Serializer>>}
+ */
+// @ts-ignore
+var ICON_STYLE_SERIALIZERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(NAMESPACE_URIS, {
+    'Icon': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(writeIcon),
+    'color': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(writeColorTextNode),
+    'heading': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["writeDecimalTextNode"]),
+    'hotSpot': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(writeVec2),
+    'scale': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(writeScaleTextNode),
+});
+/**
+ * @param {Node} node Node.
+ * @param {import("../style/Icon.js").default} style Icon style.
+ * @param {Array<*>} objectStack Object stack.
+ */
+function writeIconStyle(node, style, objectStack) {
+    var /** @type {import("../xml.js").NodeStackItem} */ context = { node: node };
+    var /** @type {Object<string, any>} */ properties = {};
+    var src = style.getSrc();
+    var size = style.getSize();
+    var iconImageSize = style.getImageSize();
+    var iconProperties = {
+        'href': src,
+    };
+    if (size) {
+        iconProperties['w'] = size[0];
+        iconProperties['h'] = size[1];
+        var anchor = style.getAnchor(); // top-left
+        var origin_1 = style.getOrigin(); // top-left
+        if (origin_1 && iconImageSize && origin_1[0] !== 0 && origin_1[1] !== size[1]) {
+            iconProperties['x'] = origin_1[0];
+            iconProperties['y'] = iconImageSize[1] - (origin_1[1] + size[1]);
+        }
+        if (anchor && (anchor[0] !== size[0] / 2 || anchor[1] !== size[1] / 2)) {
+            var /** @type {Vec2} */ hotSpot = {
+                x: anchor[0],
+                xunits: _style_IconAnchorUnits_js__WEBPACK_IMPORTED_MODULE_6__["default"].PIXELS,
+                y: size[1] - anchor[1],
+                yunits: _style_IconAnchorUnits_js__WEBPACK_IMPORTED_MODULE_6__["default"].PIXELS,
+            };
+            properties['hotSpot'] = hotSpot;
+        }
+    }
+    properties['Icon'] = iconProperties;
+    var scale = style.getScale();
+    if (scale !== 1) {
+        properties['scale'] = scale;
+    }
+    var rotation = style.getRotation();
+    if (rotation !== 0) {
+        properties['heading'] = rotation; // 0-360
+    }
+    var color = style.getColor();
+    if (color) {
+        properties['color'] = color;
+    }
+    var parentNode = objectStack[objectStack.length - 1].node;
+    var orderedKeys = ICON_STYLE_SEQUENCE[parentNode.namespaceURI];
+    var values = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeSequence"])(properties, orderedKeys);
+    Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["pushSerializeAndPop"])(context, ICON_STYLE_SERIALIZERS, _xml_js__WEBPACK_IMPORTED_MODULE_18__["OBJECT_PROPERTY_NODE_FACTORY"], values, objectStack, orderedKeys);
+}
+/**
+ * @const
+ * @type {Object<string, Array<string>>}
+ */
+// @ts-ignore
+var LABEL_STYLE_SEQUENCE = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(NAMESPACE_URIS, [
+    'color',
+    'scale',
+]);
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Serializer>>}
+ */
+// @ts-ignore
+var LABEL_STYLE_SERIALIZERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(NAMESPACE_URIS, {
+    'color': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(writeColorTextNode),
+    'scale': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(writeScaleTextNode),
+});
+/**
+ * @param {Node} node Node.
+ * @param {Text} style style.
+ * @param {Array<*>} objectStack Object stack.
+ */
+function writeLabelStyle(node, style, objectStack) {
+    var /** @type {import("../xml.js").NodeStackItem} */ context = { node: node };
+    var properties = {};
+    var fill = style.getFill();
+    if (fill) {
+        properties['color'] = fill.getColor();
+    }
+    var scale = style.getScale();
+    if (scale && scale !== 1) {
+        properties['scale'] = scale;
+    }
+    var parentNode = objectStack[objectStack.length - 1].node;
+    var orderedKeys = LABEL_STYLE_SEQUENCE[parentNode.namespaceURI];
+    var values = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeSequence"])(properties, orderedKeys);
+    Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["pushSerializeAndPop"])(context, LABEL_STYLE_SERIALIZERS, _xml_js__WEBPACK_IMPORTED_MODULE_18__["OBJECT_PROPERTY_NODE_FACTORY"], values, objectStack, orderedKeys);
+}
+/**
+ * @const
+ * @type {Object<string, Array<string>>}
+ */
+// @ts-ignore
+var LINE_STYLE_SEQUENCE = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(NAMESPACE_URIS, ['color', 'width']);
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Serializer>>}
+ */
+// @ts-ignore
+var LINE_STYLE_SERIALIZERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(NAMESPACE_URIS, {
+    'color': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(writeColorTextNode),
+    'width': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["writeDecimalTextNode"]),
+});
+/**
+ * @param {Node} node Node.
+ * @param {Stroke} style style.
+ * @param {Array<*>} objectStack Object stack.
+ */
+function writeLineStyle(node, style, objectStack) {
+    var /** @type {import("../xml.js").NodeStackItem} */ context = { node: node };
+    var properties = {
+        'color': style.getColor(),
+        'width': Number(style.getWidth()) || 1,
+    };
+    var parentNode = objectStack[objectStack.length - 1].node;
+    var orderedKeys = LINE_STYLE_SEQUENCE[parentNode.namespaceURI];
+    var values = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeSequence"])(properties, orderedKeys);
+    Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["pushSerializeAndPop"])(context, LINE_STYLE_SERIALIZERS, _xml_js__WEBPACK_IMPORTED_MODULE_18__["OBJECT_PROPERTY_NODE_FACTORY"], values, objectStack, orderedKeys);
+}
+/**
+ * @const
+ * @type {Object<string, string>}
+ */
+var GEOMETRY_TYPE_TO_NODENAME = {
+    'Point': 'Point',
+    'LineString': 'LineString',
+    'LinearRing': 'LinearRing',
+    'Polygon': 'Polygon',
+    'MultiPoint': 'MultiGeometry',
+    'MultiLineString': 'MultiGeometry',
+    'MultiPolygon': 'MultiGeometry',
+    'GeometryCollection': 'MultiGeometry',
+};
+/**
+ * @const
+ * @param {*} value Value.
+ * @param {Array<*>} objectStack Object stack.
+ * @param {string=} opt_nodeName Node name.
+ * @return {Node|undefined} Node.
+ */
+var GEOMETRY_NODE_FACTORY = function (value, objectStack, opt_nodeName) {
+    if (value) {
+        var parentNode = objectStack[objectStack.length - 1].node;
+        return Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["createElementNS"])(parentNode.namespaceURI, GEOMETRY_TYPE_TO_NODENAME[
+        /** @type {import("../geom/Geometry.js").default} */ (value).getType()]);
+    }
+};
+/**
+ * A factory for creating Point nodes.
+ * @const
+ * @type {function(*, Array<*>, string=): (Node|undefined)}
+ */
+var POINT_NODE_FACTORY = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeSimpleNodeFactory"])('Point');
+/**
+ * A factory for creating LineString nodes.
+ * @const
+ * @type {function(*, Array<*>, string=): (Node|undefined)}
+ */
+var LINE_STRING_NODE_FACTORY = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeSimpleNodeFactory"])('LineString');
+/**
+ * A factory for creating LinearRing nodes.
+ * @const
+ * @type {function(*, Array<*>, string=): (Node|undefined)}
+ */
+var LINEAR_RING_NODE_FACTORY = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeSimpleNodeFactory"])('LinearRing');
+/**
+ * A factory for creating Polygon nodes.
+ * @const
+ * @type {function(*, Array<*>, string=): (Node|undefined)}
+ */
+var POLYGON_NODE_FACTORY = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeSimpleNodeFactory"])('Polygon');
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Serializer>>}
+ */
+// @ts-ignore
+var MULTI_GEOMETRY_SERIALIZERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(NAMESPACE_URIS, {
+    'LineString': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(writePrimitiveGeometry),
+    'Point': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(writePrimitiveGeometry),
+    'Polygon': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(writePolygon),
+    'GeometryCollection': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(writeMultiGeometry),
+});
+/**
+ * @param {Node} node Node.
+ * @param {import("../geom/Geometry.js").default} geometry Geometry.
+ * @param {Array<*>} objectStack Object stack.
+ */
+function writeMultiGeometry(node, geometry, objectStack) {
+    /** @type {import("../xml.js").NodeStackItem} */
+    var context = { node: node };
+    var type = geometry.getType();
+    /** @type {Array<import("../geom/Geometry.js").default>} */
+    var geometries = [];
+    /** @type {function(*, Array<*>, string=): (Node|undefined)} */
+    var factory;
+    if (type === _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_4__["default"].GEOMETRY_COLLECTION) {
+        /** @type {GeometryCollection} */ (geometry)
+            .getGeometriesArrayRecursive()
+            .forEach(function (geometry) {
+            var type = geometry.getType();
+            if (type === _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_4__["default"].MULTI_POINT) {
+                geometries = geometries.concat(
+                /** @type {MultiPoint} */ (geometry).getPoints());
+            }
+            else if (type === _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_4__["default"].MULTI_LINE_STRING) {
+                geometries = geometries.concat(
+                /** @type {MultiLineString} */ (geometry).getLineStrings());
+            }
+            else if (type === _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_4__["default"].MULTI_POLYGON) {
+                geometries = geometries.concat(
+                /** @type {MultiPolygon} */ (geometry).getPolygons());
+            }
+            else if (type === _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_4__["default"].POINT ||
+                type === _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_4__["default"].LINE_STRING ||
+                type === _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_4__["default"].POLYGON) {
+                geometries.push(geometry);
+            }
+            else {
+                Object(_asserts_js__WEBPACK_IMPORTED_MODULE_20__["assert"])(false, 39); // Unknown geometry type
+            }
+        });
+        factory = GEOMETRY_NODE_FACTORY;
+    }
+    else if (type === _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_4__["default"].MULTI_POINT) {
+        geometries = /** @type {MultiPoint} */ (geometry).getPoints();
+        factory = POINT_NODE_FACTORY;
+    }
+    else if (type === _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_4__["default"].MULTI_LINE_STRING) {
+        geometries = /** @type {MultiLineString} */ (geometry).getLineStrings();
+        factory = LINE_STRING_NODE_FACTORY;
+    }
+    else if (type === _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_4__["default"].MULTI_POLYGON) {
+        geometries = /** @type {MultiPolygon} */ (geometry).getPolygons();
+        factory = POLYGON_NODE_FACTORY;
+    }
+    else {
+        Object(_asserts_js__WEBPACK_IMPORTED_MODULE_20__["assert"])(false, 39); // Unknown geometry type
+    }
+    Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["pushSerializeAndPop"])(context, MULTI_GEOMETRY_SERIALIZERS, factory, geometries, objectStack);
+}
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Serializer>>}
+ */
+// @ts-ignore
+var BOUNDARY_IS_SERIALIZERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(NAMESPACE_URIS, {
+    'LinearRing': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(writePrimitiveGeometry),
+});
+/**
+ * @param {Node} node Node.
+ * @param {import("../geom/LinearRing.js").default} linearRing Linear ring.
+ * @param {Array<*>} objectStack Object stack.
+ */
+function writeBoundaryIs(node, linearRing, objectStack) {
+    var /** @type {import("../xml.js").NodeStackItem} */ context = { node: node };
+    Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["pushSerializeAndPop"])(context, BOUNDARY_IS_SERIALIZERS, LINEAR_RING_NODE_FACTORY, [linearRing], objectStack);
+}
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Serializer>>}
+ */
+// @ts-ignore
+var PLACEMARK_SERIALIZERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(NAMESPACE_URIS, {
+    'ExtendedData': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(writeExtendedData),
+    'MultiGeometry': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(writeMultiGeometry),
+    'LineString': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(writePrimitiveGeometry),
+    'LinearRing': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(writePrimitiveGeometry),
+    'Point': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(writePrimitiveGeometry),
+    'Polygon': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(writePolygon),
+    'Style': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(writeStyle),
+    'address': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["writeStringTextNode"]),
+    'description': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["writeStringTextNode"]),
+    'name': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["writeStringTextNode"]),
+    'open': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["writeBooleanTextNode"]),
+    'phoneNumber': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["writeStringTextNode"]),
+    'styleUrl': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["writeStringTextNode"]),
+    'visibility': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["writeBooleanTextNode"]),
+});
+/**
+ * @const
+ * @type {Object<string, Array<string>>}
+ */
+// @ts-ignore
+var PLACEMARK_SEQUENCE = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(NAMESPACE_URIS, [
+    'name',
+    'open',
+    'visibility',
+    'address',
+    'phoneNumber',
+    'description',
+    'styleUrl',
+    'Style',
+]);
+/**
+ * A factory for creating ExtendedData nodes.
+ * @const
+ * @type {function(*, Array<*>): (Node|undefined)}
+ */
+var EXTENDEDDATA_NODE_FACTORY = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeSimpleNodeFactory"])('ExtendedData');
+/**
+ * FIXME currently we do serialize arbitrary/custom feature properties
+ * (ExtendedData).
+ * @param {Element} node Node.
+ * @param {Feature} feature Feature.
+ * @param {Array<*>} objectStack Object stack.
+ * @this {KML}
+ */
+function writePlacemark(node, feature, objectStack) {
+    var /** @type {import("../xml.js").NodeStackItem} */ context = { node: node };
+    // set id
+    if (feature.getId()) {
+        node.setAttribute('id', /** @type {string} */ (feature.getId()));
+    }
+    // serialize properties (properties unknown to KML are not serialized)
+    var properties = feature.getProperties();
+    // don't export these to ExtendedData
+    var filter = {
+        'address': 1,
+        'description': 1,
+        'name': 1,
+        'open': 1,
+        'phoneNumber': 1,
+        'styleUrl': 1,
+        'visibility': 1,
+    };
+    filter[feature.getGeometryName()] = 1;
+    var keys = Object.keys(properties || {})
+        .sort()
+        .filter(function (v) {
+        return !filter[v];
+    });
+    var styleFunction = feature.getStyleFunction();
+    if (styleFunction) {
+        // FIXME the styles returned by the style function are supposed to be
+        // resolution-independent here
+        var styles = styleFunction(feature, 0);
+        if (styles) {
+            var styleArray = Array.isArray(styles) ? styles : [styles];
+            var pointStyles = styleArray;
+            if (feature.getGeometry()) {
+                pointStyles = styleArray.filter(function (style) {
+                    var geometry = style.getGeometryFunction()(feature);
+                    if (geometry) {
+                        var type = geometry.getType();
+                        if (type === _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_4__["default"].GEOMETRY_COLLECTION) {
+                            return /** @type {GeometryCollection} */ (geometry)
+                                .getGeometriesArrayRecursive()
+                                .filter(function (geometry) {
+                                var type = geometry.getType();
+                                return (type === _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_4__["default"].POINT ||
+                                    type === _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_4__["default"].MULTI_POINT);
+                            }).length;
+                        }
+                        return (type === _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_4__["default"].POINT || type === _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_4__["default"].MULTI_POINT);
+                    }
+                });
+            }
+            if (this.writeStyles_) {
+                var lineStyles = styleArray;
+                var polyStyles = styleArray;
+                if (feature.getGeometry()) {
+                    lineStyles = styleArray.filter(function (style) {
+                        var geometry = style.getGeometryFunction()(feature);
+                        if (geometry) {
+                            var type = geometry.getType();
+                            if (type === _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_4__["default"].GEOMETRY_COLLECTION) {
+                                return /** @type {GeometryCollection} */ (geometry)
+                                    .getGeometriesArrayRecursive()
+                                    .filter(function (geometry) {
+                                    var type = geometry.getType();
+                                    return (type === _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_4__["default"].LINE_STRING ||
+                                        type === _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_4__["default"].MULTI_LINE_STRING);
+                                }).length;
+                            }
+                            return (type === _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_4__["default"].LINE_STRING ||
+                                type === _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_4__["default"].MULTI_LINE_STRING);
+                        }
+                    });
+                    polyStyles = styleArray.filter(function (style) {
+                        var geometry = style.getGeometryFunction()(feature);
+                        if (geometry) {
+                            var type = geometry.getType();
+                            if (type === _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_4__["default"].GEOMETRY_COLLECTION) {
+                                return /** @type {GeometryCollection} */ (geometry)
+                                    .getGeometriesArrayRecursive()
+                                    .filter(function (geometry) {
+                                    var type = geometry.getType();
+                                    return (type === _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_4__["default"].POLYGON ||
+                                        type === _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_4__["default"].MULTI_POLYGON);
+                                }).length;
+                            }
+                            return (type === _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_4__["default"].POLYGON ||
+                                type === _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_4__["default"].MULTI_POLYGON);
+                        }
+                    });
+                }
+                properties['Style'] = {
+                    pointStyles: pointStyles,
+                    lineStyles: lineStyles,
+                    polyStyles: polyStyles,
+                };
+            }
+            if (pointStyles.length && properties['name'] === undefined) {
+                var textStyle = pointStyles[0].getText();
+                if (textStyle) {
+                    properties['name'] = textStyle.getText();
+                }
+            }
+        }
+    }
+    var parentNode = objectStack[objectStack.length - 1].node;
+    var orderedKeys = PLACEMARK_SEQUENCE[parentNode.namespaceURI];
+    var values = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeSequence"])(properties, orderedKeys);
+    Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["pushSerializeAndPop"])(context, PLACEMARK_SERIALIZERS, _xml_js__WEBPACK_IMPORTED_MODULE_18__["OBJECT_PROPERTY_NODE_FACTORY"], values, objectStack, orderedKeys);
+    if (keys.length > 0) {
+        var sequence = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeSequence"])(properties, keys);
+        var namesAndValues = { names: keys, values: sequence };
+        Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["pushSerializeAndPop"])(context, PLACEMARK_SERIALIZERS, EXTENDEDDATA_NODE_FACTORY, [namesAndValues], objectStack);
+    }
+    // serialize geometry
+    var options = /** @type {import("./Feature.js").WriteOptions} */ (objectStack[0]);
+    var geometry = feature.getGeometry();
+    if (geometry) {
+        geometry = Object(_Feature_js__WEBPACK_IMPORTED_MODULE_25__["transformGeometryWithOptions"])(geometry, true, options);
+    }
+    Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["pushSerializeAndPop"])(context, PLACEMARK_SERIALIZERS, GEOMETRY_NODE_FACTORY, [geometry], objectStack);
+}
+/**
+ * @const
+ * @type {Object<string, Array<string>>}
+ */
+// @ts-ignore
+var PRIMITIVE_GEOMETRY_SEQUENCE = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(NAMESPACE_URIS, [
+    'extrude',
+    'tessellate',
+    'altitudeMode',
+    'coordinates',
+]);
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Serializer>>}
+ */
+// @ts-ignore
+var PRIMITIVE_GEOMETRY_SERIALIZERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(NAMESPACE_URIS, {
+    'extrude': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["writeBooleanTextNode"]),
+    'tessellate': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["writeBooleanTextNode"]),
+    'altitudeMode': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["writeStringTextNode"]),
+    'coordinates': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(writeCoordinatesTextNode),
+});
+/**
+ * @param {Node} node Node.
+ * @param {import("../geom/SimpleGeometry.js").default} geometry Geometry.
+ * @param {Array<*>} objectStack Object stack.
+ */
+function writePrimitiveGeometry(node, geometry, objectStack) {
+    var flatCoordinates = geometry.getFlatCoordinates();
+    var /** @type {import("../xml.js").NodeStackItem} */ context = { node: node };
+    context['layout'] = geometry.getLayout();
+    context['stride'] = geometry.getStride();
+    // serialize properties (properties unknown to KML are not serialized)
+    var properties = geometry.getProperties();
+    properties.coordinates = flatCoordinates;
+    var parentNode = objectStack[objectStack.length - 1].node;
+    var orderedKeys = PRIMITIVE_GEOMETRY_SEQUENCE[parentNode.namespaceURI];
+    var values = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeSequence"])(properties, orderedKeys);
+    Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["pushSerializeAndPop"])(context, PRIMITIVE_GEOMETRY_SERIALIZERS, _xml_js__WEBPACK_IMPORTED_MODULE_18__["OBJECT_PROPERTY_NODE_FACTORY"], values, objectStack, orderedKeys);
+}
+/**
+ * @const
+ * @type {Object<string, Array<string>>}
+ */
+// @ts-ignore
+var POLY_STYLE_SEQUENCE = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(NAMESPACE_URIS, [
+    'color',
+    'fill',
+    'outline',
+]);
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Serializer>>}
+ */
+// @ts-ignore
+var POLYGON_SERIALIZERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(NAMESPACE_URIS, {
+    'outerBoundaryIs': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(writeBoundaryIs),
+    'innerBoundaryIs': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(writeBoundaryIs),
+});
+/**
+ * A factory for creating innerBoundaryIs nodes.
+ * @const
+ * @type {function(*, Array<*>, string=): (Node|undefined)}
+ */
+var INNER_BOUNDARY_NODE_FACTORY = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeSimpleNodeFactory"])('innerBoundaryIs');
+/**
+ * A factory for creating outerBoundaryIs nodes.
+ * @const
+ * @type {function(*, Array<*>, string=): (Node|undefined)}
+ */
+var OUTER_BOUNDARY_NODE_FACTORY = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeSimpleNodeFactory"])('outerBoundaryIs');
+/**
+ * @param {Node} node Node.
+ * @param {Polygon} polygon Polygon.
+ * @param {Array<*>} objectStack Object stack.
+ */
+function writePolygon(node, polygon, objectStack) {
+    var linearRings = polygon.getLinearRings();
+    var outerRing = linearRings.shift();
+    var /** @type {import("../xml.js").NodeStackItem} */ context = { node: node };
+    // inner rings
+    Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["pushSerializeAndPop"])(context, POLYGON_SERIALIZERS, INNER_BOUNDARY_NODE_FACTORY, linearRings, objectStack);
+    // outer ring
+    Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["pushSerializeAndPop"])(context, POLYGON_SERIALIZERS, OUTER_BOUNDARY_NODE_FACTORY, [outerRing], objectStack);
+}
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Serializer>>}
+ */
+// @ts-ignore
+var POLY_STYLE_SERIALIZERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(NAMESPACE_URIS, {
+    'color': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(writeColorTextNode),
+    'fill': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["writeBooleanTextNode"]),
+    'outline': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["writeBooleanTextNode"]),
+});
+/**
+ * @param {Node} node Node.
+ * @param {Style} style Style.
+ * @param {Array<*>} objectStack Object stack.
+ */
+function writePolyStyle(node, style, objectStack) {
+    var /** @type {import("../xml.js").NodeStackItem} */ context = { node: node };
+    var fill = style.getFill();
+    var stroke = style.getStroke();
+    var properties = {
+        'color': fill ? fill.getColor() : undefined,
+        'fill': fill ? undefined : false,
+        'outline': stroke ? undefined : false,
+    };
+    var parentNode = objectStack[objectStack.length - 1].node;
+    var orderedKeys = POLY_STYLE_SEQUENCE[parentNode.namespaceURI];
+    var values = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeSequence"])(properties, orderedKeys);
+    Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["pushSerializeAndPop"])(context, POLY_STYLE_SERIALIZERS, _xml_js__WEBPACK_IMPORTED_MODULE_18__["OBJECT_PROPERTY_NODE_FACTORY"], values, objectStack, orderedKeys);
+}
+/**
+ * @param {Node} node Node to append a TextNode with the scale to.
+ * @param {number|undefined} scale Scale.
+ */
+function writeScaleTextNode(node, scale) {
+    // the Math is to remove any excess decimals created by float arithmetic
+    Object(_xsd_js__WEBPACK_IMPORTED_MODULE_23__["writeDecimalTextNode"])(node, Math.round(scale * 1e6) / 1e6);
+}
+/**
+ * @const
+ * @type {Object<string, Array<string>>}
+ */
+// @ts-ignore
+var STYLE_SEQUENCE = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(NAMESPACE_URIS, [
+    'IconStyle',
+    'LabelStyle',
+    'LineStyle',
+    'PolyStyle',
+]);
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Serializer>>}
+ */
+// @ts-ignore
+var STYLE_SERIALIZERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeStructureNS"])(NAMESPACE_URIS, {
+    'IconStyle': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(writeIconStyle),
+    'LabelStyle': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(writeLabelStyle),
+    'LineStyle': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(writeLineStyle),
+    'PolyStyle': Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeChildAppender"])(writePolyStyle),
+});
+/**
+ * @param {Node} node Node.
+ * @param {Object<string, Array<Style>>} styles Styles.
+ * @param {Array<*>} objectStack Object stack.
+ */
+function writeStyle(node, styles, objectStack) {
+    var /** @type {import("../xml.js").NodeStackItem} */ context = { node: node };
+    var properties = {};
+    if (styles.pointStyles.length) {
+        var textStyle = styles.pointStyles[0].getText();
+        if (textStyle) {
+            properties['LabelStyle'] = textStyle;
+        }
+        var imageStyle = styles.pointStyles[0].getImage();
+        if (imageStyle &&
+            typeof ( /** @type {?} */(imageStyle).getSrc) === 'function') {
+            properties['IconStyle'] = imageStyle;
+        }
+    }
+    if (styles.lineStyles.length) {
+        var strokeStyle = styles.lineStyles[0].getStroke();
+        if (strokeStyle) {
+            properties['LineStyle'] = strokeStyle;
+        }
+    }
+    if (styles.polyStyles.length) {
+        var strokeStyle = styles.polyStyles[0].getStroke();
+        if (strokeStyle && !properties['LineStyle']) {
+            properties['LineStyle'] = strokeStyle;
+        }
+        properties['PolyStyle'] = styles.polyStyles[0];
+    }
+    var parentNode = objectStack[objectStack.length - 1].node;
+    var orderedKeys = STYLE_SEQUENCE[parentNode.namespaceURI];
+    var values = Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["makeSequence"])(properties, orderedKeys);
+    Object(_xml_js__WEBPACK_IMPORTED_MODULE_18__["pushSerializeAndPop"])(context, STYLE_SERIALIZERS, _xml_js__WEBPACK_IMPORTED_MODULE_18__["OBJECT_PROPERTY_NODE_FACTORY"], values, objectStack, orderedKeys);
+}
+/**
+ * @param {Element} node Node to append a TextNode with the Vec2 to.
+ * @param {Vec2} vec2 Vec2.
+ */
+function writeVec2(node, vec2) {
+    node.setAttribute('x', String(vec2.x));
+    node.setAttribute('y', String(vec2.y));
+    node.setAttribute('xunits', vec2.xunits);
+    node.setAttribute('yunits', vec2.yunits);
+}
+/* harmony default export */ __webpack_exports__["default"] = (KML);
+//# sourceMappingURL=KML.js.map
 
 /***/ }),
 
@@ -34789,6 +42147,679 @@ function getGeometryType(type, numEnds) {
 
 /***/ }),
 
+/***/ "./node_modules/ol/format/OWS.js":
+/*!***************************************!*\
+  !*** ./node_modules/ol/format/OWS.js ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _XML_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./XML.js */ "./node_modules/ol/format/XML.js");
+/* harmony import */ var _xml_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../xml.js */ "./node_modules/ol/xml.js");
+/* harmony import */ var _XLink_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./XLink.js */ "./node_modules/ol/format/XLink.js");
+/* harmony import */ var _xsd_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./xsd.js */ "./node_modules/ol/format/xsd.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+/**
+ * @module ol/format/OWS
+ */
+
+
+
+
+/**
+ * @const
+ * @type {Array<null|string>}
+ */
+var NAMESPACE_URIS = [null, 'http://www.opengis.net/ows/1.1'];
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeStructureNS"])(NAMESPACE_URIS, {
+    'ServiceIdentification': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(readServiceIdentification),
+    'ServiceProvider': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(readServiceProvider),
+    'OperationsMetadata': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(readOperationsMetadata),
+});
+var OWS = /** @class */ (function (_super) {
+    __extends(OWS, _super);
+    function OWS() {
+        return _super.call(this) || this;
+    }
+    /**
+     * @param {Element} node Node.
+     * @return {Object} Object
+     */
+    OWS.prototype.readFromNode = function (node) {
+        var owsObject = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["pushParseAndPop"])({}, PARSERS, node, []);
+        return owsObject ? owsObject : null;
+    };
+    return OWS;
+}(_XML_js__WEBPACK_IMPORTED_MODULE_0__["default"]));
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var ADDRESS_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeStructureNS"])(NAMESPACE_URIS, {
+    'DeliveryPoint': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_3__["readString"]),
+    'City': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_3__["readString"]),
+    'AdministrativeArea': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_3__["readString"]),
+    'PostalCode': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_3__["readString"]),
+    'Country': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_3__["readString"]),
+    'ElectronicMailAddress': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_3__["readString"]),
+});
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var ALLOWED_VALUES_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeStructureNS"])(NAMESPACE_URIS, {
+    'Value': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertyPusher"])(readValue),
+});
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var CONSTRAINT_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeStructureNS"])(NAMESPACE_URIS, {
+    'AllowedValues': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(readAllowedValues),
+});
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var CONTACT_INFO_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeStructureNS"])(NAMESPACE_URIS, {
+    'Phone': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(readPhone),
+    'Address': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(readAddress),
+});
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var DCP_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeStructureNS"])(NAMESPACE_URIS, {
+    'HTTP': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(readHttp),
+});
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var HTTP_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeStructureNS"])(NAMESPACE_URIS, {
+    'Get': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertyPusher"])(readGet),
+    'Post': undefined,
+});
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var OPERATION_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeStructureNS"])(NAMESPACE_URIS, {
+    'DCP': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(readDcp),
+});
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var OPERATIONS_METADATA_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeStructureNS"])(NAMESPACE_URIS, {
+    'Operation': readOperation,
+});
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var PHONE_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeStructureNS"])(NAMESPACE_URIS, {
+    'Voice': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_3__["readString"]),
+    'Facsimile': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_3__["readString"]),
+});
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var REQUEST_METHOD_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeStructureNS"])(NAMESPACE_URIS, {
+    'Constraint': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertyPusher"])(readConstraint),
+});
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var SERVICE_CONTACT_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeStructureNS"])(NAMESPACE_URIS, {
+    'IndividualName': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_3__["readString"]),
+    'PositionName': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_3__["readString"]),
+    'ContactInfo': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(readContactInfo),
+});
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var SERVICE_IDENTIFICATION_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeStructureNS"])(NAMESPACE_URIS, {
+    'Abstract': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_3__["readString"]),
+    'AccessConstraints': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_3__["readString"]),
+    'Fees': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_3__["readString"]),
+    'Title': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_3__["readString"]),
+    'ServiceTypeVersion': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_3__["readString"]),
+    'ServiceType': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_3__["readString"]),
+});
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var SERVICE_PROVIDER_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeStructureNS"])(NAMESPACE_URIS, {
+    'ProviderName': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_3__["readString"]),
+    'ProviderSite': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(_XLink_js__WEBPACK_IMPORTED_MODULE_2__["readHref"]),
+    'ServiceContact': Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["makeObjectPropertySetter"])(readServiceContact),
+});
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Object|undefined} The address.
+ */
+function readAddress(node, objectStack) {
+    return Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["pushParseAndPop"])({}, ADDRESS_PARSERS, node, objectStack);
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Object|undefined} The values.
+ */
+function readAllowedValues(node, objectStack) {
+    return Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["pushParseAndPop"])({}, ALLOWED_VALUES_PARSERS, node, objectStack);
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Object|undefined} The constraint.
+ */
+function readConstraint(node, objectStack) {
+    var name = node.getAttribute('name');
+    if (!name) {
+        return undefined;
+    }
+    return Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["pushParseAndPop"])({ 'name': name }, CONSTRAINT_PARSERS, node, objectStack);
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Object|undefined} The contact info.
+ */
+function readContactInfo(node, objectStack) {
+    return Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["pushParseAndPop"])({}, CONTACT_INFO_PARSERS, node, objectStack);
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Object|undefined} The DCP.
+ */
+function readDcp(node, objectStack) {
+    return Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["pushParseAndPop"])({}, DCP_PARSERS, node, objectStack);
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Object|undefined} The GET object.
+ */
+function readGet(node, objectStack) {
+    var href = Object(_XLink_js__WEBPACK_IMPORTED_MODULE_2__["readHref"])(node);
+    if (!href) {
+        return undefined;
+    }
+    return Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["pushParseAndPop"])({ 'href': href }, REQUEST_METHOD_PARSERS, node, objectStack);
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Object|undefined} The HTTP object.
+ */
+function readHttp(node, objectStack) {
+    return Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["pushParseAndPop"])({}, HTTP_PARSERS, node, objectStack);
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Object|undefined} The operation.
+ */
+function readOperation(node, objectStack) {
+    var name = node.getAttribute('name');
+    var value = Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["pushParseAndPop"])({}, OPERATION_PARSERS, node, objectStack);
+    if (!value) {
+        return undefined;
+    }
+    var object = /** @type {Object} */ (objectStack[objectStack.length - 1]);
+    object[name] = value;
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Object|undefined} The operations metadata.
+ */
+function readOperationsMetadata(node, objectStack) {
+    return Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["pushParseAndPop"])({}, OPERATIONS_METADATA_PARSERS, node, objectStack);
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Object|undefined} The phone.
+ */
+function readPhone(node, objectStack) {
+    return Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["pushParseAndPop"])({}, PHONE_PARSERS, node, objectStack);
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Object|undefined} The service identification.
+ */
+function readServiceIdentification(node, objectStack) {
+    return Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["pushParseAndPop"])({}, SERVICE_IDENTIFICATION_PARSERS, node, objectStack);
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Object|undefined} The service contact.
+ */
+function readServiceContact(node, objectStack) {
+    return Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["pushParseAndPop"])({}, SERVICE_CONTACT_PARSERS, node, objectStack);
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Object|undefined} The service provider.
+ */
+function readServiceProvider(node, objectStack) {
+    return Object(_xml_js__WEBPACK_IMPORTED_MODULE_1__["pushParseAndPop"])({}, SERVICE_PROVIDER_PARSERS, node, objectStack);
+}
+/**
+ * @param {Node} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {string|undefined} The value.
+ */
+function readValue(node, objectStack) {
+    return Object(_xsd_js__WEBPACK_IMPORTED_MODULE_3__["readString"])(node);
+}
+/* harmony default export */ __webpack_exports__["default"] = (OWS);
+//# sourceMappingURL=OWS.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/format/Polyline.js":
+/*!********************************************!*\
+  !*** ./node_modules/ol/format/Polyline.js ***!
+  \********************************************/
+/*! exports provided: encodeDeltas, decodeDeltas, encodeFloats, decodeFloats, encodeSignedIntegers, decodeSignedIntegers, encodeUnsignedIntegers, decodeUnsignedIntegers, encodeUnsignedInteger, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "encodeDeltas", function() { return encodeDeltas; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "decodeDeltas", function() { return decodeDeltas; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "encodeFloats", function() { return encodeFloats; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "decodeFloats", function() { return decodeFloats; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "encodeSignedIntegers", function() { return encodeSignedIntegers; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "decodeSignedIntegers", function() { return decodeSignedIntegers; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "encodeUnsignedIntegers", function() { return encodeUnsignedIntegers; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "decodeUnsignedIntegers", function() { return decodeUnsignedIntegers; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "encodeUnsignedInteger", function() { return encodeUnsignedInteger; });
+/* harmony import */ var _Feature_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Feature.js */ "./node_modules/ol/Feature.js");
+/* harmony import */ var _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../geom/GeometryLayout.js */ "./node_modules/ol/geom/GeometryLayout.js");
+/* harmony import */ var _geom_LineString_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../geom/LineString.js */ "./node_modules/ol/geom/LineString.js");
+/* harmony import */ var _TextFeature_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./TextFeature.js */ "./node_modules/ol/format/TextFeature.js");
+/* harmony import */ var _asserts_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../asserts.js */ "./node_modules/ol/asserts.js");
+/* harmony import */ var _geom_flat_flip_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../geom/flat/flip.js */ "./node_modules/ol/geom/flat/flip.js");
+/* harmony import */ var _proj_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../proj.js */ "./node_modules/ol/proj.js");
+/* harmony import */ var _geom_SimpleGeometry_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../geom/SimpleGeometry.js */ "./node_modules/ol/geom/SimpleGeometry.js");
+/* harmony import */ var _geom_flat_inflate_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../geom/flat/inflate.js */ "./node_modules/ol/geom/flat/inflate.js");
+/* harmony import */ var _Feature_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Feature.js */ "./node_modules/ol/format/Feature.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+/**
+ * @module ol/format/Polyline
+ */
+
+
+
+
+
+
+
+
+
+
+/**
+ * @typedef {Object} Options
+ * @property {number} [factor=1e5] The factor by which the coordinates values will be scaled.
+ * @property {GeometryLayout} [geometryLayout='XY'] Layout of the
+ * feature geometries created by the format reader.
+ */
+/**
+ * @classdesc
+ * Feature format for reading and writing data in the Encoded
+ * Polyline Algorithm Format.
+ *
+ * When reading features, the coordinates are assumed to be in two dimensions
+ * and in [latitude, longitude] order.
+ *
+ * As Polyline sources contain a single feature,
+ * {@link module:ol/format/Polyline~Polyline#readFeatures} will return the
+ * feature in an array.
+ *
+ * @api
+ */
+var Polyline = /** @class */ (function (_super) {
+    __extends(Polyline, _super);
+    /**
+     * @param {Options=} opt_options Optional configuration object.
+     */
+    function Polyline(opt_options) {
+        var _this = _super.call(this) || this;
+        var options = opt_options ? opt_options : {};
+        /**
+         * @type {import("../proj/Projection.js").default}
+         */
+        _this.dataProjection = Object(_proj_js__WEBPACK_IMPORTED_MODULE_6__["get"])('EPSG:4326');
+        /**
+         * @private
+         * @type {number}
+         */
+        _this.factor_ = options.factor ? options.factor : 1e5;
+        /**
+         * @private
+         * @type {import("../geom/GeometryLayout").default}
+         */
+        _this.geometryLayout_ = options.geometryLayout
+            ? options.geometryLayout
+            : _geom_GeometryLayout_js__WEBPACK_IMPORTED_MODULE_1__["default"].XY;
+        return _this;
+    }
+    /**
+     * @protected
+     * @param {string} text Text.
+     * @param {import("./Feature.js").ReadOptions=} opt_options Read options.
+     * @return {import("../Feature.js").default} Feature.
+     */
+    Polyline.prototype.readFeatureFromText = function (text, opt_options) {
+        var geometry = this.readGeometryFromText(text, opt_options);
+        return new _Feature_js__WEBPACK_IMPORTED_MODULE_0__["default"](geometry);
+    };
+    /**
+     * @param {string} text Text.
+     * @param {import("./Feature.js").ReadOptions=} opt_options Read options.
+     * @protected
+     * @return {Array<Feature>} Features.
+     */
+    Polyline.prototype.readFeaturesFromText = function (text, opt_options) {
+        var feature = this.readFeatureFromText(text, opt_options);
+        return [feature];
+    };
+    /**
+     * @param {string} text Text.
+     * @param {import("./Feature.js").ReadOptions=} opt_options Read options.
+     * @protected
+     * @return {import("../geom/Geometry.js").default} Geometry.
+     */
+    Polyline.prototype.readGeometryFromText = function (text, opt_options) {
+        var stride = Object(_geom_SimpleGeometry_js__WEBPACK_IMPORTED_MODULE_7__["getStrideForLayout"])(this.geometryLayout_);
+        var flatCoordinates = decodeDeltas(text, stride, this.factor_);
+        Object(_geom_flat_flip_js__WEBPACK_IMPORTED_MODULE_5__["flipXY"])(flatCoordinates, 0, flatCoordinates.length, stride, flatCoordinates);
+        var coordinates = Object(_geom_flat_inflate_js__WEBPACK_IMPORTED_MODULE_8__["inflateCoordinates"])(flatCoordinates, 0, flatCoordinates.length, stride);
+        var lineString = new _geom_LineString_js__WEBPACK_IMPORTED_MODULE_2__["default"](coordinates, this.geometryLayout_);
+        return Object(_Feature_js__WEBPACK_IMPORTED_MODULE_9__["transformGeometryWithOptions"])(lineString, false, this.adaptOptions(opt_options));
+    };
+    /**
+     * @param {import("../Feature.js").default} feature Features.
+     * @param {import("./Feature.js").WriteOptions=} opt_options Write options.
+     * @protected
+     * @return {string} Text.
+     */
+    Polyline.prototype.writeFeatureText = function (feature, opt_options) {
+        var geometry = feature.getGeometry();
+        if (geometry) {
+            return this.writeGeometryText(geometry, opt_options);
+        }
+        else {
+            Object(_asserts_js__WEBPACK_IMPORTED_MODULE_4__["assert"])(false, 40); // Expected `feature` to have a geometry
+            return '';
+        }
+    };
+    /**
+     * @param {Array<import("../Feature.js").default>} features Features.
+     * @param {import("./Feature.js").WriteOptions=} opt_options Write options.
+     * @protected
+     * @return {string} Text.
+     */
+    Polyline.prototype.writeFeaturesText = function (features, opt_options) {
+        return this.writeFeatureText(features[0], opt_options);
+    };
+    /**
+     * @param {LineString} geometry Geometry.
+     * @param {import("./Feature.js").WriteOptions=} opt_options Write options.
+     * @protected
+     * @return {string} Text.
+     */
+    Polyline.prototype.writeGeometryText = function (geometry, opt_options) {
+        geometry =
+            /** @type {LineString} */
+            (Object(_Feature_js__WEBPACK_IMPORTED_MODULE_9__["transformGeometryWithOptions"])(geometry, true, this.adaptOptions(opt_options)));
+        var flatCoordinates = geometry.getFlatCoordinates();
+        var stride = geometry.getStride();
+        Object(_geom_flat_flip_js__WEBPACK_IMPORTED_MODULE_5__["flipXY"])(flatCoordinates, 0, flatCoordinates.length, stride, flatCoordinates);
+        return encodeDeltas(flatCoordinates, stride, this.factor_);
+    };
+    return Polyline;
+}(_TextFeature_js__WEBPACK_IMPORTED_MODULE_3__["default"]));
+/**
+ * Encode a list of n-dimensional points and return an encoded string
+ *
+ * Attention: This function will modify the passed array!
+ *
+ * @param {Array<number>} numbers A list of n-dimensional points.
+ * @param {number} stride The number of dimension of the points in the list.
+ * @param {number=} opt_factor The factor by which the numbers will be
+ *     multiplied. The remaining decimal places will get rounded away.
+ *     Default is `1e5`.
+ * @return {string} The encoded string.
+ * @api
+ */
+function encodeDeltas(numbers, stride, opt_factor) {
+    var factor = opt_factor ? opt_factor : 1e5;
+    var d;
+    var lastNumbers = new Array(stride);
+    for (d = 0; d < stride; ++d) {
+        lastNumbers[d] = 0;
+    }
+    for (var i = 0, ii = numbers.length; i < ii;) {
+        for (d = 0; d < stride; ++d, ++i) {
+            var num = numbers[i];
+            var delta = num - lastNumbers[d];
+            lastNumbers[d] = num;
+            numbers[i] = delta;
+        }
+    }
+    return encodeFloats(numbers, factor);
+}
+/**
+ * Decode a list of n-dimensional points from an encoded string
+ *
+ * @param {string} encoded An encoded string.
+ * @param {number} stride The number of dimension of the points in the
+ *     encoded string.
+ * @param {number=} opt_factor The factor by which the resulting numbers will
+ *     be divided. Default is `1e5`.
+ * @return {Array<number>} A list of n-dimensional points.
+ * @api
+ */
+function decodeDeltas(encoded, stride, opt_factor) {
+    var factor = opt_factor ? opt_factor : 1e5;
+    var d;
+    /** @type {Array<number>} */
+    var lastNumbers = new Array(stride);
+    for (d = 0; d < stride; ++d) {
+        lastNumbers[d] = 0;
+    }
+    var numbers = decodeFloats(encoded, factor);
+    for (var i = 0, ii = numbers.length; i < ii;) {
+        for (d = 0; d < stride; ++d, ++i) {
+            lastNumbers[d] += numbers[i];
+            numbers[i] = lastNumbers[d];
+        }
+    }
+    return numbers;
+}
+/**
+ * Encode a list of floating point numbers and return an encoded string
+ *
+ * Attention: This function will modify the passed array!
+ *
+ * @param {Array<number>} numbers A list of floating point numbers.
+ * @param {number=} opt_factor The factor by which the numbers will be
+ *     multiplied. The remaining decimal places will get rounded away.
+ *     Default is `1e5`.
+ * @return {string} The encoded string.
+ * @api
+ */
+function encodeFloats(numbers, opt_factor) {
+    var factor = opt_factor ? opt_factor : 1e5;
+    for (var i = 0, ii = numbers.length; i < ii; ++i) {
+        numbers[i] = Math.round(numbers[i] * factor);
+    }
+    return encodeSignedIntegers(numbers);
+}
+/**
+ * Decode a list of floating point numbers from an encoded string
+ *
+ * @param {string} encoded An encoded string.
+ * @param {number=} opt_factor The factor by which the result will be divided.
+ *     Default is `1e5`.
+ * @return {Array<number>} A list of floating point numbers.
+ * @api
+ */
+function decodeFloats(encoded, opt_factor) {
+    var factor = opt_factor ? opt_factor : 1e5;
+    var numbers = decodeSignedIntegers(encoded);
+    for (var i = 0, ii = numbers.length; i < ii; ++i) {
+        numbers[i] /= factor;
+    }
+    return numbers;
+}
+/**
+ * Encode a list of signed integers and return an encoded string
+ *
+ * Attention: This function will modify the passed array!
+ *
+ * @param {Array<number>} numbers A list of signed integers.
+ * @return {string} The encoded string.
+ */
+function encodeSignedIntegers(numbers) {
+    for (var i = 0, ii = numbers.length; i < ii; ++i) {
+        var num = numbers[i];
+        numbers[i] = num < 0 ? ~(num << 1) : num << 1;
+    }
+    return encodeUnsignedIntegers(numbers);
+}
+/**
+ * Decode a list of signed integers from an encoded string
+ *
+ * @param {string} encoded An encoded string.
+ * @return {Array<number>} A list of signed integers.
+ */
+function decodeSignedIntegers(encoded) {
+    var numbers = decodeUnsignedIntegers(encoded);
+    for (var i = 0, ii = numbers.length; i < ii; ++i) {
+        var num = numbers[i];
+        numbers[i] = num & 1 ? ~(num >> 1) : num >> 1;
+    }
+    return numbers;
+}
+/**
+ * Encode a list of unsigned integers and return an encoded string
+ *
+ * @param {Array<number>} numbers A list of unsigned integers.
+ * @return {string} The encoded string.
+ */
+function encodeUnsignedIntegers(numbers) {
+    var encoded = '';
+    for (var i = 0, ii = numbers.length; i < ii; ++i) {
+        encoded += encodeUnsignedInteger(numbers[i]);
+    }
+    return encoded;
+}
+/**
+ * Decode a list of unsigned integers from an encoded string
+ *
+ * @param {string} encoded An encoded string.
+ * @return {Array<number>} A list of unsigned integers.
+ */
+function decodeUnsignedIntegers(encoded) {
+    var numbers = [];
+    var current = 0;
+    var shift = 0;
+    for (var i = 0, ii = encoded.length; i < ii; ++i) {
+        var b = encoded.charCodeAt(i) - 63;
+        current |= (b & 0x1f) << shift;
+        if (b < 0x20) {
+            numbers.push(current);
+            current = 0;
+            shift = 0;
+        }
+        else {
+            shift += 5;
+        }
+    }
+    return numbers;
+}
+/**
+ * Encode one single unsigned integer and return an encoded string
+ *
+ * @param {number} num Unsigned integer that should be encoded.
+ * @return {string} The encoded string.
+ */
+function encodeUnsignedInteger(num) {
+    var value, encoded = '';
+    while (num >= 0x20) {
+        value = (0x20 | (num & 0x1f)) + 63;
+        encoded += String.fromCharCode(value);
+        num >>= 5;
+    }
+    value = num + 63;
+    encoded += String.fromCharCode(value);
+    return encoded;
+}
+/* harmony default export */ __webpack_exports__["default"] = (Polyline);
+//# sourceMappingURL=Polyline.js.map
+
+/***/ }),
+
 /***/ "./node_modules/ol/format/TextFeature.js":
 /*!***********************************************!*\
   !*** ./node_modules/ol/format/TextFeature.js ***!
@@ -34999,6 +43030,1417 @@ function getText(source) {
 }
 /* harmony default export */ __webpack_exports__["default"] = (TextFeature);
 //# sourceMappingURL=TextFeature.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/format/TopoJSON.js":
+/*!********************************************!*\
+  !*** ./node_modules/ol/format/TopoJSON.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Feature_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Feature.js */ "./node_modules/ol/Feature.js");
+/* harmony import */ var _JSONFeature_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./JSONFeature.js */ "./node_modules/ol/format/JSONFeature.js");
+/* harmony import */ var _geom_LineString_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../geom/LineString.js */ "./node_modules/ol/geom/LineString.js");
+/* harmony import */ var _geom_MultiLineString_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../geom/MultiLineString.js */ "./node_modules/ol/geom/MultiLineString.js");
+/* harmony import */ var _geom_MultiPoint_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../geom/MultiPoint.js */ "./node_modules/ol/geom/MultiPoint.js");
+/* harmony import */ var _geom_MultiPolygon_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../geom/MultiPolygon.js */ "./node_modules/ol/geom/MultiPolygon.js");
+/* harmony import */ var _geom_Point_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../geom/Point.js */ "./node_modules/ol/geom/Point.js");
+/* harmony import */ var _geom_Polygon_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../geom/Polygon.js */ "./node_modules/ol/geom/Polygon.js");
+/* harmony import */ var _proj_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../proj.js */ "./node_modules/ol/proj.js");
+/* harmony import */ var _Feature_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Feature.js */ "./node_modules/ol/format/Feature.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+/**
+ * @module ol/format/TopoJSON
+ */
+
+
+
+
+
+
+
+
+
+
+/**
+ * @typedef {import("topojson-specification").Topology} TopoJSONTopology
+ * @typedef {import("topojson-specification").GeometryCollection} TopoJSONGeometryCollection
+ * @typedef {import("topojson-specification").GeometryObject} TopoJSONGeometry
+ * @typedef {import("topojson-specification").Point} TopoJSONPoint
+ * @typedef {import("topojson-specification").MultiPoint} TopoJSONMultiPoint
+ * @typedef {import("topojson-specification").LineString} TopoJSONLineString
+ * @typedef {import("topojson-specification").MultiLineString} TopoJSONMultiLineString
+ * @typedef {import("topojson-specification").Polygon} TopoJSONPolygon
+ * @typedef {import("topojson-specification").MultiPolygon} TopoJSONMultiPolygon
+ */
+/**
+ * @typedef {Object} Options
+ * @property {import("../proj.js").ProjectionLike} [dataProjection='EPSG:4326'] Default data projection.
+ * @property {string} [layerName] Set the name of the TopoJSON topology
+ * `objects`'s children as feature property with the specified name. This means
+ * that when set to `'layer'`, a topology like
+ * ```
+ * {
+ *   "type": "Topology",
+ *   "objects": {
+ *     "example": {
+ *       "type": "GeometryCollection",
+ *       "geometries": []
+ *     }
+ *   }
+ * }
+ * ```
+ * will result in features that have a property `'layer'` set to `'example'`.
+ * When not set, no property will be added to features.
+ * @property {Array<string>} [layers] Names of the TopoJSON topology's
+ * `objects`'s children to read features from.  If not provided, features will
+ * be read from all children.
+ */
+/**
+ * @classdesc
+ * Feature format for reading data in the TopoJSON format.
+ *
+ * @api
+ */
+var TopoJSON = /** @class */ (function (_super) {
+    __extends(TopoJSON, _super);
+    /**
+     * @param {Options=} opt_options Options.
+     */
+    function TopoJSON(opt_options) {
+        var _this = _super.call(this) || this;
+        var options = opt_options ? opt_options : {};
+        /**
+         * @private
+         * @type {string|undefined}
+         */
+        _this.layerName_ = options.layerName;
+        /**
+         * @private
+         * @type {?Array<string>}
+         */
+        _this.layers_ = options.layers ? options.layers : null;
+        /**
+         * @type {import("../proj/Projection.js").default}
+         */
+        _this.dataProjection = Object(_proj_js__WEBPACK_IMPORTED_MODULE_8__["get"])(options.dataProjection ? options.dataProjection : 'EPSG:4326');
+        return _this;
+    }
+    /**
+     * @param {Object} object Object.
+     * @param {import("./Feature.js").ReadOptions=} opt_options Read options.
+     * @protected
+     * @return {Array<Feature>} Features.
+     */
+    TopoJSON.prototype.readFeaturesFromObject = function (object, opt_options) {
+        if (object.type == 'Topology') {
+            var topoJSONTopology = /** @type {TopoJSONTopology} */ (object);
+            var transform = void 0, scale = null, translate = null;
+            if (topoJSONTopology['transform']) {
+                transform = topoJSONTopology['transform'];
+                scale = transform['scale'];
+                translate = transform['translate'];
+            }
+            var arcs = topoJSONTopology['arcs'];
+            if (transform) {
+                transformArcs(arcs, scale, translate);
+            }
+            /** @type {Array<Feature>} */
+            var features = [];
+            var topoJSONFeatures = topoJSONTopology['objects'];
+            var property = this.layerName_;
+            var feature = void 0;
+            for (var objectName in topoJSONFeatures) {
+                if (this.layers_ && this.layers_.indexOf(objectName) == -1) {
+                    continue;
+                }
+                if (topoJSONFeatures[objectName].type === 'GeometryCollection') {
+                    feature = /** @type {TopoJSONGeometryCollection} */ (topoJSONFeatures[objectName]);
+                    features.push.apply(features, readFeaturesFromGeometryCollection(feature, arcs, scale, translate, property, objectName, opt_options));
+                }
+                else {
+                    feature = /** @type {TopoJSONGeometry} */ (topoJSONFeatures[objectName]);
+                    features.push(readFeatureFromGeometry(feature, arcs, scale, translate, property, objectName, opt_options));
+                }
+            }
+            return features;
+        }
+        else {
+            return [];
+        }
+    };
+    /**
+     * @param {Object} object Object.
+     * @protected
+     * @return {import("../proj/Projection.js").default} Projection.
+     */
+    TopoJSON.prototype.readProjectionFromObject = function (object) {
+        return this.dataProjection;
+    };
+    return TopoJSON;
+}(_JSONFeature_js__WEBPACK_IMPORTED_MODULE_1__["default"]));
+/**
+ * @const
+ * @type {Object<string, function(TopoJSONGeometry, Array, ...Array=): import("../geom/Geometry.js").default>}
+ */
+var GEOMETRY_READERS = {
+    'Point': readPointGeometry,
+    'LineString': readLineStringGeometry,
+    'Polygon': readPolygonGeometry,
+    'MultiPoint': readMultiPointGeometry,
+    'MultiLineString': readMultiLineStringGeometry,
+    'MultiPolygon': readMultiPolygonGeometry,
+};
+/**
+ * Concatenate arcs into a coordinate array.
+ * @param {Array<number>} indices Indices of arcs to concatenate.  Negative
+ *     values indicate arcs need to be reversed.
+ * @param {Array<Array<import("../coordinate.js").Coordinate>>} arcs Array of arcs (already
+ *     transformed).
+ * @return {Array<import("../coordinate.js").Coordinate>} Coordinates array.
+ */
+function concatenateArcs(indices, arcs) {
+    /** @type {Array<import("../coordinate.js").Coordinate>} */
+    var coordinates = [];
+    var index, arc;
+    for (var i = 0, ii = indices.length; i < ii; ++i) {
+        index = indices[i];
+        if (i > 0) {
+            // splicing together arcs, discard last point
+            coordinates.pop();
+        }
+        if (index >= 0) {
+            // forward arc
+            arc = arcs[index];
+        }
+        else {
+            // reverse arc
+            arc = arcs[~index].slice().reverse();
+        }
+        coordinates.push.apply(coordinates, arc);
+    }
+    // provide fresh copies of coordinate arrays
+    for (var j = 0, jj = coordinates.length; j < jj; ++j) {
+        coordinates[j] = coordinates[j].slice();
+    }
+    return coordinates;
+}
+/**
+ * Create a point from a TopoJSON geometry object.
+ *
+ * @param {TopoJSONPoint} object TopoJSON object.
+ * @param {Array<number>} scale Scale for each dimension.
+ * @param {Array<number>} translate Translation for each dimension.
+ * @return {Point} Geometry.
+ */
+function readPointGeometry(object, scale, translate) {
+    var coordinates = object['coordinates'];
+    if (scale && translate) {
+        transformVertex(coordinates, scale, translate);
+    }
+    return new _geom_Point_js__WEBPACK_IMPORTED_MODULE_6__["default"](coordinates);
+}
+/**
+ * Create a multi-point from a TopoJSON geometry object.
+ *
+ * @param {TopoJSONMultiPoint} object TopoJSON object.
+ * @param {Array<number>} scale Scale for each dimension.
+ * @param {Array<number>} translate Translation for each dimension.
+ * @return {MultiPoint} Geometry.
+ */
+function readMultiPointGeometry(object, scale, translate) {
+    var coordinates = object['coordinates'];
+    if (scale && translate) {
+        for (var i = 0, ii = coordinates.length; i < ii; ++i) {
+            transformVertex(coordinates[i], scale, translate);
+        }
+    }
+    return new _geom_MultiPoint_js__WEBPACK_IMPORTED_MODULE_4__["default"](coordinates);
+}
+/**
+ * Create a linestring from a TopoJSON geometry object.
+ *
+ * @param {TopoJSONLineString} object TopoJSON object.
+ * @param {Array<Array<import("../coordinate.js").Coordinate>>} arcs Array of arcs.
+ * @return {LineString} Geometry.
+ */
+function readLineStringGeometry(object, arcs) {
+    var coordinates = concatenateArcs(object['arcs'], arcs);
+    return new _geom_LineString_js__WEBPACK_IMPORTED_MODULE_2__["default"](coordinates);
+}
+/**
+ * Create a multi-linestring from a TopoJSON geometry object.
+ *
+ * @param {TopoJSONMultiLineString} object TopoJSON object.
+ * @param {Array<Array<import("../coordinate.js").Coordinate>>} arcs Array of arcs.
+ * @return {MultiLineString} Geometry.
+ */
+function readMultiLineStringGeometry(object, arcs) {
+    var coordinates = [];
+    for (var i = 0, ii = object['arcs'].length; i < ii; ++i) {
+        coordinates[i] = concatenateArcs(object['arcs'][i], arcs);
+    }
+    return new _geom_MultiLineString_js__WEBPACK_IMPORTED_MODULE_3__["default"](coordinates);
+}
+/**
+ * Create a polygon from a TopoJSON geometry object.
+ *
+ * @param {TopoJSONPolygon} object TopoJSON object.
+ * @param {Array<Array<import("../coordinate.js").Coordinate>>} arcs Array of arcs.
+ * @return {Polygon} Geometry.
+ */
+function readPolygonGeometry(object, arcs) {
+    var coordinates = [];
+    for (var i = 0, ii = object['arcs'].length; i < ii; ++i) {
+        coordinates[i] = concatenateArcs(object['arcs'][i], arcs);
+    }
+    return new _geom_Polygon_js__WEBPACK_IMPORTED_MODULE_7__["default"](coordinates);
+}
+/**
+ * Create a multi-polygon from a TopoJSON geometry object.
+ *
+ * @param {TopoJSONMultiPolygon} object TopoJSON object.
+ * @param {Array<Array<import("../coordinate.js").Coordinate>>} arcs Array of arcs.
+ * @return {MultiPolygon} Geometry.
+ */
+function readMultiPolygonGeometry(object, arcs) {
+    var coordinates = [];
+    for (var i = 0, ii = object['arcs'].length; i < ii; ++i) {
+        // for each polygon
+        var polyArray = object['arcs'][i];
+        var ringCoords = [];
+        for (var j = 0, jj = polyArray.length; j < jj; ++j) {
+            // for each ring
+            ringCoords[j] = concatenateArcs(polyArray[j], arcs);
+        }
+        coordinates[i] = ringCoords;
+    }
+    return new _geom_MultiPolygon_js__WEBPACK_IMPORTED_MODULE_5__["default"](coordinates);
+}
+/**
+ * Create features from a TopoJSON GeometryCollection object.
+ *
+ * @param {TopoJSONGeometryCollection} collection TopoJSON Geometry
+ *     object.
+ * @param {Array<Array<import("../coordinate.js").Coordinate>>} arcs Array of arcs.
+ * @param {Array<number>} scale Scale for each dimension.
+ * @param {Array<number>} translate Translation for each dimension.
+ * @param {string|undefined} property Property to set the `GeometryCollection`'s parent
+ *     object to.
+ * @param {string} name Name of the `Topology`'s child object.
+ * @param {import("./Feature.js").ReadOptions=} opt_options Read options.
+ * @return {Array<Feature>} Array of features.
+ */
+function readFeaturesFromGeometryCollection(collection, arcs, scale, translate, property, name, opt_options) {
+    var geometries = collection['geometries'];
+    var features = [];
+    for (var i = 0, ii = geometries.length; i < ii; ++i) {
+        features[i] = readFeatureFromGeometry(geometries[i], arcs, scale, translate, property, name, opt_options);
+    }
+    return features;
+}
+/**
+ * Create a feature from a TopoJSON geometry object.
+ *
+ * @param {TopoJSONGeometry} object TopoJSON geometry object.
+ * @param {Array<Array<import("../coordinate.js").Coordinate>>} arcs Array of arcs.
+ * @param {Array<number>} scale Scale for each dimension.
+ * @param {Array<number>} translate Translation for each dimension.
+ * @param {string|undefined} property Property to set the `GeometryCollection`'s parent
+ *     object to.
+ * @param {string} name Name of the `Topology`'s child object.
+ * @param {import("./Feature.js").ReadOptions=} opt_options Read options.
+ * @return {Feature} Feature.
+ */
+function readFeatureFromGeometry(object, arcs, scale, translate, property, name, opt_options) {
+    var geometry;
+    var type = object.type;
+    var geometryReader = GEOMETRY_READERS[type];
+    if (type === 'Point' || type === 'MultiPoint') {
+        geometry = geometryReader(object, scale, translate);
+    }
+    else {
+        geometry = geometryReader(object, arcs);
+    }
+    var feature = new _Feature_js__WEBPACK_IMPORTED_MODULE_0__["default"]();
+    feature.setGeometry(Object(_Feature_js__WEBPACK_IMPORTED_MODULE_9__["transformGeometryWithOptions"])(geometry, false, opt_options));
+    if (object.id !== undefined) {
+        feature.setId(object.id);
+    }
+    var properties = object.properties;
+    if (property) {
+        if (!properties) {
+            properties = {};
+        }
+        properties[property] = name;
+    }
+    if (properties) {
+        feature.setProperties(properties, true);
+    }
+    return feature;
+}
+/**
+ * Apply a linear transform to array of arcs.  The provided array of arcs is
+ * modified in place.
+ *
+ * @param {Array<Array<import("../coordinate.js").Coordinate>>} arcs Array of arcs.
+ * @param {Array<number>} scale Scale for each dimension.
+ * @param {Array<number>} translate Translation for each dimension.
+ */
+function transformArcs(arcs, scale, translate) {
+    for (var i = 0, ii = arcs.length; i < ii; ++i) {
+        transformArc(arcs[i], scale, translate);
+    }
+}
+/**
+ * Apply a linear transform to an arc.  The provided arc is modified in place.
+ *
+ * @param {Array<import("../coordinate.js").Coordinate>} arc Arc.
+ * @param {Array<number>} scale Scale for each dimension.
+ * @param {Array<number>} translate Translation for each dimension.
+ */
+function transformArc(arc, scale, translate) {
+    var x = 0;
+    var y = 0;
+    for (var i = 0, ii = arc.length; i < ii; ++i) {
+        var vertex = arc[i];
+        x += vertex[0];
+        y += vertex[1];
+        vertex[0] = x;
+        vertex[1] = y;
+        transformVertex(vertex, scale, translate);
+    }
+}
+/**
+ * Apply a linear transform to a vertex.  The provided vertex is modified in
+ * place.
+ *
+ * @param {import("../coordinate.js").Coordinate} vertex Vertex.
+ * @param {Array<number>} scale Scale for each dimension.
+ * @param {Array<number>} translate Translation for each dimension.
+ */
+function transformVertex(vertex, scale, translate) {
+    vertex[0] = vertex[0] * scale[0] + translate[0];
+    vertex[1] = vertex[1] * scale[1] + translate[1];
+}
+/* harmony default export */ __webpack_exports__["default"] = (TopoJSON);
+//# sourceMappingURL=TopoJSON.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/format/WFS.js":
+/*!***************************************!*\
+  !*** ./node_modules/ol/format/WFS.js ***!
+  \***************************************/
+/*! exports provided: writeFilter, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "writeFilter", function() { return writeFilter; });
+/* harmony import */ var _GML2_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./GML2.js */ "./node_modules/ol/format/GML2.js");
+/* harmony import */ var _GML3_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./GML3.js */ "./node_modules/ol/format/GML3.js");
+/* harmony import */ var _GMLBase_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./GMLBase.js */ "./node_modules/ol/format/GMLBase.js");
+/* harmony import */ var _XMLFeature_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./XMLFeature.js */ "./node_modules/ol/format/XMLFeature.js");
+/* harmony import */ var _xml_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../xml.js */ "./node_modules/ol/xml.js");
+/* harmony import */ var _filter_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./filter.js */ "./node_modules/ol/format/filter.js");
+/* harmony import */ var _asserts_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../asserts.js */ "./node_modules/ol/asserts.js");
+/* harmony import */ var _obj_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../obj.js */ "./node_modules/ol/obj.js");
+/* harmony import */ var _proj_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../proj.js */ "./node_modules/ol/proj.js");
+/* harmony import */ var _xsd_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./xsd.js */ "./node_modules/ol/format/xsd.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+/**
+ * @module ol/format/WFS
+ */
+
+
+
+
+
+
+
+
+
+
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+var FEATURE_COLLECTION_PARSERS = {
+    'http://www.opengis.net/gml': {
+        'boundedBy': Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["makeObjectPropertySetter"])(_GMLBase_js__WEBPACK_IMPORTED_MODULE_2__["default"].prototype.readGeometryElement, 'bounds'),
+    },
+};
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+var TRANSACTION_SUMMARY_PARSERS = {
+    'http://www.opengis.net/wfs': {
+        'totalInserted': Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_9__["readNonNegativeInteger"]),
+        'totalUpdated': Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_9__["readNonNegativeInteger"]),
+        'totalDeleted': Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_9__["readNonNegativeInteger"]),
+    },
+};
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+var TRANSACTION_RESPONSE_PARSERS = {
+    'http://www.opengis.net/wfs': {
+        'TransactionSummary': Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["makeObjectPropertySetter"])(readTransactionSummary, 'transactionSummary'),
+        'InsertResults': Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["makeObjectPropertySetter"])(readInsertResults, 'insertIds'),
+    },
+};
+/**
+ * @type {Object<string, Object<string, import("../xml.js").Serializer>>}
+ */
+var QUERY_SERIALIZERS = {
+    'http://www.opengis.net/wfs': {
+        'PropertyName': Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["makeChildAppender"])(_xsd_js__WEBPACK_IMPORTED_MODULE_9__["writeStringTextNode"]),
+    },
+};
+/**
+ * @type {Object<string, Object<string, import("../xml.js").Serializer>>}
+ */
+var TRANSACTION_SERIALIZERS = {
+    'http://www.opengis.net/wfs': {
+        'Insert': Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["makeChildAppender"])(writeFeature),
+        'Update': Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["makeChildAppender"])(writeUpdate),
+        'Delete': Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["makeChildAppender"])(writeDelete),
+        'Property': Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["makeChildAppender"])(writeProperty),
+        'Native': Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["makeChildAppender"])(writeNative),
+    },
+};
+/**
+ * @typedef {Object} Options
+ * @property {Object<string, string>|string} [featureNS] The namespace URI used for features.
+ * @property {Array<string>|string} [featureType] The feature type to parse. Only used for read operations.
+ * @property {GMLBase} [gmlFormat] The GML format to use to parse the response. Default is `ol/format/GML3`.
+ * @property {string} [schemaLocation] Optional schemaLocation to use for serialization, this will override the default.
+ */
+/**
+ * @typedef {Object} WriteGetFeatureOptions
+ * @property {string} featureNS The namespace URI used for features.
+ * @property {string} featurePrefix The prefix for the feature namespace.
+ * @property {Array<string>} featureTypes The feature type names.
+ * @property {string} [srsName] SRS name. No srsName attribute will be set on
+ * geometries when this is not provided.
+ * @property {string} [handle] Handle.
+ * @property {string} [outputFormat] Output format.
+ * @property {number} [maxFeatures] Maximum number of features to fetch.
+ * @property {string} [geometryName] Geometry name to use in a BBOX filter.
+ * @property {Array<string>} [propertyNames] Optional list of property names to serialize.
+ * @property {string} [viewParams] viewParams GeoServer vendor parameter.
+ * @property {number} [startIndex] Start index to use for WFS paging. This is a
+ * WFS 2.0 feature backported to WFS 1.1.0 by some Web Feature Services.
+ * @property {number} [count] Number of features to retrieve when paging. This is a
+ * WFS 2.0 feature backported to WFS 1.1.0 by some Web Feature Services. Please note that some
+ * Web Feature Services have repurposed `maxfeatures` instead.
+ * @property {import("../extent.js").Extent} [bbox] Extent to use for the BBOX filter.
+ * @property {import("./filter/Filter.js").default} [filter] Filter condition. See
+ * {@link module:ol/format/Filter} for more information.
+ * @property {string} [resultType] Indicates what response should be returned,
+ * E.g. `hits` only includes the `numberOfFeatures` attribute in the response and no features.
+ */
+/**
+ * @typedef {Object} WriteTransactionOptions
+ * @property {string} featureNS The namespace URI used for features.
+ * @property {string} featurePrefix The prefix for the feature namespace.
+ * @property {string} featureType The feature type name.
+ * @property {string} [srsName] SRS name. No srsName attribute will be set on
+ * geometries when this is not provided.
+ * @property {string} [handle] Handle.
+ * @property {boolean} [hasZ] Must be set to true if the transaction is for
+ * a 3D layer. This will allow the Z coordinate to be included in the transaction.
+ * @property {Array<Object>} nativeElements Native elements. Currently not supported.
+ * @property {import("./GMLBase.js").Options} [gmlOptions] GML options for the WFS transaction writer.
+ * @property {string} [version='1.1.0'] WFS version to use for the transaction. Can be either `1.0.0` or `1.1.0`.
+ */
+/**
+ * Number of features; bounds/extent.
+ * @typedef {Object} FeatureCollectionMetadata
+ * @property {number} numberOfFeatures
+ * @property {import("../extent.js").Extent} bounds
+ */
+/**
+ * Total deleted; total inserted; total updated; array of insert ids.
+ * @typedef {Object} TransactionResponse
+ * @property {number} totalDeleted
+ * @property {number} totalInserted
+ * @property {number} totalUpdated
+ * @property {Array<string>} insertIds
+ */
+/**
+ * @type {string}
+ */
+var FEATURE_PREFIX = 'feature';
+/**
+ * @type {string}
+ */
+var XMLNS = 'http://www.w3.org/2000/xmlns/';
+/**
+ * @type {string}
+ */
+var OGCNS = 'http://www.opengis.net/ogc';
+/**
+ * @type {string}
+ */
+var WFSNS = 'http://www.opengis.net/wfs';
+/**
+ * @type {string}
+ */
+var FESNS = 'http://www.opengis.net/fes';
+/**
+ * @type {Object<string, string>}
+ */
+var SCHEMA_LOCATIONS = {
+    '1.1.0': 'http://www.opengis.net/wfs http://schemas.opengis.net/wfs/1.1.0/wfs.xsd',
+    '1.0.0': 'http://www.opengis.net/wfs http://schemas.opengis.net/wfs/1.0.0/wfs.xsd',
+};
+/**
+ * @const
+ * @type {string}
+ */
+var DEFAULT_VERSION = '1.1.0';
+/**
+ * @classdesc
+ * Feature format for reading and writing data in the WFS format.
+ * By default, supports WFS version 1.1.0. You can pass a GML format
+ * as option if you want to read a WFS that contains GML2 (WFS 1.0.0).
+ * Also see {@link module:ol/format/GMLBase~GMLBase} which is used by this format.
+ *
+ * @api
+ */
+var WFS = /** @class */ (function (_super) {
+    __extends(WFS, _super);
+    /**
+     * @param {Options=} opt_options Optional configuration object.
+     */
+    function WFS(opt_options) {
+        var _this = _super.call(this) || this;
+        var options = opt_options ? opt_options : {};
+        /**
+         * @private
+         * @type {Array<string>|string|undefined}
+         */
+        _this.featureType_ = options.featureType;
+        /**
+         * @private
+         * @type {Object<string, string>|string|undefined}
+         */
+        _this.featureNS_ = options.featureNS;
+        /**
+         * @private
+         * @type {GMLBase}
+         */
+        _this.gmlFormat_ = options.gmlFormat ? options.gmlFormat : new _GML3_js__WEBPACK_IMPORTED_MODULE_1__["default"]();
+        /**
+         * @private
+         * @type {string}
+         */
+        _this.schemaLocation_ = options.schemaLocation
+            ? options.schemaLocation
+            : SCHEMA_LOCATIONS[DEFAULT_VERSION];
+        return _this;
+    }
+    /**
+     * @return {Array<string>|string|undefined} featureType
+     */
+    WFS.prototype.getFeatureType = function () {
+        return this.featureType_;
+    };
+    /**
+     * @param {Array<string>|string|undefined} featureType Feature type(s) to parse.
+     */
+    WFS.prototype.setFeatureType = function (featureType) {
+        this.featureType_ = featureType;
+    };
+    /**
+     * @protected
+     * @param {Element} node Node.
+     * @param {import("./Feature.js").ReadOptions=} opt_options Options.
+     * @return {Array<import("../Feature.js").default>} Features.
+     */
+    WFS.prototype.readFeaturesFromNode = function (node, opt_options) {
+        /** @type {import("../xml.js").NodeStackItem} */
+        var context = {
+            node: node,
+        };
+        Object(_obj_js__WEBPACK_IMPORTED_MODULE_7__["assign"])(context, {
+            'featureType': this.featureType_,
+            'featureNS': this.featureNS_,
+        });
+        Object(_obj_js__WEBPACK_IMPORTED_MODULE_7__["assign"])(context, this.getReadOptions(node, opt_options ? opt_options : {}));
+        var objectStack = [context];
+        this.gmlFormat_.FEATURE_COLLECTION_PARSERS[_GMLBase_js__WEBPACK_IMPORTED_MODULE_2__["GMLNS"]]['featureMember'] = Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["makeArrayPusher"])(_GMLBase_js__WEBPACK_IMPORTED_MODULE_2__["default"].prototype.readFeaturesInternal);
+        var features = Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["pushParseAndPop"])([], this.gmlFormat_.FEATURE_COLLECTION_PARSERS, node, objectStack, this.gmlFormat_);
+        if (!features) {
+            features = [];
+        }
+        return features;
+    };
+    /**
+     * Read transaction response of the source.
+     *
+     * @param {Document|Element|Object|string} source Source.
+     * @return {TransactionResponse|undefined} Transaction response.
+     * @api
+     */
+    WFS.prototype.readTransactionResponse = function (source) {
+        if (!source) {
+            return undefined;
+        }
+        else if (typeof source === 'string') {
+            var doc = Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["parse"])(source);
+            return this.readTransactionResponseFromDocument(doc);
+        }
+        else if (Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["isDocument"])(source)) {
+            return this.readTransactionResponseFromDocument(
+            /** @type {Document} */ (source));
+        }
+        else {
+            return this.readTransactionResponseFromNode(
+            /** @type {Element} */ (source));
+        }
+    };
+    /**
+     * Read feature collection metadata of the source.
+     *
+     * @param {Document|Element|Object|string} source Source.
+     * @return {FeatureCollectionMetadata|undefined}
+     *     FeatureCollection metadata.
+     * @api
+     */
+    WFS.prototype.readFeatureCollectionMetadata = function (source) {
+        if (!source) {
+            return undefined;
+        }
+        else if (typeof source === 'string') {
+            var doc = Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["parse"])(source);
+            return this.readFeatureCollectionMetadataFromDocument(doc);
+        }
+        else if (Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["isDocument"])(source)) {
+            return this.readFeatureCollectionMetadataFromDocument(
+            /** @type {Document} */ (source));
+        }
+        else {
+            return this.readFeatureCollectionMetadataFromNode(
+            /** @type {Element} */ (source));
+        }
+    };
+    /**
+     * @param {Document} doc Document.
+     * @return {FeatureCollectionMetadata|undefined}
+     *     FeatureCollection metadata.
+     */
+    WFS.prototype.readFeatureCollectionMetadataFromDocument = function (doc) {
+        for (var n = /** @type {Node} */ (doc.firstChild); n; n = n.nextSibling) {
+            if (n.nodeType == Node.ELEMENT_NODE) {
+                return this.readFeatureCollectionMetadataFromNode(
+                /** @type {Element} */ (n));
+            }
+        }
+        return undefined;
+    };
+    /**
+     * @param {Element} node Node.
+     * @return {FeatureCollectionMetadata|undefined}
+     *     FeatureCollection metadata.
+     */
+    WFS.prototype.readFeatureCollectionMetadataFromNode = function (node) {
+        var result = {};
+        var value = Object(_xsd_js__WEBPACK_IMPORTED_MODULE_9__["readNonNegativeIntegerString"])(node.getAttribute('numberOfFeatures'));
+        result['numberOfFeatures'] = value;
+        return Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["pushParseAndPop"])(
+        /** @type {FeatureCollectionMetadata} */ (result), FEATURE_COLLECTION_PARSERS, node, [], this.gmlFormat_);
+    };
+    /**
+     * @param {Document} doc Document.
+     * @return {TransactionResponse|undefined} Transaction response.
+     */
+    WFS.prototype.readTransactionResponseFromDocument = function (doc) {
+        for (var n = /** @type {Node} */ (doc.firstChild); n; n = n.nextSibling) {
+            if (n.nodeType == Node.ELEMENT_NODE) {
+                return this.readTransactionResponseFromNode(/** @type {Element} */ (n));
+            }
+        }
+        return undefined;
+    };
+    /**
+     * @param {Element} node Node.
+     * @return {TransactionResponse|undefined} Transaction response.
+     */
+    WFS.prototype.readTransactionResponseFromNode = function (node) {
+        return Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["pushParseAndPop"])(
+        /** @type {TransactionResponse} */ ({}), TRANSACTION_RESPONSE_PARSERS, node, []);
+    };
+    /**
+     * Encode format as WFS `GetFeature` and return the Node.
+     *
+     * @param {WriteGetFeatureOptions} options Options.
+     * @return {Node} Result.
+     * @api
+     */
+    WFS.prototype.writeGetFeature = function (options) {
+        var node = Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["createElementNS"])(WFSNS, 'GetFeature');
+        node.setAttribute('service', 'WFS');
+        node.setAttribute('version', '1.1.0');
+        var filter;
+        if (options) {
+            if (options.handle) {
+                node.setAttribute('handle', options.handle);
+            }
+            if (options.outputFormat) {
+                node.setAttribute('outputFormat', options.outputFormat);
+            }
+            if (options.maxFeatures !== undefined) {
+                node.setAttribute('maxFeatures', String(options.maxFeatures));
+            }
+            if (options.resultType) {
+                node.setAttribute('resultType', options.resultType);
+            }
+            if (options.startIndex !== undefined) {
+                node.setAttribute('startIndex', String(options.startIndex));
+            }
+            if (options.count !== undefined) {
+                node.setAttribute('count', String(options.count));
+            }
+            if (options.viewParams !== undefined) {
+                node.setAttribute('viewParams', options.viewParams);
+            }
+            filter = options.filter;
+            if (options.bbox) {
+                Object(_asserts_js__WEBPACK_IMPORTED_MODULE_6__["assert"])(options.geometryName, 12); // `options.geometryName` must also be provided when `options.bbox` is set
+                var bbox = Object(_filter_js__WEBPACK_IMPORTED_MODULE_5__["bbox"])(
+                /** @type {string} */ (options.geometryName), options.bbox, options.srsName);
+                if (filter) {
+                    // if bbox and filter are both set, combine the two into a single filter
+                    filter = Object(_filter_js__WEBPACK_IMPORTED_MODULE_5__["and"])(filter, bbox);
+                }
+                else {
+                    filter = bbox;
+                }
+            }
+        }
+        node.setAttributeNS(_xml_js__WEBPACK_IMPORTED_MODULE_4__["XML_SCHEMA_INSTANCE_URI"], 'xsi:schemaLocation', this.schemaLocation_);
+        /** @type {import("../xml.js").NodeStackItem} */
+        var context = {
+            node: node,
+        };
+        Object(_obj_js__WEBPACK_IMPORTED_MODULE_7__["assign"])(context, {
+            'srsName': options.srsName,
+            'featureNS': options.featureNS ? options.featureNS : this.featureNS_,
+            'featurePrefix': options.featurePrefix,
+            'geometryName': options.geometryName,
+            'filter': filter,
+            'propertyNames': options.propertyNames ? options.propertyNames : [],
+        });
+        Object(_asserts_js__WEBPACK_IMPORTED_MODULE_6__["assert"])(Array.isArray(options.featureTypes), 11); // `options.featureTypes` should be an Array
+        writeGetFeature(node, 
+        /** @type {!Array<string>} */ (options.featureTypes), [context]);
+        return node;
+    };
+    /**
+     * Encode format as WFS `Transaction` and return the Node.
+     *
+     * @param {Array<import("../Feature.js").default>} inserts The features to insert.
+     * @param {Array<import("../Feature.js").default>} updates The features to update.
+     * @param {Array<import("../Feature.js").default>} deletes The features to delete.
+     * @param {WriteTransactionOptions} options Write options.
+     * @return {Node} Result.
+     * @api
+     */
+    WFS.prototype.writeTransaction = function (inserts, updates, deletes, options) {
+        var objectStack = [];
+        var node = Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["createElementNS"])(WFSNS, 'Transaction');
+        var version = options.version ? options.version : DEFAULT_VERSION;
+        var gmlVersion = version === '1.0.0' ? 2 : 3;
+        node.setAttribute('service', 'WFS');
+        node.setAttribute('version', version);
+        var baseObj;
+        /** @type {import("../xml.js").NodeStackItem} */
+        var obj;
+        if (options) {
+            baseObj = options.gmlOptions ? options.gmlOptions : {};
+            if (options.handle) {
+                node.setAttribute('handle', options.handle);
+            }
+        }
+        var schemaLocation = SCHEMA_LOCATIONS[version];
+        node.setAttributeNS(_xml_js__WEBPACK_IMPORTED_MODULE_4__["XML_SCHEMA_INSTANCE_URI"], 'xsi:schemaLocation', schemaLocation);
+        var featurePrefix = options.featurePrefix
+            ? options.featurePrefix
+            : FEATURE_PREFIX;
+        if (inserts) {
+            obj = Object(_obj_js__WEBPACK_IMPORTED_MODULE_7__["assign"])({ node: node }, {
+                'featureNS': options.featureNS,
+                'featureType': options.featureType,
+                'featurePrefix': featurePrefix,
+                'gmlVersion': gmlVersion,
+                'hasZ': options.hasZ,
+                'srsName': options.srsName,
+            });
+            Object(_obj_js__WEBPACK_IMPORTED_MODULE_7__["assign"])(obj, baseObj);
+            Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["pushSerializeAndPop"])(obj, TRANSACTION_SERIALIZERS, Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["makeSimpleNodeFactory"])('Insert'), inserts, objectStack);
+        }
+        if (updates) {
+            obj = Object(_obj_js__WEBPACK_IMPORTED_MODULE_7__["assign"])({ node: node }, {
+                'featureNS': options.featureNS,
+                'featureType': options.featureType,
+                'featurePrefix': featurePrefix,
+                'gmlVersion': gmlVersion,
+                'hasZ': options.hasZ,
+                'srsName': options.srsName,
+            });
+            Object(_obj_js__WEBPACK_IMPORTED_MODULE_7__["assign"])(obj, baseObj);
+            Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["pushSerializeAndPop"])(obj, TRANSACTION_SERIALIZERS, Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["makeSimpleNodeFactory"])('Update'), updates, objectStack);
+        }
+        if (deletes) {
+            Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["pushSerializeAndPop"])({
+                node: node,
+                'featureNS': options.featureNS,
+                'featureType': options.featureType,
+                'featurePrefix': featurePrefix,
+                'gmlVersion': gmlVersion,
+                'srsName': options.srsName,
+            }, TRANSACTION_SERIALIZERS, Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["makeSimpleNodeFactory"])('Delete'), deletes, objectStack);
+        }
+        if (options.nativeElements) {
+            Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["pushSerializeAndPop"])({
+                node: node,
+                'featureNS': options.featureNS,
+                'featureType': options.featureType,
+                'featurePrefix': featurePrefix,
+                'gmlVersion': gmlVersion,
+                'srsName': options.srsName,
+            }, TRANSACTION_SERIALIZERS, Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["makeSimpleNodeFactory"])('Native'), options.nativeElements, objectStack);
+        }
+        return node;
+    };
+    /**
+     * @param {Document} doc Document.
+     * @return {import("../proj/Projection.js").default} Projection.
+     */
+    WFS.prototype.readProjectionFromDocument = function (doc) {
+        for (var n = doc.firstChild; n; n = n.nextSibling) {
+            if (n.nodeType == Node.ELEMENT_NODE) {
+                return this.readProjectionFromNode(/** @type {Element} */ (n));
+            }
+        }
+        return null;
+    };
+    /**
+     * @param {Element} node Node.
+     * @return {import("../proj/Projection.js").default} Projection.
+     */
+    WFS.prototype.readProjectionFromNode = function (node) {
+        if (node.firstElementChild && node.firstElementChild.firstElementChild) {
+            node = node.firstElementChild.firstElementChild;
+            for (var n = node.firstElementChild; n; n = n.nextElementSibling) {
+                if (!(n.childNodes.length === 0 ||
+                    (n.childNodes.length === 1 && n.firstChild.nodeType === 3))) {
+                    var objectStack = [{}];
+                    this.gmlFormat_.readGeometryElement(n, objectStack);
+                    return Object(_proj_js__WEBPACK_IMPORTED_MODULE_8__["get"])(objectStack.pop().srsName);
+                }
+            }
+        }
+        return null;
+    };
+    return WFS;
+}(_XMLFeature_js__WEBPACK_IMPORTED_MODULE_3__["default"]));
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Object|undefined} Transaction Summary.
+ */
+function readTransactionSummary(node, objectStack) {
+    return Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["pushParseAndPop"])({}, TRANSACTION_SUMMARY_PARSERS, node, objectStack);
+}
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+var OGC_FID_PARSERS = {
+    'http://www.opengis.net/ogc': {
+        'FeatureId': Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["makeArrayPusher"])(function (node, objectStack) {
+            return node.getAttribute('fid');
+        }),
+    },
+};
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ */
+function fidParser(node, objectStack) {
+    Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["parseNode"])(OGC_FID_PARSERS, node, objectStack);
+}
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+var INSERT_RESULTS_PARSERS = {
+    'http://www.opengis.net/wfs': {
+        'Feature': fidParser,
+    },
+};
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Array<string>|undefined} Insert results.
+ */
+function readInsertResults(node, objectStack) {
+    return Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["pushParseAndPop"])([], INSERT_RESULTS_PARSERS, node, objectStack);
+}
+/**
+ * @param {Element} node Node.
+ * @param {import("../Feature.js").default} feature Feature.
+ * @param {Array<*>} objectStack Node stack.
+ */
+function writeFeature(node, feature, objectStack) {
+    var context = objectStack[objectStack.length - 1];
+    var featureType = context['featureType'];
+    var featureNS = context['featureNS'];
+    var gmlVersion = context['gmlVersion'];
+    var child = Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["createElementNS"])(featureNS, featureType);
+    node.appendChild(child);
+    if (gmlVersion === 2) {
+        _GML2_js__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.writeFeatureElement(child, feature, objectStack);
+    }
+    else {
+        _GML3_js__WEBPACK_IMPORTED_MODULE_1__["default"].prototype.writeFeatureElement(child, feature, objectStack);
+    }
+}
+/**
+ * @param {Node} node Node.
+ * @param {number|string} fid Feature identifier.
+ * @param {Array<*>} objectStack Node stack.
+ */
+function writeOgcFidFilter(node, fid, objectStack) {
+    var filter = Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["createElementNS"])(OGCNS, 'Filter');
+    var child = Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["createElementNS"])(OGCNS, 'FeatureId');
+    filter.appendChild(child);
+    child.setAttribute('fid', /** @type {string} */ (fid));
+    node.appendChild(filter);
+}
+/**
+ * @param {string|undefined} featurePrefix The prefix of the feature.
+ * @param {string} featureType The type of the feature.
+ * @returns {string} The value of the typeName property.
+ */
+function getTypeName(featurePrefix, featureType) {
+    featurePrefix = featurePrefix ? featurePrefix : FEATURE_PREFIX;
+    var prefix = featurePrefix + ':';
+    // The featureType already contains the prefix.
+    if (featureType.indexOf(prefix) === 0) {
+        return featureType;
+    }
+    else {
+        return prefix + featureType;
+    }
+}
+/**
+ * @param {Element} node Node.
+ * @param {import("../Feature.js").default} feature Feature.
+ * @param {Array<*>} objectStack Node stack.
+ */
+function writeDelete(node, feature, objectStack) {
+    var context = objectStack[objectStack.length - 1];
+    Object(_asserts_js__WEBPACK_IMPORTED_MODULE_6__["assert"])(feature.getId() !== undefined, 26); // Features must have an id set
+    var featureType = context['featureType'];
+    var featurePrefix = context['featurePrefix'];
+    var featureNS = context['featureNS'];
+    var typeName = getTypeName(featurePrefix, featureType);
+    node.setAttribute('typeName', typeName);
+    node.setAttributeNS(XMLNS, 'xmlns:' + featurePrefix, featureNS);
+    var fid = feature.getId();
+    if (fid !== undefined) {
+        writeOgcFidFilter(node, fid, objectStack);
+    }
+}
+/**
+ * @param {Element} node Node.
+ * @param {import("../Feature.js").default} feature Feature.
+ * @param {Array<*>} objectStack Node stack.
+ */
+function writeUpdate(node, feature, objectStack) {
+    var context = objectStack[objectStack.length - 1];
+    Object(_asserts_js__WEBPACK_IMPORTED_MODULE_6__["assert"])(feature.getId() !== undefined, 27); // Features must have an id set
+    var featureType = context['featureType'];
+    var featurePrefix = context['featurePrefix'];
+    var featureNS = context['featureNS'];
+    var typeName = getTypeName(featurePrefix, featureType);
+    var geometryName = feature.getGeometryName();
+    node.setAttribute('typeName', typeName);
+    node.setAttributeNS(XMLNS, 'xmlns:' + featurePrefix, featureNS);
+    var fid = feature.getId();
+    if (fid !== undefined) {
+        var keys = feature.getKeys();
+        var values = [];
+        for (var i = 0, ii = keys.length; i < ii; i++) {
+            var value = feature.get(keys[i]);
+            if (value !== undefined) {
+                var name_1 = keys[i];
+                if (value &&
+                    typeof ( /** @type {?} */(value).getSimplifiedGeometry) === 'function') {
+                    name_1 = geometryName;
+                }
+                values.push({ name: name_1, value: value });
+            }
+        }
+        Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["pushSerializeAndPop"])(
+        /** @type {import("../xml.js").NodeStackItem} */ ({
+            'gmlVersion': context['gmlVersion'],
+            node: node,
+            'hasZ': context['hasZ'],
+            'srsName': context['srsName'],
+        }), TRANSACTION_SERIALIZERS, Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["makeSimpleNodeFactory"])('Property'), values, objectStack);
+        writeOgcFidFilter(node, fid, objectStack);
+    }
+}
+/**
+ * @param {Node} node Node.
+ * @param {Object} pair Property name and value.
+ * @param {Array<*>} objectStack Node stack.
+ */
+function writeProperty(node, pair, objectStack) {
+    var name = Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["createElementNS"])(WFSNS, 'Name');
+    var context = objectStack[objectStack.length - 1];
+    var gmlVersion = context['gmlVersion'];
+    node.appendChild(name);
+    Object(_xsd_js__WEBPACK_IMPORTED_MODULE_9__["writeStringTextNode"])(name, pair.name);
+    if (pair.value !== undefined && pair.value !== null) {
+        var value = Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["createElementNS"])(WFSNS, 'Value');
+        node.appendChild(value);
+        if (pair.value &&
+            typeof ( /** @type {?} */(pair.value).getSimplifiedGeometry) ===
+                'function') {
+            if (gmlVersion === 2) {
+                _GML2_js__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.writeGeometryElement(value, pair.value, objectStack);
+            }
+            else {
+                _GML3_js__WEBPACK_IMPORTED_MODULE_1__["default"].prototype.writeGeometryElement(value, pair.value, objectStack);
+            }
+        }
+        else {
+            Object(_xsd_js__WEBPACK_IMPORTED_MODULE_9__["writeStringTextNode"])(value, pair.value);
+        }
+    }
+}
+/**
+ * @param {Element} node Node.
+ * @param {{vendorId: string, safeToIgnore: boolean, value: string}} nativeElement The native element.
+ * @param {Array<*>} objectStack Node stack.
+ */
+function writeNative(node, nativeElement, objectStack) {
+    if (nativeElement.vendorId) {
+        node.setAttribute('vendorId', nativeElement.vendorId);
+    }
+    if (nativeElement.safeToIgnore !== undefined) {
+        node.setAttribute('safeToIgnore', String(nativeElement.safeToIgnore));
+    }
+    if (nativeElement.value !== undefined) {
+        Object(_xsd_js__WEBPACK_IMPORTED_MODULE_9__["writeStringTextNode"])(node, nativeElement.value);
+    }
+}
+/**
+ * @type {Object<string, Object<string, import("../xml.js").Serializer>>}
+ */
+var GETFEATURE_SERIALIZERS = {
+    'http://www.opengis.net/wfs': {
+        'Query': Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["makeChildAppender"])(writeQuery),
+    },
+    'http://www.opengis.net/ogc': {
+        'During': Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["makeChildAppender"])(writeDuringFilter),
+        'And': Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["makeChildAppender"])(writeLogicalFilter),
+        'Or': Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["makeChildAppender"])(writeLogicalFilter),
+        'Not': Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["makeChildAppender"])(writeNotFilter),
+        'BBOX': Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["makeChildAppender"])(writeBboxFilter),
+        'Contains': Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["makeChildAppender"])(writeContainsFilter),
+        'Intersects': Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["makeChildAppender"])(writeIntersectsFilter),
+        'Within': Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["makeChildAppender"])(writeWithinFilter),
+        'PropertyIsEqualTo': Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["makeChildAppender"])(writeComparisonFilter),
+        'PropertyIsNotEqualTo': Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["makeChildAppender"])(writeComparisonFilter),
+        'PropertyIsLessThan': Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["makeChildAppender"])(writeComparisonFilter),
+        'PropertyIsLessThanOrEqualTo': Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["makeChildAppender"])(writeComparisonFilter),
+        'PropertyIsGreaterThan': Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["makeChildAppender"])(writeComparisonFilter),
+        'PropertyIsGreaterThanOrEqualTo': Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["makeChildAppender"])(writeComparisonFilter),
+        'PropertyIsNull': Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["makeChildAppender"])(writeIsNullFilter),
+        'PropertyIsBetween': Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["makeChildAppender"])(writeIsBetweenFilter),
+        'PropertyIsLike': Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["makeChildAppender"])(writeIsLikeFilter),
+    },
+};
+/**
+ * @param {Element} node Node.
+ * @param {string} featureType Feature type.
+ * @param {Array<*>} objectStack Node stack.
+ */
+function writeQuery(node, featureType, objectStack) {
+    var context = /** @type {Object} */ (objectStack[objectStack.length - 1]);
+    var featurePrefix = context['featurePrefix'];
+    var featureNS = context['featureNS'];
+    var propertyNames = context['propertyNames'];
+    var srsName = context['srsName'];
+    var typeName;
+    // If feature prefix is not defined, we must not use the default prefix.
+    if (featurePrefix) {
+        typeName = getTypeName(featurePrefix, featureType);
+    }
+    else {
+        typeName = featureType;
+    }
+    node.setAttribute('typeName', typeName);
+    if (srsName) {
+        node.setAttribute('srsName', srsName);
+    }
+    if (featureNS) {
+        node.setAttributeNS(XMLNS, 'xmlns:' + featurePrefix, featureNS);
+    }
+    var item = /** @type {import("../xml.js").NodeStackItem} */ (Object(_obj_js__WEBPACK_IMPORTED_MODULE_7__["assign"])({}, context));
+    item.node = node;
+    Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["pushSerializeAndPop"])(item, QUERY_SERIALIZERS, Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["makeSimpleNodeFactory"])('PropertyName'), propertyNames, objectStack);
+    var filter = context['filter'];
+    if (filter) {
+        var child = Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["createElementNS"])(OGCNS, 'Filter');
+        node.appendChild(child);
+        writeFilterCondition(child, filter, objectStack);
+    }
+}
+/**
+ * @param {Node} node Node.
+ * @param {import("./filter/Filter.js").default} filter Filter.
+ * @param {Array<*>} objectStack Node stack.
+ */
+function writeFilterCondition(node, filter, objectStack) {
+    /** @type {import("../xml.js").NodeStackItem} */
+    var item = { node: node };
+    Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["pushSerializeAndPop"])(item, GETFEATURE_SERIALIZERS, Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["makeSimpleNodeFactory"])(filter.getTagName()), [filter], objectStack);
+}
+/**
+ * @param {Node} node Node.
+ * @param {import("./filter/Bbox.js").default} filter Filter.
+ * @param {Array<*>} objectStack Node stack.
+ */
+function writeBboxFilter(node, filter, objectStack) {
+    var context = objectStack[objectStack.length - 1];
+    context['srsName'] = filter.srsName;
+    writeOgcPropertyName(node, filter.geometryName);
+    _GML3_js__WEBPACK_IMPORTED_MODULE_1__["default"].prototype.writeGeometryElement(node, filter.extent, objectStack);
+}
+/**
+ * @param {Node} node Node.
+ * @param {import("./filter/Contains.js").default} filter Filter.
+ * @param {Array<*>} objectStack Node stack.
+ */
+function writeContainsFilter(node, filter, objectStack) {
+    var context = objectStack[objectStack.length - 1];
+    context['srsName'] = filter.srsName;
+    writeOgcPropertyName(node, filter.geometryName);
+    _GML3_js__WEBPACK_IMPORTED_MODULE_1__["default"].prototype.writeGeometryElement(node, filter.geometry, objectStack);
+}
+/**
+ * @param {Node} node Node.
+ * @param {import("./filter/Intersects.js").default} filter Filter.
+ * @param {Array<*>} objectStack Node stack.
+ */
+function writeIntersectsFilter(node, filter, objectStack) {
+    var context = objectStack[objectStack.length - 1];
+    context['srsName'] = filter.srsName;
+    writeOgcPropertyName(node, filter.geometryName);
+    _GML3_js__WEBPACK_IMPORTED_MODULE_1__["default"].prototype.writeGeometryElement(node, filter.geometry, objectStack);
+}
+/**
+ * @param {Node} node Node.
+ * @param {import("./filter/Within.js").default} filter Filter.
+ * @param {Array<*>} objectStack Node stack.
+ */
+function writeWithinFilter(node, filter, objectStack) {
+    var context = objectStack[objectStack.length - 1];
+    context['srsName'] = filter.srsName;
+    writeOgcPropertyName(node, filter.geometryName);
+    _GML3_js__WEBPACK_IMPORTED_MODULE_1__["default"].prototype.writeGeometryElement(node, filter.geometry, objectStack);
+}
+/**
+ * @param {Node} node Node.
+ * @param {import("./filter/During.js").default} filter Filter.
+ * @param {Array<*>} objectStack Node stack.
+ */
+function writeDuringFilter(node, filter, objectStack) {
+    var valueReference = Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["createElementNS"])(FESNS, 'ValueReference');
+    Object(_xsd_js__WEBPACK_IMPORTED_MODULE_9__["writeStringTextNode"])(valueReference, filter.propertyName);
+    node.appendChild(valueReference);
+    var timePeriod = Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["createElementNS"])(_GMLBase_js__WEBPACK_IMPORTED_MODULE_2__["GMLNS"], 'TimePeriod');
+    node.appendChild(timePeriod);
+    var begin = Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["createElementNS"])(_GMLBase_js__WEBPACK_IMPORTED_MODULE_2__["GMLNS"], 'begin');
+    timePeriod.appendChild(begin);
+    writeTimeInstant(begin, filter.begin);
+    var end = Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["createElementNS"])(_GMLBase_js__WEBPACK_IMPORTED_MODULE_2__["GMLNS"], 'end');
+    timePeriod.appendChild(end);
+    writeTimeInstant(end, filter.end);
+}
+/**
+ * @param {Node} node Node.
+ * @param {import("./filter/LogicalNary.js").default} filter Filter.
+ * @param {Array<*>} objectStack Node stack.
+ */
+function writeLogicalFilter(node, filter, objectStack) {
+    /** @type {import("../xml.js").NodeStackItem} */
+    var item = { node: node };
+    var conditions = filter.conditions;
+    for (var i = 0, ii = conditions.length; i < ii; ++i) {
+        var condition = conditions[i];
+        Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["pushSerializeAndPop"])(item, GETFEATURE_SERIALIZERS, Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["makeSimpleNodeFactory"])(condition.getTagName()), [condition], objectStack);
+    }
+}
+/**
+ * @param {Node} node Node.
+ * @param {import("./filter/Not.js").default} filter Filter.
+ * @param {Array<*>} objectStack Node stack.
+ */
+function writeNotFilter(node, filter, objectStack) {
+    /** @type {import("../xml.js").NodeStackItem} */
+    var item = { node: node };
+    var condition = filter.condition;
+    Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["pushSerializeAndPop"])(item, GETFEATURE_SERIALIZERS, Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["makeSimpleNodeFactory"])(condition.getTagName()), [condition], objectStack);
+}
+/**
+ * @param {Element} node Node.
+ * @param {import("./filter/ComparisonBinary.js").default} filter Filter.
+ * @param {Array<*>} objectStack Node stack.
+ */
+function writeComparisonFilter(node, filter, objectStack) {
+    if (filter.matchCase !== undefined) {
+        node.setAttribute('matchCase', filter.matchCase.toString());
+    }
+    writeOgcPropertyName(node, filter.propertyName);
+    writeOgcLiteral(node, '' + filter.expression);
+}
+/**
+ * @param {Node} node Node.
+ * @param {import("./filter/IsNull.js").default} filter Filter.
+ * @param {Array<*>} objectStack Node stack.
+ */
+function writeIsNullFilter(node, filter, objectStack) {
+    writeOgcPropertyName(node, filter.propertyName);
+}
+/**
+ * @param {Node} node Node.
+ * @param {import("./filter/IsBetween.js").default} filter Filter.
+ * @param {Array<*>} objectStack Node stack.
+ */
+function writeIsBetweenFilter(node, filter, objectStack) {
+    writeOgcPropertyName(node, filter.propertyName);
+    var lowerBoundary = Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["createElementNS"])(OGCNS, 'LowerBoundary');
+    node.appendChild(lowerBoundary);
+    writeOgcLiteral(lowerBoundary, '' + filter.lowerBoundary);
+    var upperBoundary = Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["createElementNS"])(OGCNS, 'UpperBoundary');
+    node.appendChild(upperBoundary);
+    writeOgcLiteral(upperBoundary, '' + filter.upperBoundary);
+}
+/**
+ * @param {Element} node Node.
+ * @param {import("./filter/IsLike.js").default} filter Filter.
+ * @param {Array<*>} objectStack Node stack.
+ */
+function writeIsLikeFilter(node, filter, objectStack) {
+    node.setAttribute('wildCard', filter.wildCard);
+    node.setAttribute('singleChar', filter.singleChar);
+    node.setAttribute('escapeChar', filter.escapeChar);
+    if (filter.matchCase !== undefined) {
+        node.setAttribute('matchCase', filter.matchCase.toString());
+    }
+    writeOgcPropertyName(node, filter.propertyName);
+    writeOgcLiteral(node, '' + filter.pattern);
+}
+/**
+ * @param {string} tagName Tag name.
+ * @param {Node} node Node.
+ * @param {string} value Value.
+ */
+function writeOgcExpression(tagName, node, value) {
+    var property = Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["createElementNS"])(OGCNS, tagName);
+    Object(_xsd_js__WEBPACK_IMPORTED_MODULE_9__["writeStringTextNode"])(property, value);
+    node.appendChild(property);
+}
+/**
+ * @param {Node} node Node.
+ * @param {string} value PropertyName value.
+ */
+function writeOgcPropertyName(node, value) {
+    writeOgcExpression('PropertyName', node, value);
+}
+/**
+ * @param {Node} node Node.
+ * @param {string} value PropertyName value.
+ */
+function writeOgcLiteral(node, value) {
+    writeOgcExpression('Literal', node, value);
+}
+/**
+ * @param {Node} node Node.
+ * @param {string} time PropertyName value.
+ */
+function writeTimeInstant(node, time) {
+    var timeInstant = Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["createElementNS"])(_GMLBase_js__WEBPACK_IMPORTED_MODULE_2__["GMLNS"], 'TimeInstant');
+    node.appendChild(timeInstant);
+    var timePosition = Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["createElementNS"])(_GMLBase_js__WEBPACK_IMPORTED_MODULE_2__["GMLNS"], 'timePosition');
+    timeInstant.appendChild(timePosition);
+    Object(_xsd_js__WEBPACK_IMPORTED_MODULE_9__["writeStringTextNode"])(timePosition, time);
+}
+/**
+ * Encode filter as WFS `Filter` and return the Node.
+ *
+ * @param {import("./filter/Filter.js").default} filter Filter.
+ * @return {Node} Result.
+ * @api
+ */
+function writeFilter(filter) {
+    var child = Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["createElementNS"])(OGCNS, 'Filter');
+    writeFilterCondition(child, filter, []);
+    return child;
+}
+/**
+ * @param {Node} node Node.
+ * @param {Array<string>} featureTypes Feature types.
+ * @param {Array<*>} objectStack Node stack.
+ */
+function writeGetFeature(node, featureTypes, objectStack) {
+    var context = /** @type {Object} */ (objectStack[objectStack.length - 1]);
+    var item = /** @type {import("../xml.js").NodeStackItem} */ (Object(_obj_js__WEBPACK_IMPORTED_MODULE_7__["assign"])({}, context));
+    item.node = node;
+    Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["pushSerializeAndPop"])(item, GETFEATURE_SERIALIZERS, Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["makeSimpleNodeFactory"])('Query'), featureTypes, objectStack);
+}
+/* harmony default export */ __webpack_exports__["default"] = (WFS);
+//# sourceMappingURL=WFS.js.map
 
 /***/ }),
 
@@ -36441,6 +45883,518 @@ function readKeywordList(node, objectStack) {
 
 /***/ }),
 
+/***/ "./node_modules/ol/format/WMSGetFeatureInfo.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/ol/format/WMSGetFeatureInfo.js ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _GML2_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./GML2.js */ "./node_modules/ol/format/GML2.js");
+/* harmony import */ var _XMLFeature_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./XMLFeature.js */ "./node_modules/ol/format/XMLFeature.js");
+/* harmony import */ var _obj_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../obj.js */ "./node_modules/ol/obj.js");
+/* harmony import */ var _array_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../array.js */ "./node_modules/ol/array.js");
+/* harmony import */ var _xml_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../xml.js */ "./node_modules/ol/xml.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+/**
+ * @module ol/format/WMSGetFeatureInfo
+ */
+
+
+
+
+
+/**
+ * @typedef {Object} Options
+ * @property {Array<string>} [layers] If set, only features of the given layers will be returned by the format when read.
+ */
+/**
+ * @const
+ * @type {string}
+ */
+var featureIdentifier = '_feature';
+/**
+ * @const
+ * @type {string}
+ */
+var layerIdentifier = '_layer';
+/**
+ * @classdesc
+ * Format for reading WMSGetFeatureInfo format. It uses
+ * {@link module:ol/format/GML2~GML2} to read features.
+ *
+ * @api
+ */
+var WMSGetFeatureInfo = /** @class */ (function (_super) {
+    __extends(WMSGetFeatureInfo, _super);
+    /**
+     * @param {Options=} opt_options Options.
+     */
+    function WMSGetFeatureInfo(opt_options) {
+        var _this = _super.call(this) || this;
+        var options = opt_options ? opt_options : {};
+        /**
+         * @private
+         * @type {string}
+         */
+        _this.featureNS_ = 'http://mapserver.gis.umn.edu/mapserver';
+        /**
+         * @private
+         * @type {GML2}
+         */
+        _this.gmlFormat_ = new _GML2_js__WEBPACK_IMPORTED_MODULE_0__["default"]();
+        /**
+         * @private
+         * @type {Array<string>}
+         */
+        _this.layers_ = options.layers ? options.layers : null;
+        return _this;
+    }
+    /**
+     * @return {Array<string>} layers
+     */
+    WMSGetFeatureInfo.prototype.getLayers = function () {
+        return this.layers_;
+    };
+    /**
+     * @param {Array<string>} layers Layers to parse.
+     */
+    WMSGetFeatureInfo.prototype.setLayers = function (layers) {
+        this.layers_ = layers;
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {Array<*>} objectStack Object stack.
+     * @return {Array<import("../Feature.js").default>} Features.
+     * @private
+     */
+    WMSGetFeatureInfo.prototype.readFeatures_ = function (node, objectStack) {
+        node.setAttribute('namespaceURI', this.featureNS_);
+        var localName = node.localName;
+        /** @type {Array<import("../Feature.js").default>} */
+        var features = [];
+        if (node.childNodes.length === 0) {
+            return features;
+        }
+        if (localName == 'msGMLOutput') {
+            for (var i = 0, ii = node.childNodes.length; i < ii; i++) {
+                var layer = node.childNodes[i];
+                if (layer.nodeType !== Node.ELEMENT_NODE) {
+                    continue;
+                }
+                var layerElement = /** @type {Element} */ (layer);
+                var context = objectStack[0];
+                var toRemove = layerIdentifier;
+                var layerName = layerElement.localName.replace(toRemove, '');
+                if (this.layers_ && !Object(_array_js__WEBPACK_IMPORTED_MODULE_3__["includes"])(this.layers_, layerName)) {
+                    continue;
+                }
+                var featureType = layerName + featureIdentifier;
+                context['featureType'] = featureType;
+                context['featureNS'] = this.featureNS_;
+                /** @type {Object<string, import("../xml.js").Parser>} */
+                var parsers = {};
+                parsers[featureType] = Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["makeArrayPusher"])(this.gmlFormat_.readFeatureElement, this.gmlFormat_);
+                var parsersNS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["makeStructureNS"])([context['featureNS'], null], parsers);
+                layerElement.setAttribute('namespaceURI', this.featureNS_);
+                var layerFeatures = Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["pushParseAndPop"])([], 
+                // @ts-ignore
+                parsersNS, layerElement, objectStack, this.gmlFormat_);
+                if (layerFeatures) {
+                    Object(_array_js__WEBPACK_IMPORTED_MODULE_3__["extend"])(features, layerFeatures);
+                }
+            }
+        }
+        if (localName == 'FeatureCollection') {
+            var gmlFeatures = Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["pushParseAndPop"])([], this.gmlFormat_.FEATURE_COLLECTION_PARSERS, node, [{}], this.gmlFormat_);
+            if (gmlFeatures) {
+                features = gmlFeatures;
+            }
+        }
+        return features;
+    };
+    /**
+     * @protected
+     * @param {Element} node Node.
+     * @param {import("./Feature.js").ReadOptions=} opt_options Options.
+     * @return {Array<import("../Feature.js").default>} Features.
+     */
+    WMSGetFeatureInfo.prototype.readFeaturesFromNode = function (node, opt_options) {
+        var options = {};
+        if (opt_options) {
+            Object(_obj_js__WEBPACK_IMPORTED_MODULE_2__["assign"])(options, this.getReadOptions(node, opt_options));
+        }
+        return this.readFeatures_(node, [options]);
+    };
+    return WMSGetFeatureInfo;
+}(_XMLFeature_js__WEBPACK_IMPORTED_MODULE_1__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (WMSGetFeatureInfo);
+//# sourceMappingURL=WMSGetFeatureInfo.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/format/WMTSCapabilities.js":
+/*!****************************************************!*\
+  !*** ./node_modules/ol/format/WMTSCapabilities.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _OWS_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./OWS.js */ "./node_modules/ol/format/OWS.js");
+/* harmony import */ var _XML_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./XML.js */ "./node_modules/ol/format/XML.js");
+/* harmony import */ var _extent_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../extent.js */ "./node_modules/ol/extent.js");
+/* harmony import */ var _xml_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../xml.js */ "./node_modules/ol/xml.js");
+/* harmony import */ var _xsd_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./xsd.js */ "./node_modules/ol/format/xsd.js");
+/* harmony import */ var _XLink_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./XLink.js */ "./node_modules/ol/format/XLink.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+/**
+ * @module ol/format/WMTSCapabilities
+ */
+
+
+
+
+
+
+/**
+ * @const
+ * @type {Array<null|string>}
+ */
+var NAMESPACE_URIS = [null, 'http://www.opengis.net/wmts/1.0'];
+/**
+ * @const
+ * @type {Array<null|string>}
+ */
+var OWS_NAMESPACE_URIS = [null, 'http://www.opengis.net/ows/1.1'];
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeStructureNS"])(NAMESPACE_URIS, {
+    'Contents': Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeObjectPropertySetter"])(readContents),
+});
+/**
+ * @classdesc
+ * Format for reading WMTS capabilities data.
+ *
+ * @api
+ */
+var WMTSCapabilities = /** @class */ (function (_super) {
+    __extends(WMTSCapabilities, _super);
+    function WMTSCapabilities() {
+        var _this = _super.call(this) || this;
+        /**
+         * @type {OWS}
+         * @private
+         */
+        _this.owsParser_ = new _OWS_js__WEBPACK_IMPORTED_MODULE_0__["default"]();
+        return _this;
+    }
+    /**
+     * @param {Element} node Node.
+     * @return {Object} Object
+     */
+    WMTSCapabilities.prototype.readFromNode = function (node) {
+        var version = node.getAttribute('version');
+        if (version) {
+            version = version.trim();
+        }
+        var WMTSCapabilityObject = this.owsParser_.readFromNode(node);
+        if (!WMTSCapabilityObject) {
+            return null;
+        }
+        WMTSCapabilityObject['version'] = version;
+        WMTSCapabilityObject = Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["pushParseAndPop"])(WMTSCapabilityObject, PARSERS, node, []);
+        return WMTSCapabilityObject ? WMTSCapabilityObject : null;
+    };
+    return WMTSCapabilities;
+}(_XML_js__WEBPACK_IMPORTED_MODULE_1__["default"]));
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var CONTENTS_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeStructureNS"])(NAMESPACE_URIS, {
+    'Layer': Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeObjectPropertyPusher"])(readLayer),
+    'TileMatrixSet': Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeObjectPropertyPusher"])(readTileMatrixSet),
+});
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var LAYER_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeStructureNS"])(NAMESPACE_URIS, {
+    'Style': Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeObjectPropertyPusher"])(readStyle),
+    'Format': Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeObjectPropertyPusher"])(_xsd_js__WEBPACK_IMPORTED_MODULE_4__["readString"]),
+    'TileMatrixSetLink': Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeObjectPropertyPusher"])(readTileMatrixSetLink),
+    'Dimension': Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeObjectPropertyPusher"])(readDimensions),
+    'ResourceURL': Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeObjectPropertyPusher"])(readResourceUrl),
+}, Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeStructureNS"])(OWS_NAMESPACE_URIS, {
+    'Title': Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_4__["readString"]),
+    'Abstract': Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_4__["readString"]),
+    'WGS84BoundingBox': Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeObjectPropertySetter"])(readWgs84BoundingBox),
+    'Identifier': Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_4__["readString"]),
+}));
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var STYLE_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeStructureNS"])(NAMESPACE_URIS, {
+    'LegendURL': Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeObjectPropertyPusher"])(readLegendUrl),
+}, Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeStructureNS"])(OWS_NAMESPACE_URIS, {
+    'Title': Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_4__["readString"]),
+    'Identifier': Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_4__["readString"]),
+}));
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var TMS_LINKS_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeStructureNS"])(NAMESPACE_URIS, {
+    'TileMatrixSet': Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_4__["readString"]),
+    'TileMatrixSetLimits': Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeObjectPropertySetter"])(readTileMatrixLimitsList),
+});
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var TMS_LIMITS_LIST_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeStructureNS"])(NAMESPACE_URIS, {
+    'TileMatrixLimits': Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeArrayPusher"])(readTileMatrixLimits),
+});
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var TMS_LIMITS_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeStructureNS"])(NAMESPACE_URIS, {
+    'TileMatrix': Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_4__["readString"]),
+    'MinTileRow': Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_4__["readNonNegativeInteger"]),
+    'MaxTileRow': Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_4__["readNonNegativeInteger"]),
+    'MinTileCol': Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_4__["readNonNegativeInteger"]),
+    'MaxTileCol': Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_4__["readNonNegativeInteger"]),
+});
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var DIMENSION_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeStructureNS"])(NAMESPACE_URIS, {
+    'Default': Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_4__["readString"]),
+    'Value': Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeObjectPropertyPusher"])(_xsd_js__WEBPACK_IMPORTED_MODULE_4__["readString"]),
+}, Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeStructureNS"])(OWS_NAMESPACE_URIS, {
+    'Identifier': Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_4__["readString"]),
+}));
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var WGS84_BBOX_READERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeStructureNS"])(OWS_NAMESPACE_URIS, {
+    'LowerCorner': Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeArrayPusher"])(readCoordinates),
+    'UpperCorner': Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeArrayPusher"])(readCoordinates),
+});
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var TMS_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeStructureNS"])(NAMESPACE_URIS, {
+    'WellKnownScaleSet': Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_4__["readString"]),
+    'TileMatrix': Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeObjectPropertyPusher"])(readTileMatrix),
+}, Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeStructureNS"])(OWS_NAMESPACE_URIS, {
+    'SupportedCRS': Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_4__["readString"]),
+    'Identifier': Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_4__["readString"]),
+}));
+/**
+ * @const
+ * @type {Object<string, Object<string, import("../xml.js").Parser>>}
+ */
+// @ts-ignore
+var TM_PARSERS = Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeStructureNS"])(NAMESPACE_URIS, {
+    'TopLeftCorner': Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeObjectPropertySetter"])(readCoordinates),
+    'ScaleDenominator': Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_4__["readDecimal"]),
+    'TileWidth': Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_4__["readNonNegativeInteger"]),
+    'TileHeight': Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_4__["readNonNegativeInteger"]),
+    'MatrixWidth': Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_4__["readNonNegativeInteger"]),
+    'MatrixHeight': Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_4__["readNonNegativeInteger"]),
+}, Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeStructureNS"])(OWS_NAMESPACE_URIS, {
+    'Identifier': Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["makeObjectPropertySetter"])(_xsd_js__WEBPACK_IMPORTED_MODULE_4__["readString"]),
+}));
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Object|undefined} Attribution object.
+ */
+function readContents(node, objectStack) {
+    return Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["pushParseAndPop"])({}, CONTENTS_PARSERS, node, objectStack);
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Object|undefined} Layers object.
+ */
+function readLayer(node, objectStack) {
+    return Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["pushParseAndPop"])({}, LAYER_PARSERS, node, objectStack);
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Object|undefined} Tile Matrix Set object.
+ */
+function readTileMatrixSet(node, objectStack) {
+    return Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["pushParseAndPop"])({}, TMS_PARSERS, node, objectStack);
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Object|undefined} Style object.
+ */
+function readStyle(node, objectStack) {
+    var style = Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["pushParseAndPop"])({}, STYLE_PARSERS, node, objectStack);
+    if (!style) {
+        return undefined;
+    }
+    var isDefault = node.getAttribute('isDefault') === 'true';
+    style['isDefault'] = isDefault;
+    return style;
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Object|undefined} Tile Matrix Set Link object.
+ */
+function readTileMatrixSetLink(node, objectStack) {
+    return Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["pushParseAndPop"])({}, TMS_LINKS_PARSERS, node, objectStack);
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Object|undefined} Dimension object.
+ */
+function readDimensions(node, objectStack) {
+    return Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["pushParseAndPop"])({}, DIMENSION_PARSERS, node, objectStack);
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Object|undefined} Resource URL object.
+ */
+function readResourceUrl(node, objectStack) {
+    var format = node.getAttribute('format');
+    var template = node.getAttribute('template');
+    var resourceType = node.getAttribute('resourceType');
+    var resource = {};
+    if (format) {
+        resource['format'] = format;
+    }
+    if (template) {
+        resource['template'] = template;
+    }
+    if (resourceType) {
+        resource['resourceType'] = resourceType;
+    }
+    return resource;
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Object|undefined} WGS84 BBox object.
+ */
+function readWgs84BoundingBox(node, objectStack) {
+    var coordinates = Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["pushParseAndPop"])([], WGS84_BBOX_READERS, node, objectStack);
+    if (coordinates.length != 2) {
+        return undefined;
+    }
+    return Object(_extent_js__WEBPACK_IMPORTED_MODULE_2__["boundingExtent"])(coordinates);
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Object|undefined} Legend object.
+ */
+function readLegendUrl(node, objectStack) {
+    var legend = {};
+    legend['format'] = node.getAttribute('format');
+    legend['href'] = Object(_XLink_js__WEBPACK_IMPORTED_MODULE_5__["readHref"])(node);
+    return legend;
+}
+/**
+ * @param {Node} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Object|undefined} Coordinates object.
+ */
+function readCoordinates(node, objectStack) {
+    var coordinates = Object(_xsd_js__WEBPACK_IMPORTED_MODULE_4__["readString"])(node).split(/\s+/);
+    if (!coordinates || coordinates.length != 2) {
+        return undefined;
+    }
+    var x = +coordinates[0];
+    var y = +coordinates[1];
+    if (isNaN(x) || isNaN(y)) {
+        return undefined;
+    }
+    return [x, y];
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Object|undefined} TileMatrix object.
+ */
+function readTileMatrix(node, objectStack) {
+    return Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["pushParseAndPop"])({}, TM_PARSERS, node, objectStack);
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Object|undefined} TileMatrixSetLimits Object.
+ */
+function readTileMatrixLimitsList(node, objectStack) {
+    return Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["pushParseAndPop"])([], TMS_LIMITS_LIST_PARSERS, node, objectStack);
+}
+/**
+ * @param {Element} node Node.
+ * @param {Array<*>} objectStack Object stack.
+ * @return {Object|undefined} TileMatrixLimits Array.
+ */
+function readTileMatrixLimits(node, objectStack) {
+    return Object(_xml_js__WEBPACK_IMPORTED_MODULE_3__["pushParseAndPop"])({}, TMS_LIMITS_PARSERS, node, objectStack);
+}
+/* harmony default export */ __webpack_exports__["default"] = (WMTSCapabilities);
+//# sourceMappingURL=WMTSCapabilities.js.map
+
+/***/ }),
+
 /***/ "./node_modules/ol/format/XLink.js":
 /*!*****************************************!*\
   !*** ./node_modules/ol/format/XLink.js ***!
@@ -36537,6 +46491,1771 @@ var XML = /** @class */ (function () {
 }());
 /* harmony default export */ __webpack_exports__["default"] = (XML);
 //# sourceMappingURL=XML.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/format/XMLFeature.js":
+/*!**********************************************!*\
+  !*** ./node_modules/ol/format/XMLFeature.js ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _format_Feature_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../format/Feature.js */ "./node_modules/ol/format/Feature.js");
+/* harmony import */ var _format_FormatType_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../format/FormatType.js */ "./node_modules/ol/format/FormatType.js");
+/* harmony import */ var _util_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../util.js */ "./node_modules/ol/util.js");
+/* harmony import */ var _array_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../array.js */ "./node_modules/ol/array.js");
+/* harmony import */ var _xml_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../xml.js */ "./node_modules/ol/xml.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+/**
+ * @module ol/format/XMLFeature
+ */
+
+
+
+
+
+/**
+ * @classdesc
+ * Abstract base class; normally only used for creating subclasses and not
+ * instantiated in apps.
+ * Base class for XML feature formats.
+ *
+ * @abstract
+ */
+var XMLFeature = /** @class */ (function (_super) {
+    __extends(XMLFeature, _super);
+    function XMLFeature() {
+        var _this = _super.call(this) || this;
+        /**
+         * @type {XMLSerializer}
+         * @private
+         */
+        _this.xmlSerializer_ = Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["getXMLSerializer"])();
+        return _this;
+    }
+    /**
+     * @return {import("./FormatType.js").default} Format.
+     */
+    XMLFeature.prototype.getType = function () {
+        return _format_FormatType_js__WEBPACK_IMPORTED_MODULE_1__["default"].XML;
+    };
+    /**
+     * Read a single feature.
+     *
+     * @param {Document|Element|Object|string} source Source.
+     * @param {import("./Feature.js").ReadOptions=} opt_options Read options.
+     * @return {import("../Feature.js").default} Feature.
+     * @api
+     */
+    XMLFeature.prototype.readFeature = function (source, opt_options) {
+        if (!source) {
+            return null;
+        }
+        else if (typeof source === 'string') {
+            var doc = Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["parse"])(source);
+            return this.readFeatureFromDocument(doc, opt_options);
+        }
+        else if (Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["isDocument"])(source)) {
+            return this.readFeatureFromDocument(
+            /** @type {Document} */ (source), opt_options);
+        }
+        else {
+            return this.readFeatureFromNode(
+            /** @type {Element} */ (source), opt_options);
+        }
+    };
+    /**
+     * @param {Document} doc Document.
+     * @param {import("./Feature.js").ReadOptions=} opt_options Options.
+     * @return {import("../Feature.js").default} Feature.
+     */
+    XMLFeature.prototype.readFeatureFromDocument = function (doc, opt_options) {
+        var features = this.readFeaturesFromDocument(doc, opt_options);
+        if (features.length > 0) {
+            return features[0];
+        }
+        else {
+            return null;
+        }
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {import("./Feature.js").ReadOptions=} opt_options Options.
+     * @return {import("../Feature.js").default} Feature.
+     */
+    XMLFeature.prototype.readFeatureFromNode = function (node, opt_options) {
+        return null; // not implemented
+    };
+    /**
+     * Read all features from a feature collection.
+     *
+     * @param {Document|Element|Object|string} source Source.
+     * @param {import("./Feature.js").ReadOptions=} opt_options Options.
+     * @return {Array<import("../Feature.js").default>} Features.
+     * @api
+     */
+    XMLFeature.prototype.readFeatures = function (source, opt_options) {
+        if (!source) {
+            return [];
+        }
+        else if (typeof source === 'string') {
+            var doc = Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["parse"])(source);
+            return this.readFeaturesFromDocument(doc, opt_options);
+        }
+        else if (Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["isDocument"])(source)) {
+            return this.readFeaturesFromDocument(
+            /** @type {Document} */ (source), opt_options);
+        }
+        else {
+            return this.readFeaturesFromNode(
+            /** @type {Element} */ (source), opt_options);
+        }
+    };
+    /**
+     * @param {Document} doc Document.
+     * @param {import("./Feature.js").ReadOptions=} opt_options Options.
+     * @protected
+     * @return {Array<import("../Feature.js").default>} Features.
+     */
+    XMLFeature.prototype.readFeaturesFromDocument = function (doc, opt_options) {
+        /** @type {Array<import("../Feature.js").default>} */
+        var features = [];
+        for (var n = doc.firstChild; n; n = n.nextSibling) {
+            if (n.nodeType == Node.ELEMENT_NODE) {
+                Object(_array_js__WEBPACK_IMPORTED_MODULE_3__["extend"])(features, this.readFeaturesFromNode(/** @type {Element} */ (n), opt_options));
+            }
+        }
+        return features;
+    };
+    /**
+     * @abstract
+     * @param {Element} node Node.
+     * @param {import("./Feature.js").ReadOptions=} opt_options Options.
+     * @protected
+     * @return {Array<import("../Feature.js").default>} Features.
+     */
+    XMLFeature.prototype.readFeaturesFromNode = function (node, opt_options) {
+        return Object(_util_js__WEBPACK_IMPORTED_MODULE_2__["abstract"])();
+    };
+    /**
+     * Read a single geometry from a source.
+     *
+     * @param {Document|Element|Object|string} source Source.
+     * @param {import("./Feature.js").ReadOptions=} opt_options Read options.
+     * @return {import("../geom/Geometry.js").default} Geometry.
+     */
+    XMLFeature.prototype.readGeometry = function (source, opt_options) {
+        if (!source) {
+            return null;
+        }
+        else if (typeof source === 'string') {
+            var doc = Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["parse"])(source);
+            return this.readGeometryFromDocument(doc, opt_options);
+        }
+        else if (Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["isDocument"])(source)) {
+            return this.readGeometryFromDocument(
+            /** @type {Document} */ (source), opt_options);
+        }
+        else {
+            return this.readGeometryFromNode(
+            /** @type {Element} */ (source), opt_options);
+        }
+    };
+    /**
+     * @param {Document} doc Document.
+     * @param {import("./Feature.js").ReadOptions=} opt_options Options.
+     * @protected
+     * @return {import("../geom/Geometry.js").default} Geometry.
+     */
+    XMLFeature.prototype.readGeometryFromDocument = function (doc, opt_options) {
+        return null; // not implemented
+    };
+    /**
+     * @param {Element} node Node.
+     * @param {import("./Feature.js").ReadOptions=} opt_options Options.
+     * @protected
+     * @return {import("../geom/Geometry.js").default} Geometry.
+     */
+    XMLFeature.prototype.readGeometryFromNode = function (node, opt_options) {
+        return null; // not implemented
+    };
+    /**
+     * Read the projection from the source.
+     *
+     * @param {Document|Element|Object|string} source Source.
+     * @return {import("../proj/Projection.js").default} Projection.
+     * @api
+     */
+    XMLFeature.prototype.readProjection = function (source) {
+        if (!source) {
+            return null;
+        }
+        else if (typeof source === 'string') {
+            var doc = Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["parse"])(source);
+            return this.readProjectionFromDocument(doc);
+        }
+        else if (Object(_xml_js__WEBPACK_IMPORTED_MODULE_4__["isDocument"])(source)) {
+            return this.readProjectionFromDocument(/** @type {Document} */ (source));
+        }
+        else {
+            return this.readProjectionFromNode(/** @type {Element} */ (source));
+        }
+    };
+    /**
+     * @param {Document} doc Document.
+     * @protected
+     * @return {import("../proj/Projection.js").default} Projection.
+     */
+    XMLFeature.prototype.readProjectionFromDocument = function (doc) {
+        return this.dataProjection;
+    };
+    /**
+     * @param {Element} node Node.
+     * @protected
+     * @return {import("../proj/Projection.js").default} Projection.
+     */
+    XMLFeature.prototype.readProjectionFromNode = function (node) {
+        return this.dataProjection;
+    };
+    /**
+     * Encode a feature as string.
+     *
+     * @param {import("../Feature.js").default} feature Feature.
+     * @param {import("./Feature.js").WriteOptions=} opt_options Write options.
+     * @return {string} Encoded feature.
+     */
+    XMLFeature.prototype.writeFeature = function (feature, opt_options) {
+        var node = this.writeFeatureNode(feature, opt_options);
+        return this.xmlSerializer_.serializeToString(node);
+    };
+    /**
+     * @param {import("../Feature.js").default} feature Feature.
+     * @param {import("./Feature.js").WriteOptions=} opt_options Options.
+     * @protected
+     * @return {Node} Node.
+     */
+    XMLFeature.prototype.writeFeatureNode = function (feature, opt_options) {
+        return null; // not implemented
+    };
+    /**
+     * Encode an array of features as string.
+     *
+     * @param {Array<import("../Feature.js").default>} features Features.
+     * @param {import("./Feature.js").WriteOptions=} opt_options Write options.
+     * @return {string} Result.
+     * @api
+     */
+    XMLFeature.prototype.writeFeatures = function (features, opt_options) {
+        var node = this.writeFeaturesNode(features, opt_options);
+        return this.xmlSerializer_.serializeToString(node);
+    };
+    /**
+     * @param {Array<import("../Feature.js").default>} features Features.
+     * @param {import("./Feature.js").WriteOptions=} opt_options Options.
+     * @return {Node} Node.
+     */
+    XMLFeature.prototype.writeFeaturesNode = function (features, opt_options) {
+        return null; // not implemented
+    };
+    /**
+     * Encode a geometry as string.
+     *
+     * @param {import("../geom/Geometry.js").default} geometry Geometry.
+     * @param {import("./Feature.js").WriteOptions=} opt_options Write options.
+     * @return {string} Encoded geometry.
+     */
+    XMLFeature.prototype.writeGeometry = function (geometry, opt_options) {
+        var node = this.writeGeometryNode(geometry, opt_options);
+        return this.xmlSerializer_.serializeToString(node);
+    };
+    /**
+     * @param {import("../geom/Geometry.js").default} geometry Geometry.
+     * @param {import("./Feature.js").WriteOptions=} opt_options Options.
+     * @return {Node} Node.
+     */
+    XMLFeature.prototype.writeGeometryNode = function (geometry, opt_options) {
+        return null; // not implemented
+    };
+    return XMLFeature;
+}(_format_Feature_js__WEBPACK_IMPORTED_MODULE_0__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (XMLFeature);
+//# sourceMappingURL=XMLFeature.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/format/filter.js":
+/*!******************************************!*\
+  !*** ./node_modules/ol/format/filter.js ***!
+  \******************************************/
+/*! exports provided: and, or, not, bbox, contains, intersects, within, equalTo, notEqualTo, lessThan, lessThanOrEqualTo, greaterThan, greaterThanOrEqualTo, isNull, between, like, during */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "and", function() { return and; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "or", function() { return or; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "not", function() { return not; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "bbox", function() { return bbox; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "contains", function() { return contains; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "intersects", function() { return intersects; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "within", function() { return within; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "equalTo", function() { return equalTo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "notEqualTo", function() { return notEqualTo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "lessThan", function() { return lessThan; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "lessThanOrEqualTo", function() { return lessThanOrEqualTo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "greaterThan", function() { return greaterThan; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "greaterThanOrEqualTo", function() { return greaterThanOrEqualTo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isNull", function() { return isNull; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "between", function() { return between; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "like", function() { return like; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "during", function() { return during; });
+/* harmony import */ var _filter_And_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./filter/And.js */ "./node_modules/ol/format/filter/And.js");
+/* harmony import */ var _filter_Bbox_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./filter/Bbox.js */ "./node_modules/ol/format/filter/Bbox.js");
+/* harmony import */ var _filter_Contains_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./filter/Contains.js */ "./node_modules/ol/format/filter/Contains.js");
+/* harmony import */ var _filter_During_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./filter/During.js */ "./node_modules/ol/format/filter/During.js");
+/* harmony import */ var _filter_EqualTo_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./filter/EqualTo.js */ "./node_modules/ol/format/filter/EqualTo.js");
+/* harmony import */ var _filter_GreaterThan_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./filter/GreaterThan.js */ "./node_modules/ol/format/filter/GreaterThan.js");
+/* harmony import */ var _filter_GreaterThanOrEqualTo_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./filter/GreaterThanOrEqualTo.js */ "./node_modules/ol/format/filter/GreaterThanOrEqualTo.js");
+/* harmony import */ var _filter_Intersects_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./filter/Intersects.js */ "./node_modules/ol/format/filter/Intersects.js");
+/* harmony import */ var _filter_IsBetween_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./filter/IsBetween.js */ "./node_modules/ol/format/filter/IsBetween.js");
+/* harmony import */ var _filter_IsLike_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./filter/IsLike.js */ "./node_modules/ol/format/filter/IsLike.js");
+/* harmony import */ var _filter_IsNull_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./filter/IsNull.js */ "./node_modules/ol/format/filter/IsNull.js");
+/* harmony import */ var _filter_LessThan_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./filter/LessThan.js */ "./node_modules/ol/format/filter/LessThan.js");
+/* harmony import */ var _filter_LessThanOrEqualTo_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./filter/LessThanOrEqualTo.js */ "./node_modules/ol/format/filter/LessThanOrEqualTo.js");
+/* harmony import */ var _filter_Not_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./filter/Not.js */ "./node_modules/ol/format/filter/Not.js");
+/* harmony import */ var _filter_NotEqualTo_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./filter/NotEqualTo.js */ "./node_modules/ol/format/filter/NotEqualTo.js");
+/* harmony import */ var _filter_Or_js__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./filter/Or.js */ "./node_modules/ol/format/filter/Or.js");
+/* harmony import */ var _filter_Within_js__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./filter/Within.js */ "./node_modules/ol/format/filter/Within.js");
+/**
+ * @module ol/format/filter
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * Create a logical `<And>` operator between two or more filter conditions.
+ *
+ * @param {...import("./filter/Filter.js").default} conditions Filter conditions.
+ * @returns {!And} `<And>` operator.
+ * @api
+ */
+function and(conditions) {
+    var params = [null].concat(Array.prototype.slice.call(arguments));
+    return new (Function.prototype.bind.apply(_filter_And_js__WEBPACK_IMPORTED_MODULE_0__["default"], params))();
+}
+/**
+ * Create a logical `<Or>` operator between two or more filter conditions.
+ *
+ * @param {...import("./filter/Filter.js").default} conditions Filter conditions.
+ * @returns {!Or} `<Or>` operator.
+ * @api
+ */
+function or(conditions) {
+    var params = [null].concat(Array.prototype.slice.call(arguments));
+    return new (Function.prototype.bind.apply(_filter_Or_js__WEBPACK_IMPORTED_MODULE_15__["default"], params))();
+}
+/**
+ * Represents a logical `<Not>` operator for a filter condition.
+ *
+ * @param {!import("./filter/Filter.js").default} condition Filter condition.
+ * @returns {!Not} `<Not>` operator.
+ * @api
+ */
+function not(condition) {
+    return new _filter_Not_js__WEBPACK_IMPORTED_MODULE_13__["default"](condition);
+}
+/**
+ * Create a `<BBOX>` operator to test whether a geometry-valued property
+ * intersects a fixed bounding box
+ *
+ * @param {!string} geometryName Geometry name to use.
+ * @param {!import("../extent.js").Extent} extent Extent.
+ * @param {string=} opt_srsName SRS name. No srsName attribute will be
+ *    set on geometries when this is not provided.
+ * @returns {!Bbox} `<BBOX>` operator.
+ * @api
+ */
+function bbox(geometryName, extent, opt_srsName) {
+    return new _filter_Bbox_js__WEBPACK_IMPORTED_MODULE_1__["default"](geometryName, extent, opt_srsName);
+}
+/**
+ * Create a `<Contains>` operator to test whether a geometry-valued property
+ * contains a given geometry.
+ *
+ * @param {!string} geometryName Geometry name to use.
+ * @param {!import("../geom/Geometry.js").default} geometry Geometry.
+ * @param {string=} opt_srsName SRS name. No srsName attribute will be
+ *    set on geometries when this is not provided.
+ * @returns {!Contains} `<Contains>` operator.
+ * @api
+ */
+function contains(geometryName, geometry, opt_srsName) {
+    return new _filter_Contains_js__WEBPACK_IMPORTED_MODULE_2__["default"](geometryName, geometry, opt_srsName);
+}
+/**
+ * Create a `<Intersects>` operator to test whether a geometry-valued property
+ * intersects a given geometry.
+ *
+ * @param {!string} geometryName Geometry name to use.
+ * @param {!import("../geom/Geometry.js").default} geometry Geometry.
+ * @param {string=} opt_srsName SRS name. No srsName attribute will be
+ *    set on geometries when this is not provided.
+ * @returns {!Intersects} `<Intersects>` operator.
+ * @api
+ */
+function intersects(geometryName, geometry, opt_srsName) {
+    return new _filter_Intersects_js__WEBPACK_IMPORTED_MODULE_7__["default"](geometryName, geometry, opt_srsName);
+}
+/**
+ * Create a `<Within>` operator to test whether a geometry-valued property
+ * is within a given geometry.
+ *
+ * @param {!string} geometryName Geometry name to use.
+ * @param {!import("../geom/Geometry.js").default} geometry Geometry.
+ * @param {string=} opt_srsName SRS name. No srsName attribute will be
+ *    set on geometries when this is not provided.
+ * @returns {!Within} `<Within>` operator.
+ * @api
+ */
+function within(geometryName, geometry, opt_srsName) {
+    return new _filter_Within_js__WEBPACK_IMPORTED_MODULE_16__["default"](geometryName, geometry, opt_srsName);
+}
+/**
+ * Creates a `<PropertyIsEqualTo>` comparison operator.
+ *
+ * @param {!string} propertyName Name of the context property to compare.
+ * @param {!(string|number)} expression The value to compare.
+ * @param {boolean=} opt_matchCase Case-sensitive?
+ * @returns {!EqualTo} `<PropertyIsEqualTo>` operator.
+ * @api
+ */
+function equalTo(propertyName, expression, opt_matchCase) {
+    return new _filter_EqualTo_js__WEBPACK_IMPORTED_MODULE_4__["default"](propertyName, expression, opt_matchCase);
+}
+/**
+ * Creates a `<PropertyIsNotEqualTo>` comparison operator.
+ *
+ * @param {!string} propertyName Name of the context property to compare.
+ * @param {!(string|number)} expression The value to compare.
+ * @param {boolean=} opt_matchCase Case-sensitive?
+ * @returns {!NotEqualTo} `<PropertyIsNotEqualTo>` operator.
+ * @api
+ */
+function notEqualTo(propertyName, expression, opt_matchCase) {
+    return new _filter_NotEqualTo_js__WEBPACK_IMPORTED_MODULE_14__["default"](propertyName, expression, opt_matchCase);
+}
+/**
+ * Creates a `<PropertyIsLessThan>` comparison operator.
+ *
+ * @param {!string} propertyName Name of the context property to compare.
+ * @param {!number} expression The value to compare.
+ * @returns {!LessThan} `<PropertyIsLessThan>` operator.
+ * @api
+ */
+function lessThan(propertyName, expression) {
+    return new _filter_LessThan_js__WEBPACK_IMPORTED_MODULE_11__["default"](propertyName, expression);
+}
+/**
+ * Creates a `<PropertyIsLessThanOrEqualTo>` comparison operator.
+ *
+ * @param {!string} propertyName Name of the context property to compare.
+ * @param {!number} expression The value to compare.
+ * @returns {!LessThanOrEqualTo} `<PropertyIsLessThanOrEqualTo>` operator.
+ * @api
+ */
+function lessThanOrEqualTo(propertyName, expression) {
+    return new _filter_LessThanOrEqualTo_js__WEBPACK_IMPORTED_MODULE_12__["default"](propertyName, expression);
+}
+/**
+ * Creates a `<PropertyIsGreaterThan>` comparison operator.
+ *
+ * @param {!string} propertyName Name of the context property to compare.
+ * @param {!number} expression The value to compare.
+ * @returns {!GreaterThan} `<PropertyIsGreaterThan>` operator.
+ * @api
+ */
+function greaterThan(propertyName, expression) {
+    return new _filter_GreaterThan_js__WEBPACK_IMPORTED_MODULE_5__["default"](propertyName, expression);
+}
+/**
+ * Creates a `<PropertyIsGreaterThanOrEqualTo>` comparison operator.
+ *
+ * @param {!string} propertyName Name of the context property to compare.
+ * @param {!number} expression The value to compare.
+ * @returns {!GreaterThanOrEqualTo} `<PropertyIsGreaterThanOrEqualTo>` operator.
+ * @api
+ */
+function greaterThanOrEqualTo(propertyName, expression) {
+    return new _filter_GreaterThanOrEqualTo_js__WEBPACK_IMPORTED_MODULE_6__["default"](propertyName, expression);
+}
+/**
+ * Creates a `<PropertyIsNull>` comparison operator to test whether a property value
+ * is null.
+ *
+ * @param {!string} propertyName Name of the context property to compare.
+ * @returns {!IsNull} `<PropertyIsNull>` operator.
+ * @api
+ */
+function isNull(propertyName) {
+    return new _filter_IsNull_js__WEBPACK_IMPORTED_MODULE_10__["default"](propertyName);
+}
+/**
+ * Creates a `<PropertyIsBetween>` comparison operator to test whether an expression
+ * value lies within a range given by a lower and upper bound (inclusive).
+ *
+ * @param {!string} propertyName Name of the context property to compare.
+ * @param {!number} lowerBoundary The lower bound of the range.
+ * @param {!number} upperBoundary The upper bound of the range.
+ * @returns {!IsBetween} `<PropertyIsBetween>` operator.
+ * @api
+ */
+function between(propertyName, lowerBoundary, upperBoundary) {
+    return new _filter_IsBetween_js__WEBPACK_IMPORTED_MODULE_8__["default"](propertyName, lowerBoundary, upperBoundary);
+}
+/**
+ * Represents a `<PropertyIsLike>` comparison operator that matches a string property
+ * value against a text pattern.
+ *
+ * @param {!string} propertyName Name of the context property to compare.
+ * @param {!string} pattern Text pattern.
+ * @param {string=} opt_wildCard Pattern character which matches any sequence of
+ *    zero or more string characters. Default is '*'.
+ * @param {string=} opt_singleChar pattern character which matches any single
+ *    string character. Default is '.'.
+ * @param {string=} opt_escapeChar Escape character which can be used to escape
+ *    the pattern characters. Default is '!'.
+ * @param {boolean=} opt_matchCase Case-sensitive?
+ * @returns {!IsLike} `<PropertyIsLike>` operator.
+ * @api
+ */
+function like(propertyName, pattern, opt_wildCard, opt_singleChar, opt_escapeChar, opt_matchCase) {
+    return new _filter_IsLike_js__WEBPACK_IMPORTED_MODULE_9__["default"](propertyName, pattern, opt_wildCard, opt_singleChar, opt_escapeChar, opt_matchCase);
+}
+/**
+ * Create a `<During>` temporal operator.
+ *
+ * @param {!string} propertyName Name of the context property to compare.
+ * @param {!string} begin The begin date in ISO-8601 format.
+ * @param {!string} end The end date in ISO-8601 format.
+ * @returns {!During} `<During>` operator.
+ * @api
+ */
+function during(propertyName, begin, end) {
+    return new _filter_During_js__WEBPACK_IMPORTED_MODULE_3__["default"](propertyName, begin, end);
+}
+//# sourceMappingURL=filter.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/format/filter/And.js":
+/*!**********************************************!*\
+  !*** ./node_modules/ol/format/filter/And.js ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _LogicalNary_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LogicalNary.js */ "./node_modules/ol/format/filter/LogicalNary.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+/**
+ * @module ol/format/filter/And
+ */
+
+/**
+ * @classdesc
+ * Represents a logical `<And>` operator between two or more filter conditions.
+ *
+ * @abstract
+ */
+var And = /** @class */ (function (_super) {
+    __extends(And, _super);
+    /**
+     * @param {...import("./Filter.js").default} conditions Conditions.
+     */
+    function And(conditions) {
+        return _super.call(this, 'And', Array.prototype.slice.call(arguments)) || this;
+    }
+    return And;
+}(_LogicalNary_js__WEBPACK_IMPORTED_MODULE_0__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (And);
+//# sourceMappingURL=And.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/format/filter/Bbox.js":
+/*!***********************************************!*\
+  !*** ./node_modules/ol/format/filter/Bbox.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Filter_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Filter.js */ "./node_modules/ol/format/filter/Filter.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+/**
+ * @module ol/format/filter/Bbox
+ */
+
+/**
+ * @classdesc
+ * Represents a `<BBOX>` operator to test whether a geometry-valued property
+ * intersects a fixed bounding box
+ *
+ * @api
+ */
+var Bbox = /** @class */ (function (_super) {
+    __extends(Bbox, _super);
+    /**
+     * @param {!string} geometryName Geometry name to use.
+     * @param {!import("../../extent.js").Extent} extent Extent.
+     * @param {string=} opt_srsName SRS name. No srsName attribute will be set
+     * on geometries when this is not provided.
+     */
+    function Bbox(geometryName, extent, opt_srsName) {
+        var _this = _super.call(this, 'BBOX') || this;
+        /**
+         * @type {!string}
+         */
+        _this.geometryName = geometryName;
+        /**
+         * @type {import("../../extent.js").Extent}
+         */
+        _this.extent = extent;
+        if (extent.length !== 4) {
+            throw new Error('Expected an extent with four values ([minX, minY, maxX, maxY])');
+        }
+        /**
+         * @type {string|undefined}
+         */
+        _this.srsName = opt_srsName;
+        return _this;
+    }
+    return Bbox;
+}(_Filter_js__WEBPACK_IMPORTED_MODULE_0__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Bbox);
+//# sourceMappingURL=Bbox.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/format/filter/Comparison.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/ol/format/filter/Comparison.js ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Filter_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Filter.js */ "./node_modules/ol/format/filter/Filter.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+/**
+ * @module ol/format/filter/Comparison
+ */
+
+/**
+ * @classdesc
+ * Abstract class; normally only used for creating subclasses and not instantiated in apps.
+ * Base class for WFS GetFeature property comparison filters.
+ *
+ * @abstract
+ */
+var Comparison = /** @class */ (function (_super) {
+    __extends(Comparison, _super);
+    /**
+     * @param {!string} tagName The XML tag name for this filter.
+     * @param {!string} propertyName Name of the context property to compare.
+     */
+    function Comparison(tagName, propertyName) {
+        var _this = _super.call(this, tagName) || this;
+        /**
+         * @type {!string}
+         */
+        _this.propertyName = propertyName;
+        return _this;
+    }
+    return Comparison;
+}(_Filter_js__WEBPACK_IMPORTED_MODULE_0__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Comparison);
+//# sourceMappingURL=Comparison.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/format/filter/ComparisonBinary.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/ol/format/filter/ComparisonBinary.js ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Comparison_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Comparison.js */ "./node_modules/ol/format/filter/Comparison.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+/**
+ * @module ol/format/filter/ComparisonBinary
+ */
+
+/**
+ * @classdesc
+ * Abstract class; normally only used for creating subclasses and not instantiated in apps.
+ * Base class for WFS GetFeature property binary comparison filters.
+ *
+ * @abstract
+ */
+var ComparisonBinary = /** @class */ (function (_super) {
+    __extends(ComparisonBinary, _super);
+    /**
+     * @param {!string} tagName The XML tag name for this filter.
+     * @param {!string} propertyName Name of the context property to compare.
+     * @param {!(string|number)} expression The value to compare.
+     * @param {boolean=} opt_matchCase Case-sensitive?
+     */
+    function ComparisonBinary(tagName, propertyName, expression, opt_matchCase) {
+        var _this = _super.call(this, tagName, propertyName) || this;
+        /**
+         * @type {!(string|number)}
+         */
+        _this.expression = expression;
+        /**
+         * @type {boolean|undefined}
+         */
+        _this.matchCase = opt_matchCase;
+        return _this;
+    }
+    return ComparisonBinary;
+}(_Comparison_js__WEBPACK_IMPORTED_MODULE_0__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (ComparisonBinary);
+//# sourceMappingURL=ComparisonBinary.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/format/filter/Contains.js":
+/*!***************************************************!*\
+  !*** ./node_modules/ol/format/filter/Contains.js ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Spatial_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Spatial.js */ "./node_modules/ol/format/filter/Spatial.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+/**
+ * @module ol/format/filter/Contains
+ */
+
+/**
+ * @classdesc
+ * Represents a `<Contains>` operator to test whether a geometry-valued property
+ * contains a given geometry.
+ * @api
+ */
+var Contains = /** @class */ (function (_super) {
+    __extends(Contains, _super);
+    /**
+     * @param {!string} geometryName Geometry name to use.
+     * @param {!import("../../geom/Geometry.js").default} geometry Geometry.
+     * @param {string=} opt_srsName SRS name. No srsName attribute will be
+     *    set on geometries when this is not provided.
+     */
+    function Contains(geometryName, geometry, opt_srsName) {
+        return _super.call(this, 'Contains', geometryName, geometry, opt_srsName) || this;
+    }
+    return Contains;
+}(_Spatial_js__WEBPACK_IMPORTED_MODULE_0__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Contains);
+//# sourceMappingURL=Contains.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/format/filter/During.js":
+/*!*************************************************!*\
+  !*** ./node_modules/ol/format/filter/During.js ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Comparison_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Comparison.js */ "./node_modules/ol/format/filter/Comparison.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+/**
+ * @module ol/format/filter/During
+ */
+
+/**
+ * @classdesc
+ * Represents a `<During>` comparison operator.
+ * @api
+ */
+var During = /** @class */ (function (_super) {
+    __extends(During, _super);
+    /**
+     * @param {!string} propertyName Name of the context property to compare.
+     * @param {!string} begin The begin date in ISO-8601 format.
+     * @param {!string} end The end date in ISO-8601 format.
+     */
+    function During(propertyName, begin, end) {
+        var _this = _super.call(this, 'During', propertyName) || this;
+        /**
+         * @type {!string}
+         */
+        _this.begin = begin;
+        /**
+         * @type {!string}
+         */
+        _this.end = end;
+        return _this;
+    }
+    return During;
+}(_Comparison_js__WEBPACK_IMPORTED_MODULE_0__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (During);
+//# sourceMappingURL=During.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/format/filter/EqualTo.js":
+/*!**************************************************!*\
+  !*** ./node_modules/ol/format/filter/EqualTo.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ComparisonBinary_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ComparisonBinary.js */ "./node_modules/ol/format/filter/ComparisonBinary.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+/**
+ * @module ol/format/filter/EqualTo
+ */
+
+/**
+ * @classdesc
+ * Represents a `<PropertyIsEqualTo>` comparison operator.
+ * @api
+ */
+var EqualTo = /** @class */ (function (_super) {
+    __extends(EqualTo, _super);
+    /**
+     * @param {!string} propertyName Name of the context property to compare.
+     * @param {!(string|number)} expression The value to compare.
+     * @param {boolean=} opt_matchCase Case-sensitive?
+     */
+    function EqualTo(propertyName, expression, opt_matchCase) {
+        return _super.call(this, 'PropertyIsEqualTo', propertyName, expression, opt_matchCase) || this;
+    }
+    return EqualTo;
+}(_ComparisonBinary_js__WEBPACK_IMPORTED_MODULE_0__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (EqualTo);
+//# sourceMappingURL=EqualTo.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/format/filter/Filter.js":
+/*!*************************************************!*\
+  !*** ./node_modules/ol/format/filter/Filter.js ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * @module ol/format/filter/Filter
+ */
+/**
+ * @classdesc
+ * Abstract class; normally only used for creating subclasses and not instantiated in apps.
+ * Base class for WFS GetFeature filters.
+ *
+ * @abstract
+ */
+var Filter = /** @class */ (function () {
+    /**
+     * @param {!string} tagName The XML tag name for this filter.
+     */
+    function Filter(tagName) {
+        /**
+         * @private
+         * @type {!string}
+         */
+        this.tagName_ = tagName;
+    }
+    /**
+     * The XML tag name for a filter.
+     * @returns {!string} Name.
+     */
+    Filter.prototype.getTagName = function () {
+        return this.tagName_;
+    };
+    return Filter;
+}());
+/* harmony default export */ __webpack_exports__["default"] = (Filter);
+//# sourceMappingURL=Filter.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/format/filter/GreaterThan.js":
+/*!******************************************************!*\
+  !*** ./node_modules/ol/format/filter/GreaterThan.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ComparisonBinary_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ComparisonBinary.js */ "./node_modules/ol/format/filter/ComparisonBinary.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+/**
+ * @module ol/format/filter/GreaterThan
+ */
+
+/**
+ * @classdesc
+ * Represents a `<PropertyIsGreaterThan>` comparison operator.
+ * @api
+ */
+var GreaterThan = /** @class */ (function (_super) {
+    __extends(GreaterThan, _super);
+    /**
+     * @param {!string} propertyName Name of the context property to compare.
+     * @param {!number} expression The value to compare.
+     */
+    function GreaterThan(propertyName, expression) {
+        return _super.call(this, 'PropertyIsGreaterThan', propertyName, expression) || this;
+    }
+    return GreaterThan;
+}(_ComparisonBinary_js__WEBPACK_IMPORTED_MODULE_0__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (GreaterThan);
+//# sourceMappingURL=GreaterThan.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/format/filter/GreaterThanOrEqualTo.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/ol/format/filter/GreaterThanOrEqualTo.js ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ComparisonBinary_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ComparisonBinary.js */ "./node_modules/ol/format/filter/ComparisonBinary.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+/**
+ * @module ol/format/filter/GreaterThanOrEqualTo
+ */
+
+/**
+ * @classdesc
+ * Represents a `<PropertyIsGreaterThanOrEqualTo>` comparison operator.
+ * @api
+ */
+var GreaterThanOrEqualTo = /** @class */ (function (_super) {
+    __extends(GreaterThanOrEqualTo, _super);
+    /**
+     * @param {!string} propertyName Name of the context property to compare.
+     * @param {!number} expression The value to compare.
+     */
+    function GreaterThanOrEqualTo(propertyName, expression) {
+        return _super.call(this, 'PropertyIsGreaterThanOrEqualTo', propertyName, expression) || this;
+    }
+    return GreaterThanOrEqualTo;
+}(_ComparisonBinary_js__WEBPACK_IMPORTED_MODULE_0__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (GreaterThanOrEqualTo);
+//# sourceMappingURL=GreaterThanOrEqualTo.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/format/filter/Intersects.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/ol/format/filter/Intersects.js ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Spatial_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Spatial.js */ "./node_modules/ol/format/filter/Spatial.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+/**
+ * @module ol/format/filter/Intersects
+ */
+
+/**
+ * @classdesc
+ * Represents a `<Intersects>` operator to test whether a geometry-valued property
+ * intersects a given geometry.
+ * @api
+ */
+var Intersects = /** @class */ (function (_super) {
+    __extends(Intersects, _super);
+    /**
+     * @param {!string} geometryName Geometry name to use.
+     * @param {!import("../../geom/Geometry.js").default} geometry Geometry.
+     * @param {string=} opt_srsName SRS name. No srsName attribute will be
+     *    set on geometries when this is not provided.
+     */
+    function Intersects(geometryName, geometry, opt_srsName) {
+        return _super.call(this, 'Intersects', geometryName, geometry, opt_srsName) || this;
+    }
+    return Intersects;
+}(_Spatial_js__WEBPACK_IMPORTED_MODULE_0__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Intersects);
+//# sourceMappingURL=Intersects.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/format/filter/IsBetween.js":
+/*!****************************************************!*\
+  !*** ./node_modules/ol/format/filter/IsBetween.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Comparison_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Comparison.js */ "./node_modules/ol/format/filter/Comparison.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+/**
+ * @module ol/format/filter/IsBetween
+ */
+
+/**
+ * @classdesc
+ * Represents a `<PropertyIsBetween>` comparison operator.
+ * @api
+ */
+var IsBetween = /** @class */ (function (_super) {
+    __extends(IsBetween, _super);
+    /**
+     * @param {!string} propertyName Name of the context property to compare.
+     * @param {!number} lowerBoundary The lower bound of the range.
+     * @param {!number} upperBoundary The upper bound of the range.
+     */
+    function IsBetween(propertyName, lowerBoundary, upperBoundary) {
+        var _this = _super.call(this, 'PropertyIsBetween', propertyName) || this;
+        /**
+         * @type {!number}
+         */
+        _this.lowerBoundary = lowerBoundary;
+        /**
+         * @type {!number}
+         */
+        _this.upperBoundary = upperBoundary;
+        return _this;
+    }
+    return IsBetween;
+}(_Comparison_js__WEBPACK_IMPORTED_MODULE_0__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (IsBetween);
+//# sourceMappingURL=IsBetween.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/format/filter/IsLike.js":
+/*!*************************************************!*\
+  !*** ./node_modules/ol/format/filter/IsLike.js ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Comparison_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Comparison.js */ "./node_modules/ol/format/filter/Comparison.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+/**
+ * @module ol/format/filter/IsLike
+ */
+
+/**
+ * @classdesc
+ * Represents a `<PropertyIsLike>` comparison operator.
+ * @api
+ */
+var IsLike = /** @class */ (function (_super) {
+    __extends(IsLike, _super);
+    /**
+     * [constructor description]
+     * @param {!string} propertyName Name of the context property to compare.
+     * @param {!string} pattern Text pattern.
+     * @param {string=} opt_wildCard Pattern character which matches any sequence of
+     *    zero or more string characters. Default is '*'.
+     * @param {string=} opt_singleChar pattern character which matches any single
+     *    string character. Default is '.'.
+     * @param {string=} opt_escapeChar Escape character which can be used to escape
+     *    the pattern characters. Default is '!'.
+     * @param {boolean=} opt_matchCase Case-sensitive?
+     */
+    function IsLike(propertyName, pattern, opt_wildCard, opt_singleChar, opt_escapeChar, opt_matchCase) {
+        var _this = _super.call(this, 'PropertyIsLike', propertyName) || this;
+        /**
+         * @type {!string}
+         */
+        _this.pattern = pattern;
+        /**
+         * @type {!string}
+         */
+        _this.wildCard = opt_wildCard !== undefined ? opt_wildCard : '*';
+        /**
+         * @type {!string}
+         */
+        _this.singleChar = opt_singleChar !== undefined ? opt_singleChar : '.';
+        /**
+         * @type {!string}
+         */
+        _this.escapeChar = opt_escapeChar !== undefined ? opt_escapeChar : '!';
+        /**
+         * @type {boolean|undefined}
+         */
+        _this.matchCase = opt_matchCase;
+        return _this;
+    }
+    return IsLike;
+}(_Comparison_js__WEBPACK_IMPORTED_MODULE_0__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (IsLike);
+//# sourceMappingURL=IsLike.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/format/filter/IsNull.js":
+/*!*************************************************!*\
+  !*** ./node_modules/ol/format/filter/IsNull.js ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Comparison_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Comparison.js */ "./node_modules/ol/format/filter/Comparison.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+/**
+ * @module ol/format/filter/IsNull
+ */
+
+/**
+ * @classdesc
+ * Represents a `<PropertyIsNull>` comparison operator.
+ * @api
+ */
+var IsNull = /** @class */ (function (_super) {
+    __extends(IsNull, _super);
+    /**
+     * @param {!string} propertyName Name of the context property to compare.
+     */
+    function IsNull(propertyName) {
+        return _super.call(this, 'PropertyIsNull', propertyName) || this;
+    }
+    return IsNull;
+}(_Comparison_js__WEBPACK_IMPORTED_MODULE_0__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (IsNull);
+//# sourceMappingURL=IsNull.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/format/filter/LessThan.js":
+/*!***************************************************!*\
+  !*** ./node_modules/ol/format/filter/LessThan.js ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ComparisonBinary_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ComparisonBinary.js */ "./node_modules/ol/format/filter/ComparisonBinary.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+/**
+ * @module ol/format/filter/LessThan
+ */
+
+/**
+ * @classdesc
+ * Represents a `<PropertyIsLessThan>` comparison operator.
+ * @api
+ */
+var LessThan = /** @class */ (function (_super) {
+    __extends(LessThan, _super);
+    /**
+     * @param {!string} propertyName Name of the context property to compare.
+     * @param {!number} expression The value to compare.
+     */
+    function LessThan(propertyName, expression) {
+        return _super.call(this, 'PropertyIsLessThan', propertyName, expression) || this;
+    }
+    return LessThan;
+}(_ComparisonBinary_js__WEBPACK_IMPORTED_MODULE_0__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (LessThan);
+//# sourceMappingURL=LessThan.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/format/filter/LessThanOrEqualTo.js":
+/*!************************************************************!*\
+  !*** ./node_modules/ol/format/filter/LessThanOrEqualTo.js ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ComparisonBinary_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ComparisonBinary.js */ "./node_modules/ol/format/filter/ComparisonBinary.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+/**
+ * @module ol/format/filter/LessThanOrEqualTo
+ */
+
+/**
+ * @classdesc
+ * Represents a `<PropertyIsLessThanOrEqualTo>` comparison operator.
+ * @api
+ */
+var LessThanOrEqualTo = /** @class */ (function (_super) {
+    __extends(LessThanOrEqualTo, _super);
+    /**
+     * @param {!string} propertyName Name of the context property to compare.
+     * @param {!number} expression The value to compare.
+     */
+    function LessThanOrEqualTo(propertyName, expression) {
+        return _super.call(this, 'PropertyIsLessThanOrEqualTo', propertyName, expression) || this;
+    }
+    return LessThanOrEqualTo;
+}(_ComparisonBinary_js__WEBPACK_IMPORTED_MODULE_0__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (LessThanOrEqualTo);
+//# sourceMappingURL=LessThanOrEqualTo.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/format/filter/LogicalNary.js":
+/*!******************************************************!*\
+  !*** ./node_modules/ol/format/filter/LogicalNary.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Filter_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Filter.js */ "./node_modules/ol/format/filter/Filter.js");
+/* harmony import */ var _asserts_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../asserts.js */ "./node_modules/ol/asserts.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+/**
+ * @module ol/format/filter/LogicalNary
+ */
+
+
+/**
+ * @classdesc
+ * Abstract class; normally only used for creating subclasses and not instantiated in apps.
+ * Base class for WFS GetFeature n-ary logical filters.
+ *
+ * @abstract
+ */
+var LogicalNary = /** @class */ (function (_super) {
+    __extends(LogicalNary, _super);
+    /**
+     * @param {!string} tagName The XML tag name for this filter.
+     * @param {Array<import("./Filter.js").default>} conditions Conditions.
+     */
+    function LogicalNary(tagName, conditions) {
+        var _this = _super.call(this, tagName) || this;
+        /**
+         * @type {Array<import("./Filter.js").default>}
+         */
+        _this.conditions = conditions;
+        Object(_asserts_js__WEBPACK_IMPORTED_MODULE_1__["assert"])(_this.conditions.length >= 2, 57); // At least 2 conditions are required.
+        return _this;
+    }
+    return LogicalNary;
+}(_Filter_js__WEBPACK_IMPORTED_MODULE_0__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (LogicalNary);
+//# sourceMappingURL=LogicalNary.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/format/filter/Not.js":
+/*!**********************************************!*\
+  !*** ./node_modules/ol/format/filter/Not.js ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Filter_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Filter.js */ "./node_modules/ol/format/filter/Filter.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+/**
+ * @module ol/format/filter/Not
+ */
+
+/**
+ * @classdesc
+ * Represents a logical `<Not>` operator for a filter condition.
+ * @api
+ */
+var Not = /** @class */ (function (_super) {
+    __extends(Not, _super);
+    /**
+     * @param {!import("./Filter.js").default} condition Filter condition.
+     */
+    function Not(condition) {
+        var _this = _super.call(this, 'Not') || this;
+        /**
+         * @type {!import("./Filter.js").default}
+         */
+        _this.condition = condition;
+        return _this;
+    }
+    return Not;
+}(_Filter_js__WEBPACK_IMPORTED_MODULE_0__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Not);
+//# sourceMappingURL=Not.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/format/filter/NotEqualTo.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/ol/format/filter/NotEqualTo.js ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ComparisonBinary_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ComparisonBinary.js */ "./node_modules/ol/format/filter/ComparisonBinary.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+/**
+ * @module ol/format/filter/NotEqualTo
+ */
+
+/**
+ * @classdesc
+ * Represents a `<PropertyIsNotEqualTo>` comparison operator.
+ * @api
+ */
+var NotEqualTo = /** @class */ (function (_super) {
+    __extends(NotEqualTo, _super);
+    /**
+     * @param {!string} propertyName Name of the context property to compare.
+     * @param {!(string|number)} expression The value to compare.
+     * @param {boolean=} opt_matchCase Case-sensitive?
+     */
+    function NotEqualTo(propertyName, expression, opt_matchCase) {
+        return _super.call(this, 'PropertyIsNotEqualTo', propertyName, expression, opt_matchCase) || this;
+    }
+    return NotEqualTo;
+}(_ComparisonBinary_js__WEBPACK_IMPORTED_MODULE_0__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (NotEqualTo);
+//# sourceMappingURL=NotEqualTo.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/format/filter/Or.js":
+/*!*********************************************!*\
+  !*** ./node_modules/ol/format/filter/Or.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _LogicalNary_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LogicalNary.js */ "./node_modules/ol/format/filter/LogicalNary.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+/**
+ * @module ol/format/filter/Or
+ */
+
+/**
+ * @classdesc
+ * Represents a logical `<Or>` operator between two ore more filter conditions.
+ * @api
+ */
+var Or = /** @class */ (function (_super) {
+    __extends(Or, _super);
+    /**
+     * @param {...import("./Filter.js").default} conditions Conditions.
+     */
+    function Or(conditions) {
+        return _super.call(this, 'Or', Array.prototype.slice.call(arguments)) || this;
+    }
+    return Or;
+}(_LogicalNary_js__WEBPACK_IMPORTED_MODULE_0__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Or);
+//# sourceMappingURL=Or.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/format/filter/Spatial.js":
+/*!**************************************************!*\
+  !*** ./node_modules/ol/format/filter/Spatial.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Filter_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Filter.js */ "./node_modules/ol/format/filter/Filter.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+/**
+ * @module ol/format/filter/Spatial
+ */
+
+/**
+ * @classdesc
+ * Abstract class; normally only used for creating subclasses and not instantiated in apps.
+ * Represents a spatial operator to test whether a geometry-valued property
+ * relates to a given geometry.
+ *
+ * @abstract
+ */
+var Spatial = /** @class */ (function (_super) {
+    __extends(Spatial, _super);
+    /**
+     * @param {!string} tagName The XML tag name for this filter.
+     * @param {!string} geometryName Geometry name to use.
+     * @param {!import("../../geom/Geometry.js").default} geometry Geometry.
+     * @param {string=} opt_srsName SRS name. No srsName attribute will be
+     *    set on geometries when this is not provided.
+     */
+    function Spatial(tagName, geometryName, geometry, opt_srsName) {
+        var _this = _super.call(this, tagName) || this;
+        /**
+         * @type {!string}
+         */
+        _this.geometryName = geometryName || 'the_geom';
+        /**
+         * @type {import("../../geom/Geometry.js").default}
+         */
+        _this.geometry = geometry;
+        /**
+         * @type {string|undefined}
+         */
+        _this.srsName = opt_srsName;
+        return _this;
+    }
+    return Spatial;
+}(_Filter_js__WEBPACK_IMPORTED_MODULE_0__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Spatial);
+//# sourceMappingURL=Spatial.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/format/filter/Within.js":
+/*!*************************************************!*\
+  !*** ./node_modules/ol/format/filter/Within.js ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Spatial_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Spatial.js */ "./node_modules/ol/format/filter/Spatial.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+/**
+ * @module ol/format/filter/Within
+ */
+
+/**
+ * @classdesc
+ * Represents a `<Within>` operator to test whether a geometry-valued property
+ * is within a given geometry.
+ * @api
+ */
+var Within = /** @class */ (function (_super) {
+    __extends(Within, _super);
+    /**
+     * @param {!string} geometryName Geometry name to use.
+     * @param {!import("../../geom/Geometry.js").default} geometry Geometry.
+     * @param {string=} opt_srsName SRS name. No srsName attribute will be
+     *    set on geometries when this is not provided.
+     */
+    function Within(geometryName, geometry, opt_srsName) {
+        return _super.call(this, 'Within', geometryName, geometry, opt_srsName) || this;
+    }
+    return Within;
+}(_Spatial_js__WEBPACK_IMPORTED_MODULE_0__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Within);
+//# sourceMappingURL=Within.js.map
 
 /***/ }),
 
@@ -40558,6 +52277,54 @@ function deflateMultiCoordinatesArray(flatCoordinates, offset, coordinatesss, st
     return endss;
 }
 //# sourceMappingURL=deflate.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/geom/flat/flip.js":
+/*!*******************************************!*\
+  !*** ./node_modules/ol/geom/flat/flip.js ***!
+  \*******************************************/
+/*! exports provided: flipXY */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "flipXY", function() { return flipXY; });
+/**
+ * @module ol/geom/flat/flip
+ */
+/**
+ * @param {Array<number>} flatCoordinates Flat coordinates.
+ * @param {number} offset Offset.
+ * @param {number} end End.
+ * @param {number} stride Stride.
+ * @param {Array<number>=} opt_dest Destination.
+ * @param {number=} opt_destOffset Destination offset.
+ * @return {Array<number>} Flat coordinates.
+ */
+function flipXY(flatCoordinates, offset, end, stride, opt_dest, opt_destOffset) {
+    var dest, destOffset;
+    if (opt_dest !== undefined) {
+        dest = opt_dest;
+        destOffset = opt_destOffset !== undefined ? opt_destOffset : 0;
+    }
+    else {
+        dest = [];
+        destOffset = 0;
+    }
+    var j = offset;
+    while (j < end) {
+        var x = flatCoordinates[j++];
+        dest[destOffset++] = flatCoordinates[j++];
+        dest[destOffset++] = x;
+        for (var k = 2; k < stride; ++k) {
+            dest[destOffset++] = flatCoordinates[j++];
+        }
+    }
+    dest.length = destOffset;
+    return dest;
+}
+//# sourceMappingURL=flip.js.map
 
 /***/ }),
 
@@ -66861,6 +78628,130 @@ function toSize(size, opt_size) {
 
 /***/ }),
 
+/***/ "./node_modules/ol/source.js":
+/*!***********************************!*\
+  !*** ./node_modules/ol/source.js ***!
+  \***********************************/
+/*! exports provided: BingMaps, CartoDB, Cluster, IIIF, Image, ImageArcGISRest, ImageCanvas, ImageMapGuide, ImageStatic, ImageWMS, OSM, Raster, Source, Stamen, Tile, TileArcGISRest, TileDebug, TileImage, TileJSON, TileWMS, UrlTile, UTFGrid, Vector, VectorTile, WMTS, XYZ, Zoomify */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _source_BingMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./source/BingMaps.js */ "./node_modules/ol/source/BingMaps.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BingMaps", function() { return _source_BingMaps_js__WEBPACK_IMPORTED_MODULE_0__["default"]; });
+
+/* harmony import */ var _source_CartoDB_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./source/CartoDB.js */ "./node_modules/ol/source/CartoDB.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CartoDB", function() { return _source_CartoDB_js__WEBPACK_IMPORTED_MODULE_1__["default"]; });
+
+/* harmony import */ var _source_Cluster_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./source/Cluster.js */ "./node_modules/ol/source/Cluster.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Cluster", function() { return _source_Cluster_js__WEBPACK_IMPORTED_MODULE_2__["default"]; });
+
+/* harmony import */ var _source_IIIF_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./source/IIIF.js */ "./node_modules/ol/source/IIIF.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "IIIF", function() { return _source_IIIF_js__WEBPACK_IMPORTED_MODULE_3__["default"]; });
+
+/* harmony import */ var _source_Image_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./source/Image.js */ "./node_modules/ol/source/Image.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Image", function() { return _source_Image_js__WEBPACK_IMPORTED_MODULE_4__["default"]; });
+
+/* harmony import */ var _source_ImageArcGISRest_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./source/ImageArcGISRest.js */ "./node_modules/ol/source/ImageArcGISRest.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ImageArcGISRest", function() { return _source_ImageArcGISRest_js__WEBPACK_IMPORTED_MODULE_5__["default"]; });
+
+/* harmony import */ var _source_ImageCanvas_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./source/ImageCanvas.js */ "./node_modules/ol/source/ImageCanvas.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ImageCanvas", function() { return _source_ImageCanvas_js__WEBPACK_IMPORTED_MODULE_6__["default"]; });
+
+/* harmony import */ var _source_ImageMapGuide_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./source/ImageMapGuide.js */ "./node_modules/ol/source/ImageMapGuide.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ImageMapGuide", function() { return _source_ImageMapGuide_js__WEBPACK_IMPORTED_MODULE_7__["default"]; });
+
+/* harmony import */ var _source_ImageStatic_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./source/ImageStatic.js */ "./node_modules/ol/source/ImageStatic.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ImageStatic", function() { return _source_ImageStatic_js__WEBPACK_IMPORTED_MODULE_8__["default"]; });
+
+/* harmony import */ var _source_ImageWMS_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./source/ImageWMS.js */ "./node_modules/ol/source/ImageWMS.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ImageWMS", function() { return _source_ImageWMS_js__WEBPACK_IMPORTED_MODULE_9__["default"]; });
+
+/* harmony import */ var _source_OSM_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./source/OSM.js */ "./node_modules/ol/source/OSM.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "OSM", function() { return _source_OSM_js__WEBPACK_IMPORTED_MODULE_10__["default"]; });
+
+/* harmony import */ var _source_Raster_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./source/Raster.js */ "./node_modules/ol/source/Raster.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Raster", function() { return _source_Raster_js__WEBPACK_IMPORTED_MODULE_11__["default"]; });
+
+/* harmony import */ var _source_Source_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./source/Source.js */ "./node_modules/ol/source/Source.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Source", function() { return _source_Source_js__WEBPACK_IMPORTED_MODULE_12__["default"]; });
+
+/* harmony import */ var _source_Stamen_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./source/Stamen.js */ "./node_modules/ol/source/Stamen.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Stamen", function() { return _source_Stamen_js__WEBPACK_IMPORTED_MODULE_13__["default"]; });
+
+/* harmony import */ var _source_Tile_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./source/Tile.js */ "./node_modules/ol/source/Tile.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Tile", function() { return _source_Tile_js__WEBPACK_IMPORTED_MODULE_14__["default"]; });
+
+/* harmony import */ var _source_TileArcGISRest_js__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./source/TileArcGISRest.js */ "./node_modules/ol/source/TileArcGISRest.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TileArcGISRest", function() { return _source_TileArcGISRest_js__WEBPACK_IMPORTED_MODULE_15__["default"]; });
+
+/* harmony import */ var _source_TileDebug_js__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./source/TileDebug.js */ "./node_modules/ol/source/TileDebug.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TileDebug", function() { return _source_TileDebug_js__WEBPACK_IMPORTED_MODULE_16__["default"]; });
+
+/* harmony import */ var _source_TileImage_js__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./source/TileImage.js */ "./node_modules/ol/source/TileImage.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TileImage", function() { return _source_TileImage_js__WEBPACK_IMPORTED_MODULE_17__["default"]; });
+
+/* harmony import */ var _source_TileJSON_js__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./source/TileJSON.js */ "./node_modules/ol/source/TileJSON.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TileJSON", function() { return _source_TileJSON_js__WEBPACK_IMPORTED_MODULE_18__["default"]; });
+
+/* harmony import */ var _source_TileWMS_js__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./source/TileWMS.js */ "./node_modules/ol/source/TileWMS.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TileWMS", function() { return _source_TileWMS_js__WEBPACK_IMPORTED_MODULE_19__["default"]; });
+
+/* harmony import */ var _source_UrlTile_js__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./source/UrlTile.js */ "./node_modules/ol/source/UrlTile.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "UrlTile", function() { return _source_UrlTile_js__WEBPACK_IMPORTED_MODULE_20__["default"]; });
+
+/* harmony import */ var _source_UTFGrid_js__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./source/UTFGrid.js */ "./node_modules/ol/source/UTFGrid.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "UTFGrid", function() { return _source_UTFGrid_js__WEBPACK_IMPORTED_MODULE_21__["default"]; });
+
+/* harmony import */ var _source_Vector_js__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./source/Vector.js */ "./node_modules/ol/source/Vector.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Vector", function() { return _source_Vector_js__WEBPACK_IMPORTED_MODULE_22__["default"]; });
+
+/* harmony import */ var _source_VectorTile_js__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./source/VectorTile.js */ "./node_modules/ol/source/VectorTile.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VectorTile", function() { return _source_VectorTile_js__WEBPACK_IMPORTED_MODULE_23__["default"]; });
+
+/* harmony import */ var _source_WMTS_js__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./source/WMTS.js */ "./node_modules/ol/source/WMTS.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "WMTS", function() { return _source_WMTS_js__WEBPACK_IMPORTED_MODULE_24__["default"]; });
+
+/* harmony import */ var _source_XYZ_js__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./source/XYZ.js */ "./node_modules/ol/source/XYZ.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "XYZ", function() { return _source_XYZ_js__WEBPACK_IMPORTED_MODULE_25__["default"]; });
+
+/* harmony import */ var _source_Zoomify_js__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./source/Zoomify.js */ "./node_modules/ol/source/Zoomify.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Zoomify", function() { return _source_Zoomify_js__WEBPACK_IMPORTED_MODULE_26__["default"]; });
+
+/**
+ * @module ol/source
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//# sourceMappingURL=source.js.map
+
+/***/ }),
+
 /***/ "./node_modules/ol/source/BingMaps.js":
 /*!********************************************!*\
   !*** ./node_modules/ol/source/BingMaps.js ***!
@@ -67164,6 +79055,815 @@ var BingMaps = /** @class */ (function (_super) {
 
 /***/ }),
 
+/***/ "./node_modules/ol/source/CartoDB.js":
+/*!*******************************************!*\
+  !*** ./node_modules/ol/source/CartoDB.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _State_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./State.js */ "./node_modules/ol/source/State.js");
+/* harmony import */ var _XYZ_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./XYZ.js */ "./node_modules/ol/source/XYZ.js");
+/* harmony import */ var _obj_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../obj.js */ "./node_modules/ol/obj.js");
+/**
+ * @module ol/source/CartoDB
+ */
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+
+/**
+ * @typedef {Object} Options
+ * @property {import("./Source.js").AttributionLike} [attributions] Attributions.
+ * @property {number} [cacheSize] Initial tile cache size. Will auto-grow to hold at least the number of tiles in the viewport.
+ * @property {null|string} [crossOrigin] The `crossOrigin` attribute for loaded images.  Note that
+ * you must provide a `crossOrigin` value if you want to access pixel data with the Canvas renderer.
+ * See https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image for more detail.
+ * @property {import("../proj.js").ProjectionLike} [projection='EPSG:3857'] Projection.
+ * @property {number} [maxZoom=18] Max zoom.
+ * @property {number} [minZoom] Minimum zoom.
+ * @property {boolean} [wrapX=true] Whether to wrap the world horizontally.
+ * @property {Object} [config] If using anonymous maps, the CartoDB config to use. See
+ * http://docs.cartodb.com/cartodb-platform/maps-api/anonymous-maps/
+ * for more detail.
+ * If using named maps, a key-value lookup with the template parameters.
+ * See http://docs.cartodb.com/cartodb-platform/maps-api/named-maps/
+ * for more detail.
+ * @property {string} [map] If using named maps, this will be the name of the template to load.
+ * See http://docs.cartodb.com/cartodb-platform/maps-api/named-maps/
+ * for more detail.
+ * @property {string} account If using named maps, this will be the name of the template to load.
+ */
+/**
+ * @typedef {Object} CartoDBLayerInfo
+ * @property {string} layergroupid The layer group ID
+ * @property {{https: string}} cdn_url The CDN URL
+ */
+/**
+ * @classdesc
+ * Layer source for the CartoDB Maps API.
+ * @api
+ */
+var CartoDB = /** @class */ (function (_super) {
+    __extends(CartoDB, _super);
+    /**
+     * @param {Options} options CartoDB options.
+     */
+    function CartoDB(options) {
+        var _this = _super.call(this, {
+            attributions: options.attributions,
+            cacheSize: options.cacheSize,
+            crossOrigin: options.crossOrigin,
+            maxZoom: options.maxZoom !== undefined ? options.maxZoom : 18,
+            minZoom: options.minZoom,
+            projection: options.projection,
+            wrapX: options.wrapX,
+        }) || this;
+        /**
+         * @type {string}
+         * @private
+         */
+        _this.account_ = options.account;
+        /**
+         * @type {string}
+         * @private
+         */
+        _this.mapId_ = options.map || '';
+        /**
+         * @type {!Object}
+         * @private
+         */
+        _this.config_ = options.config || {};
+        /**
+         * @type {!Object<string, CartoDBLayerInfo>}
+         * @private
+         */
+        _this.templateCache_ = {};
+        _this.initializeMap_();
+        return _this;
+    }
+    /**
+     * Returns the current config.
+     * @return {!Object} The current configuration.
+     * @api
+     */
+    CartoDB.prototype.getConfig = function () {
+        return this.config_;
+    };
+    /**
+     * Updates the carto db config.
+     * @param {Object} config a key-value lookup. Values will replace current values
+     *     in the config.
+     * @api
+     */
+    CartoDB.prototype.updateConfig = function (config) {
+        Object(_obj_js__WEBPACK_IMPORTED_MODULE_2__["assign"])(this.config_, config);
+        this.initializeMap_();
+    };
+    /**
+     * Sets the CartoDB config
+     * @param {Object} config In the case of anonymous maps, a CartoDB configuration
+     *     object.
+     * If using named maps, a key-value lookup with the template parameters.
+     * @api
+     */
+    CartoDB.prototype.setConfig = function (config) {
+        this.config_ = config || {};
+        this.initializeMap_();
+    };
+    /**
+     * Issue a request to initialize the CartoDB map.
+     * @private
+     */
+    CartoDB.prototype.initializeMap_ = function () {
+        var paramHash = JSON.stringify(this.config_);
+        if (this.templateCache_[paramHash]) {
+            this.applyTemplate_(this.templateCache_[paramHash]);
+            return;
+        }
+        var mapUrl = 'https://' + this.account_ + '.carto.com/api/v1/map';
+        if (this.mapId_) {
+            mapUrl += '/named/' + this.mapId_;
+        }
+        var client = new XMLHttpRequest();
+        client.addEventListener('load', this.handleInitResponse_.bind(this, paramHash));
+        client.addEventListener('error', this.handleInitError_.bind(this));
+        client.open('POST', mapUrl);
+        client.setRequestHeader('Content-type', 'application/json');
+        client.send(JSON.stringify(this.config_));
+    };
+    /**
+     * Handle map initialization response.
+     * @param {string} paramHash a hash representing the parameter set that was used
+     *     for the request
+     * @param {Event} event Event.
+     * @private
+     */
+    CartoDB.prototype.handleInitResponse_ = function (paramHash, event) {
+        var client = /** @type {XMLHttpRequest} */ (event.target);
+        // status will be 0 for file:// urls
+        if (!client.status || (client.status >= 200 && client.status < 300)) {
+            var response = void 0;
+            try {
+                response = /** @type {CartoDBLayerInfo} */ (JSON.parse(client.responseText));
+            }
+            catch (err) {
+                this.setState(_State_js__WEBPACK_IMPORTED_MODULE_0__["default"].ERROR);
+                return;
+            }
+            this.applyTemplate_(response);
+            this.templateCache_[paramHash] = response;
+            this.setState(_State_js__WEBPACK_IMPORTED_MODULE_0__["default"].READY);
+        }
+        else {
+            this.setState(_State_js__WEBPACK_IMPORTED_MODULE_0__["default"].ERROR);
+        }
+    };
+    /**
+     * @private
+     * @param {Event} event Event.
+     */
+    CartoDB.prototype.handleInitError_ = function (event) {
+        this.setState(_State_js__WEBPACK_IMPORTED_MODULE_0__["default"].ERROR);
+    };
+    /**
+     * Apply the new tile urls returned by carto db
+     * @param {CartoDBLayerInfo} data Result of carto db call.
+     * @private
+     */
+    CartoDB.prototype.applyTemplate_ = function (data) {
+        var tilesUrl = 'https://' +
+            data.cdn_url.https +
+            '/' +
+            this.account_ +
+            '/api/v1/map/' +
+            data.layergroupid +
+            '/{z}/{x}/{y}.png';
+        this.setUrl(tilesUrl);
+    };
+    return CartoDB;
+}(_XYZ_js__WEBPACK_IMPORTED_MODULE_1__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (CartoDB);
+//# sourceMappingURL=CartoDB.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/source/Cluster.js":
+/*!*******************************************!*\
+  !*** ./node_modules/ol/source/Cluster.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _events_EventType_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../events/EventType.js */ "./node_modules/ol/events/EventType.js");
+/* harmony import */ var _Feature_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Feature.js */ "./node_modules/ol/Feature.js");
+/* harmony import */ var _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../geom/GeometryType.js */ "./node_modules/ol/geom/GeometryType.js");
+/* harmony import */ var _geom_Point_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../geom/Point.js */ "./node_modules/ol/geom/Point.js");
+/* harmony import */ var _Vector_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Vector.js */ "./node_modules/ol/source/Vector.js");
+/* harmony import */ var _coordinate_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../coordinate.js */ "./node_modules/ol/coordinate.js");
+/* harmony import */ var _asserts_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../asserts.js */ "./node_modules/ol/asserts.js");
+/* harmony import */ var _extent_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../extent.js */ "./node_modules/ol/extent.js");
+/* harmony import */ var _util_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../util.js */ "./node_modules/ol/util.js");
+/**
+ * @module ol/source/Cluster
+ */
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+
+
+
+
+
+
+
+/**
+ * @typedef {Object} Options
+ * @property {import("./Source.js").AttributionLike} [attributions] Attributions.
+ * @property {number} [distance=20] Minimum distance in pixels between clusters.
+ * @property {function(Feature):Point} [geometryFunction]
+ * Function that takes an {@link module:ol/Feature} as argument and returns an
+ * {@link module:ol/geom/Point} as cluster calculation point for the feature. When a
+ * feature should not be considered for clustering, the function should return
+ * `null`. The default, which works when the underyling source contains point
+ * features only, is
+ * ```js
+ * function(feature) {
+ *   return feature.getGeometry();
+ * }
+ * ```
+ * See {@link module:ol/geom/Polygon~Polygon#getInteriorPoint} for a way to get a cluster
+ * calculation point for polygons.
+ * @property {VectorSource} [source] Source.
+ * @property {boolean} [wrapX=true] Whether to wrap the world horizontally.
+ */
+/**
+ * @classdesc
+ * Layer source to cluster vector data. Works out of the box with point
+ * geometries. For other geometry types, or if not all geometries should be
+ * considered for clustering, a custom `geometryFunction` can be defined.
+ *
+ * If the instance is disposed without also disposing the underlying
+ * source `setSource(null)` has to be called to remove the listener reference
+ * from the wrapped source.
+ * @api
+ */
+var Cluster = /** @class */ (function (_super) {
+    __extends(Cluster, _super);
+    /**
+     * @param {Options} options Cluster options.
+     */
+    function Cluster(options) {
+        var _this = _super.call(this, {
+            attributions: options.attributions,
+            wrapX: options.wrapX,
+        }) || this;
+        /**
+         * @type {number|undefined}
+         * @protected
+         */
+        _this.resolution = undefined;
+        /**
+         * @type {number}
+         * @protected
+         */
+        _this.distance = options.distance !== undefined ? options.distance : 20;
+        /**
+         * @type {Array<Feature>}
+         * @protected
+         */
+        _this.features = [];
+        /**
+         * @param {Feature} feature Feature.
+         * @return {Point} Cluster calculation point.
+         * @protected
+         */
+        _this.geometryFunction =
+            options.geometryFunction ||
+                function (feature) {
+                    var geometry = feature.getGeometry();
+                    Object(_asserts_js__WEBPACK_IMPORTED_MODULE_6__["assert"])(geometry.getType() == _geom_GeometryType_js__WEBPACK_IMPORTED_MODULE_2__["default"].POINT, 10); // The default `geometryFunction` can only handle `Point` geometries
+                    return geometry;
+                };
+        _this.boundRefresh_ = _this.refresh.bind(_this);
+        _this.setSource(options.source || null);
+        return _this;
+    }
+    /**
+     * Remove all features from the source.
+     * @param {boolean=} opt_fast Skip dispatching of {@link module:ol/source/Vector.VectorSourceEvent#removefeature} events.
+     * @api
+     */
+    Cluster.prototype.clear = function (opt_fast) {
+        this.features.length = 0;
+        _super.prototype.clear.call(this, opt_fast);
+    };
+    /**
+     * Get the distance in pixels between clusters.
+     * @return {number} Distance.
+     * @api
+     */
+    Cluster.prototype.getDistance = function () {
+        return this.distance;
+    };
+    /**
+     * Get a reference to the wrapped source.
+     * @return {VectorSource} Source.
+     * @api
+     */
+    Cluster.prototype.getSource = function () {
+        return this.source;
+    };
+    /**
+     * @param {import("../extent.js").Extent} extent Extent.
+     * @param {number} resolution Resolution.
+     * @param {import("../proj/Projection.js").default} projection Projection.
+     */
+    Cluster.prototype.loadFeatures = function (extent, resolution, projection) {
+        this.source.loadFeatures(extent, resolution, projection);
+        if (resolution !== this.resolution) {
+            this.clear();
+            this.resolution = resolution;
+            this.cluster();
+            this.addFeatures(this.features);
+        }
+    };
+    /**
+     * Set the distance in pixels between clusters.
+     * @param {number} distance The distance in pixels.
+     * @api
+     */
+    Cluster.prototype.setDistance = function (distance) {
+        this.distance = distance;
+        this.refresh();
+    };
+    /**
+     * Replace the wrapped source.
+     * @param {VectorSource} source The new source for this instance.
+     * @api
+     */
+    Cluster.prototype.setSource = function (source) {
+        if (this.source) {
+            this.source.removeEventListener(_events_EventType_js__WEBPACK_IMPORTED_MODULE_0__["default"].CHANGE, this.boundRefresh_);
+        }
+        this.source = source;
+        if (source) {
+            source.addEventListener(_events_EventType_js__WEBPACK_IMPORTED_MODULE_0__["default"].CHANGE, this.boundRefresh_);
+        }
+        this.refresh();
+    };
+    /**
+     * Handle the source changing.
+     */
+    Cluster.prototype.refresh = function () {
+        this.clear();
+        this.cluster();
+        this.addFeatures(this.features);
+    };
+    /**
+     * @protected
+     */
+    Cluster.prototype.cluster = function () {
+        if (this.resolution === undefined || !this.source) {
+            return;
+        }
+        var extent = Object(_extent_js__WEBPACK_IMPORTED_MODULE_7__["createEmpty"])();
+        var mapDistance = this.distance * this.resolution;
+        var features = this.source.getFeatures();
+        /**
+         * @type {!Object<string, boolean>}
+         */
+        var clustered = {};
+        for (var i = 0, ii = features.length; i < ii; i++) {
+            var feature = features[i];
+            if (!(Object(_util_js__WEBPACK_IMPORTED_MODULE_8__["getUid"])(feature) in clustered)) {
+                var geometry = this.geometryFunction(feature);
+                if (geometry) {
+                    var coordinates = geometry.getCoordinates();
+                    Object(_extent_js__WEBPACK_IMPORTED_MODULE_7__["createOrUpdateFromCoordinate"])(coordinates, extent);
+                    Object(_extent_js__WEBPACK_IMPORTED_MODULE_7__["buffer"])(extent, mapDistance, extent);
+                    var neighbors = this.source.getFeaturesInExtent(extent);
+                    neighbors = neighbors.filter(function (neighbor) {
+                        var uid = Object(_util_js__WEBPACK_IMPORTED_MODULE_8__["getUid"])(neighbor);
+                        if (!(uid in clustered)) {
+                            clustered[uid] = true;
+                            return true;
+                        }
+                        else {
+                            return false;
+                        }
+                    });
+                    this.features.push(this.createCluster(neighbors));
+                }
+            }
+        }
+    };
+    /**
+     * @param {Array<Feature>} features Features
+     * @return {Feature} The cluster feature.
+     * @protected
+     */
+    Cluster.prototype.createCluster = function (features) {
+        var centroid = [0, 0];
+        for (var i = features.length - 1; i >= 0; --i) {
+            var geometry = this.geometryFunction(features[i]);
+            if (geometry) {
+                Object(_coordinate_js__WEBPACK_IMPORTED_MODULE_5__["add"])(centroid, geometry.getCoordinates());
+            }
+            else {
+                features.splice(i, 1);
+            }
+        }
+        Object(_coordinate_js__WEBPACK_IMPORTED_MODULE_5__["scale"])(centroid, 1 / features.length);
+        var cluster = new _Feature_js__WEBPACK_IMPORTED_MODULE_1__["default"](new _geom_Point_js__WEBPACK_IMPORTED_MODULE_3__["default"](centroid));
+        cluster.set('features', features);
+        return cluster;
+    };
+    return Cluster;
+}(_Vector_js__WEBPACK_IMPORTED_MODULE_4__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Cluster);
+//# sourceMappingURL=Cluster.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/source/IIIF.js":
+/*!****************************************!*\
+  !*** ./node_modules/ol/source/IIIF.js ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _tilegrid_TileGrid_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../tilegrid/TileGrid.js */ "./node_modules/ol/tilegrid/TileGrid.js");
+/* harmony import */ var _TileImage_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TileImage.js */ "./node_modules/ol/source/TileImage.js");
+/* harmony import */ var _Zoomify_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Zoomify.js */ "./node_modules/ol/source/Zoomify.js");
+/* harmony import */ var _tilegrid_common_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../tilegrid/common.js */ "./node_modules/ol/tilegrid/common.js");
+/* harmony import */ var _format_IIIFInfo_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../format/IIIFInfo.js */ "./node_modules/ol/format/IIIFInfo.js");
+/* harmony import */ var _asserts_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../asserts.js */ "./node_modules/ol/asserts.js");
+/* harmony import */ var _extent_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../extent.js */ "./node_modules/ol/extent.js");
+/* harmony import */ var _size_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../size.js */ "./node_modules/ol/size.js");
+/**
+ * @module ol/source/IIIF
+ */
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+
+
+
+
+
+
+/**
+ * @typedef {Object} Options
+ * @property {import("./Source.js").AttributionLike} [attributions] Attributions.
+ * @property {boolean} [attributionsCollapsible=true] Attributions are collapsible.
+ * @property {number} [cacheSize]
+ * @property {null|string} [crossOrigin]
+ * @property {import("../extent.js").Extent} [extent=[0, -height, width, 0]]
+ * @property {string} [format='jpg'] Requested image format.
+ * @property {boolean} [imageSmoothing=true] Enable image smoothing.
+ * @property {import("../proj.js").ProjectionLike} [projection]
+ * @property {string} [quality] Requested IIIF image quality. Default is 'native'
+ * for version 1, 'default' for versions 2 and 3.
+ * @property {number} [reprojectionErrorThreshold=0.5] Maximum allowed reprojection error (in pixels).
+ * Higher values can increase reprojection performance, but decrease precision.
+ * @property {Array<number>} [resolutions] Supported resolutions as given in IIIF 'scaleFactors'
+ * @property {import("../size.js").Size} size Size of the image [width, height].
+ * @property {Array<import("../size.js").Size>} [sizes] Supported scaled image sizes.
+ * Content of the IIIF info.json 'sizes' property, but as array of Size objects.
+ * @property {import("./State.js").default} [state] Source state.
+ * @property {Array<string>} [supports=[]] Supported IIIF region and size calculation
+ * features.
+ * @property {number} [tilePixelRatio]
+ * @property {number|import("../size.js").Size} [tileSize] Tile size.
+ * Same tile size is used for all zoom levels. If tile size is a number,
+ * a square tile is assumed. If the IIIF image service supports arbitrary
+ * tiling (sizeByH, sizeByW, sizeByWh or sizeByPct as well as regionByPx or regionByPct
+ * are supported), the default tilesize is 256.
+ * @property {number} [transition]
+ * @property {string} [url] Base URL of the IIIF Image service.
+ * This should be the same as the IIIF Image ID.
+ * @property {import("../format/IIIFInfo.js").Versions} [version=Versions.VERSION2] Service's IIIF Image API version.
+ * @property {number} [zDirection=0] Indicate which resolution should be used
+ * by a renderer if the view resolution does not match any resolution of the tile source.
+ * If 0, the nearest resolution will be used. If 1, the nearest lower resolution
+ * will be used. If -1, the nearest higher resolution will be used.
+ */
+function formatPercentage(percentage) {
+    return percentage.toLocaleString('en', { maximumFractionDigits: 10 });
+}
+/**
+ * @classdesc
+ * Layer source for IIIF Image API services.
+ * @api
+ */
+var IIIF = /** @class */ (function (_super) {
+    __extends(IIIF, _super);
+    /**
+     * @param {Options=} opt_options Tile source options. Use {@link import("../format/IIIFInfo.js").IIIFInfo}
+     * to parse Image API service information responses into constructor options.
+     * @api
+     */
+    function IIIF(opt_options) {
+        var _this = this;
+        /**
+         * @type {Partial<Options>}
+         */
+        var options = opt_options || {};
+        var baseUrl = options.url || '';
+        baseUrl =
+            baseUrl +
+                (baseUrl.lastIndexOf('/') === baseUrl.length - 1 || baseUrl === ''
+                    ? ''
+                    : '/');
+        var version = options.version || _format_IIIFInfo_js__WEBPACK_IMPORTED_MODULE_4__["Versions"].VERSION2;
+        var sizes = options.sizes || [];
+        var size = options.size;
+        Object(_asserts_js__WEBPACK_IMPORTED_MODULE_5__["assert"])(size != undefined &&
+            Array.isArray(size) &&
+            size.length == 2 &&
+            !isNaN(size[0]) &&
+            size[0] > 0 &&
+            !isNaN(size[1]) &&
+            size[1] > 0, 60);
+        var width = size[0];
+        var height = size[1];
+        var tileSize = options.tileSize;
+        var tilePixelRatio = options.tilePixelRatio || 1;
+        var format = options.format || 'jpg';
+        var quality = options.quality ||
+            (options.version == _format_IIIFInfo_js__WEBPACK_IMPORTED_MODULE_4__["Versions"].VERSION1 ? 'native' : 'default');
+        var resolutions = options.resolutions || [];
+        var supports = options.supports || [];
+        var extent = options.extent || [0, -height, width, 0];
+        var supportsListedSizes = sizes != undefined && Array.isArray(sizes) && sizes.length > 0;
+        var supportsListedTiles = tileSize !== undefined &&
+            ((typeof tileSize === 'number' &&
+                Number.isInteger(tileSize) &&
+                tileSize > 0) ||
+                (Array.isArray(tileSize) && tileSize.length > 0));
+        var supportsArbitraryTiling = supports != undefined &&
+            Array.isArray(supports) &&
+            (supports.includes('regionByPx') || supports.includes('regionByPct')) &&
+            (supports.includes('sizeByWh') ||
+                supports.includes('sizeByH') ||
+                supports.includes('sizeByW') ||
+                supports.includes('sizeByPct'));
+        var tileWidth, tileHeight, maxZoom;
+        resolutions.sort(function (a, b) {
+            return b - a;
+        });
+        if (supportsListedTiles || supportsArbitraryTiling) {
+            if (tileSize != undefined) {
+                if (typeof tileSize === 'number' &&
+                    Number.isInteger(tileSize) &&
+                    tileSize > 0) {
+                    tileWidth = tileSize;
+                    tileHeight = tileSize;
+                }
+                else if (Array.isArray(tileSize) && tileSize.length > 0) {
+                    if (tileSize.length == 1 ||
+                        (tileSize[1] == undefined && Number.isInteger(tileSize[0]))) {
+                        tileWidth = tileSize[0];
+                        tileHeight = tileSize[0];
+                    }
+                    if (tileSize.length == 2) {
+                        if (Number.isInteger(tileSize[0]) &&
+                            Number.isInteger(tileSize[1])) {
+                            tileWidth = tileSize[0];
+                            tileHeight = tileSize[1];
+                        }
+                        else if (tileSize[0] == undefined &&
+                            Number.isInteger(tileSize[1])) {
+                            tileWidth = tileSize[1];
+                            tileHeight = tileSize[1];
+                        }
+                    }
+                }
+            }
+            if (tileWidth === undefined || tileHeight === undefined) {
+                tileWidth = _tilegrid_common_js__WEBPACK_IMPORTED_MODULE_3__["DEFAULT_TILE_SIZE"];
+                tileHeight = _tilegrid_common_js__WEBPACK_IMPORTED_MODULE_3__["DEFAULT_TILE_SIZE"];
+            }
+            if (resolutions.length == 0) {
+                maxZoom = Math.max(Math.ceil(Math.log(width / tileWidth) / Math.LN2), Math.ceil(Math.log(height / tileHeight) / Math.LN2));
+                for (var i = maxZoom; i >= 0; i--) {
+                    resolutions.push(Math.pow(2, i));
+                }
+            }
+            else {
+                var maxScaleFactor = Math.max.apply(Math, resolutions);
+                // TODO maxScaleFactor might not be a power to 2
+                maxZoom = Math.round(Math.log(maxScaleFactor) / Math.LN2);
+            }
+        }
+        else {
+            // No tile support.
+            tileWidth = width;
+            tileHeight = height;
+            resolutions = [];
+            if (supportsListedSizes) {
+                /*
+                 * 'sizes' provided. Use full region in different resolutions. Every
+                 * resolution has only one tile.
+                 */
+                sizes.sort(function (a, b) {
+                    return a[0] - b[0];
+                });
+                maxZoom = -1;
+                var ignoredSizesIndex = [];
+                for (var i = 0; i < sizes.length; i++) {
+                    var resolution = width / sizes[i][0];
+                    if (resolutions.length > 0 &&
+                        resolutions[resolutions.length - 1] == resolution) {
+                        ignoredSizesIndex.push(i);
+                        continue;
+                    }
+                    resolutions.push(resolution);
+                    maxZoom++;
+                }
+                if (ignoredSizesIndex.length > 0) {
+                    for (var i = 0; i < ignoredSizesIndex.length; i++) {
+                        sizes.splice(ignoredSizesIndex[i] - i, 1);
+                    }
+                }
+            }
+            else {
+                // No useful image information at all. Try pseudo tile with full image.
+                resolutions.push(1);
+                sizes.push([width, height]);
+                maxZoom = 0;
+            }
+        }
+        var tileGrid = new _tilegrid_TileGrid_js__WEBPACK_IMPORTED_MODULE_0__["default"]({
+            tileSize: [tileWidth, tileHeight],
+            extent: extent,
+            origin: Object(_extent_js__WEBPACK_IMPORTED_MODULE_6__["getTopLeft"])(extent),
+            resolutions: resolutions,
+        });
+        var tileUrlFunction = function (tileCoord, pixelRatio, projection) {
+            var regionParam, sizeParam;
+            var zoom = tileCoord[0];
+            if (zoom > maxZoom) {
+                return;
+            }
+            var tileX = tileCoord[1], tileY = tileCoord[2], scale = resolutions[zoom];
+            if (tileX === undefined ||
+                tileY === undefined ||
+                scale === undefined ||
+                tileX < 0 ||
+                Math.ceil(width / scale / tileWidth) <= tileX ||
+                tileY < 0 ||
+                Math.ceil(height / scale / tileHeight) <= tileY) {
+                return;
+            }
+            if (supportsArbitraryTiling || supportsListedTiles) {
+                var regionX = tileX * tileWidth * scale, regionY = tileY * tileHeight * scale;
+                var regionW = tileWidth * scale, regionH = tileHeight * scale, sizeW = tileWidth, sizeH = tileHeight;
+                if (regionX + regionW > width) {
+                    regionW = width - regionX;
+                }
+                if (regionY + regionH > height) {
+                    regionH = height - regionY;
+                }
+                if (regionX + tileWidth * scale > width) {
+                    sizeW = Math.floor((width - regionX + scale - 1) / scale);
+                }
+                if (regionY + tileHeight * scale > height) {
+                    sizeH = Math.floor((height - regionY + scale - 1) / scale);
+                }
+                if (regionX == 0 &&
+                    regionW == width &&
+                    regionY == 0 &&
+                    regionH == height) {
+                    // canonical full image region parameter is 'full', not 'x,y,w,h'
+                    regionParam = 'full';
+                }
+                else if (!supportsArbitraryTiling ||
+                    supports.includes('regionByPx')) {
+                    regionParam = regionX + ',' + regionY + ',' + regionW + ',' + regionH;
+                }
+                else if (supports.includes('regionByPct')) {
+                    var pctX = formatPercentage((regionX / width) * 100), pctY = formatPercentage((regionY / height) * 100), pctW = formatPercentage((regionW / width) * 100), pctH = formatPercentage((regionH / height) * 100);
+                    regionParam = 'pct:' + pctX + ',' + pctY + ',' + pctW + ',' + pctH;
+                }
+                if (version == _format_IIIFInfo_js__WEBPACK_IMPORTED_MODULE_4__["Versions"].VERSION3 &&
+                    (!supportsArbitraryTiling || supports.includes('sizeByWh'))) {
+                    sizeParam = sizeW + ',' + sizeH;
+                }
+                else if (!supportsArbitraryTiling || supports.includes('sizeByW')) {
+                    sizeParam = sizeW + ',';
+                }
+                else if (supports.includes('sizeByH')) {
+                    sizeParam = ',' + sizeH;
+                }
+                else if (supports.includes('sizeByWh')) {
+                    sizeParam = sizeW + ',' + sizeH;
+                }
+                else if (supports.includes('sizeByPct')) {
+                    sizeParam = 'pct:' + formatPercentage(100 / scale);
+                }
+            }
+            else {
+                regionParam = 'full';
+                if (supportsListedSizes) {
+                    var regionWidth = sizes[zoom][0], regionHeight = sizes[zoom][1];
+                    if (version == _format_IIIFInfo_js__WEBPACK_IMPORTED_MODULE_4__["Versions"].VERSION3) {
+                        if (regionWidth == width && regionHeight == height) {
+                            sizeParam = 'max';
+                        }
+                        else {
+                            sizeParam = regionWidth + ',' + regionHeight;
+                        }
+                    }
+                    else {
+                        if (regionWidth == width) {
+                            sizeParam = 'full';
+                        }
+                        else {
+                            sizeParam = regionWidth + ',';
+                        }
+                    }
+                }
+                else {
+                    sizeParam = version == _format_IIIFInfo_js__WEBPACK_IMPORTED_MODULE_4__["Versions"].VERSION3 ? 'max' : 'full';
+                }
+            }
+            return (baseUrl + regionParam + '/' + sizeParam + '/0/' + quality + '.' + format);
+        };
+        var IiifTileClass = _Zoomify_js__WEBPACK_IMPORTED_MODULE_2__["CustomTile"].bind(null, Object(_size_js__WEBPACK_IMPORTED_MODULE_7__["toSize"])(tileSize || 256).map(function (size) {
+            return size * tilePixelRatio;
+        }));
+        _this = _super.call(this, {
+            attributions: options.attributions,
+            attributionsCollapsible: options.attributionsCollapsible,
+            cacheSize: options.cacheSize,
+            crossOrigin: options.crossOrigin,
+            imageSmoothing: options.imageSmoothing,
+            projection: options.projection,
+            reprojectionErrorThreshold: options.reprojectionErrorThreshold,
+            state: options.state,
+            tileClass: IiifTileClass,
+            tileGrid: tileGrid,
+            tilePixelRatio: options.tilePixelRatio,
+            tileUrlFunction: tileUrlFunction,
+            transition: options.transition,
+        }) || this;
+        /**
+         * @type {number}
+         */
+        _this.zDirection = options.zDirection;
+        return _this;
+    }
+    return IIIF;
+}(_TileImage_js__WEBPACK_IMPORTED_MODULE_1__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (IIIF);
+//# sourceMappingURL=IIIF.js.map
+
+/***/ }),
+
 /***/ "./node_modules/ol/source/Image.js":
 /*!*****************************************!*\
   !*** ./node_modules/ol/source/Image.js ***!
@@ -67420,6 +80120,866 @@ function defaultImageLoadFunction(image, src) {
 }
 /* harmony default export */ __webpack_exports__["default"] = (ImageSource);
 //# sourceMappingURL=Image.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/source/ImageArcGISRest.js":
+/*!***************************************************!*\
+  !*** ./node_modules/ol/source/ImageArcGISRest.js ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _events_EventType_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../events/EventType.js */ "./node_modules/ol/events/EventType.js");
+/* harmony import */ var _Image_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Image.js */ "./node_modules/ol/source/Image.js");
+/* harmony import */ var _Image_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Image.js */ "./node_modules/ol/Image.js");
+/* harmony import */ var _uri_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../uri.js */ "./node_modules/ol/uri.js");
+/* harmony import */ var _asserts_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../asserts.js */ "./node_modules/ol/asserts.js");
+/* harmony import */ var _obj_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../obj.js */ "./node_modules/ol/obj.js");
+/* harmony import */ var _extent_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../extent.js */ "./node_modules/ol/extent.js");
+/**
+ * @module ol/source/ImageArcGISRest
+ */
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+
+
+
+
+
+/**
+ * @typedef {Object} Options
+ * @property {import("./Source.js").AttributionLike} [attributions] Attributions.
+ * @property {null|string} [crossOrigin] The `crossOrigin` attribute for loaded images.  Note that
+ * you must provide a `crossOrigin` value if you want to access pixel data with the Canvas renderer.
+ * See https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image for more detail.
+ * @property {boolean} [hidpi=true] Use the `ol/Map#pixelRatio` value when requesting the image from
+ * the remote server.
+ * @property {import("../Image.js").LoadFunction} [imageLoadFunction] Optional function to load an image given
+ * a URL.
+ * @property {boolean} [imageSmoothing=true] Enable image smoothing.
+ * @property {Object<string,*>} [params] ArcGIS Rest parameters. This field is optional. Service
+ * defaults will be used for any fields not specified. `FORMAT` is `PNG32` by default. `F` is
+ * `IMAGE` by default. `TRANSPARENT` is `true` by default.  `BBOX`, `SIZE`, `BBOXSR`, and `IMAGESR`
+ * will be set dynamically. Set `LAYERS` to override the default service layer visibility. See
+ * {@link http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Export_Map/02r3000000v7000000/}
+ * for further reference.
+ * @property {import("../proj.js").ProjectionLike} [projection] Projection. Default is the view projection.
+ * @property {number} [ratio=1.5] Ratio. `1` means image requests are the size of the map viewport,
+ * `2` means twice the size of the map viewport, and so on.
+ * @property {Array<number>} [resolutions] Resolutions. If specified, requests will be made for
+ * these resolutions only.
+ * @property {string} [url] ArcGIS Rest service URL for a Map Service or Image Service. The url
+ * should include /MapServer or /ImageServer.
+ */
+/**
+ * @classdesc
+ * Source for data from ArcGIS Rest services providing single, untiled images.
+ * Useful when underlying map service has labels.
+ *
+ * If underlying map service is not using labels,
+ * take advantage of ol image caching and use
+ * {@link module:ol/source/TileArcGISRest} data source.
+ *
+ * @fires module:ol/source/Image.ImageSourceEvent
+ * @api
+ */
+var ImageArcGISRest = /** @class */ (function (_super) {
+    __extends(ImageArcGISRest, _super);
+    /**
+     * @param {Options=} opt_options Image ArcGIS Rest Options.
+     */
+    function ImageArcGISRest(opt_options) {
+        var _this = this;
+        var options = opt_options ? opt_options : {};
+        _this = _super.call(this, {
+            attributions: options.attributions,
+            imageSmoothing: options.imageSmoothing,
+            projection: options.projection,
+            resolutions: options.resolutions,
+        }) || this;
+        /**
+         * @private
+         * @type {?string}
+         */
+        _this.crossOrigin_ =
+            options.crossOrigin !== undefined ? options.crossOrigin : null;
+        /**
+         * @private
+         * @type {boolean}
+         */
+        _this.hidpi_ = options.hidpi !== undefined ? options.hidpi : true;
+        /**
+         * @private
+         * @type {string|undefined}
+         */
+        _this.url_ = options.url;
+        /**
+         * @private
+         * @type {import("../Image.js").LoadFunction}
+         */
+        _this.imageLoadFunction_ =
+            options.imageLoadFunction !== undefined
+                ? options.imageLoadFunction
+                : _Image_js__WEBPACK_IMPORTED_MODULE_1__["defaultImageLoadFunction"];
+        /**
+         * @private
+         * @type {!Object}
+         */
+        _this.params_ = options.params || {};
+        /**
+         * @private
+         * @type {import("../Image.js").default}
+         */
+        _this.image_ = null;
+        /**
+         * @private
+         * @type {import("../size.js").Size}
+         */
+        _this.imageSize_ = [0, 0];
+        /**
+         * @private
+         * @type {number}
+         */
+        _this.renderedRevision_ = 0;
+        /**
+         * @private
+         * @type {number}
+         */
+        _this.ratio_ = options.ratio !== undefined ? options.ratio : 1.5;
+        return _this;
+    }
+    /**
+     * Get the user-provided params, i.e. those passed to the constructor through
+     * the "params" option, and possibly updated using the updateParams method.
+     * @return {Object} Params.
+     * @api
+     */
+    ImageArcGISRest.prototype.getParams = function () {
+        return this.params_;
+    };
+    /**
+     * @param {import("../extent.js").Extent} extent Extent.
+     * @param {number} resolution Resolution.
+     * @param {number} pixelRatio Pixel ratio.
+     * @param {import("../proj/Projection.js").default} projection Projection.
+     * @return {import("../Image.js").default} Single image.
+     */
+    ImageArcGISRest.prototype.getImageInternal = function (extent, resolution, pixelRatio, projection) {
+        if (this.url_ === undefined) {
+            return null;
+        }
+        resolution = this.findNearestResolution(resolution);
+        pixelRatio = this.hidpi_ ? pixelRatio : 1;
+        var image = this.image_;
+        if (image &&
+            this.renderedRevision_ == this.getRevision() &&
+            image.getResolution() == resolution &&
+            image.getPixelRatio() == pixelRatio &&
+            Object(_extent_js__WEBPACK_IMPORTED_MODULE_6__["containsExtent"])(image.getExtent(), extent)) {
+            return image;
+        }
+        var params = {
+            'F': 'image',
+            'FORMAT': 'PNG32',
+            'TRANSPARENT': true,
+        };
+        Object(_obj_js__WEBPACK_IMPORTED_MODULE_5__["assign"])(params, this.params_);
+        extent = extent.slice();
+        var centerX = (extent[0] + extent[2]) / 2;
+        var centerY = (extent[1] + extent[3]) / 2;
+        if (this.ratio_ != 1) {
+            var halfWidth = (this.ratio_ * Object(_extent_js__WEBPACK_IMPORTED_MODULE_6__["getWidth"])(extent)) / 2;
+            var halfHeight = (this.ratio_ * Object(_extent_js__WEBPACK_IMPORTED_MODULE_6__["getHeight"])(extent)) / 2;
+            extent[0] = centerX - halfWidth;
+            extent[1] = centerY - halfHeight;
+            extent[2] = centerX + halfWidth;
+            extent[3] = centerY + halfHeight;
+        }
+        var imageResolution = resolution / pixelRatio;
+        // Compute an integer width and height.
+        var width = Math.ceil(Object(_extent_js__WEBPACK_IMPORTED_MODULE_6__["getWidth"])(extent) / imageResolution);
+        var height = Math.ceil(Object(_extent_js__WEBPACK_IMPORTED_MODULE_6__["getHeight"])(extent) / imageResolution);
+        // Modify the extent to match the integer width and height.
+        extent[0] = centerX - (imageResolution * width) / 2;
+        extent[2] = centerX + (imageResolution * width) / 2;
+        extent[1] = centerY - (imageResolution * height) / 2;
+        extent[3] = centerY + (imageResolution * height) / 2;
+        this.imageSize_[0] = width;
+        this.imageSize_[1] = height;
+        var url = this.getRequestUrl_(extent, this.imageSize_, pixelRatio, projection, params);
+        this.image_ = new _Image_js__WEBPACK_IMPORTED_MODULE_2__["default"](extent, resolution, pixelRatio, url, this.crossOrigin_, this.imageLoadFunction_);
+        this.renderedRevision_ = this.getRevision();
+        this.image_.addEventListener(_events_EventType_js__WEBPACK_IMPORTED_MODULE_0__["default"].CHANGE, this.handleImageChange.bind(this));
+        return this.image_;
+    };
+    /**
+     * Return the image load function of the source.
+     * @return {import("../Image.js").LoadFunction} The image load function.
+     * @api
+     */
+    ImageArcGISRest.prototype.getImageLoadFunction = function () {
+        return this.imageLoadFunction_;
+    };
+    /**
+     * @param {import("../extent.js").Extent} extent Extent.
+     * @param {import("../size.js").Size} size Size.
+     * @param {number} pixelRatio Pixel ratio.
+     * @param {import("../proj/Projection.js").default} projection Projection.
+     * @param {Object} params Params.
+     * @return {string} Request URL.
+     * @private
+     */
+    ImageArcGISRest.prototype.getRequestUrl_ = function (extent, size, pixelRatio, projection, params) {
+        // ArcGIS Server only wants the numeric portion of the projection ID.
+        var srid = projection.getCode().split(':').pop();
+        params['SIZE'] = size[0] + ',' + size[1];
+        params['BBOX'] = extent.join(',');
+        params['BBOXSR'] = srid;
+        params['IMAGESR'] = srid;
+        params['DPI'] = Math.round(90 * pixelRatio);
+        var url = this.url_;
+        var modifiedUrl = url
+            .replace(/MapServer\/?$/, 'MapServer/export')
+            .replace(/ImageServer\/?$/, 'ImageServer/exportImage');
+        if (modifiedUrl == url) {
+            Object(_asserts_js__WEBPACK_IMPORTED_MODULE_4__["assert"])(false, 50); // `options.featureTypes` should be an Array
+        }
+        return Object(_uri_js__WEBPACK_IMPORTED_MODULE_3__["appendParams"])(modifiedUrl, params);
+    };
+    /**
+     * Return the URL used for this ArcGIS source.
+     * @return {string|undefined} URL.
+     * @api
+     */
+    ImageArcGISRest.prototype.getUrl = function () {
+        return this.url_;
+    };
+    /**
+     * Set the image load function of the source.
+     * @param {import("../Image.js").LoadFunction} imageLoadFunction Image load function.
+     * @api
+     */
+    ImageArcGISRest.prototype.setImageLoadFunction = function (imageLoadFunction) {
+        this.image_ = null;
+        this.imageLoadFunction_ = imageLoadFunction;
+        this.changed();
+    };
+    /**
+     * Set the URL to use for requests.
+     * @param {string|undefined} url URL.
+     * @api
+     */
+    ImageArcGISRest.prototype.setUrl = function (url) {
+        if (url != this.url_) {
+            this.url_ = url;
+            this.image_ = null;
+            this.changed();
+        }
+    };
+    /**
+     * Update the user-provided params.
+     * @param {Object} params Params.
+     * @api
+     */
+    ImageArcGISRest.prototype.updateParams = function (params) {
+        Object(_obj_js__WEBPACK_IMPORTED_MODULE_5__["assign"])(this.params_, params);
+        this.image_ = null;
+        this.changed();
+    };
+    return ImageArcGISRest;
+}(_Image_js__WEBPACK_IMPORTED_MODULE_1__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (ImageArcGISRest);
+//# sourceMappingURL=ImageArcGISRest.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/source/ImageCanvas.js":
+/*!***********************************************!*\
+  !*** ./node_modules/ol/source/ImageCanvas.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ImageCanvas_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../ImageCanvas.js */ "./node_modules/ol/ImageCanvas.js");
+/* harmony import */ var _Image_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Image.js */ "./node_modules/ol/source/Image.js");
+/* harmony import */ var _extent_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../extent.js */ "./node_modules/ol/extent.js");
+/**
+ * @module ol/source/ImageCanvas
+ */
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+
+/**
+ * A function returning the canvas element (`{HTMLCanvasElement}`)
+ * used by the source as an image. The arguments passed to the function are:
+ * {@link module:ol/extent~Extent} the image extent, `{number}` the image resolution,
+ * `{number}` the device pixel ratio, {@link module:ol/size~Size} the image size, and
+ * {@link module:ol/proj/Projection} the image projection. The canvas returned by
+ * this function is cached by the source. The this keyword inside the function
+ * references the {@link module:ol/source/ImageCanvas}.
+ *
+ * @typedef {function(this:import("../ImageCanvas.js").default, import("../extent.js").Extent, number,
+ *     number, import("../size.js").Size, import("../proj/Projection.js").default): HTMLCanvasElement} FunctionType
+ */
+/**
+ * @typedef {Object} Options
+ * @property {import("./Source.js").AttributionLike} [attributions] Attributions.
+ * @property {FunctionType} [canvasFunction] Canvas function.
+ * The function returning the canvas element used by the source
+ * as an image. The arguments passed to the function are: `{import("../extent.js").Extent}` the
+ * image extent, `{number}` the image resolution, `{number}` the device pixel
+ * ratio, `{import("../size.js").Size}` the image size, and `{import("../proj/Projection.js").Projection}` the image
+ * projection. The canvas returned by this function is cached by the source. If
+ * the value returned by the function is later changed then
+ * `changed` should be called on the source for the source to
+ * invalidate the current cached image. See: {@link module:ol/Observable~Observable#changed}
+ * @property {boolean} [imageSmoothing=true] Enable image smoothing.
+ * @property {import("../proj.js").ProjectionLike} [projection] Projection. Default is the view projection.
+ * @property {number} [ratio=1.5] Ratio. 1 means canvases are the size of the map viewport, 2 means twice the
+ * width and height of the map viewport, and so on. Must be `1` or higher.
+ * @property {Array<number>} [resolutions] Resolutions.
+ * If specified, new canvases will be created for these resolutions
+ * @property {import("./State.js").default} [state] Source state.
+ */
+/**
+ * @classdesc
+ * Base class for image sources where a canvas element is the image.
+ * @api
+ */
+var ImageCanvasSource = /** @class */ (function (_super) {
+    __extends(ImageCanvasSource, _super);
+    /**
+     * @param {Options=} opt_options ImageCanvas options.
+     */
+    function ImageCanvasSource(opt_options) {
+        var _this = this;
+        var options = opt_options ? opt_options : {};
+        _this = _super.call(this, {
+            attributions: options.attributions,
+            imageSmoothing: options.imageSmoothing,
+            projection: options.projection,
+            resolutions: options.resolutions,
+            state: options.state,
+        }) || this;
+        /**
+         * @private
+         * @type {FunctionType}
+         */
+        _this.canvasFunction_ = options.canvasFunction;
+        /**
+         * @private
+         * @type {import("../ImageCanvas.js").default}
+         */
+        _this.canvas_ = null;
+        /**
+         * @private
+         * @type {number}
+         */
+        _this.renderedRevision_ = 0;
+        /**
+         * @private
+         * @type {number}
+         */
+        _this.ratio_ = options.ratio !== undefined ? options.ratio : 1.5;
+        return _this;
+    }
+    /**
+     * @param {import("../extent.js").Extent} extent Extent.
+     * @param {number} resolution Resolution.
+     * @param {number} pixelRatio Pixel ratio.
+     * @param {import("../proj/Projection.js").default} projection Projection.
+     * @return {import("../ImageCanvas.js").default} Single image.
+     */
+    ImageCanvasSource.prototype.getImageInternal = function (extent, resolution, pixelRatio, projection) {
+        resolution = this.findNearestResolution(resolution);
+        var canvas = this.canvas_;
+        if (canvas &&
+            this.renderedRevision_ == this.getRevision() &&
+            canvas.getResolution() == resolution &&
+            canvas.getPixelRatio() == pixelRatio &&
+            Object(_extent_js__WEBPACK_IMPORTED_MODULE_2__["containsExtent"])(canvas.getExtent(), extent)) {
+            return canvas;
+        }
+        extent = extent.slice();
+        Object(_extent_js__WEBPACK_IMPORTED_MODULE_2__["scaleFromCenter"])(extent, this.ratio_);
+        var width = Object(_extent_js__WEBPACK_IMPORTED_MODULE_2__["getWidth"])(extent) / resolution;
+        var height = Object(_extent_js__WEBPACK_IMPORTED_MODULE_2__["getHeight"])(extent) / resolution;
+        var size = [width * pixelRatio, height * pixelRatio];
+        var canvasElement = this.canvasFunction_.call(this, extent, resolution, pixelRatio, size, projection);
+        if (canvasElement) {
+            canvas = new _ImageCanvas_js__WEBPACK_IMPORTED_MODULE_0__["default"](extent, resolution, pixelRatio, canvasElement);
+        }
+        this.canvas_ = canvas;
+        this.renderedRevision_ = this.getRevision();
+        return canvas;
+    };
+    return ImageCanvasSource;
+}(_Image_js__WEBPACK_IMPORTED_MODULE_1__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (ImageCanvasSource);
+//# sourceMappingURL=ImageCanvas.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/source/ImageMapGuide.js":
+/*!*************************************************!*\
+  !*** ./node_modules/ol/source/ImageMapGuide.js ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _events_EventType_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../events/EventType.js */ "./node_modules/ol/events/EventType.js");
+/* harmony import */ var _Image_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Image.js */ "./node_modules/ol/source/Image.js");
+/* harmony import */ var _Image_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Image.js */ "./node_modules/ol/Image.js");
+/* harmony import */ var _uri_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../uri.js */ "./node_modules/ol/uri.js");
+/* harmony import */ var _obj_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../obj.js */ "./node_modules/ol/obj.js");
+/* harmony import */ var _extent_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../extent.js */ "./node_modules/ol/extent.js");
+/**
+ * @module ol/source/ImageMapGuide
+ */
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+
+
+
+
+/**
+ * @typedef {Object} Options
+ * @property {string} [url] The mapagent url.
+ * @property {null|string} [crossOrigin] The `crossOrigin` attribute for loaded images.  Note that
+ * you must provide a `crossOrigin` value if you want to access pixel data with the Canvas renderer.
+ * See https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image for more detail.
+ * @property {number} [displayDpi=96] The display resolution.
+ * @property {number} [metersPerUnit=1] The meters-per-unit value.
+ * @property {boolean} [hidpi=true] Use the `ol/Map#pixelRatio` value when requesting
+ * the image from the remote server.
+ * @property {boolean} [useOverlay] If `true`, will use `GETDYNAMICMAPOVERLAYIMAGE`.
+ * @property {import("../proj.js").ProjectionLike} [projection] Projection. Default is the view projection.
+ * @property {number} [ratio=1] Ratio. `1` means image requests are the size of the map viewport, `2` means
+ * twice the width and height of the map viewport, and so on. Must be `1` or higher.
+ * @property {Array<number>} [resolutions] Resolutions.
+ * If specified, requests will be made for these resolutions only.
+ * @property {import("../Image.js").LoadFunction} [imageLoadFunction] Optional function to load an image given a URL.
+ * @property {boolean} [imageSmoothing=true] Enable image smoothing.
+ * @property {Object} [params] Additional parameters.
+ */
+/**
+ * @classdesc
+ * Source for images from Mapguide servers
+ *
+ * @fires module:ol/source/Image.ImageSourceEvent
+ * @api
+ */
+var ImageMapGuide = /** @class */ (function (_super) {
+    __extends(ImageMapGuide, _super);
+    /**
+     * @param {Options} options ImageMapGuide options.
+     */
+    function ImageMapGuide(options) {
+        var _this = _super.call(this, {
+            imageSmoothing: options.imageSmoothing,
+            projection: options.projection,
+            resolutions: options.resolutions,
+        }) || this;
+        /**
+         * @private
+         * @type {?string}
+         */
+        _this.crossOrigin_ =
+            options.crossOrigin !== undefined ? options.crossOrigin : null;
+        /**
+         * @private
+         * @type {number}
+         */
+        _this.displayDpi_ =
+            options.displayDpi !== undefined ? options.displayDpi : 96;
+        /**
+         * @private
+         * @type {!Object}
+         */
+        _this.params_ = options.params || {};
+        /**
+         * @private
+         * @type {string|undefined}
+         */
+        _this.url_ = options.url;
+        /**
+         * @private
+         * @type {import("../Image.js").LoadFunction}
+         */
+        _this.imageLoadFunction_ =
+            options.imageLoadFunction !== undefined
+                ? options.imageLoadFunction
+                : _Image_js__WEBPACK_IMPORTED_MODULE_1__["defaultImageLoadFunction"];
+        /**
+         * @private
+         * @type {boolean}
+         */
+        _this.hidpi_ = options.hidpi !== undefined ? options.hidpi : true;
+        /**
+         * @private
+         * @type {number}
+         */
+        _this.metersPerUnit_ =
+            options.metersPerUnit !== undefined ? options.metersPerUnit : 1;
+        /**
+         * @private
+         * @type {number}
+         */
+        _this.ratio_ = options.ratio !== undefined ? options.ratio : 1;
+        /**
+         * @private
+         * @type {boolean}
+         */
+        _this.useOverlay_ =
+            options.useOverlay !== undefined ? options.useOverlay : false;
+        /**
+         * @private
+         * @type {import("../Image.js").default}
+         */
+        _this.image_ = null;
+        /**
+         * @private
+         * @type {number}
+         */
+        _this.renderedRevision_ = 0;
+        return _this;
+    }
+    /**
+     * Get the user-provided params, i.e. those passed to the constructor through
+     * the "params" option, and possibly updated using the updateParams method.
+     * @return {Object} Params.
+     * @api
+     */
+    ImageMapGuide.prototype.getParams = function () {
+        return this.params_;
+    };
+    /**
+     * @param {import("../extent.js").Extent} extent Extent.
+     * @param {number} resolution Resolution.
+     * @param {number} pixelRatio Pixel ratio.
+     * @param {import("../proj/Projection.js").default} projection Projection.
+     * @return {import("../Image.js").default} Single image.
+     */
+    ImageMapGuide.prototype.getImageInternal = function (extent, resolution, pixelRatio, projection) {
+        resolution = this.findNearestResolution(resolution);
+        pixelRatio = this.hidpi_ ? pixelRatio : 1;
+        var image = this.image_;
+        if (image &&
+            this.renderedRevision_ == this.getRevision() &&
+            image.getResolution() == resolution &&
+            image.getPixelRatio() == pixelRatio &&
+            Object(_extent_js__WEBPACK_IMPORTED_MODULE_5__["containsExtent"])(image.getExtent(), extent)) {
+            return image;
+        }
+        if (this.ratio_ != 1) {
+            extent = extent.slice();
+            Object(_extent_js__WEBPACK_IMPORTED_MODULE_5__["scaleFromCenter"])(extent, this.ratio_);
+        }
+        var width = Object(_extent_js__WEBPACK_IMPORTED_MODULE_5__["getWidth"])(extent) / resolution;
+        var height = Object(_extent_js__WEBPACK_IMPORTED_MODULE_5__["getHeight"])(extent) / resolution;
+        var size = [width * pixelRatio, height * pixelRatio];
+        if (this.url_ !== undefined) {
+            var imageUrl = this.getUrl(this.url_, this.params_, extent, size, projection);
+            image = new _Image_js__WEBPACK_IMPORTED_MODULE_2__["default"](extent, resolution, pixelRatio, imageUrl, this.crossOrigin_, this.imageLoadFunction_);
+            image.addEventListener(_events_EventType_js__WEBPACK_IMPORTED_MODULE_0__["default"].CHANGE, this.handleImageChange.bind(this));
+        }
+        else {
+            image = null;
+        }
+        this.image_ = image;
+        this.renderedRevision_ = this.getRevision();
+        return image;
+    };
+    /**
+     * Return the image load function of the source.
+     * @return {import("../Image.js").LoadFunction} The image load function.
+     * @api
+     */
+    ImageMapGuide.prototype.getImageLoadFunction = function () {
+        return this.imageLoadFunction_;
+    };
+    /**
+     * Update the user-provided params.
+     * @param {Object} params Params.
+     * @api
+     */
+    ImageMapGuide.prototype.updateParams = function (params) {
+        Object(_obj_js__WEBPACK_IMPORTED_MODULE_4__["assign"])(this.params_, params);
+        this.changed();
+    };
+    /**
+     * @param {string} baseUrl The mapagent url.
+     * @param {Object<string, string|number>} params Request parameters.
+     * @param {import("../extent.js").Extent} extent Extent.
+     * @param {import("../size.js").Size} size Size.
+     * @param {import("../proj/Projection.js").default} projection Projection.
+     * @return {string} The mapagent map image request URL.
+     */
+    ImageMapGuide.prototype.getUrl = function (baseUrl, params, extent, size, projection) {
+        var scale = getScale(extent, size, this.metersPerUnit_, this.displayDpi_);
+        var center = Object(_extent_js__WEBPACK_IMPORTED_MODULE_5__["getCenter"])(extent);
+        var baseParams = {
+            'OPERATION': this.useOverlay_
+                ? 'GETDYNAMICMAPOVERLAYIMAGE'
+                : 'GETMAPIMAGE',
+            'VERSION': '2.0.0',
+            'LOCALE': 'en',
+            'CLIENTAGENT': 'ol/source/ImageMapGuide source',
+            'CLIP': '1',
+            'SETDISPLAYDPI': this.displayDpi_,
+            'SETDISPLAYWIDTH': Math.round(size[0]),
+            'SETDISPLAYHEIGHT': Math.round(size[1]),
+            'SETVIEWSCALE': scale,
+            'SETVIEWCENTERX': center[0],
+            'SETVIEWCENTERY': center[1],
+        };
+        Object(_obj_js__WEBPACK_IMPORTED_MODULE_4__["assign"])(baseParams, params);
+        return Object(_uri_js__WEBPACK_IMPORTED_MODULE_3__["appendParams"])(baseUrl, baseParams);
+    };
+    /**
+     * Set the image load function of the MapGuide source.
+     * @param {import("../Image.js").LoadFunction} imageLoadFunction Image load function.
+     * @api
+     */
+    ImageMapGuide.prototype.setImageLoadFunction = function (imageLoadFunction) {
+        this.image_ = null;
+        this.imageLoadFunction_ = imageLoadFunction;
+        this.changed();
+    };
+    return ImageMapGuide;
+}(_Image_js__WEBPACK_IMPORTED_MODULE_1__["default"]));
+/**
+ * @param {import("../extent.js").Extent} extent The map extents.
+ * @param {import("../size.js").Size} size The viewport size.
+ * @param {number} metersPerUnit The meters-per-unit value.
+ * @param {number} dpi The display resolution.
+ * @return {number} The computed map scale.
+ */
+function getScale(extent, size, metersPerUnit, dpi) {
+    var mcsW = Object(_extent_js__WEBPACK_IMPORTED_MODULE_5__["getWidth"])(extent);
+    var mcsH = Object(_extent_js__WEBPACK_IMPORTED_MODULE_5__["getHeight"])(extent);
+    var devW = size[0];
+    var devH = size[1];
+    var mpp = 0.0254 / dpi;
+    if (devH * mcsW > devW * mcsH) {
+        return (mcsW * metersPerUnit) / (devW * mpp); // width limited
+    }
+    else {
+        return (mcsH * metersPerUnit) / (devH * mpp); // height limited
+    }
+}
+/* harmony default export */ __webpack_exports__["default"] = (ImageMapGuide);
+//# sourceMappingURL=ImageMapGuide.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/source/ImageStatic.js":
+/*!***********************************************!*\
+  !*** ./node_modules/ol/source/ImageStatic.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _events_EventType_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../events/EventType.js */ "./node_modules/ol/events/EventType.js");
+/* harmony import */ var _Image_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Image.js */ "./node_modules/ol/source/Image.js");
+/* harmony import */ var _ImageState_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../ImageState.js */ "./node_modules/ol/ImageState.js");
+/* harmony import */ var _Image_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Image.js */ "./node_modules/ol/Image.js");
+/* harmony import */ var _obj_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../obj.js */ "./node_modules/ol/obj.js");
+/* harmony import */ var _dom_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../dom.js */ "./node_modules/ol/dom.js");
+/* harmony import */ var _extent_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../extent.js */ "./node_modules/ol/extent.js");
+/* harmony import */ var _proj_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../proj.js */ "./node_modules/ol/proj.js");
+/**
+ * @module ol/source/ImageStatic
+ */
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+
+
+
+
+
+
+/**
+ * @typedef {Object} Options
+ * @property {import("./Source.js").AttributionLike} [attributions] Attributions.
+ * @property {null|string} [crossOrigin] The `crossOrigin` attribute for loaded images.  Note that
+ * you must provide a `crossOrigin` value if you want to access pixel data with the Canvas renderer.
+ * See https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image for more detail.
+ * @property {import("../extent.js").Extent} [imageExtent] Extent of the image in map coordinates.
+ * This is the [left, bottom, right, top] map coordinates of your image.
+ * @property {import("../Image.js").LoadFunction} [imageLoadFunction] Optional function to load an image given a URL.
+ * @property {boolean} [imageSmoothing=true] Enable image smoothing.
+ * @property {import("../proj.js").ProjectionLike} [projection] Projection. Default is the view projection.
+ * @property {import("../size.js").Size} [imageSize] Size of the image in pixels. Usually the image size is auto-detected, so this
+ * only needs to be set if auto-detection fails for some reason.
+ * @property {string} url Image URL.
+ */
+/**
+ * @classdesc
+ * A layer source for displaying a single, static image.
+ * @api
+ */
+var Static = /** @class */ (function (_super) {
+    __extends(Static, _super);
+    /**
+     * @param {Options} options ImageStatic options.
+     */
+    function Static(options) {
+        var _this = this;
+        var crossOrigin = options.crossOrigin !== undefined ? options.crossOrigin : null;
+        var /** @type {import("../Image.js").LoadFunction} */ imageLoadFunction = options.imageLoadFunction !== undefined
+            ? options.imageLoadFunction
+            : _Image_js__WEBPACK_IMPORTED_MODULE_1__["defaultImageLoadFunction"];
+        _this = _super.call(this, {
+            attributions: options.attributions,
+            imageSmoothing: options.imageSmoothing,
+            projection: Object(_proj_js__WEBPACK_IMPORTED_MODULE_7__["get"])(options.projection),
+        }) || this;
+        /**
+         * @private
+         * @type {string}
+         */
+        _this.url_ = options.url;
+        /**
+         * @private
+         * @type {import("../extent.js").Extent}
+         */
+        _this.imageExtent_ = options.imageExtent;
+        /**
+         * @private
+         * @type {import("../Image.js").default}
+         */
+        _this.image_ = new _Image_js__WEBPACK_IMPORTED_MODULE_3__["default"](_this.imageExtent_, undefined, 1, _this.url_, crossOrigin, imageLoadFunction);
+        /**
+         * @private
+         * @type {import("../size.js").Size}
+         */
+        _this.imageSize_ = options.imageSize ? options.imageSize : null;
+        _this.image_.addEventListener(_events_EventType_js__WEBPACK_IMPORTED_MODULE_0__["default"].CHANGE, _this.handleImageChange.bind(_this));
+        return _this;
+    }
+    /**
+     * Returns the image extent
+     * @return {import("../extent.js").Extent} image extent.
+     * @api
+     */
+    Static.prototype.getImageExtent = function () {
+        return this.imageExtent_;
+    };
+    /**
+     * @param {import("../extent.js").Extent} extent Extent.
+     * @param {number} resolution Resolution.
+     * @param {number} pixelRatio Pixel ratio.
+     * @param {import("../proj/Projection.js").default} projection Projection.
+     * @return {import("../Image.js").default} Single image.
+     */
+    Static.prototype.getImageInternal = function (extent, resolution, pixelRatio, projection) {
+        if (Object(_extent_js__WEBPACK_IMPORTED_MODULE_6__["intersects"])(extent, this.image_.getExtent())) {
+            return this.image_;
+        }
+        return null;
+    };
+    /**
+     * Return the URL used for this image source.
+     * @return {string} URL.
+     * @api
+     */
+    Static.prototype.getUrl = function () {
+        return this.url_;
+    };
+    /**
+     * @param {import("../events/Event.js").default} evt Event.
+     */
+    Static.prototype.handleImageChange = function (evt) {
+        if (this.image_.getState() == _ImageState_js__WEBPACK_IMPORTED_MODULE_2__["default"].LOADED) {
+            var imageExtent = this.image_.getExtent();
+            var image = this.image_.getImage();
+            var imageWidth = void 0, imageHeight = void 0;
+            if (this.imageSize_) {
+                imageWidth = this.imageSize_[0];
+                imageHeight = this.imageSize_[1];
+            }
+            else {
+                imageWidth = image.width;
+                imageHeight = image.height;
+            }
+            var resolution = Object(_extent_js__WEBPACK_IMPORTED_MODULE_6__["getHeight"])(imageExtent) / imageHeight;
+            var targetWidth = Math.ceil(Object(_extent_js__WEBPACK_IMPORTED_MODULE_6__["getWidth"])(imageExtent) / resolution);
+            if (targetWidth != imageWidth) {
+                var context = Object(_dom_js__WEBPACK_IMPORTED_MODULE_5__["createCanvasContext2D"])(targetWidth, imageHeight);
+                Object(_obj_js__WEBPACK_IMPORTED_MODULE_4__["assign"])(context, this.getContextOptions());
+                var canvas = context.canvas;
+                context.drawImage(image, 0, 0, imageWidth, imageHeight, 0, 0, canvas.width, canvas.height);
+                this.image_.setImage(canvas);
+            }
+        }
+        _super.prototype.handleImageChange.call(this, evt);
+    };
+    return Static;
+}(_Image_js__WEBPACK_IMPORTED_MODULE_1__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Static);
+//# sourceMappingURL=ImageStatic.js.map
 
 /***/ }),
 
@@ -67946,6 +81506,860 @@ var OSM = /** @class */ (function (_super) {
 }(_XYZ_js__WEBPACK_IMPORTED_MODULE_0__["default"]));
 /* harmony default export */ __webpack_exports__["default"] = (OSM);
 //# sourceMappingURL=OSM.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/source/Raster.js":
+/*!******************************************!*\
+  !*** ./node_modules/ol/source/Raster.js ***!
+  \******************************************/
+/*! exports provided: newImageData, Processor, RasterSourceEvent, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "newImageData", function() { return newImageData; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Processor", function() { return Processor; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RasterSourceEvent", function() { return RasterSourceEvent; });
+/* harmony import */ var _Disposable_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Disposable.js */ "./node_modules/ol/Disposable.js");
+/* harmony import */ var _events_Event_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../events/Event.js */ "./node_modules/ol/events/Event.js");
+/* harmony import */ var _events_EventType_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../events/EventType.js */ "./node_modules/ol/events/EventType.js");
+/* harmony import */ var _ImageCanvas_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../ImageCanvas.js */ "./node_modules/ol/ImageCanvas.js");
+/* harmony import */ var _layer_Image_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../layer/Image.js */ "./node_modules/ol/layer/Image.js");
+/* harmony import */ var _Image_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Image.js */ "./node_modules/ol/source/Image.js");
+/* harmony import */ var _Source_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Source.js */ "./node_modules/ol/source/Source.js");
+/* harmony import */ var _State_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./State.js */ "./node_modules/ol/source/State.js");
+/* harmony import */ var _layer_Tile_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../layer/Tile.js */ "./node_modules/ol/layer/Tile.js");
+/* harmony import */ var _TileQueue_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../TileQueue.js */ "./node_modules/ol/TileQueue.js");
+/* harmony import */ var _Tile_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Tile.js */ "./node_modules/ol/source/Tile.js");
+/* harmony import */ var _obj_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../obj.js */ "./node_modules/ol/obj.js");
+/* harmony import */ var _dom_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../dom.js */ "./node_modules/ol/dom.js");
+/* harmony import */ var _transform_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../transform.js */ "./node_modules/ol/transform.js");
+/* harmony import */ var _extent_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../extent.js */ "./node_modules/ol/extent.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+/**
+ * @module ol/source/Raster
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var hasImageData = true;
+try {
+    new ImageData(10, 10);
+}
+catch (_) {
+    hasImageData = false;
+}
+var context = document.createElement('canvas').getContext('2d');
+/**
+ * @param {Uint8ClampedArray} data Image data.
+ * @param {number} width Number of columns.
+ * @param {number} height Number of rows.
+ * @return {ImageData} Image data.
+ */
+function newImageData(data, width, height) {
+    if (hasImageData) {
+        return new ImageData(data, width, height);
+    }
+    else {
+        var imageData = context.createImageData(width, height);
+        imageData.data.set(data);
+        return imageData;
+    }
+}
+/* istanbul ignore next */
+/**
+ * Create a function for running operations.  This function is serialized for
+ * use in a worker.
+ * @param {function(Array, Object):*} operation The operation.
+ * @return {function(Object):ArrayBuffer} A function that takes an object with
+ * buffers, meta, imageOps, width, and height properties and returns an array
+ * buffer.
+ */
+function createMinion(operation) {
+    var workerHasImageData = true;
+    try {
+        new ImageData(10, 10);
+    }
+    catch (_) {
+        workerHasImageData = false;
+    }
+    function newWorkerImageData(data, width, height) {
+        if (workerHasImageData) {
+            return new ImageData(data, width, height);
+        }
+        else {
+            return { data: data, width: width, height: height };
+        }
+    }
+    return function (data) {
+        // bracket notation for minification support
+        var buffers = data['buffers'];
+        var meta = data['meta'];
+        var imageOps = data['imageOps'];
+        var width = data['width'];
+        var height = data['height'];
+        var numBuffers = buffers.length;
+        var numBytes = buffers[0].byteLength;
+        var output, b;
+        if (imageOps) {
+            var images = new Array(numBuffers);
+            for (b = 0; b < numBuffers; ++b) {
+                images[b] = newWorkerImageData(new Uint8ClampedArray(buffers[b]), width, height);
+            }
+            output = operation(images, meta).data;
+        }
+        else {
+            output = new Uint8ClampedArray(numBytes);
+            var arrays = new Array(numBuffers);
+            var pixels = new Array(numBuffers);
+            for (b = 0; b < numBuffers; ++b) {
+                arrays[b] = new Uint8ClampedArray(buffers[b]);
+                pixels[b] = [0, 0, 0, 0];
+            }
+            for (var i = 0; i < numBytes; i += 4) {
+                for (var j = 0; j < numBuffers; ++j) {
+                    var array = arrays[j];
+                    pixels[j][0] = array[i];
+                    pixels[j][1] = array[i + 1];
+                    pixels[j][2] = array[i + 2];
+                    pixels[j][3] = array[i + 3];
+                }
+                var pixel = operation(pixels, meta);
+                output[i] = pixel[0];
+                output[i + 1] = pixel[1];
+                output[i + 2] = pixel[2];
+                output[i + 3] = pixel[3];
+            }
+        }
+        return output.buffer;
+    };
+}
+/**
+ * Create a worker for running operations.
+ * @param {Object} config Configuration.
+ * @param {function(MessageEvent): void} onMessage Called with a message event.
+ * @return {Worker} The worker.
+ */
+function createWorker(config, onMessage) {
+    var lib = Object.keys(config.lib || {}).map(function (name) {
+        return 'var ' + name + ' = ' + config.lib[name].toString() + ';';
+    });
+    var lines = lib.concat([
+        'var __minion__ = (' + createMinion.toString() + ')(',
+        config.operation.toString(),
+        ');',
+        'self.addEventListener("message", function(event) {',
+        '  var buffer = __minion__(event.data);',
+        '  self.postMessage({buffer: buffer, meta: event.data.meta}, [buffer]);',
+        '});',
+    ]);
+    var blob = new Blob(lines, { type: 'text/javascript' });
+    var source = URL.createObjectURL(blob);
+    var worker = new Worker(source);
+    worker.addEventListener('message', onMessage);
+    return worker;
+}
+/**
+ * @typedef {Object} FauxMessageEvent
+ * @property {Object} data Message data.
+ */
+/**
+ * Create a faux worker for running operations.
+ * @param {ProcessorOptions} config Configuration.
+ * @param {function(FauxMessageEvent): void} onMessage Called with a message event.
+ * @return {Object} The faux worker.
+ */
+function createFauxWorker(config, onMessage) {
+    var minion = createMinion(config.operation);
+    var terminated = false;
+    return {
+        postMessage: function (data) {
+            setTimeout(function () {
+                if (terminated) {
+                    return;
+                }
+                onMessage({ data: { buffer: minion(data), meta: data['meta'] } });
+            }, 0);
+        },
+        terminate: function () {
+            terminated = true;
+        },
+    };
+}
+/**
+ * @typedef {Object} ProcessorOptions
+ * @property {number} threads Number of workers to spawn.
+ * @property {function(Array, Object):*} operation The operation.
+ * @property {Object} [lib] Functions that will be made available to operations run in a worker.
+ * @property {number} queue The number of queued jobs to allow.
+ * @property {boolean} [imageOps=false] Pass all the image data to the operation instead of a single pixel.
+ */
+/**
+ * @classdesc
+ * A processor runs pixel or image operations in workers.
+ */
+var Processor = /** @class */ (function (_super) {
+    __extends(Processor, _super);
+    /**
+     * @param {ProcessorOptions} config Configuration.
+     */
+    function Processor(config) {
+        var _this = _super.call(this) || this;
+        _this._imageOps = !!config.imageOps;
+        var threads;
+        if (config.threads === 0) {
+            threads = 0;
+        }
+        else if (_this._imageOps) {
+            threads = 1;
+        }
+        else {
+            threads = config.threads || 1;
+        }
+        var workers = [];
+        if (threads) {
+            for (var i = 0; i < threads; ++i) {
+                workers[i] = createWorker(config, _this._onWorkerMessage.bind(_this, i));
+            }
+        }
+        else {
+            workers[0] = createFauxWorker(config, _this._onWorkerMessage.bind(_this, 0));
+        }
+        _this._workers = workers;
+        _this._queue = [];
+        _this._maxQueueLength = config.queue || Infinity;
+        _this._running = 0;
+        _this._dataLookup = {};
+        _this._job = null;
+        return _this;
+    }
+    /**
+     * Run operation on input data.
+     * @param {Array.<Array|ImageData>} inputs Array of pixels or image data
+     *     (depending on the operation type).
+     * @param {Object} meta A user data object.  This is passed to all operations
+     *     and must be serializable.
+     * @param {function(Error, ImageData, Object): void} callback Called when work
+     *     completes.  The first argument is any error.  The second is the ImageData
+     *     generated by operations.  The third is the user data object.
+     */
+    Processor.prototype.process = function (inputs, meta, callback) {
+        this._enqueue({
+            inputs: inputs,
+            meta: meta,
+            callback: callback,
+        });
+        this._dispatch();
+    };
+    /**
+     * Add a job to the queue.
+     * @param {Object} job The job.
+     */
+    Processor.prototype._enqueue = function (job) {
+        this._queue.push(job);
+        while (this._queue.length > this._maxQueueLength) {
+            this._queue.shift().callback(null, null);
+        }
+    };
+    /**
+     * Dispatch a job.
+     */
+    Processor.prototype._dispatch = function () {
+        if (this._running === 0 && this._queue.length > 0) {
+            var job = this._queue.shift();
+            this._job = job;
+            var width = job.inputs[0].width;
+            var height = job.inputs[0].height;
+            var buffers = job.inputs.map(function (input) {
+                return input.data.buffer;
+            });
+            var threads = this._workers.length;
+            this._running = threads;
+            if (threads === 1) {
+                this._workers[0].postMessage({
+                    buffers: buffers,
+                    meta: job.meta,
+                    imageOps: this._imageOps,
+                    width: width,
+                    height: height,
+                }, buffers);
+            }
+            else {
+                var length_1 = job.inputs[0].data.length;
+                var segmentLength = 4 * Math.ceil(length_1 / 4 / threads);
+                for (var i = 0; i < threads; ++i) {
+                    var offset = i * segmentLength;
+                    var slices = [];
+                    for (var j = 0, jj = buffers.length; j < jj; ++j) {
+                        slices.push(buffers[i].slice(offset, offset + segmentLength));
+                    }
+                    this._workers[i].postMessage({
+                        buffers: slices,
+                        meta: job.meta,
+                        imageOps: this._imageOps,
+                        width: width,
+                        height: height,
+                    }, slices);
+                }
+            }
+        }
+    };
+    /**
+     * Handle messages from the worker.
+     * @param {number} index The worker index.
+     * @param {MessageEvent} event The message event.
+     */
+    Processor.prototype._onWorkerMessage = function (index, event) {
+        if (this.disposed) {
+            return;
+        }
+        this._dataLookup[index] = event.data;
+        --this._running;
+        if (this._running === 0) {
+            this._resolveJob();
+        }
+    };
+    /**
+     * Resolve a job.  If there are no more worker threads, the processor callback
+     * will be called.
+     */
+    Processor.prototype._resolveJob = function () {
+        var job = this._job;
+        var threads = this._workers.length;
+        var data, meta;
+        if (threads === 1) {
+            data = new Uint8ClampedArray(this._dataLookup[0]['buffer']);
+            meta = this._dataLookup[0]['meta'];
+        }
+        else {
+            var length_2 = job.inputs[0].data.length;
+            data = new Uint8ClampedArray(length_2);
+            meta = new Array(length_2);
+            var segmentLength = 4 * Math.ceil(length_2 / 4 / threads);
+            for (var i = 0; i < threads; ++i) {
+                var buffer = this._dataLookup[i]['buffer'];
+                var offset = i * segmentLength;
+                data.set(new Uint8ClampedArray(buffer), offset);
+                meta[i] = this._dataLookup[i]['meta'];
+            }
+        }
+        this._job = null;
+        this._dataLookup = {};
+        job.callback(null, newImageData(data, job.inputs[0].width, job.inputs[0].height), meta);
+        this._dispatch();
+    };
+    /**
+     * Terminate all workers associated with the processor.
+     */
+    Processor.prototype.disposeInternal = function () {
+        for (var i = 0; i < this._workers.length; ++i) {
+            this._workers[i].terminate();
+        }
+        this._workers.length = 0;
+    };
+    return Processor;
+}(_Disposable_js__WEBPACK_IMPORTED_MODULE_0__["default"]));
+
+/**
+ * A function that takes an array of input data, performs some operation, and
+ * returns an array of output data.
+ * For `pixel` type operations, the function will be called with an array of
+ * pixels, where each pixel is an array of four numbers (`[r, g, b, a]`) in the
+ * range of 0 - 255. It should return a single pixel array.
+ * For `'image'` type operations, functions will be called with an array of
+ * {@link ImageData https://developer.mozilla.org/en-US/docs/Web/API/ImageData}
+ * and should return a single {@link ImageData
+ * https://developer.mozilla.org/en-US/docs/Web/API/ImageData}.  The operations
+ * are called with a second "data" argument, which can be used for storage.  The
+ * data object is accessible from raster events, where it can be initialized in
+ * "beforeoperations" and accessed again in "afteroperations".
+ *
+ * @typedef {function((Array<Array<number>>|Array<ImageData>), Object):
+ *     (Array<number>|ImageData)} Operation
+ */
+/**
+ * @enum {string}
+ */
+var RasterEventType = {
+    /**
+     * Triggered before operations are run.
+     * @event module:ol/source/Raster.RasterSourceEvent#beforeoperations
+     * @api
+     */
+    BEFOREOPERATIONS: 'beforeoperations',
+    /**
+     * Triggered after operations are run.
+     * @event module:ol/source/Raster.RasterSourceEvent#afteroperations
+     * @api
+     */
+    AFTEROPERATIONS: 'afteroperations',
+};
+/**
+ * Raster operation type. Supported values are `'pixel'` and `'image'`.
+ * @enum {string}
+ */
+var RasterOperationType = {
+    PIXEL: 'pixel',
+    IMAGE: 'image',
+};
+/**
+ * @classdesc
+ * Events emitted by {@link module:ol/source/Raster} instances are instances of this
+ * type.
+ */
+var RasterSourceEvent = /** @class */ (function (_super) {
+    __extends(RasterSourceEvent, _super);
+    /**
+     * @param {string} type Type.
+     * @param {import("../PluggableMap.js").FrameState} frameState The frame state.
+     * @param {Object} data An object made available to operations.
+     */
+    function RasterSourceEvent(type, frameState, data) {
+        var _this = _super.call(this, type) || this;
+        /**
+         * The raster extent.
+         * @type {import("../extent.js").Extent}
+         * @api
+         */
+        _this.extent = frameState.extent;
+        /**
+         * The pixel resolution (map units per pixel).
+         * @type {number}
+         * @api
+         */
+        _this.resolution = frameState.viewState.resolution / frameState.pixelRatio;
+        /**
+         * An object made available to all operations.  This can be used by operations
+         * as a storage object (e.g. for calculating statistics).
+         * @type {Object}
+         * @api
+         */
+        _this.data = data;
+        return _this;
+    }
+    return RasterSourceEvent;
+}(_events_Event_js__WEBPACK_IMPORTED_MODULE_1__["default"]));
+
+/**
+ * @typedef {Object} Options
+ * @property {Array<import("./Source.js").default|import("../layer/Layer.js").default>} sources Input
+ * sources or layers.  For vector data, use an VectorImage layer.
+ * @property {Operation} [operation] Raster operation.
+ * The operation will be called with data from input sources
+ * and the output will be assigned to the raster source.
+ * @property {Object} [lib] Functions that will be made available to operations run in a worker.
+ * @property {number} [threads] By default, operations will be run in a single worker thread.
+ * To avoid using workers altogether, set `threads: 0`.  For pixel operations, operations can
+ * be run in multiple worker threads.  Note that there is additional overhead in
+ * transferring data to multiple workers, and that depending on the user's
+ * system, it may not be possible to parallelize the work.
+ * @property {RasterOperationType} [operationType='pixel'] Operation type.
+ * Supported values are `'pixel'` and `'image'`.  By default,
+ * `'pixel'` operations are assumed, and operations will be called with an
+ * array of pixels from input sources.  If set to `'image'`, operations will
+ * be called with an array of ImageData objects from input sources.
+ */
+/**
+ * @classdesc
+ * A source that transforms data from any number of input sources using an
+ * {@link module:ol/source/Raster~Operation} function to transform input pixel values into
+ * output pixel values.
+ *
+ * @fires module:ol/source/Raster.RasterSourceEvent
+ * @api
+ */
+var RasterSource = /** @class */ (function (_super) {
+    __extends(RasterSource, _super);
+    /**
+     * @param {Options} options Options.
+     */
+    function RasterSource(options) {
+        var _this = _super.call(this, {
+            projection: null,
+        }) || this;
+        /**
+         * @private
+         * @type {Processor}
+         */
+        _this.processor_ = null;
+        /**
+         * @private
+         * @type {RasterOperationType}
+         */
+        _this.operationType_ =
+            options.operationType !== undefined
+                ? options.operationType
+                : RasterOperationType.PIXEL;
+        /**
+         * @private
+         * @type {number}
+         */
+        _this.threads_ = options.threads !== undefined ? options.threads : 1;
+        /**
+         * @private
+         * @type {Array<import("../layer/Layer.js").default>}
+         */
+        _this.layers_ = createLayers(options.sources);
+        var changed = _this.changed.bind(_this);
+        for (var i = 0, ii = _this.layers_.length; i < ii; ++i) {
+            _this.layers_[i].addEventListener(_events_EventType_js__WEBPACK_IMPORTED_MODULE_2__["default"].CHANGE, changed);
+        }
+        /**
+         * @private
+         * @type {import("../TileQueue.js").default}
+         */
+        _this.tileQueue_ = new _TileQueue_js__WEBPACK_IMPORTED_MODULE_9__["default"](function () {
+            return 1;
+        }, _this.changed.bind(_this));
+        /**
+         * The most recently requested frame state.
+         * @type {import("../PluggableMap.js").FrameState}
+         * @private
+         */
+        _this.requestedFrameState_;
+        /**
+         * The most recently rendered image canvas.
+         * @type {import("../ImageCanvas.js").default}
+         * @private
+         */
+        _this.renderedImageCanvas_ = null;
+        /**
+         * The most recently rendered revision.
+         * @type {number}
+         */
+        _this.renderedRevision_;
+        /**
+         * @private
+         * @type {import("../PluggableMap.js").FrameState}
+         */
+        _this.frameState_ = {
+            animate: false,
+            coordinateToPixelTransform: Object(_transform_js__WEBPACK_IMPORTED_MODULE_13__["create"])(),
+            extent: null,
+            index: 0,
+            layerIndex: 0,
+            layerStatesArray: getLayerStatesArray(_this.layers_),
+            pixelRatio: 1,
+            pixelToCoordinateTransform: Object(_transform_js__WEBPACK_IMPORTED_MODULE_13__["create"])(),
+            postRenderFunctions: [],
+            size: [0, 0],
+            tileQueue: _this.tileQueue_,
+            time: Date.now(),
+            usedTiles: {},
+            viewState: /** @type {import("../View.js").State} */ ({
+                rotation: 0,
+            }),
+            viewHints: [],
+            wantedTiles: {},
+            declutterItems: [],
+        };
+        _this.setAttributions(function (frameState) {
+            var attributions = [];
+            for (var index = 0, iMax = options.sources.length; index < iMax; ++index) {
+                var sourceOrLayer = options.sources[index];
+                var source = sourceOrLayer instanceof _Source_js__WEBPACK_IMPORTED_MODULE_6__["default"]
+                    ? sourceOrLayer
+                    : sourceOrLayer.getSource();
+                var attributionGetter = source.getAttributions();
+                if (typeof attributionGetter === 'function') {
+                    var sourceAttribution = attributionGetter(frameState);
+                    attributions.push.apply(attributions, sourceAttribution);
+                }
+            }
+            return attributions.length !== 0 ? attributions : null;
+        });
+        if (options.operation !== undefined) {
+            _this.setOperation(options.operation, options.lib);
+        }
+        return _this;
+    }
+    /**
+     * Set the operation.
+     * @param {Operation} operation New operation.
+     * @param {Object=} opt_lib Functions that will be available to operations run
+     *     in a worker.
+     * @api
+     */
+    RasterSource.prototype.setOperation = function (operation, opt_lib) {
+        if (this.processor_) {
+            this.processor_.dispose();
+        }
+        this.processor_ = new Processor({
+            operation: operation,
+            imageOps: this.operationType_ === RasterOperationType.IMAGE,
+            queue: 1,
+            lib: opt_lib,
+            threads: this.threads_,
+        });
+        this.changed();
+    };
+    /**
+     * Update the stored frame state.
+     * @param {import("../extent.js").Extent} extent The view extent (in map units).
+     * @param {number} resolution The view resolution.
+     * @param {import("../proj/Projection.js").default} projection The view projection.
+     * @return {import("../PluggableMap.js").FrameState} The updated frame state.
+     * @private
+     */
+    RasterSource.prototype.updateFrameState_ = function (extent, resolution, projection) {
+        var frameState = /** @type {import("../PluggableMap.js").FrameState} */ (Object(_obj_js__WEBPACK_IMPORTED_MODULE_11__["assign"])({}, this.frameState_));
+        frameState.viewState = /** @type {import("../View.js").State} */ (Object(_obj_js__WEBPACK_IMPORTED_MODULE_11__["assign"])({}, frameState.viewState));
+        var center = Object(_extent_js__WEBPACK_IMPORTED_MODULE_14__["getCenter"])(extent);
+        frameState.extent = extent.slice();
+        frameState.size[0] = Math.round(Object(_extent_js__WEBPACK_IMPORTED_MODULE_14__["getWidth"])(extent) / resolution);
+        frameState.size[1] = Math.round(Object(_extent_js__WEBPACK_IMPORTED_MODULE_14__["getHeight"])(extent) / resolution);
+        frameState.time = Infinity;
+        var viewState = frameState.viewState;
+        viewState.center = center;
+        viewState.projection = projection;
+        viewState.resolution = resolution;
+        return frameState;
+    };
+    /**
+     * Determine if all sources are ready.
+     * @return {boolean} All sources are ready.
+     * @private
+     */
+    RasterSource.prototype.allSourcesReady_ = function () {
+        var ready = true;
+        var source;
+        for (var i = 0, ii = this.layers_.length; i < ii; ++i) {
+            source = this.layers_[i].getSource();
+            if (source.getState() !== _State_js__WEBPACK_IMPORTED_MODULE_7__["default"].READY) {
+                ready = false;
+                break;
+            }
+        }
+        return ready;
+    };
+    /**
+     * @param {import("../extent.js").Extent} extent Extent.
+     * @param {number} resolution Resolution.
+     * @param {number} pixelRatio Pixel ratio.
+     * @param {import("../proj/Projection.js").default} projection Projection.
+     * @return {import("../ImageCanvas.js").default} Single image.
+     */
+    RasterSource.prototype.getImage = function (extent, resolution, pixelRatio, projection) {
+        if (!this.allSourcesReady_()) {
+            return null;
+        }
+        var frameState = this.updateFrameState_(extent, resolution, projection);
+        this.requestedFrameState_ = frameState;
+        // check if we can't reuse the existing ol/ImageCanvas
+        if (this.renderedImageCanvas_) {
+            var renderedResolution = this.renderedImageCanvas_.getResolution();
+            var renderedExtent = this.renderedImageCanvas_.getExtent();
+            if (resolution !== renderedResolution ||
+                !Object(_extent_js__WEBPACK_IMPORTED_MODULE_14__["equals"])(extent, renderedExtent)) {
+                this.renderedImageCanvas_ = null;
+            }
+        }
+        if (!this.renderedImageCanvas_ ||
+            this.getRevision() !== this.renderedRevision_) {
+            this.processSources_();
+        }
+        frameState.tileQueue.loadMoreTiles(16, 16);
+        if (frameState.animate) {
+            requestAnimationFrame(this.changed.bind(this));
+        }
+        return this.renderedImageCanvas_;
+    };
+    /**
+     * Start processing source data.
+     * @private
+     */
+    RasterSource.prototype.processSources_ = function () {
+        var frameState = this.requestedFrameState_;
+        var len = this.layers_.length;
+        var imageDatas = new Array(len);
+        for (var i = 0; i < len; ++i) {
+            frameState.layerIndex = i;
+            var imageData = getImageData(this.layers_[i], frameState);
+            if (imageData) {
+                imageDatas[i] = imageData;
+            }
+            else {
+                return;
+            }
+        }
+        var data = {};
+        this.dispatchEvent(new RasterSourceEvent(RasterEventType.BEFOREOPERATIONS, frameState, data));
+        this.processor_.process(imageDatas, data, this.onWorkerComplete_.bind(this, frameState));
+    };
+    /**
+     * Called when pixel processing is complete.
+     * @param {import("../PluggableMap.js").FrameState} frameState The frame state.
+     * @param {Error} err Any error during processing.
+     * @param {ImageData} output The output image data.
+     * @param {Object} data The user data.
+     * @private
+     */
+    RasterSource.prototype.onWorkerComplete_ = function (frameState, err, output, data) {
+        if (err || !output) {
+            return;
+        }
+        // do nothing if extent or resolution changed
+        var extent = frameState.extent;
+        var resolution = frameState.viewState.resolution;
+        if (resolution !== this.requestedFrameState_.viewState.resolution ||
+            !Object(_extent_js__WEBPACK_IMPORTED_MODULE_14__["equals"])(extent, this.requestedFrameState_.extent)) {
+            return;
+        }
+        var context;
+        if (this.renderedImageCanvas_) {
+            context = this.renderedImageCanvas_.getImage().getContext('2d');
+        }
+        else {
+            var width = Math.round(Object(_extent_js__WEBPACK_IMPORTED_MODULE_14__["getWidth"])(extent) / resolution);
+            var height = Math.round(Object(_extent_js__WEBPACK_IMPORTED_MODULE_14__["getHeight"])(extent) / resolution);
+            context = Object(_dom_js__WEBPACK_IMPORTED_MODULE_12__["createCanvasContext2D"])(width, height);
+            this.renderedImageCanvas_ = new _ImageCanvas_js__WEBPACK_IMPORTED_MODULE_3__["default"](extent, resolution, 1, context.canvas);
+        }
+        context.putImageData(output, 0, 0);
+        this.changed();
+        this.renderedRevision_ = this.getRevision();
+        this.dispatchEvent(new RasterSourceEvent(RasterEventType.AFTEROPERATIONS, frameState, data));
+    };
+    /**
+     * @return {null} not implemented
+     */
+    RasterSource.prototype.getImageInternal = function () {
+        return null; // not implemented
+    };
+    RasterSource.prototype.disposeInternal = function () {
+        if (this.processor_) {
+            this.processor_.dispose();
+        }
+        _super.prototype.disposeInternal.call(this);
+    };
+    return RasterSource;
+}(_Image_js__WEBPACK_IMPORTED_MODULE_5__["default"]));
+/**
+ * Clean up and unregister the worker.
+ * @function
+ * @api
+ */
+RasterSource.prototype.dispose;
+/**
+ * A reusable canvas context.
+ * @type {CanvasRenderingContext2D}
+ * @private
+ */
+var sharedContext = null;
+/**
+ * Get image data from a layer.
+ * @param {import("../layer/Layer.js").default} layer Layer to render.
+ * @param {import("../PluggableMap.js").FrameState} frameState The frame state.
+ * @return {ImageData} The image data.
+ */
+function getImageData(layer, frameState) {
+    var renderer = layer.getRenderer();
+    if (!renderer) {
+        throw new Error('Unsupported layer type: ' + layer);
+    }
+    if (!renderer.prepareFrame(frameState)) {
+        return null;
+    }
+    var width = frameState.size[0];
+    var height = frameState.size[1];
+    var container = renderer.renderFrame(frameState, null);
+    var element;
+    if (container) {
+        element = container.firstElementChild;
+    }
+    if (!(element instanceof HTMLCanvasElement)) {
+        throw new Error('Unsupported rendered element: ' + element);
+    }
+    if (element.width === width && element.height === height) {
+        var context_1 = element.getContext('2d');
+        return context_1.getImageData(0, 0, width, height);
+    }
+    if (!sharedContext) {
+        sharedContext = Object(_dom_js__WEBPACK_IMPORTED_MODULE_12__["createCanvasContext2D"])(width, height);
+    }
+    else {
+        var canvas = sharedContext.canvas;
+        if (canvas.width !== width || canvas.height !== height) {
+            sharedContext = Object(_dom_js__WEBPACK_IMPORTED_MODULE_12__["createCanvasContext2D"])(width, height);
+        }
+        else {
+            sharedContext.clearRect(0, 0, width, height);
+        }
+    }
+    sharedContext.drawImage(element, 0, 0, width, height);
+    return sharedContext.getImageData(0, 0, width, height);
+}
+/**
+ * Get a list of layer states from a list of layers.
+ * @param {Array<import("../layer/Layer.js").default>} layers Layers.
+ * @return {Array<import("../layer/Layer.js").State>} The layer states.
+ */
+function getLayerStatesArray(layers) {
+    return layers.map(function (layer) {
+        return layer.getLayerState();
+    });
+}
+/**
+ * Create layers for all sources.
+ * @param {Array<import("./Source.js").default|import("../layer/Layer.js").default>} sources The sources.
+ * @return {Array<import("../layer/Layer.js").default>} Array of layers.
+ */
+function createLayers(sources) {
+    var len = sources.length;
+    var layers = new Array(len);
+    for (var i = 0; i < len; ++i) {
+        layers[i] = createLayer(sources[i]);
+    }
+    return layers;
+}
+/**
+ * Create a layer for the provided source.
+ * @param {import("./Source.js").default|import("../layer/Layer.js").default} layerOrSource The layer or source.
+ * @return {import("../layer/Layer.js").default} The layer.
+ */
+function createLayer(layerOrSource) {
+    // @type {import("../layer/Layer.js").default}
+    var layer;
+    if (layerOrSource instanceof _Source_js__WEBPACK_IMPORTED_MODULE_6__["default"]) {
+        if (layerOrSource instanceof _Tile_js__WEBPACK_IMPORTED_MODULE_10__["default"]) {
+            layer = new _layer_Tile_js__WEBPACK_IMPORTED_MODULE_8__["default"]({ source: layerOrSource });
+        }
+        else if (layerOrSource instanceof _Image_js__WEBPACK_IMPORTED_MODULE_5__["default"]) {
+            layer = new _layer_Image_js__WEBPACK_IMPORTED_MODULE_4__["default"]({ source: layerOrSource });
+        }
+    }
+    else {
+        layer = layerOrSource;
+    }
+    return layer;
+}
+/* harmony default export */ __webpack_exports__["default"] = (RasterSource);
+//# sourceMappingURL=Raster.js.map
 
 /***/ }),
 
@@ -68728,6 +83142,417 @@ var TileSourceEvent = /** @class */ (function (_super) {
 
 /* harmony default export */ __webpack_exports__["default"] = (TileSource);
 //# sourceMappingURL=Tile.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/source/TileArcGISRest.js":
+/*!**************************************************!*\
+  !*** ./node_modules/ol/source/TileArcGISRest.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _TileImage_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TileImage.js */ "./node_modules/ol/source/TileImage.js");
+/* harmony import */ var _uri_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../uri.js */ "./node_modules/ol/uri.js");
+/* harmony import */ var _obj_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../obj.js */ "./node_modules/ol/obj.js");
+/* harmony import */ var _extent_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../extent.js */ "./node_modules/ol/extent.js");
+/* harmony import */ var _math_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../math.js */ "./node_modules/ol/math.js");
+/* harmony import */ var _size_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../size.js */ "./node_modules/ol/size.js");
+/* harmony import */ var _tilecoord_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../tilecoord.js */ "./node_modules/ol/tilecoord.js");
+/**
+ * @module ol/source/TileArcGISRest
+ */
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+
+
+
+
+
+/**
+ * @typedef {Object} Options
+ * @property {import("./Source.js").AttributionLike} [attributions] Attributions.
+ * @property {number} [cacheSize] Initial tile cache size. Will auto-grow to hold at least the number of tiles in the viewport.
+ * @property {null|string} [crossOrigin] The `crossOrigin` attribute for loaded images.  Note that
+ * you must provide a `crossOrigin` value if you want to access pixel data with the Canvas renderer.
+ * See https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image for more detail.
+ * @property {boolean} [imageSmoothing=true] Enable image smoothing.
+ * @property {Object<string,*>} [params] ArcGIS Rest parameters. This field is optional. Service defaults will be
+ * used for any fields not specified. `FORMAT` is `PNG32` by default. `F` is `IMAGE` by
+ * default. `TRANSPARENT` is `true` by default.  `BBOX`, `SIZE`, `BBOXSR`,
+ * and `IMAGESR` will be set dynamically. Set `LAYERS` to
+ * override the default service layer visibility. See
+ * http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Export_Map/02r3000000v7000000/
+ * for further reference.
+ * @property {boolean} [hidpi=true] Use the `ol/Map#pixelRatio` value when requesting
+ * the image from the remote server.
+ * @property {import("../tilegrid/TileGrid.js").default} [tileGrid] Tile grid. Base this on the resolutions,
+ * tilesize and extent supported by the server.
+ * If this is not defined, a default grid will be used: if there is a projection
+ * extent, the grid will be based on that; if not, a grid based on a global
+ * extent with origin at 0,0 will be used.
+ * @property {import("../proj.js").ProjectionLike} [projection] Projection. Default is the view projection.
+ * @property {number} [reprojectionErrorThreshold=0.5] Maximum allowed reprojection error (in pixels).
+ * Higher values can increase reprojection performance, but decrease precision.
+ * @property {import("../Tile.js").LoadFunction} [tileLoadFunction] Optional function to load a tile given a URL.
+ * The default is
+ * ```js
+ * function(imageTile, src) {
+ *   imageTile.getImage().src = src;
+ * };
+ * ```
+ * @property {string} [url] ArcGIS Rest service URL for a Map Service or Image Service. The
+ * url should include /MapServer or /ImageServer.
+ * @property {boolean} [wrapX=true] Whether to wrap the world horizontally.
+ * @property {number} [transition] Duration of the opacity transition for rendering.  To disable the opacity
+ * transition, pass `transition: 0`.
+ * @property {Array<string>} [urls] ArcGIS Rest service urls. Use this instead of `url` when the ArcGIS
+ * Service supports multiple urls for export requests.
+ */
+/**
+ * @classdesc
+ * Layer source for tile data from ArcGIS Rest services. Map and Image
+ * Services are supported.
+ *
+ * For cached ArcGIS services, better performance is available using the
+ * {@link module:ol/source/XYZ~XYZ} data source.
+ * @api
+ */
+var TileArcGISRest = /** @class */ (function (_super) {
+    __extends(TileArcGISRest, _super);
+    /**
+     * @param {Options=} opt_options Tile ArcGIS Rest options.
+     */
+    function TileArcGISRest(opt_options) {
+        var _this = this;
+        var options = opt_options ? opt_options : {};
+        _this = _super.call(this, {
+            attributions: options.attributions,
+            cacheSize: options.cacheSize,
+            crossOrigin: options.crossOrigin,
+            imageSmoothing: options.imageSmoothing,
+            projection: options.projection,
+            reprojectionErrorThreshold: options.reprojectionErrorThreshold,
+            tileGrid: options.tileGrid,
+            tileLoadFunction: options.tileLoadFunction,
+            url: options.url,
+            urls: options.urls,
+            wrapX: options.wrapX !== undefined ? options.wrapX : true,
+            transition: options.transition,
+        }) || this;
+        /**
+         * @private
+         * @type {!Object}
+         */
+        _this.params_ = options.params || {};
+        /**
+         * @private
+         * @type {boolean}
+         */
+        _this.hidpi_ = options.hidpi !== undefined ? options.hidpi : true;
+        /**
+         * @private
+         * @type {import("../extent.js").Extent}
+         */
+        _this.tmpExtent_ = Object(_extent_js__WEBPACK_IMPORTED_MODULE_3__["createEmpty"])();
+        _this.setKey(_this.getKeyForParams_());
+        return _this;
+    }
+    /**
+     * @private
+     * @return {string} The key for the current params.
+     */
+    TileArcGISRest.prototype.getKeyForParams_ = function () {
+        var i = 0;
+        var res = [];
+        for (var key in this.params_) {
+            res[i++] = key + '-' + this.params_[key];
+        }
+        return res.join('/');
+    };
+    /**
+     * Get the user-provided params, i.e. those passed to the constructor through
+     * the "params" option, and possibly updated using the updateParams method.
+     * @return {Object} Params.
+     * @api
+     */
+    TileArcGISRest.prototype.getParams = function () {
+        return this.params_;
+    };
+    /**
+     * @param {import("../tilecoord.js").TileCoord} tileCoord Tile coordinate.
+     * @param {import("../size.js").Size} tileSize Tile size.
+     * @param {import("../extent.js").Extent} tileExtent Tile extent.
+     * @param {number} pixelRatio Pixel ratio.
+     * @param {import("../proj/Projection.js").default} projection Projection.
+     * @param {Object} params Params.
+     * @return {string|undefined} Request URL.
+     * @private
+     */
+    TileArcGISRest.prototype.getRequestUrl_ = function (tileCoord, tileSize, tileExtent, pixelRatio, projection, params) {
+        var urls = this.urls;
+        if (!urls) {
+            return undefined;
+        }
+        // ArcGIS Server only wants the numeric portion of the projection ID.
+        var srid = projection.getCode().split(':').pop();
+        params['SIZE'] = tileSize[0] + ',' + tileSize[1];
+        params['BBOX'] = tileExtent.join(',');
+        params['BBOXSR'] = srid;
+        params['IMAGESR'] = srid;
+        params['DPI'] = Math.round(params['DPI'] ? params['DPI'] * pixelRatio : 90 * pixelRatio);
+        var url;
+        if (urls.length == 1) {
+            url = urls[0];
+        }
+        else {
+            var index = Object(_math_js__WEBPACK_IMPORTED_MODULE_4__["modulo"])(Object(_tilecoord_js__WEBPACK_IMPORTED_MODULE_6__["hash"])(tileCoord), urls.length);
+            url = urls[index];
+        }
+        var modifiedUrl = url
+            .replace(/MapServer\/?$/, 'MapServer/export')
+            .replace(/ImageServer\/?$/, 'ImageServer/exportImage');
+        return Object(_uri_js__WEBPACK_IMPORTED_MODULE_1__["appendParams"])(modifiedUrl, params);
+    };
+    /**
+     * Get the tile pixel ratio for this source.
+     * @param {number} pixelRatio Pixel ratio.
+     * @return {number} Tile pixel ratio.
+     */
+    TileArcGISRest.prototype.getTilePixelRatio = function (pixelRatio) {
+        return this.hidpi_ ? pixelRatio : 1;
+    };
+    /**
+     * Update the user-provided params.
+     * @param {Object} params Params.
+     * @api
+     */
+    TileArcGISRest.prototype.updateParams = function (params) {
+        Object(_obj_js__WEBPACK_IMPORTED_MODULE_2__["assign"])(this.params_, params);
+        this.setKey(this.getKeyForParams_());
+    };
+    /**
+     * @param {import("../tilecoord.js").TileCoord} tileCoord The tile coordinate
+     * @param {number} pixelRatio The pixel ratio
+     * @param {import("../proj/Projection.js").default} projection The projection
+     * @return {string|undefined} The tile URL
+     * @override
+     */
+    TileArcGISRest.prototype.tileUrlFunction = function (tileCoord, pixelRatio, projection) {
+        var tileGrid = this.getTileGrid();
+        if (!tileGrid) {
+            tileGrid = this.getTileGridForProjection(projection);
+        }
+        if (tileGrid.getResolutions().length <= tileCoord[0]) {
+            return undefined;
+        }
+        if (pixelRatio != 1 && !this.hidpi_) {
+            pixelRatio = 1;
+        }
+        var tileExtent = tileGrid.getTileCoordExtent(tileCoord, this.tmpExtent_);
+        var tileSize = Object(_size_js__WEBPACK_IMPORTED_MODULE_5__["toSize"])(tileGrid.getTileSize(tileCoord[0]), this.tmpSize);
+        if (pixelRatio != 1) {
+            tileSize = Object(_size_js__WEBPACK_IMPORTED_MODULE_5__["scale"])(tileSize, pixelRatio, this.tmpSize);
+        }
+        // Apply default params and override with user specified values.
+        var baseParams = {
+            'F': 'image',
+            'FORMAT': 'PNG32',
+            'TRANSPARENT': true,
+        };
+        Object(_obj_js__WEBPACK_IMPORTED_MODULE_2__["assign"])(baseParams, this.params_);
+        return this.getRequestUrl_(tileCoord, tileSize, tileExtent, pixelRatio, projection, baseParams);
+    };
+    return TileArcGISRest;
+}(_TileImage_js__WEBPACK_IMPORTED_MODULE_0__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (TileArcGISRest);
+//# sourceMappingURL=TileArcGISRest.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/source/TileDebug.js":
+/*!*********************************************!*\
+  !*** ./node_modules/ol/source/TileDebug.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Tile_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Tile.js */ "./node_modules/ol/Tile.js");
+/* harmony import */ var _TileState_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../TileState.js */ "./node_modules/ol/TileState.js");
+/* harmony import */ var _XYZ_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./XYZ.js */ "./node_modules/ol/source/XYZ.js");
+/* harmony import */ var _dom_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../dom.js */ "./node_modules/ol/dom.js");
+/* harmony import */ var _tilecoord_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../tilecoord.js */ "./node_modules/ol/tilecoord.js");
+/* harmony import */ var _size_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../size.js */ "./node_modules/ol/size.js");
+/**
+ * @module ol/source/TileDebug
+ */
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+
+
+
+
+var LabeledTile = /** @class */ (function (_super) {
+    __extends(LabeledTile, _super);
+    /**
+     * @param {import("../tilecoord.js").TileCoord} tileCoord Tile coordinate.
+     * @param {import("../size.js").Size} tileSize Tile size.
+     * @param {string} text Text.
+     */
+    function LabeledTile(tileCoord, tileSize, text) {
+        var _this = _super.call(this, tileCoord, _TileState_js__WEBPACK_IMPORTED_MODULE_1__["default"].LOADED) || this;
+        /**
+         * @private
+         * @type {import("../size.js").Size}
+         */
+        _this.tileSize_ = tileSize;
+        /**
+         * @private
+         * @type {string}
+         */
+        _this.text_ = text;
+        /**
+         * @private
+         * @type {HTMLCanvasElement}
+         */
+        _this.canvas_ = null;
+        return _this;
+    }
+    /**
+     * Get the image element for this tile.
+     * @return {HTMLCanvasElement} Image.
+     */
+    LabeledTile.prototype.getImage = function () {
+        if (this.canvas_) {
+            return this.canvas_;
+        }
+        else {
+            var tileSize = this.tileSize_;
+            var context = Object(_dom_js__WEBPACK_IMPORTED_MODULE_3__["createCanvasContext2D"])(tileSize[0], tileSize[1]);
+            context.strokeStyle = 'grey';
+            context.strokeRect(0.5, 0.5, tileSize[0] + 0.5, tileSize[1] + 0.5);
+            context.fillStyle = 'grey';
+            context.strokeStyle = 'white';
+            context.textAlign = 'center';
+            context.textBaseline = 'middle';
+            context.font = '24px sans-serif';
+            context.lineWidth = 4;
+            context.strokeText(this.text_, tileSize[0] / 2, tileSize[1] / 2, tileSize[0]);
+            context.fillText(this.text_, tileSize[0] / 2, tileSize[1] / 2, tileSize[0]);
+            this.canvas_ = context.canvas;
+            return context.canvas;
+        }
+    };
+    LabeledTile.prototype.load = function () { };
+    return LabeledTile;
+}(_Tile_js__WEBPACK_IMPORTED_MODULE_0__["default"]));
+/**
+ * @typedef {Object} Options
+ * @property {import("../proj.js").ProjectionLike} [projection='EPSG:3857'] Optional projection.
+ * @property {import("../tilegrid/TileGrid.js").default} [tileGrid] Tile grid.
+ * @property {boolean} [wrapX=true] Whether to wrap the world horizontally.
+ * @property {number} [zDirection=0] Set to `1` when debugging `VectorTile` sources with
+ * a default configuration. Indicates which resolution should be used by a renderer if
+ * the view resolution does not match any resolution of the tile source. If 0, the nearest
+ * resolution will be used. If 1, the nearest lower resolution will be used. If -1, the
+ * nearest higher resolution will be used.
+ */
+/**
+ * @classdesc
+ * A pseudo tile source, which does not fetch tiles from a server, but renders
+ * a grid outline for the tile grid/projection along with the coordinates for
+ * each tile. See examples/canvas-tiles for an example.
+ *
+ * Uses Canvas context2d, so requires Canvas support.
+ * @api
+ */
+var TileDebug = /** @class */ (function (_super) {
+    __extends(TileDebug, _super);
+    /**
+     * @param {Options=} opt_options Debug tile options.
+     */
+    function TileDebug(opt_options) {
+        var _this = this;
+        /**
+         * @type {Options}
+         */
+        var options = opt_options || {};
+        _this = _super.call(this, {
+            opaque: false,
+            projection: options.projection,
+            tileGrid: options.tileGrid,
+            wrapX: options.wrapX !== undefined ? options.wrapX : true,
+            zDirection: options.zDirection,
+        }) || this;
+        return _this;
+    }
+    /**
+     * @param {number} z Tile coordinate z.
+     * @param {number} x Tile coordinate x.
+     * @param {number} y Tile coordinate y.
+     * @return {!LabeledTile} Tile.
+     */
+    TileDebug.prototype.getTile = function (z, x, y) {
+        var tileCoordKey = Object(_tilecoord_js__WEBPACK_IMPORTED_MODULE_4__["getKeyZXY"])(z, x, y);
+        if (this.tileCache.containsKey(tileCoordKey)) {
+            return /** @type {!LabeledTile} */ (this.tileCache.get(tileCoordKey));
+        }
+        else {
+            var tileSize = Object(_size_js__WEBPACK_IMPORTED_MODULE_5__["toSize"])(this.tileGrid.getTileSize(z));
+            var tileCoord = [z, x, y];
+            var textTileCoord = this.getTileCoordForTileUrlFunction(tileCoord);
+            var text = void 0;
+            if (textTileCoord) {
+                text =
+                    'z:' +
+                        textTileCoord[0] +
+                        ' x:' +
+                        textTileCoord[1] +
+                        ' y:' +
+                        textTileCoord[2];
+            }
+            else {
+                text = 'none';
+            }
+            var tile = new LabeledTile(tileCoord, tileSize, text);
+            this.tileCache.set(tileCoordKey, tile);
+            return tile;
+        }
+    };
+    return TileDebug;
+}(_XYZ_js__WEBPACK_IMPORTED_MODULE_2__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (TileDebug);
+//# sourceMappingURL=TileDebug.js.map
 
 /***/ }),
 
@@ -69874,6 +84699,490 @@ var TileWMS = /** @class */ (function (_super) {
 }(_TileImage_js__WEBPACK_IMPORTED_MODULE_1__["default"]));
 /* harmony default export */ __webpack_exports__["default"] = (TileWMS);
 //# sourceMappingURL=TileWMS.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/source/UTFGrid.js":
+/*!*******************************************!*\
+  !*** ./node_modules/ol/source/UTFGrid.js ***!
+  \*******************************************/
+/*! exports provided: CustomTile, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CustomTile", function() { return CustomTile; });
+/* harmony import */ var _events_EventType_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../events/EventType.js */ "./node_modules/ol/events/EventType.js");
+/* harmony import */ var _State_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./State.js */ "./node_modules/ol/source/State.js");
+/* harmony import */ var _Tile_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Tile.js */ "./node_modules/ol/Tile.js");
+/* harmony import */ var _Tile_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Tile.js */ "./node_modules/ol/source/Tile.js");
+/* harmony import */ var _TileState_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../TileState.js */ "./node_modules/ol/TileState.js");
+/* harmony import */ var _extent_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../extent.js */ "./node_modules/ol/extent.js");
+/* harmony import */ var _asserts_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../asserts.js */ "./node_modules/ol/asserts.js");
+/* harmony import */ var _tileurlfunction_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../tileurlfunction.js */ "./node_modules/ol/tileurlfunction.js");
+/* harmony import */ var _tilegrid_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../tilegrid.js */ "./node_modules/ol/tilegrid.js");
+/* harmony import */ var _tilecoord_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../tilecoord.js */ "./node_modules/ol/tilecoord.js");
+/* harmony import */ var _proj_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../proj.js */ "./node_modules/ol/proj.js");
+/* harmony import */ var _events_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../events.js */ "./node_modules/ol/events.js");
+/* harmony import */ var _net_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../net.js */ "./node_modules/ol/net.js");
+/**
+ * @module ol/source/UTFGrid
+ */
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * @typedef {Object} UTFGridJSON
+ * @property {Array<string>} grid The grid.
+ * @property {Array<string>} keys The keys.
+ * @property {Object<string, Object>} [data] Optional data.
+ */
+var CustomTile = /** @class */ (function (_super) {
+    __extends(CustomTile, _super);
+    /**
+     * @param {import("../tilecoord.js").TileCoord} tileCoord Tile coordinate.
+     * @param {import("../TileState.js").default} state State.
+     * @param {string} src Image source URI.
+     * @param {import("../extent.js").Extent} extent Extent of the tile.
+     * @param {boolean} preemptive Load the tile when visible (before it's needed).
+     * @param {boolean} jsonp Load the tile as a script.
+     */
+    function CustomTile(tileCoord, state, src, extent, preemptive, jsonp) {
+        var _this = _super.call(this, tileCoord, state) || this;
+        /**
+         * @private
+         * @type {string}
+         */
+        _this.src_ = src;
+        /**
+         * @private
+         * @type {import("../extent.js").Extent}
+         */
+        _this.extent_ = extent;
+        /**
+         * @private
+         * @type {boolean}
+         */
+        _this.preemptive_ = preemptive;
+        /**
+         * @private
+         * @type {Array<string>}
+         */
+        _this.grid_ = null;
+        /**
+         * @private
+         * @type {Array<string>}
+         */
+        _this.keys_ = null;
+        /**
+         * @private
+         * @type {Object<string, Object>|undefined}
+         */
+        _this.data_ = null;
+        /**
+         * @private
+         * @type {boolean}
+         */
+        _this.jsonp_ = jsonp;
+        return _this;
+    }
+    /**
+     * Get the image element for this tile.
+     * @return {HTMLImageElement} Image.
+     */
+    CustomTile.prototype.getImage = function () {
+        return null;
+    };
+    /**
+     * Synchronously returns data at given coordinate (if available).
+     * @param {import("../coordinate.js").Coordinate} coordinate Coordinate.
+     * @return {*} The data.
+     */
+    CustomTile.prototype.getData = function (coordinate) {
+        if (!this.grid_ || !this.keys_) {
+            return null;
+        }
+        var xRelative = (coordinate[0] - this.extent_[0]) / (this.extent_[2] - this.extent_[0]);
+        var yRelative = (coordinate[1] - this.extent_[1]) / (this.extent_[3] - this.extent_[1]);
+        var row = this.grid_[Math.floor((1 - yRelative) * this.grid_.length)];
+        if (typeof row !== 'string') {
+            return null;
+        }
+        var code = row.charCodeAt(Math.floor(xRelative * row.length));
+        if (code >= 93) {
+            code--;
+        }
+        if (code >= 35) {
+            code--;
+        }
+        code -= 32;
+        var data = null;
+        if (code in this.keys_) {
+            var id = this.keys_[code];
+            if (this.data_ && id in this.data_) {
+                data = this.data_[id];
+            }
+            else {
+                data = id;
+            }
+        }
+        return data;
+    };
+    /**
+     * Calls the callback (synchronously by default) with the available data
+     * for given coordinate (or `null` if not yet loaded).
+     * @param {import("../coordinate.js").Coordinate} coordinate Coordinate.
+     * @param {function(*): void} callback Callback.
+     * @param {boolean=} opt_request If `true` the callback is always async.
+     *                               The tile data is requested if not yet loaded.
+     */
+    CustomTile.prototype.forDataAtCoordinate = function (coordinate, callback, opt_request) {
+        if (this.state == _TileState_js__WEBPACK_IMPORTED_MODULE_4__["default"].EMPTY && opt_request === true) {
+            this.state = _TileState_js__WEBPACK_IMPORTED_MODULE_4__["default"].IDLE;
+            Object(_events_js__WEBPACK_IMPORTED_MODULE_11__["listenOnce"])(this, _events_EventType_js__WEBPACK_IMPORTED_MODULE_0__["default"].CHANGE, function (e) {
+                callback(this.getData(coordinate));
+            }, this);
+            this.loadInternal_();
+        }
+        else {
+            if (opt_request === true) {
+                setTimeout(function () {
+                    callback(this.getData(coordinate));
+                }.bind(this), 0);
+            }
+            else {
+                callback(this.getData(coordinate));
+            }
+        }
+    };
+    /**
+     * Return the key to be used for all tiles in the source.
+     * @return {string} The key for all tiles.
+     */
+    CustomTile.prototype.getKey = function () {
+        return this.src_;
+    };
+    /**
+     * @private
+     */
+    CustomTile.prototype.handleError_ = function () {
+        this.state = _TileState_js__WEBPACK_IMPORTED_MODULE_4__["default"].ERROR;
+        this.changed();
+    };
+    /**
+     * @param {!UTFGridJSON} json UTFGrid data.
+     * @private
+     */
+    CustomTile.prototype.handleLoad_ = function (json) {
+        this.grid_ = json['grid'];
+        this.keys_ = json['keys'];
+        this.data_ = json['data'];
+        this.state = _TileState_js__WEBPACK_IMPORTED_MODULE_4__["default"].LOADED;
+        this.changed();
+    };
+    /**
+     * @private
+     */
+    CustomTile.prototype.loadInternal_ = function () {
+        if (this.state == _TileState_js__WEBPACK_IMPORTED_MODULE_4__["default"].IDLE) {
+            this.state = _TileState_js__WEBPACK_IMPORTED_MODULE_4__["default"].LOADING;
+            if (this.jsonp_) {
+                Object(_net_js__WEBPACK_IMPORTED_MODULE_12__["jsonp"])(this.src_, this.handleLoad_.bind(this), this.handleError_.bind(this));
+            }
+            else {
+                var client = new XMLHttpRequest();
+                client.addEventListener('load', this.onXHRLoad_.bind(this));
+                client.addEventListener('error', this.onXHRError_.bind(this));
+                client.open('GET', this.src_);
+                client.send();
+            }
+        }
+    };
+    /**
+     * @private
+     * @param {Event} event The load event.
+     */
+    CustomTile.prototype.onXHRLoad_ = function (event) {
+        var client = /** @type {XMLHttpRequest} */ (event.target);
+        // status will be 0 for file:// urls
+        if (!client.status || (client.status >= 200 && client.status < 300)) {
+            var response = void 0;
+            try {
+                response = /** @type {!UTFGridJSON} */ (JSON.parse(client.responseText));
+            }
+            catch (err) {
+                this.handleError_();
+                return;
+            }
+            this.handleLoad_(response);
+        }
+        else {
+            this.handleError_();
+        }
+    };
+    /**
+     * @private
+     * @param {Event} event The error event.
+     */
+    CustomTile.prototype.onXHRError_ = function (event) {
+        this.handleError_();
+    };
+    /**
+     */
+    CustomTile.prototype.load = function () {
+        if (this.preemptive_) {
+            this.loadInternal_();
+        }
+        else {
+            this.setState(_TileState_js__WEBPACK_IMPORTED_MODULE_4__["default"].EMPTY);
+        }
+    };
+    return CustomTile;
+}(_Tile_js__WEBPACK_IMPORTED_MODULE_2__["default"]));
+
+/**
+ * @typedef {Object} Options
+ * @property {boolean} [preemptive=true]
+ * If `true` the UTFGrid source loads the tiles based on their "visibility".
+ * This improves the speed of response, but increases traffic.
+ * Note that if set to `false` (lazy loading), you need to pass `true` as
+ * `opt_request` to the `forDataAtCoordinateAndResolution` method otherwise no
+ * data will ever be loaded.
+ * @property {boolean} [jsonp=false] Use JSONP with callback to load the TileJSON.
+ * Useful when the server does not support CORS..
+ * @property {import("./TileJSON.js").Config} [tileJSON] TileJSON configuration for this source.
+ * If not provided, `url` must be configured.
+ * @property {string} [url] TileJSON endpoint that provides the configuration for this source.
+ * Request will be made through JSONP. If not provided, `tileJSON` must be configured.
+ */
+/**
+ * @classdesc
+ * Layer source for UTFGrid interaction data loaded from TileJSON format.
+ * @api
+ */
+var UTFGrid = /** @class */ (function (_super) {
+    __extends(UTFGrid, _super);
+    /**
+     * @param {Options} options Source options.
+     */
+    function UTFGrid(options) {
+        var _this = _super.call(this, {
+            projection: Object(_proj_js__WEBPACK_IMPORTED_MODULE_10__["get"])('EPSG:3857'),
+            state: _State_js__WEBPACK_IMPORTED_MODULE_1__["default"].LOADING,
+        }) || this;
+        /**
+         * @private
+         * @type {boolean}
+         */
+        _this.preemptive_ =
+            options.preemptive !== undefined ? options.preemptive : true;
+        /**
+         * @private
+         * @type {!import("../Tile.js").UrlFunction}
+         */
+        _this.tileUrlFunction_ = _tileurlfunction_js__WEBPACK_IMPORTED_MODULE_7__["nullTileUrlFunction"];
+        /**
+         * @private
+         * @type {string|undefined}
+         */
+        _this.template_ = undefined;
+        /**
+         * @private
+         * @type {boolean}
+         */
+        _this.jsonp_ = options.jsonp || false;
+        if (options.url) {
+            if (_this.jsonp_) {
+                Object(_net_js__WEBPACK_IMPORTED_MODULE_12__["jsonp"])(options.url, _this.handleTileJSONResponse.bind(_this), _this.handleTileJSONError.bind(_this));
+            }
+            else {
+                var client = new XMLHttpRequest();
+                client.addEventListener('load', _this.onXHRLoad_.bind(_this));
+                client.addEventListener('error', _this.onXHRError_.bind(_this));
+                client.open('GET', options.url);
+                client.send();
+            }
+        }
+        else if (options.tileJSON) {
+            _this.handleTileJSONResponse(options.tileJSON);
+        }
+        else {
+            Object(_asserts_js__WEBPACK_IMPORTED_MODULE_6__["assert"])(false, 51); // Either `url` or `tileJSON` options must be provided
+        }
+        return _this;
+    }
+    /**
+     * @private
+     * @param {Event} event The load event.
+     */
+    UTFGrid.prototype.onXHRLoad_ = function (event) {
+        var client = /** @type {XMLHttpRequest} */ (event.target);
+        // status will be 0 for file:// urls
+        if (!client.status || (client.status >= 200 && client.status < 300)) {
+            var response = void 0;
+            try {
+                response = /** @type {import("./TileJSON.js").Config} */ (JSON.parse(client.responseText));
+            }
+            catch (err) {
+                this.handleTileJSONError();
+                return;
+            }
+            this.handleTileJSONResponse(response);
+        }
+        else {
+            this.handleTileJSONError();
+        }
+    };
+    /**
+     * @private
+     * @param {Event} event The error event.
+     */
+    UTFGrid.prototype.onXHRError_ = function (event) {
+        this.handleTileJSONError();
+    };
+    /**
+     * Return the template from TileJSON.
+     * @return {string|undefined} The template from TileJSON.
+     * @api
+     */
+    UTFGrid.prototype.getTemplate = function () {
+        return this.template_;
+    };
+    /**
+     * Calls the callback (synchronously by default) with the available data
+     * for given coordinate and resolution (or `null` if not yet loaded or
+     * in case of an error).
+     * @param {import("../coordinate.js").Coordinate} coordinate Coordinate.
+     * @param {number} resolution Resolution.
+     * @param {function(*): void} callback Callback.
+     * @param {boolean=} opt_request If `true` the callback is always async.
+     *                               The tile data is requested if not yet loaded.
+     * @api
+     */
+    UTFGrid.prototype.forDataAtCoordinateAndResolution = function (coordinate, resolution, callback, opt_request) {
+        if (this.tileGrid) {
+            var z = this.tileGrid.getZForResolution(resolution, this.zDirection);
+            var tileCoord = this.tileGrid.getTileCoordForCoordAndZ(coordinate, z);
+            var tile = /** @type {!CustomTile} */ (this.getTile(tileCoord[0], tileCoord[1], tileCoord[2], 1, this.getProjection()));
+            tile.forDataAtCoordinate(coordinate, callback, opt_request);
+        }
+        else {
+            if (opt_request === true) {
+                setTimeout(function () {
+                    callback(null);
+                }, 0);
+            }
+            else {
+                callback(null);
+            }
+        }
+    };
+    /**
+     * @protected
+     */
+    UTFGrid.prototype.handleTileJSONError = function () {
+        this.setState(_State_js__WEBPACK_IMPORTED_MODULE_1__["default"].ERROR);
+    };
+    /**
+     * TODO: very similar to ol/source/TileJSON#handleTileJSONResponse
+     * @protected
+     * @param {import("./TileJSON.js").Config} tileJSON Tile JSON.
+     */
+    UTFGrid.prototype.handleTileJSONResponse = function (tileJSON) {
+        var epsg4326Projection = Object(_proj_js__WEBPACK_IMPORTED_MODULE_10__["get"])('EPSG:4326');
+        var sourceProjection = this.getProjection();
+        var extent;
+        if (tileJSON['bounds'] !== undefined) {
+            var transform = Object(_proj_js__WEBPACK_IMPORTED_MODULE_10__["getTransformFromProjections"])(epsg4326Projection, sourceProjection);
+            extent = Object(_extent_js__WEBPACK_IMPORTED_MODULE_5__["applyTransform"])(tileJSON['bounds'], transform);
+        }
+        var minZoom = tileJSON['minzoom'] || 0;
+        var maxZoom = tileJSON['maxzoom'] || 22;
+        var tileGrid = Object(_tilegrid_js__WEBPACK_IMPORTED_MODULE_8__["createXYZ"])({
+            extent: Object(_tilegrid_js__WEBPACK_IMPORTED_MODULE_8__["extentFromProjection"])(sourceProjection),
+            maxZoom: maxZoom,
+            minZoom: minZoom,
+        });
+        this.tileGrid = tileGrid;
+        this.template_ = tileJSON['template'];
+        var grids = tileJSON['grids'];
+        if (!grids) {
+            this.setState(_State_js__WEBPACK_IMPORTED_MODULE_1__["default"].ERROR);
+            return;
+        }
+        this.tileUrlFunction_ = Object(_tileurlfunction_js__WEBPACK_IMPORTED_MODULE_7__["createFromTemplates"])(grids, tileGrid);
+        if (tileJSON['attribution'] !== undefined) {
+            var attributionExtent_1 = extent !== undefined ? extent : epsg4326Projection.getExtent();
+            this.setAttributions(function (frameState) {
+                if (Object(_extent_js__WEBPACK_IMPORTED_MODULE_5__["intersects"])(attributionExtent_1, frameState.extent)) {
+                    return [tileJSON['attribution']];
+                }
+                return null;
+            });
+        }
+        this.setState(_State_js__WEBPACK_IMPORTED_MODULE_1__["default"].READY);
+    };
+    /**
+     * @param {number} z Tile coordinate z.
+     * @param {number} x Tile coordinate x.
+     * @param {number} y Tile coordinate y.
+     * @param {number} pixelRatio Pixel ratio.
+     * @param {import("../proj/Projection.js").default} projection Projection.
+     * @return {!CustomTile} Tile.
+     */
+    UTFGrid.prototype.getTile = function (z, x, y, pixelRatio, projection) {
+        var tileCoordKey = Object(_tilecoord_js__WEBPACK_IMPORTED_MODULE_9__["getKeyZXY"])(z, x, y);
+        if (this.tileCache.containsKey(tileCoordKey)) {
+            return this.tileCache.get(tileCoordKey);
+        }
+        else {
+            var tileCoord = [z, x, y];
+            var urlTileCoord = this.getTileCoordForTileUrlFunction(tileCoord, projection);
+            var tileUrl = this.tileUrlFunction_(urlTileCoord, pixelRatio, projection);
+            var tile = new CustomTile(tileCoord, tileUrl !== undefined ? _TileState_js__WEBPACK_IMPORTED_MODULE_4__["default"].IDLE : _TileState_js__WEBPACK_IMPORTED_MODULE_4__["default"].EMPTY, tileUrl !== undefined ? tileUrl : '', this.tileGrid.getTileCoordExtent(tileCoord), this.preemptive_, this.jsonp_);
+            this.tileCache.set(tileCoordKey, tile);
+            return tile;
+        }
+    };
+    /**
+     * Marks a tile coord as being used, without triggering a load.
+     * @param {number} z Tile coordinate z.
+     * @param {number} x Tile coordinate x.
+     * @param {number} y Tile coordinate y.
+     */
+    UTFGrid.prototype.useTile = function (z, x, y) {
+        var tileCoordKey = Object(_tilecoord_js__WEBPACK_IMPORTED_MODULE_9__["getKeyZXY"])(z, x, y);
+        if (this.tileCache.containsKey(tileCoordKey)) {
+            this.tileCache.get(tileCoordKey);
+        }
+    };
+    return UTFGrid;
+}(_Tile_js__WEBPACK_IMPORTED_MODULE_3__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (UTFGrid);
+//# sourceMappingURL=UTFGrid.js.map
 
 /***/ }),
 
@@ -71695,6 +87004,558 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/ol/source/WMTS.js":
+/*!****************************************!*\
+  !*** ./node_modules/ol/source/WMTS.js ***!
+  \****************************************/
+/*! exports provided: default, optionsFromCapabilities */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "optionsFromCapabilities", function() { return optionsFromCapabilities; });
+/* harmony import */ var _TileImage_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TileImage.js */ "./node_modules/ol/source/TileImage.js");
+/* harmony import */ var _WMTSRequestEncoding_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./WMTSRequestEncoding.js */ "./node_modules/ol/source/WMTSRequestEncoding.js");
+/* harmony import */ var _uri_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../uri.js */ "./node_modules/ol/uri.js");
+/* harmony import */ var _obj_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../obj.js */ "./node_modules/ol/obj.js");
+/* harmony import */ var _tilegrid_WMTS_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../tilegrid/WMTS.js */ "./node_modules/ol/tilegrid/WMTS.js");
+/* harmony import */ var _tileurlfunction_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../tileurlfunction.js */ "./node_modules/ol/tileurlfunction.js");
+/* harmony import */ var _proj_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../proj.js */ "./node_modules/ol/proj.js");
+/* harmony import */ var _array_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../array.js */ "./node_modules/ol/array.js");
+/**
+ * @module ol/source/WMTS
+ */
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+
+
+
+
+
+
+/**
+ * @typedef {Object} Options
+ * @property {import("./Source.js").AttributionLike} [attributions] Attributions.
+ * @property {number} [cacheSize] Initial tile cache size. Will auto-grow to hold at least the number of tiles in the viewport.
+ * @property {null|string} [crossOrigin] The `crossOrigin` attribute for loaded images.  Note that
+ * you must provide a `crossOrigin` value if you want to access pixel data with the Canvas renderer.
+ * See https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image for more detail.
+ * @property {boolean} [imageSmoothing=true] Enable image smoothing.
+ * @property {import("../tilegrid/WMTS.js").default} tileGrid Tile grid.
+ * @property {import("../proj.js").ProjectionLike} [projection] Projection. Default is the view projection.
+ * @property {number} [reprojectionErrorThreshold=0.5] Maximum allowed reprojection error (in pixels).
+ * Higher values can increase reprojection performance, but decrease precision.
+ * @property {import("./WMTSRequestEncoding.js").default|string} [requestEncoding='KVP'] Request encoding.
+ * @property {string} layer Layer name as advertised in the WMTS capabilities.
+ * @property {string} style Style name as advertised in the WMTS capabilities.
+ * @property {typeof import("../ImageTile.js").default} [tileClass]  Class used to instantiate image tiles. Default is {@link module:ol/ImageTile~ImageTile}.
+ * @property {number} [tilePixelRatio=1] The pixel ratio used by the tile service.
+ * For example, if the tile service advertizes 256px by 256px tiles but actually sends 512px
+ * by 512px images (for retina/hidpi devices) then `tilePixelRatio`
+ * should be set to `2`.
+ * @property {string} [format='image/jpeg'] Image format. Only used when `requestEncoding` is `'KVP'`.
+ * @property {string} [version='1.0.0'] WMTS version.
+ * @property {string} matrixSet Matrix set.
+ * @property {!Object} [dimensions] Additional "dimensions" for tile requests.
+ * This is an object with properties named like the advertised WMTS dimensions.
+ * @property {string} [url]  A URL for the service.
+ * For the RESTful request encoding, this is a URL
+ * template.  For KVP encoding, it is normal URL. A `{?-?}` template pattern,
+ * for example `subdomain{a-f}.domain.com`, may be used instead of defining
+ * each one separately in the `urls` option.
+ * @property {import("../Tile.js").LoadFunction} [tileLoadFunction] Optional function to load a tile given a URL. The default is
+ * ```js
+ * function(imageTile, src) {
+ *   imageTile.getImage().src = src;
+ * };
+ * ```
+ * @property {Array<string>} [urls] An array of URLs.
+ * Requests will be distributed among the URLs in this array.
+ * @property {boolean} [wrapX=false] Whether to wrap the world horizontally.
+ * @property {number} [transition] Duration of the opacity transition for rendering.
+ * To disable the opacity transition, pass `transition: 0`.
+ */
+/**
+ * @classdesc
+ * Layer source for tile data from WMTS servers.
+ * @api
+ */
+var WMTS = /** @class */ (function (_super) {
+    __extends(WMTS, _super);
+    /**
+     * @param {Options} options WMTS options.
+     */
+    function WMTS(options) {
+        // TODO: add support for TileMatrixLimits
+        var _this = this;
+        var requestEncoding = options.requestEncoding !== undefined
+            ? /** @type {import("./WMTSRequestEncoding.js").default} */ (options.requestEncoding)
+            : _WMTSRequestEncoding_js__WEBPACK_IMPORTED_MODULE_1__["default"].KVP;
+        // FIXME: should we create a default tileGrid?
+        // we could issue a getCapabilities xhr to retrieve missing configuration
+        var tileGrid = options.tileGrid;
+        var urls = options.urls;
+        if (urls === undefined && options.url !== undefined) {
+            urls = Object(_tileurlfunction_js__WEBPACK_IMPORTED_MODULE_5__["expandUrl"])(options.url);
+        }
+        _this = _super.call(this, {
+            attributions: options.attributions,
+            cacheSize: options.cacheSize,
+            crossOrigin: options.crossOrigin,
+            imageSmoothing: options.imageSmoothing,
+            projection: options.projection,
+            reprojectionErrorThreshold: options.reprojectionErrorThreshold,
+            tileClass: options.tileClass,
+            tileGrid: tileGrid,
+            tileLoadFunction: options.tileLoadFunction,
+            tilePixelRatio: options.tilePixelRatio,
+            urls: urls,
+            wrapX: options.wrapX !== undefined ? options.wrapX : false,
+            transition: options.transition,
+        }) || this;
+        /**
+         * @private
+         * @type {string}
+         */
+        _this.version_ = options.version !== undefined ? options.version : '1.0.0';
+        /**
+         * @private
+         * @type {string}
+         */
+        _this.format_ = options.format !== undefined ? options.format : 'image/jpeg';
+        /**
+         * @private
+         * @type {!Object}
+         */
+        _this.dimensions_ =
+            options.dimensions !== undefined ? options.dimensions : {};
+        /**
+         * @private
+         * @type {string}
+         */
+        _this.layer_ = options.layer;
+        /**
+         * @private
+         * @type {string}
+         */
+        _this.matrixSet_ = options.matrixSet;
+        /**
+         * @private
+         * @type {string}
+         */
+        _this.style_ = options.style;
+        // FIXME: should we guess this requestEncoding from options.url(s)
+        //        structure? that would mean KVP only if a template is not provided.
+        /**
+         * @private
+         * @type {import("./WMTSRequestEncoding.js").default}
+         */
+        _this.requestEncoding_ = requestEncoding;
+        _this.setKey(_this.getKeyForDimensions_());
+        if (urls && urls.length > 0) {
+            _this.tileUrlFunction = Object(_tileurlfunction_js__WEBPACK_IMPORTED_MODULE_5__["createFromTileUrlFunctions"])(urls.map(_this.createFromWMTSTemplate.bind(_this)));
+        }
+        return _this;
+    }
+    /**
+     * Set the URLs to use for requests.
+     * URLs may contain OGC conform URL Template Variables: {TileMatrix}, {TileRow}, {TileCol}.
+     * @param {Array<string>} urls URLs.
+     */
+    WMTS.prototype.setUrls = function (urls) {
+        this.urls = urls;
+        var key = urls.join('\n');
+        this.setTileUrlFunction(Object(_tileurlfunction_js__WEBPACK_IMPORTED_MODULE_5__["createFromTileUrlFunctions"])(urls.map(this.createFromWMTSTemplate.bind(this))), key);
+    };
+    /**
+     * Get the dimensions, i.e. those passed to the constructor through the
+     * "dimensions" option, and possibly updated using the updateDimensions
+     * method.
+     * @return {!Object} Dimensions.
+     * @api
+     */
+    WMTS.prototype.getDimensions = function () {
+        return this.dimensions_;
+    };
+    /**
+     * Return the image format of the WMTS source.
+     * @return {string} Format.
+     * @api
+     */
+    WMTS.prototype.getFormat = function () {
+        return this.format_;
+    };
+    /**
+     * Return the layer of the WMTS source.
+     * @return {string} Layer.
+     * @api
+     */
+    WMTS.prototype.getLayer = function () {
+        return this.layer_;
+    };
+    /**
+     * Return the matrix set of the WMTS source.
+     * @return {string} MatrixSet.
+     * @api
+     */
+    WMTS.prototype.getMatrixSet = function () {
+        return this.matrixSet_;
+    };
+    /**
+     * Return the request encoding, either "KVP" or "REST".
+     * @return {import("./WMTSRequestEncoding.js").default} Request encoding.
+     * @api
+     */
+    WMTS.prototype.getRequestEncoding = function () {
+        return this.requestEncoding_;
+    };
+    /**
+     * Return the style of the WMTS source.
+     * @return {string} Style.
+     * @api
+     */
+    WMTS.prototype.getStyle = function () {
+        return this.style_;
+    };
+    /**
+     * Return the version of the WMTS source.
+     * @return {string} Version.
+     * @api
+     */
+    WMTS.prototype.getVersion = function () {
+        return this.version_;
+    };
+    /**
+     * @private
+     * @return {string} The key for the current dimensions.
+     */
+    WMTS.prototype.getKeyForDimensions_ = function () {
+        var i = 0;
+        var res = [];
+        for (var key in this.dimensions_) {
+            res[i++] = key + '-' + this.dimensions_[key];
+        }
+        return res.join('/');
+    };
+    /**
+     * Update the dimensions.
+     * @param {Object} dimensions Dimensions.
+     * @api
+     */
+    WMTS.prototype.updateDimensions = function (dimensions) {
+        Object(_obj_js__WEBPACK_IMPORTED_MODULE_3__["assign"])(this.dimensions_, dimensions);
+        this.setKey(this.getKeyForDimensions_());
+    };
+    /**
+     * @param {string} template Template.
+     * @return {import("../Tile.js").UrlFunction} Tile URL function.
+     */
+    WMTS.prototype.createFromWMTSTemplate = function (template) {
+        var requestEncoding = this.requestEncoding_;
+        // context property names are lower case to allow for a case insensitive
+        // replacement as some services use different naming conventions
+        var context = {
+            'layer': this.layer_,
+            'style': this.style_,
+            'tilematrixset': this.matrixSet_,
+        };
+        if (requestEncoding == _WMTSRequestEncoding_js__WEBPACK_IMPORTED_MODULE_1__["default"].KVP) {
+            Object(_obj_js__WEBPACK_IMPORTED_MODULE_3__["assign"])(context, {
+                'Service': 'WMTS',
+                'Request': 'GetTile',
+                'Version': this.version_,
+                'Format': this.format_,
+            });
+        }
+        // TODO: we may want to create our own appendParams function so that params
+        // order conforms to wmts spec guidance, and so that we can avoid to escape
+        // special template params
+        template =
+            requestEncoding == _WMTSRequestEncoding_js__WEBPACK_IMPORTED_MODULE_1__["default"].KVP
+                ? Object(_uri_js__WEBPACK_IMPORTED_MODULE_2__["appendParams"])(template, context)
+                : template.replace(/\{(\w+?)\}/g, function (m, p) {
+                    return p.toLowerCase() in context ? context[p.toLowerCase()] : m;
+                });
+        var tileGrid = /** @type {import("../tilegrid/WMTS.js").default} */ (this
+            .tileGrid);
+        var dimensions = this.dimensions_;
+        return (
+        /**
+         * @param {import("../tilecoord.js").TileCoord} tileCoord Tile coordinate.
+         * @param {number} pixelRatio Pixel ratio.
+         * @param {import("../proj/Projection.js").default} projection Projection.
+         * @return {string|undefined} Tile URL.
+         */
+        function (tileCoord, pixelRatio, projection) {
+            if (!tileCoord) {
+                return undefined;
+            }
+            else {
+                var localContext_1 = {
+                    'TileMatrix': tileGrid.getMatrixId(tileCoord[0]),
+                    'TileCol': tileCoord[1],
+                    'TileRow': tileCoord[2],
+                };
+                Object(_obj_js__WEBPACK_IMPORTED_MODULE_3__["assign"])(localContext_1, dimensions);
+                var url = template;
+                if (requestEncoding == _WMTSRequestEncoding_js__WEBPACK_IMPORTED_MODULE_1__["default"].KVP) {
+                    url = Object(_uri_js__WEBPACK_IMPORTED_MODULE_2__["appendParams"])(url, localContext_1);
+                }
+                else {
+                    url = url.replace(/\{(\w+?)\}/g, function (m, p) {
+                        return localContext_1[p];
+                    });
+                }
+                return url;
+            }
+        });
+    };
+    return WMTS;
+}(_TileImage_js__WEBPACK_IMPORTED_MODULE_0__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (WMTS);
+/**
+ * Generate source options from a capabilities object.
+ * @param {Object} wmtsCap An object representing the capabilities document.
+ * @param {!Object} config Configuration properties for the layer.  Defaults for
+ *                  the layer will apply if not provided.
+ *
+ * Required config properties:
+ *  - layer - {string} The layer identifier.
+ *
+ * Optional config properties:
+ *  - matrixSet - {string} The matrix set identifier, required if there is
+ *       more than one matrix set in the layer capabilities.
+ *  - projection - {string} The desired CRS when no matrixSet is specified.
+ *       eg: "EPSG:3857". If the desired projection is not available,
+ *       an error is thrown.
+ *  - requestEncoding - {string} url encoding format for the layer. Default is
+ *       the first tile url format found in the GetCapabilities response.
+ *  - style - {string} The name of the style
+ *  - format - {string} Image format for the layer. Default is the first
+ *       format returned in the GetCapabilities response.
+ *  - crossOrigin - {string|null|undefined} Cross origin. Default is `undefined`.
+ * @return {?Options} WMTS source options object or `null` if the layer was not found.
+ * @api
+ */
+function optionsFromCapabilities(wmtsCap, config) {
+    var layers = wmtsCap['Contents']['Layer'];
+    var l = Object(_array_js__WEBPACK_IMPORTED_MODULE_7__["find"])(layers, function (elt, index, array) {
+        return elt['Identifier'] == config['layer'];
+    });
+    if (l === null) {
+        return null;
+    }
+    var tileMatrixSets = wmtsCap['Contents']['TileMatrixSet'];
+    var idx;
+    if (l['TileMatrixSetLink'].length > 1) {
+        if ('projection' in config) {
+            idx = Object(_array_js__WEBPACK_IMPORTED_MODULE_7__["findIndex"])(l['TileMatrixSetLink'], function (elt, index, array) {
+                var tileMatrixSet = Object(_array_js__WEBPACK_IMPORTED_MODULE_7__["find"])(tileMatrixSets, function (el) {
+                    return el['Identifier'] == elt['TileMatrixSet'];
+                });
+                var supportedCRS = tileMatrixSet['SupportedCRS'];
+                var proj1 = Object(_proj_js__WEBPACK_IMPORTED_MODULE_6__["get"])(supportedCRS.replace(/urn:ogc:def:crs:(\w+):(.*:)?(\w+)$/, '$1:$3')) || Object(_proj_js__WEBPACK_IMPORTED_MODULE_6__["get"])(supportedCRS);
+                var proj2 = Object(_proj_js__WEBPACK_IMPORTED_MODULE_6__["get"])(config['projection']);
+                if (proj1 && proj2) {
+                    return Object(_proj_js__WEBPACK_IMPORTED_MODULE_6__["equivalent"])(proj1, proj2);
+                }
+                else {
+                    return supportedCRS == config['projection'];
+                }
+            });
+        }
+        else {
+            idx = Object(_array_js__WEBPACK_IMPORTED_MODULE_7__["findIndex"])(l['TileMatrixSetLink'], function (elt, index, array) {
+                return elt['TileMatrixSet'] == config['matrixSet'];
+            });
+        }
+    }
+    else {
+        idx = 0;
+    }
+    if (idx < 0) {
+        idx = 0;
+    }
+    var matrixSet = 
+    /** @type {string} */
+    (l['TileMatrixSetLink'][idx]['TileMatrixSet']);
+    var matrixLimits = 
+    /** @type {Array<Object>} */
+    (l['TileMatrixSetLink'][idx]['TileMatrixSetLimits']);
+    var format = /** @type {string} */ (l['Format'][0]);
+    if ('format' in config) {
+        format = config['format'];
+    }
+    idx = Object(_array_js__WEBPACK_IMPORTED_MODULE_7__["findIndex"])(l['Style'], function (elt, index, array) {
+        if ('style' in config) {
+            return elt['Title'] == config['style'];
+        }
+        else {
+            return elt['isDefault'];
+        }
+    });
+    if (idx < 0) {
+        idx = 0;
+    }
+    var style = /** @type {string} */ (l['Style'][idx]['Identifier']);
+    var dimensions = {};
+    if ('Dimension' in l) {
+        l['Dimension'].forEach(function (elt, index, array) {
+            var key = elt['Identifier'];
+            var value = elt['Default'];
+            if (value === undefined) {
+                value = elt['Value'][0];
+            }
+            dimensions[key] = value;
+        });
+    }
+    var matrixSets = wmtsCap['Contents']['TileMatrixSet'];
+    var matrixSetObj = Object(_array_js__WEBPACK_IMPORTED_MODULE_7__["find"])(matrixSets, function (elt, index, array) {
+        return elt['Identifier'] == matrixSet;
+    });
+    var projection;
+    var code = matrixSetObj['SupportedCRS'];
+    if (code) {
+        projection =
+            Object(_proj_js__WEBPACK_IMPORTED_MODULE_6__["get"])(code.replace(/urn:ogc:def:crs:(\w+):(.*:)?(\w+)$/, '$1:$3')) || Object(_proj_js__WEBPACK_IMPORTED_MODULE_6__["get"])(code);
+    }
+    if ('projection' in config) {
+        var projConfig = Object(_proj_js__WEBPACK_IMPORTED_MODULE_6__["get"])(config['projection']);
+        if (projConfig) {
+            if (!projection || Object(_proj_js__WEBPACK_IMPORTED_MODULE_6__["equivalent"])(projConfig, projection)) {
+                projection = projConfig;
+            }
+        }
+    }
+    var wrapX = false;
+    var switchOriginXY = projection.getAxisOrientation().substr(0, 2) == 'ne';
+    var matrix = matrixSetObj.TileMatrix[0];
+    // create default matrixLimit
+    var selectedMatrixLimit = {
+        MinTileCol: 0,
+        MinTileRow: 0,
+        // substract one to end up at tile top left
+        MaxTileCol: matrix.MatrixWidth - 1,
+        MaxTileRow: matrix.MatrixHeight - 1,
+    };
+    //in case of matrix limits, use matrix limits to calculate extent
+    if (matrixLimits) {
+        selectedMatrixLimit = matrixLimits[matrixLimits.length - 1];
+        matrix = Object(_array_js__WEBPACK_IMPORTED_MODULE_7__["find"])(matrixSetObj.TileMatrix, function (value) { return value.Identifier === selectedMatrixLimit.TileMatrix; });
+    }
+    var resolution = (matrix.ScaleDenominator * 0.00028) / projection.getMetersPerUnit(); // WMTS 1.0.0: standardized rendering pixel size
+    var origin = switchOriginXY
+        ? [matrix.TopLeftCorner[1], matrix.TopLeftCorner[0]]
+        : matrix.TopLeftCorner;
+    var tileSpanX = matrix.TileWidth * resolution;
+    var tileSpanY = matrix.TileHeight * resolution;
+    var extent = [
+        origin[0] + tileSpanX * selectedMatrixLimit.MinTileCol,
+        // add one to get proper bottom/right coordinate
+        origin[1] - tileSpanY * (1 + selectedMatrixLimit.MaxTileRow),
+        origin[0] + tileSpanX * (1 + selectedMatrixLimit.MaxTileCol),
+        origin[1] - tileSpanY * selectedMatrixLimit.MinTileRow,
+    ];
+    if (projection.getExtent() === null) {
+        projection.setExtent(extent);
+    }
+    var tileGrid = Object(_tilegrid_WMTS_js__WEBPACK_IMPORTED_MODULE_4__["createFromCapabilitiesMatrixSet"])(matrixSetObj, extent, matrixLimits);
+    /** @type {!Array<string>} */
+    var urls = [];
+    var requestEncoding = config['requestEncoding'];
+    requestEncoding = requestEncoding !== undefined ? requestEncoding : '';
+    if ('OperationsMetadata' in wmtsCap &&
+        'GetTile' in wmtsCap['OperationsMetadata']) {
+        var gets = wmtsCap['OperationsMetadata']['GetTile']['DCP']['HTTP']['Get'];
+        for (var i = 0, ii = gets.length; i < ii; ++i) {
+            if (gets[i]['Constraint']) {
+                var constraint = Object(_array_js__WEBPACK_IMPORTED_MODULE_7__["find"])(gets[i]['Constraint'], function (element) {
+                    return element['name'] == 'GetEncoding';
+                });
+                var encodings = constraint['AllowedValues']['Value'];
+                if (requestEncoding === '') {
+                    // requestEncoding not provided, use the first encoding from the list
+                    requestEncoding = encodings[0];
+                }
+                if (requestEncoding === _WMTSRequestEncoding_js__WEBPACK_IMPORTED_MODULE_1__["default"].KVP) {
+                    if (Object(_array_js__WEBPACK_IMPORTED_MODULE_7__["includes"])(encodings, _WMTSRequestEncoding_js__WEBPACK_IMPORTED_MODULE_1__["default"].KVP)) {
+                        urls.push(/** @type {string} */ (gets[i]['href']));
+                    }
+                }
+                else {
+                    break;
+                }
+            }
+            else if (gets[i]['href']) {
+                requestEncoding = _WMTSRequestEncoding_js__WEBPACK_IMPORTED_MODULE_1__["default"].KVP;
+                urls.push(/** @type {string} */ (gets[i]['href']));
+            }
+        }
+    }
+    if (urls.length === 0) {
+        requestEncoding = _WMTSRequestEncoding_js__WEBPACK_IMPORTED_MODULE_1__["default"].REST;
+        l['ResourceURL'].forEach(function (element) {
+            if (element['resourceType'] === 'tile') {
+                format = element['format'];
+                urls.push(/** @type {string} */ (element['template']));
+            }
+        });
+    }
+    return {
+        urls: urls,
+        layer: config['layer'],
+        matrixSet: matrixSet,
+        format: format,
+        projection: projection,
+        requestEncoding: requestEncoding,
+        tileGrid: tileGrid,
+        style: style,
+        dimensions: dimensions,
+        wrapX: wrapX,
+        crossOrigin: config['crossOrigin'],
+    };
+}
+//# sourceMappingURL=WMTS.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/source/WMTSRequestEncoding.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/ol/source/WMTSRequestEncoding.js ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * @module ol/source/WMTSRequestEncoding
+ */
+/**
+ * Request encoding. One of 'KVP', 'REST'.
+ * @enum {string}
+ */
+/* harmony default export */ __webpack_exports__["default"] = ({
+    KVP: 'KVP',
+    REST: 'REST',
+});
+//# sourceMappingURL=WMTSRequestEncoding.js.map
+
+/***/ }),
+
 /***/ "./node_modules/ol/source/XYZ.js":
 /*!***************************************!*\
   !*** ./node_modules/ol/source/XYZ.js ***!
@@ -71829,6 +87690,300 @@ var XYZ = /** @class */ (function (_super) {
 }(_TileImage_js__WEBPACK_IMPORTED_MODULE_0__["default"]));
 /* harmony default export */ __webpack_exports__["default"] = (XYZ);
 //# sourceMappingURL=XYZ.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ol/source/Zoomify.js":
+/*!*******************************************!*\
+  !*** ./node_modules/ol/source/Zoomify.js ***!
+  \*******************************************/
+/*! exports provided: CustomTile, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CustomTile", function() { return CustomTile; });
+/* harmony import */ var _tilegrid_common_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../tilegrid/common.js */ "./node_modules/ol/tilegrid/common.js");
+/* harmony import */ var _ImageTile_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../ImageTile.js */ "./node_modules/ol/ImageTile.js");
+/* harmony import */ var _tilegrid_TileGrid_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../tilegrid/TileGrid.js */ "./node_modules/ol/tilegrid/TileGrid.js");
+/* harmony import */ var _TileImage_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./TileImage.js */ "./node_modules/ol/source/TileImage.js");
+/* harmony import */ var _TileState_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../TileState.js */ "./node_modules/ol/TileState.js");
+/* harmony import */ var _asserts_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../asserts.js */ "./node_modules/ol/asserts.js");
+/* harmony import */ var _dom_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../dom.js */ "./node_modules/ol/dom.js");
+/* harmony import */ var _tileurlfunction_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../tileurlfunction.js */ "./node_modules/ol/tileurlfunction.js");
+/* harmony import */ var _extent_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../extent.js */ "./node_modules/ol/extent.js");
+/* harmony import */ var _size_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../size.js */ "./node_modules/ol/size.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+/**
+ * @module ol/source/Zoomify
+ */
+
+
+
+
+
+
+
+
+
+
+/**
+ * @enum {string}
+ */
+var TierSizeCalculation = {
+    DEFAULT: 'default',
+    TRUNCATED: 'truncated',
+};
+var CustomTile = /** @class */ (function (_super) {
+    __extends(CustomTile, _super);
+    /**
+     * @param {import("../size.js").Size} tileSize Full tile size.
+     * @param {import("../tilecoord.js").TileCoord} tileCoord Tile coordinate.
+     * @param {import("../TileState.js").default} state State.
+     * @param {string} src Image source URI.
+     * @param {?string} crossOrigin Cross origin.
+     * @param {import("../Tile.js").LoadFunction} tileLoadFunction Tile load function.
+     * @param {import("../Tile.js").Options=} opt_options Tile options.
+     */
+    function CustomTile(tileSize, tileCoord, state, src, crossOrigin, tileLoadFunction, opt_options) {
+        var _this = _super.call(this, tileCoord, state, src, crossOrigin, tileLoadFunction, opt_options) || this;
+        /**
+         * @private
+         * @type {HTMLCanvasElement|HTMLImageElement|HTMLVideoElement}
+         */
+        _this.zoomifyImage_ = null;
+        /**
+         * @type {import("../size.js").Size}
+         */
+        _this.tileSize_ = tileSize;
+        return _this;
+    }
+    /**
+     * Get the image element for this tile.
+     * @return {HTMLCanvasElement|HTMLImageElement|HTMLVideoElement} Image.
+     */
+    CustomTile.prototype.getImage = function () {
+        if (this.zoomifyImage_) {
+            return this.zoomifyImage_;
+        }
+        var image = _super.prototype.getImage.call(this);
+        if (this.state == _TileState_js__WEBPACK_IMPORTED_MODULE_4__["default"].LOADED) {
+            var tileSize = this.tileSize_;
+            if (image.width == tileSize[0] && image.height == tileSize[1]) {
+                this.zoomifyImage_ = image;
+                return image;
+            }
+            else {
+                var context = Object(_dom_js__WEBPACK_IMPORTED_MODULE_6__["createCanvasContext2D"])(tileSize[0], tileSize[1]);
+                context.drawImage(image, 0, 0);
+                this.zoomifyImage_ = context.canvas;
+                return context.canvas;
+            }
+        }
+        else {
+            return image;
+        }
+    };
+    return CustomTile;
+}(_ImageTile_js__WEBPACK_IMPORTED_MODULE_1__["default"]));
+
+/**
+ * @typedef {Object} Options
+ * @property {import("./Source.js").AttributionLike} [attributions] Attributions.
+ * @property {number} [cacheSize] Initial tile cache size. Will auto-grow to hold at least the number of tiles in the viewport.
+ * @property {null|string} [crossOrigin] The `crossOrigin` attribute for loaded images.  Note that
+ * you must provide a `crossOrigin` value  you want to access pixel data with the Canvas renderer.
+ * See https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image for more detail.
+ * @property {boolean} [imageSmoothing=true] Enable image smoothing.
+ * @property {import("../proj.js").ProjectionLike} [projection] Projection.
+ * @property {number} [tilePixelRatio] The pixel ratio used by the tile service. For example, if the tile service advertizes 256px by 256px tiles but actually sends 512px by 512px images (for retina/hidpi devices) then `tilePixelRatio` should be set to `2`
+ * @property {number} [reprojectionErrorThreshold=0.5] Maximum allowed reprojection error (in pixels).
+ * Higher values can increase reprojection performance, but decrease precision.
+ * @property {string} url URL template or base URL of the Zoomify service.
+ * A base URL is the fixed part
+ * of the URL, excluding the tile group, z, x, and y folder structure, e.g.
+ * `http://my.zoomify.info/IMAGE.TIF/`. A URL template must include
+ * `{TileGroup}`, `{x}`, `{y}`, and `{z}` placeholders, e.g.
+ * `http://my.zoomify.info/IMAGE.TIF/{TileGroup}/{z}-{x}-{y}.jpg`.
+ * Internet Imaging Protocol (IIP) with JTL extension can be also used with
+ * `{tileIndex}` and `{z}` placeholders, e.g.
+ * `http://my.zoomify.info?FIF=IMAGE.TIF&JTL={z},{tileIndex}`.
+ * A `{?-?}` template pattern, for example `subdomain{a-f}.domain.com`, may be
+ * used instead of defining each one separately in the `urls` option.
+ * @property {string} [tierSizeCalculation] Tier size calculation method: `default` or `truncated`.
+ * @property {import("../size.js").Size} size
+ * @property {import("../extent.js").Extent} [extent] Extent for the TileGrid that is created.
+ * Default sets the TileGrid in the
+ * fourth quadrant, meaning extent is `[0, -height, width, 0]`. To change the
+ * extent to the first quadrant (the default for OpenLayers 2) set the extent
+ * as `[0, 0, width, height]`.
+ * @property {number} [transition] Duration of the opacity transition for rendering.
+ * To disable the opacity transition, pass `transition: 0`.
+ * @property {number} [tileSize=256] Tile size. Same tile size is used for all zoom levels.
+ * @property {number} [zDirection] Indicate which resolution should be used
+ * by a renderer if the views resolution does not match any resolution of the tile source.
+ * If 0, the nearest resolution will be used. If 1, the nearest lower resolution
+ * will be used. If -1, the nearest higher resolution will be used.
+ */
+/**
+ * @classdesc
+ * Layer source for tile data in Zoomify format (both Zoomify and Internet
+ * Imaging Protocol are supported).
+ * @api
+ */
+var Zoomify = /** @class */ (function (_super) {
+    __extends(Zoomify, _super);
+    /**
+     * @param {Options} opt_options Options.
+     */
+    function Zoomify(opt_options) {
+        var _this = this;
+        var options = opt_options;
+        var size = options.size;
+        var tierSizeCalculation = options.tierSizeCalculation !== undefined
+            ? options.tierSizeCalculation
+            : TierSizeCalculation.DEFAULT;
+        var tilePixelRatio = options.tilePixelRatio || 1;
+        var imageWidth = size[0];
+        var imageHeight = size[1];
+        var tierSizeInTiles = [];
+        var tileSize = options.tileSize || _tilegrid_common_js__WEBPACK_IMPORTED_MODULE_0__["DEFAULT_TILE_SIZE"];
+        var tileSizeForTierSizeCalculation = tileSize * tilePixelRatio;
+        switch (tierSizeCalculation) {
+            case TierSizeCalculation.DEFAULT:
+                while (imageWidth > tileSizeForTierSizeCalculation ||
+                    imageHeight > tileSizeForTierSizeCalculation) {
+                    tierSizeInTiles.push([
+                        Math.ceil(imageWidth / tileSizeForTierSizeCalculation),
+                        Math.ceil(imageHeight / tileSizeForTierSizeCalculation),
+                    ]);
+                    tileSizeForTierSizeCalculation += tileSizeForTierSizeCalculation;
+                }
+                break;
+            case TierSizeCalculation.TRUNCATED:
+                var width = imageWidth;
+                var height = imageHeight;
+                while (width > tileSizeForTierSizeCalculation ||
+                    height > tileSizeForTierSizeCalculation) {
+                    tierSizeInTiles.push([
+                        Math.ceil(width / tileSizeForTierSizeCalculation),
+                        Math.ceil(height / tileSizeForTierSizeCalculation),
+                    ]);
+                    width >>= 1;
+                    height >>= 1;
+                }
+                break;
+            default:
+                Object(_asserts_js__WEBPACK_IMPORTED_MODULE_5__["assert"])(false, 53); // Unknown `tierSizeCalculation` configured
+                break;
+        }
+        tierSizeInTiles.push([1, 1]);
+        tierSizeInTiles.reverse();
+        var resolutions = [tilePixelRatio];
+        var tileCountUpToTier = [0];
+        for (var i = 1, ii = tierSizeInTiles.length; i < ii; i++) {
+            resolutions.push(tilePixelRatio << i);
+            tileCountUpToTier.push(tierSizeInTiles[i - 1][0] * tierSizeInTiles[i - 1][1] +
+                tileCountUpToTier[i - 1]);
+        }
+        resolutions.reverse();
+        var tileGrid = new _tilegrid_TileGrid_js__WEBPACK_IMPORTED_MODULE_2__["default"]({
+            tileSize: tileSize,
+            extent: options.extent || [0, -imageHeight, imageWidth, 0],
+            resolutions: resolutions,
+        });
+        var url = options.url;
+        if (url &&
+            url.indexOf('{TileGroup}') == -1 &&
+            url.indexOf('{tileIndex}') == -1) {
+            url += '{TileGroup}/{z}-{x}-{y}.jpg';
+        }
+        var urls = Object(_tileurlfunction_js__WEBPACK_IMPORTED_MODULE_7__["expandUrl"])(url);
+        var tileWidth = tileSize * tilePixelRatio;
+        /**
+         * @param {string} template Template.
+         * @return {import("../Tile.js").UrlFunction} Tile URL function.
+         */
+        function createFromTemplate(template) {
+            return (
+            /**
+             * @param {import("../tilecoord.js").TileCoord} tileCoord Tile Coordinate.
+             * @param {number} pixelRatio Pixel ratio.
+             * @param {import("../proj/Projection.js").default} projection Projection.
+             * @return {string|undefined} Tile URL.
+             */
+            function (tileCoord, pixelRatio, projection) {
+                if (!tileCoord) {
+                    return undefined;
+                }
+                else {
+                    var tileCoordZ = tileCoord[0];
+                    var tileCoordX = tileCoord[1];
+                    var tileCoordY = tileCoord[2];
+                    var tileIndex = tileCoordX + tileCoordY * tierSizeInTiles[tileCoordZ][0];
+                    var tileGroup = ((tileIndex + tileCountUpToTier[tileCoordZ]) / tileWidth) | 0;
+                    var localContext_1 = {
+                        'z': tileCoordZ,
+                        'x': tileCoordX,
+                        'y': tileCoordY,
+                        'tileIndex': tileIndex,
+                        'TileGroup': 'TileGroup' + tileGroup,
+                    };
+                    return template.replace(/\{(\w+?)\}/g, function (m, p) {
+                        return localContext_1[p];
+                    });
+                }
+            });
+        }
+        var tileUrlFunction = Object(_tileurlfunction_js__WEBPACK_IMPORTED_MODULE_7__["createFromTileUrlFunctions"])(urls.map(createFromTemplate));
+        var ZoomifyTileClass = CustomTile.bind(null, Object(_size_js__WEBPACK_IMPORTED_MODULE_9__["toSize"])(tileSize * tilePixelRatio));
+        _this = _super.call(this, {
+            attributions: options.attributions,
+            cacheSize: options.cacheSize,
+            crossOrigin: options.crossOrigin,
+            imageSmoothing: options.imageSmoothing,
+            projection: options.projection,
+            tilePixelRatio: tilePixelRatio,
+            reprojectionErrorThreshold: options.reprojectionErrorThreshold,
+            tileClass: ZoomifyTileClass,
+            tileGrid: tileGrid,
+            tileUrlFunction: tileUrlFunction,
+            transition: options.transition,
+        }) || this;
+        /**
+         * @type {number}
+         */
+        _this.zDirection = options.zDirection;
+        // Server retina tile detection (non-standard):
+        // Try loading the center tile for the highest resolution. If it is not
+        // available, we are dealing with retina tiles, and need to adjust the
+        // tile url calculation.
+        var tileUrl = tileGrid.getTileCoordForCoordAndResolution(Object(_extent_js__WEBPACK_IMPORTED_MODULE_8__["getCenter"])(tileGrid.getExtent()), resolutions[resolutions.length - 1]);
+        var testTileUrl = tileUrlFunction(tileUrl, 1, null);
+        var image = new Image();
+        image.addEventListener('error', function () {
+            tileWidth = tileSize;
+            this.changed();
+        }.bind(_this));
+        image.src = testTileUrl;
+        return _this;
+    }
+    return Zoomify;
+}(_TileImage_js__WEBPACK_IMPORTED_MODULE_3__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Zoomify);
+//# sourceMappingURL=Zoomify.js.map
 
 /***/ }),
 
@@ -77545,6 +93700,206 @@ var TileGrid = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./node_modules/ol/tilegrid/WMTS.js":
+/*!******************************************!*\
+  !*** ./node_modules/ol/tilegrid/WMTS.js ***!
+  \******************************************/
+/*! exports provided: default, createFromCapabilitiesMatrixSet */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createFromCapabilitiesMatrixSet", function() { return createFromCapabilitiesMatrixSet; });
+/* harmony import */ var _TileGrid_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TileGrid.js */ "./node_modules/ol/tilegrid/TileGrid.js");
+/* harmony import */ var _array_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../array.js */ "./node_modules/ol/array.js");
+/* harmony import */ var _proj_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../proj.js */ "./node_modules/ol/proj.js");
+/**
+ * @module ol/tilegrid/WMTS
+ */
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+
+/**
+ * @typedef {Object} Options
+ * @property {import("../extent.js").Extent} [extent] Extent for the tile grid. No tiles
+ * outside this extent will be requested by {@link module:ol/source/Tile} sources.
+ * When no `origin` or `origins` are configured, the `origin` will be set to the
+ * top-left corner of the extent.
+ * @property {import("../coordinate.js").Coordinate} [origin] The tile grid origin, i.e.
+ * where the `x` and `y` axes meet (`[z, 0, 0]`). Tile coordinates increase left
+ * to right and downwards. If not specified, `extent` or `origins` must be provided.
+ * @property {Array<import("../coordinate.js").Coordinate>} [origins] Tile grid origins,
+ * i.e. where the `x` and `y` axes meet (`[z, 0, 0]`), for each zoom level. If
+ * given, the array length should match the length of the `resolutions` array, i.e.
+ * each resolution can have a different origin. Tile coordinates increase left to
+ * right and downwards. If not specified, `extent` or `origin` must be provided.
+ * @property {!Array<number>} resolutions Resolutions. The array index of each
+ * resolution needs to match the zoom level. This means that even if a `minZoom`
+ * is configured, the resolutions array will have a length of `maxZoom + 1`
+ * @property {!Array<string>} matrixIds matrix IDs. The length of this array needs
+ * to match the length of the `resolutions` array.
+ * @property {Array<import("../size.js").Size>} [sizes] Number of tile rows and columns
+ * of the grid for each zoom level. The values here are the `TileMatrixWidth` and
+ * `TileMatrixHeight` advertised in the GetCapabilities response of the WMTS, and
+ * define each zoom level's extent together with the `origin` or `origins`.
+ * A grid `extent` can be configured in addition, and will further limit the extent for
+ * which tile requests are made by sources. If the bottom-left corner of
+ * an extent is used as `origin` or `origins`, then the `y` value must be
+ * negative because OpenLayers tile coordinates use the top left as the origin.
+ * @property {number|import("../size.js").Size} [tileSize] Tile size.
+ * @property {Array<import("../size.js").Size>} [tileSizes] Tile sizes. The length of
+ * this array needs to match the length of the `resolutions` array.
+ */
+/**
+ * @classdesc
+ * Set the grid pattern for sources accessing WMTS tiled-image servers.
+ * @api
+ */
+var WMTSTileGrid = /** @class */ (function (_super) {
+    __extends(WMTSTileGrid, _super);
+    /**
+     * @param {Options} options WMTS options.
+     */
+    function WMTSTileGrid(options) {
+        var _this = _super.call(this, {
+            extent: options.extent,
+            origin: options.origin,
+            origins: options.origins,
+            resolutions: options.resolutions,
+            tileSize: options.tileSize,
+            tileSizes: options.tileSizes,
+            sizes: options.sizes,
+        }) || this;
+        /**
+         * @private
+         * @type {!Array<string>}
+         */
+        _this.matrixIds_ = options.matrixIds;
+        return _this;
+    }
+    /**
+     * @param {number} z Z.
+     * @return {string} MatrixId..
+     */
+    WMTSTileGrid.prototype.getMatrixId = function (z) {
+        return this.matrixIds_[z];
+    };
+    /**
+     * Get the list of matrix identifiers.
+     * @return {Array<string>} MatrixIds.
+     * @api
+     */
+    WMTSTileGrid.prototype.getMatrixIds = function () {
+        return this.matrixIds_;
+    };
+    return WMTSTileGrid;
+}(_TileGrid_js__WEBPACK_IMPORTED_MODULE_0__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (WMTSTileGrid);
+/**
+ * Create a tile grid from a WMTS capabilities matrix set and an
+ * optional TileMatrixSetLimits.
+ * @param {Object} matrixSet An object representing a matrixSet in the
+ *     capabilities document.
+ * @param {import("../extent.js").Extent=} opt_extent An optional extent to restrict the tile
+ *     ranges the server provides.
+ * @param {Array<Object>=} opt_matrixLimits An optional object representing
+ *     the available matrices for tileGrid.
+ * @return {WMTSTileGrid} WMTS tileGrid instance.
+ * @api
+ */
+function createFromCapabilitiesMatrixSet(matrixSet, opt_extent, opt_matrixLimits) {
+    /** @type {!Array<number>} */
+    var resolutions = [];
+    /** @type {!Array<string>} */
+    var matrixIds = [];
+    /** @type {!Array<import("../coordinate.js").Coordinate>} */
+    var origins = [];
+    /** @type {!Array<import("../size.js").Size>} */
+    var tileSizes = [];
+    /** @type {!Array<import("../size.js").Size>} */
+    var sizes = [];
+    var matrixLimits = opt_matrixLimits !== undefined ? opt_matrixLimits : [];
+    var supportedCRSPropName = 'SupportedCRS';
+    var matrixIdsPropName = 'TileMatrix';
+    var identifierPropName = 'Identifier';
+    var scaleDenominatorPropName = 'ScaleDenominator';
+    var topLeftCornerPropName = 'TopLeftCorner';
+    var tileWidthPropName = 'TileWidth';
+    var tileHeightPropName = 'TileHeight';
+    var code = matrixSet[supportedCRSPropName];
+    var projection = Object(_proj_js__WEBPACK_IMPORTED_MODULE_2__["get"])(code.replace(/urn:ogc:def:crs:(\w+):(.*:)?(\w+)$/, '$1:$3')) || Object(_proj_js__WEBPACK_IMPORTED_MODULE_2__["get"])(code);
+    var metersPerUnit = projection.getMetersPerUnit();
+    // swap origin x and y coordinates if axis orientation is lat/long
+    var switchOriginXY = projection.getAxisOrientation().substr(0, 2) == 'ne';
+    matrixSet[matrixIdsPropName].sort(function (a, b) {
+        return b[scaleDenominatorPropName] - a[scaleDenominatorPropName];
+    });
+    matrixSet[matrixIdsPropName].forEach(function (elt) {
+        var matrixAvailable;
+        // use of matrixLimits to filter TileMatrices from GetCapabilities
+        // TileMatrixSet from unavailable matrix levels.
+        if (matrixLimits.length > 0) {
+            matrixAvailable = Object(_array_js__WEBPACK_IMPORTED_MODULE_1__["find"])(matrixLimits, function (elt_ml) {
+                if (elt[identifierPropName] == elt_ml[matrixIdsPropName]) {
+                    return true;
+                }
+                // Fallback for tileMatrix identifiers that don't get prefixed
+                // by their tileMatrixSet identifiers.
+                if (elt[identifierPropName].indexOf(':') === -1) {
+                    return (matrixSet[identifierPropName] + ':' + elt[identifierPropName] ===
+                        elt_ml[matrixIdsPropName]);
+                }
+                return false;
+            });
+        }
+        else {
+            matrixAvailable = true;
+        }
+        if (matrixAvailable) {
+            matrixIds.push(elt[identifierPropName]);
+            var resolution = (elt[scaleDenominatorPropName] * 0.28e-3) / metersPerUnit;
+            var tileWidth = elt[tileWidthPropName];
+            var tileHeight = elt[tileHeightPropName];
+            if (switchOriginXY) {
+                origins.push([
+                    elt[topLeftCornerPropName][1],
+                    elt[topLeftCornerPropName][0],
+                ]);
+            }
+            else {
+                origins.push(elt[topLeftCornerPropName]);
+            }
+            resolutions.push(resolution);
+            tileSizes.push(tileWidth == tileHeight ? tileWidth : [tileWidth, tileHeight]);
+            sizes.push([elt['MatrixWidth'], elt['MatrixHeight']]);
+        }
+    });
+    return new WMTSTileGrid({
+        extent: opt_extent,
+        origins: origins,
+        resolutions: resolutions,
+        matrixIds: matrixIds,
+        tileSizes: tileSizes,
+        sizes: sizes,
+    });
+}
+//# sourceMappingURL=WMTS.js.map
+
+/***/ }),
+
 /***/ "./node_modules/ol/tilegrid/common.js":
 /*!********************************************!*\
   !*** ./node_modules/ol/tilegrid/common.js ***!
@@ -82498,6 +98853,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _mapLayergroup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./mapLayergroup */ "./resources/js/mapLayergroup.js");
 /* harmony import */ var _mapConstants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./mapConstants */ "./resources/js/mapConstants.js");
 /* harmony import */ var _mapWmscapabilities__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./mapWmscapabilities */ "./resources/js/mapWmscapabilities.js");
+/* harmony import */ var ol_layer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ol/layer */ "./node_modules/ol/layer.js");
+/* harmony import */ var ol_source__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ol/source */ "./node_modules/ol/source.js");
 function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
 
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -82509,12 +98866,49 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 
 
+
+
  //Map baselayer added
 
 _mapMain__WEBPACK_IMPORTED_MODULE_1__["map"].addLayer(_mapLayergroup__WEBPACK_IMPORTED_MODULE_3__["baseLayerGroup"]); //Map mainlayer added
 
 _mapMain__WEBPACK_IMPORTED_MODULE_1__["map"].addLayer(_mapLayergroup__WEBPACK_IMPORTED_MODULE_3__["mainLayerGroup"]);
-_mapWmscapabilities__WEBPACK_IMPORTED_MODULE_5__["getMaplLayer"](); //Layer switcher logic
+_mapWmscapabilities__WEBPACK_IMPORTED_MODULE_5__["getMapLayer"](); //DragAndDrop Feature
+
+_mapConstants__WEBPACK_IMPORTED_MODULE_4__["dragAndDropInteraction"].on("addfeatures", function (event) {
+  var vectorSourceDragAndDrop = new ol_source__WEBPACK_IMPORTED_MODULE_7__["Vector"]({
+    features: event.features
+  });
+  _mapMain__WEBPACK_IMPORTED_MODULE_1__["map"].addLayer(new ol_layer__WEBPACK_IMPORTED_MODULE_6__["Vector"]({
+    source: vectorSourceDragAndDrop
+  }));
+  _mapMain__WEBPACK_IMPORTED_MODULE_1__["map"].getView().fit(vectorSourceDragAndDrop.getExtent());
+});
+
+var displayFeatureInfo = function displayFeatureInfo(pixel, coordinate) {
+  var features = [];
+  _mapMain__WEBPACK_IMPORTED_MODULE_1__["map"].forEachFeatureAtPixel(pixel, function (feature) {
+    features.push(feature);
+  });
+
+  if (features.length > 0) {
+    var info = [];
+
+    if (typeof features[0].get("description") != "undefined") {
+      info.push(features[0].get("description"));
+    } else {
+      info.push("<p>No description available</p>");
+    }
+
+    console.log(info);
+    _mapConstants__WEBPACK_IMPORTED_MODULE_4__["kmlOverlay"].setPosition(coordinate);
+    _mapConstants__WEBPACK_IMPORTED_MODULE_4__["content"].innerHTML = info;
+  }
+};
+
+_mapMain__WEBPACK_IMPORTED_MODULE_1__["map"].on("click", function (evt) {
+  displayFeatureInfo(evt.pixel, evt.coordinate);
+}); //Layer switcher logic
 
 var _iterator = _createForOfIteratorHelper(_mapConstants__WEBPACK_IMPORTED_MODULE_4__["baseLayerElements"]),
     _step;
@@ -82699,11 +99093,12 @@ var base_stamen_map = new ol_layer__WEBPACK_IMPORTED_MODULE_0__["Tile"]({
 /*!**************************************!*\
   !*** ./resources/js/mapConstants.js ***!
   \**************************************/
-/*! exports provided: fullScreen, dragRotateAndZoom, zoomSlider, attribution, overViewMap, gurl, baseLayerElements, mainLayerElements, mapDraw, mapClear, drawInteraction */
+/*! exports provided: dragAndDropInteraction, fullScreen, dragRotateAndZoom, zoomSlider, attribution, overViewMap, gurl, baseLayerElements, mainLayerElements, mapDraw, mapClear, drawInteraction, container, content, closer, kmlOverlay */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "dragAndDropInteraction", function() { return dragAndDropInteraction; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fullScreen", function() { return fullScreen; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "dragRotateAndZoom", function() { return dragRotateAndZoom; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "zoomSlider", function() { return zoomSlider; });
@@ -82715,19 +99110,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapDraw", function() { return mapDraw; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapClear", function() { return mapClear; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "drawInteraction", function() { return drawInteraction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "container", function() { return container; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "content", function() { return content; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "closer", function() { return closer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "kmlOverlay", function() { return kmlOverlay; });
 /* harmony import */ var ol_control__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ol/control */ "./node_modules/ol/control.js");
 /* harmony import */ var ol_control_ZoomSlider__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ol/control/ZoomSlider */ "./node_modules/ol/control/ZoomSlider.js");
 /* harmony import */ var ol_interaction__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ol/interaction */ "./node_modules/ol/interaction.js");
-/* harmony import */ var ol_layer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ol/layer */ "./node_modules/ol/layer.js");
-/* harmony import */ var ol_source_OSM__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ol/source/OSM */ "./node_modules/ol/source/OSM.js");
-/* harmony import */ var _mapFunctions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./mapFunctions */ "./resources/js/mapFunctions.js");
+/* harmony import */ var ol_format__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ol/format */ "./node_modules/ol/format.js");
+/* harmony import */ var ol_layer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ol/layer */ "./node_modules/ol/layer.js");
+/* harmony import */ var ol_source_OSM__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ol/source/OSM */ "./node_modules/ol/source/OSM.js");
+/* harmony import */ var _mapFunctions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./mapFunctions */ "./resources/js/mapFunctions.js");
+/* harmony import */ var ol_Overlay__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ol/Overlay */ "./node_modules/ol/Overlay.js");
 
 
 
 
 
 
- //Controls and Interactions
+
+
+ // DragAndDrop
+
+var dragAndDropInteraction = new ol_interaction__WEBPACK_IMPORTED_MODULE_2__["DragAndDrop"]({
+  formatConstructors: [ol_format__WEBPACK_IMPORTED_MODULE_3__["GeoJSON"], ol_format__WEBPACK_IMPORTED_MODULE_3__["KML"]]
+}); //Controls and Interactions
 
 var fullScreen = new ol_control__WEBPACK_IMPORTED_MODULE_0__["FullScreen"]();
 var dragRotateAndZoom = new ol_interaction__WEBPACK_IMPORTED_MODULE_2__["DragRotateAndZoom"]();
@@ -82737,8 +99144,8 @@ var attribution = new ol_control__WEBPACK_IMPORTED_MODULE_0__["Attribution"]({
 });
 var overViewMap = new ol_control__WEBPACK_IMPORTED_MODULE_0__["OverviewMap"]({
   collapsed: false,
-  layers: [new ol_layer__WEBPACK_IMPORTED_MODULE_3__["Tile"]({
-    source: new ol_source_OSM__WEBPACK_IMPORTED_MODULE_4__["default"]()
+  layers: [new ol_layer__WEBPACK_IMPORTED_MODULE_4__["Tile"]({
+    source: new ol_source_OSM__WEBPACK_IMPORTED_MODULE_5__["default"]()
   })]
 }); //URL of geoserver
 
@@ -82747,14 +99154,42 @@ var gurl = "http://localhost:8080/geoserver/nepal_map/wms"; //Queryselector for 
 var baseLayerElements = document.querySelectorAll(".selection>select[id=base_layer]");
 var mainLayerElements = document.querySelectorAll(".selection > input[type=checkbox]"); //Draw linestring upon click draw button
 
-var mapDraw = document.getElementById("drawline").addEventListener("click", _mapFunctions__WEBPACK_IMPORTED_MODULE_5__["drawline"]); //Remove interaction
+var mapDraw = document.getElementById("drawline").addEventListener("click", _mapFunctions__WEBPACK_IMPORTED_MODULE_6__["drawline"]); //Remove interaction
 
-var mapClear = document.getElementById("clear").addEventListener("click", _mapFunctions__WEBPACK_IMPORTED_MODULE_5__["clear"]); //Draw linestring
+var mapClear = document.getElementById("clear").addEventListener("click", _mapFunctions__WEBPACK_IMPORTED_MODULE_6__["clear"]); //Draw linestring
 
 var drawInteraction = new ol_interaction__WEBPACK_IMPORTED_MODULE_2__["Draw"]({
   type: "LineString",
   maxPoints: 2
 });
+/**
+ * Elements that make up the popup.
+ */
+
+var container = document.getElementById("popup");
+var content = document.getElementById("popup-content");
+var closer = document.getElementById("popup-closer");
+/**
+ * Create an overlay to anchor the popup to the map.
+ */
+
+var kmlOverlay = new ol_Overlay__WEBPACK_IMPORTED_MODULE_7__["default"]({
+  element: container,
+  autoPan: true,
+  autoPanAnimation: {
+    duration: 250
+  }
+});
+/**
+ * Add a click handler to hide the popup.
+ * @return {boolean} Don't follow the href.
+ */
+
+closer.onclick = function () {
+  kmlOverlay.setPosition(undefined);
+  closer.blur();
+  return false;
+};
 
 /***/ }),
 
@@ -82782,6 +99217,7 @@ function drawline() {
   _mapConstants__WEBPACK_IMPORTED_MODULE_1__["drawInteraction"].on("drawend", function (e) {
     var format = new ol_format_WKT__WEBPACK_IMPORTED_MODULE_2__["default"]();
     var geom = format.writeGeometry(e.feature.getGeometry().clone().transform("EPSG:3857", "EPSG:4326"));
+    console.log(geom);
     $(document).ready(function () {
       $.ajaxSetup({
         headers: {
@@ -82814,11 +99250,13 @@ function drawline() {
 
           span.onclick = function () {
             modal.style.display = "none";
+            _populationChart__WEBPACK_IMPORTED_MODULE_3__["myChart"].destroy();
           }; // When the user clicks anywhere outside of the modal, close it
 
 
           window.onclick = function (event) {
             if (event.target == modal) {
+              _populationChart__WEBPACK_IMPORTED_MODULE_3__["myChart"].destroy();
               modal.style.display = "none";
             }
           };
@@ -82885,6 +99323,7 @@ __webpack_require__.r(__webpack_exports__);
 var map = new ol__WEBPACK_IMPORTED_MODULE_0__["Map"]({
   target: "map",
   layers: [_mapBaselayer__WEBPACK_IMPORTED_MODULE_4__["base_no_layer"]],
+  overlays: [_mapConstants__WEBPACK_IMPORTED_MODULE_1__["kmlOverlay"]],
   view: new ol__WEBPACK_IMPORTED_MODULE_0__["View"]({
     center: [9443807.824891845, 3281690.3876565387],
     extent: [8519000, 2930000, 10395000, 3665000],
@@ -82892,7 +99331,7 @@ var map = new ol__WEBPACK_IMPORTED_MODULE_0__["Map"]({
     minZoom: 6
   }),
   keyboardEventTarget: document,
-  interactions: Object(ol_interaction__WEBPACK_IMPORTED_MODULE_3__["defaults"])().extend([_mapConstants__WEBPACK_IMPORTED_MODULE_1__["dragRotateAndZoom"]]),
+  interactions: Object(ol_interaction__WEBPACK_IMPORTED_MODULE_3__["defaults"])().extend([_mapConstants__WEBPACK_IMPORTED_MODULE_1__["dragRotateAndZoom"], _mapConstants__WEBPACK_IMPORTED_MODULE_1__["dragAndDropInteraction"]]),
   controls: Object(ol_control__WEBPACK_IMPORTED_MODULE_2__["defaults"])({
     attribution: false
   }).extend([_mapConstants__WEBPACK_IMPORTED_MODULE_1__["fullScreen"], _mapConstants__WEBPACK_IMPORTED_MODULE_1__["overViewMap"], _mapConstants__WEBPACK_IMPORTED_MODULE_1__["zoomSlider"], _mapConstants__WEBPACK_IMPORTED_MODULE_1__["attribution"]])
@@ -83046,12 +99485,12 @@ var population = new ol_layer_Tile__WEBPACK_IMPORTED_MODULE_4__["default"]({
 /*!********************************************!*\
   !*** ./resources/js/mapWmscapabilities.js ***!
   \********************************************/
-/*! exports provided: getMaplLayer */
+/*! exports provided: getMapLayer */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getMaplLayer", function() { return getMaplLayer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getMapLayer", function() { return getMapLayer; });
 /* harmony import */ var ol_format_WMSCapabilities__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ol/format/WMSCapabilities */ "./node_modules/ol/format/WMSCapabilities.js");
 /* harmony import */ var node_fetch__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! node-fetch */ "./node_modules/node-fetch/browser.js");
 /* harmony import */ var node_fetch__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(node_fetch__WEBPACK_IMPORTED_MODULE_1__);
@@ -83063,7 +99502,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function getMaplLayer() {
+function getMapLayer() {
   var getLayerButton = document.getElementById("getLayer");
   getLayerButton.addEventListener("click", function () {
     var parser = new ol_format_WMSCapabilities__WEBPACK_IMPORTED_MODULE_0__["default"]();
@@ -83133,12 +99572,14 @@ function getMaplLayer() {
 /*!*****************************************!*\
   !*** ./resources/js/populationChart.js ***!
   \*****************************************/
-/*! exports provided: chart */
+/*! exports provided: myChart, chart */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "myChart", function() { return myChart; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "chart", function() { return chart; });
+var myChart;
 function chart(population) {
   var ctx = document.getElementById("populationChart");
   console.log(population);
@@ -83156,7 +99597,7 @@ function chart(population) {
     }]
   };
   ctx.height = 50;
-  new Chart(ctx, {
+  myChart = new Chart(ctx, {
     type: "line",
     data: speedData
   });

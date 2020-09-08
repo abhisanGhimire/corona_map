@@ -1,3 +1,4 @@
+export var myChart;
 export function chart(population) {
     var ctx = document.getElementById("populationChart");
     console.log(population);
@@ -15,7 +16,7 @@ export function chart(population) {
         ]
     };
     ctx.height = 50;
-    new Chart(ctx, {
+    myChart = new Chart(ctx, {
         type: "line",
         data: speedData
     });

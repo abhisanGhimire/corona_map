@@ -7,6 +7,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/map.css') }}">
 
     <head>
         <meta charset="UTF-8">
@@ -27,6 +28,10 @@
         @include('navbar')
         @include('sidebar')
         <div id="map">
+            <div id="popup" class="ol-popup">
+                <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+                <div id="popup-content"></div>
+            </div>
             <div id="graphModal" class="modal">
                 <!-- Modal content -->
                 <div class="modal-content">

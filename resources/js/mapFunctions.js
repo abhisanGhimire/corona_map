@@ -12,6 +12,7 @@ export function drawline() {
                 .clone()
                 .transform("EPSG:3857", "EPSG:4326")
         );
+        console.log(geom);
         $(document).ready(function() {
             $.ajaxSetup({
                 headers: {
@@ -43,10 +44,12 @@ export function drawline() {
                     // When the user clicks on <span> (x), close the modal
                     span.onclick = function() {
                         modal.style.display = "none";
+                        populationChart.myChart.destroy();
                     };
                     // When the user clicks anywhere outside of the modal, close it
                     window.onclick = function(event) {
                         if (event.target == modal) {
+                            populationChart.myChart.destroy();
                             modal.style.display = "none";
                         }
                     };
