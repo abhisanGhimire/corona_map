@@ -5,13 +5,32 @@ import TileWMS from "ol/source/TileWMS";
 import TileLayer from "ol/layer/Tile";
 
 export function getMapLayer() {
+    var parser = new WMSCapabilities();
     var getLayerButton = document.getElementById("getLayer");
+    // Get the modal
+    var wmsModal = document.getElementById("getWmsAddress");
     getLayerButton.addEventListener("click", function() {
-        var parser = new WMSCapabilities();
-
-        fetch(
-            "http://localhost:8080/geoserver/wms?service=wms&version=1.1.1&request=GetCapabilities"
-        )
+        // Get the <span> element that closes the modal
+        var wmsSpan = document.getElementById("wmsClose");
+        // When the user clicks the button, open the modal
+        wmsModal.style.display = "block";
+        // When the user clicks on <span> (x), close the modal
+        wmsSpan.onclick = function() {
+            wmsModal.style.display = "none";
+        };
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == wmsModal) {
+                wmsModal.style.display = "none";
+            }
+        };
+    });
+    var submitUrl = document.getElementById("submitUrl");
+    submitUrl.addEventListener("click", function() {
+        var wmsAddress = document.getElementById("wmsAddress").value;
+        console.log(wmsAddress);
+        wmsModal.style.display = "none";
+        fetch(wmsAddress)
             .then(function(response) {
                 return response.text();
             })
@@ -34,14 +53,14 @@ export function getMapLayer() {
                 // Get the modal
                 var modal = document.getElementById("getLayerModal");
                 // Get the <span> element that closes the modal
-                var span = document.getElementsByClassName(
-                    "closeLayerOption"
-                )[0];
+                var span = document.getElementById("layerClose");
                 // When the user clicks the button, open the modal
                 modal.style.display = "block";
+                var wms_gurl = wmsAddress.split("?")[0];
+                console.log(wms_gurl);
                 mapLayer.addEventListener("change", function() {
                     const source = new TileWMS({
-                        url: "http://localhost:8080/geoserver/nepal_map/wms",
+                        url: wms_gurl,
                         params: {
                             layers: mapLayer.value,
                             TILED: true

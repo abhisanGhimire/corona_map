@@ -32,27 +32,7 @@
                 <a href="#" id="popup-closer" class="ol-popup-closer"></a>
                 <div id="popup-content"></div>
             </div>
-            <div id="graphModal" class="modal">
-                <!-- Modal content -->
-                <div class="modal-content">
-                    <span class="closePopulationChart">&times;</span>
-                    <canvas id="populationChart" width="100" height="100"></canvas>
-                </div>
-            </div>
-            <div id="getLayerModal" class="modal">
-                <!-- Modal content -->
-                <div class="modal-content">
-                    <span class="closeLayerOption">&times;</span>
-                    <center>
-                        <p class="h1">Select a Layer to be Displayed</p>
-                    </center>
-
-                    <select class="form-control mt-3" id="mapLayer">
-                    </select>
-                    <button type="button" class="btn btn-primary mt-5" onclick="closeLayerOption()">Close</button>
-                </div>
-
-            </div>
+            @include('modal')
         </div>
         <script type="text/javascript" src="{{ asset('/js/map.js') }}"></script>
     </body>
@@ -70,6 +50,11 @@ function closeLayerOption(){
 var modal = document.getElementById("getLayerModal");
 
                modal.style.display = "none";
+        }
+        function closeInputModal(){
+var wmsModal = document.getElementById("getWmsAddress");
+
+wmsModal.style.display = "none";
         }
     </script>
 

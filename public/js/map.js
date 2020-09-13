@@ -99503,10 +99503,33 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function getMapLayer() {
-  var getLayerButton = document.getElementById("getLayer");
+  var parser = new ol_format_WMSCapabilities__WEBPACK_IMPORTED_MODULE_0__["default"]();
+  var getLayerButton = document.getElementById("getLayer"); // Get the modal
+
+  var wmsModal = document.getElementById("getWmsAddress");
   getLayerButton.addEventListener("click", function () {
-    var parser = new ol_format_WMSCapabilities__WEBPACK_IMPORTED_MODULE_0__["default"]();
-    node_fetch__WEBPACK_IMPORTED_MODULE_1___default()("http://localhost:8080/geoserver/wms?service=wms&version=1.1.1&request=GetCapabilities").then(function (response) {
+    // Get the <span> element that closes the modal
+    var wmsSpan = document.getElementById("wmsClose"); // When the user clicks the button, open the modal
+
+    wmsModal.style.display = "block"; // When the user clicks on <span> (x), close the modal
+
+    wmsSpan.onclick = function () {
+      wmsModal.style.display = "none";
+    }; // When the user clicks anywhere outside of the modal, close it
+
+
+    window.onclick = function (event) {
+      if (event.target == wmsModal) {
+        wmsModal.style.display = "none";
+      }
+    };
+  });
+  var submitUrl = document.getElementById("submitUrl");
+  submitUrl.addEventListener("click", function () {
+    var wmsAddress = document.getElementById("wmsAddress").value;
+    console.log(wmsAddress);
+    wmsModal.style.display = "none";
+    node_fetch__WEBPACK_IMPORTED_MODULE_1___default()(wmsAddress).then(function (response) {
       return response.text();
     }).then(function (text) {
       var mapLayer = document.getElementById("mapLayer");
@@ -99527,12 +99550,14 @@ function getMapLayer() {
 
       var modal = document.getElementById("getLayerModal"); // Get the <span> element that closes the modal
 
-      var span = document.getElementsByClassName("closeLayerOption")[0]; // When the user clicks the button, open the modal
+      var span = document.getElementById("layerClose"); // When the user clicks the button, open the modal
 
       modal.style.display = "block";
+      var wms_gurl = wmsAddress.split("?")[0];
+      console.log(wms_gurl);
       mapLayer.addEventListener("change", function () {
         var source = new ol_source_TileWMS__WEBPACK_IMPORTED_MODULE_3__["default"]({
-          url: "http://localhost:8080/geoserver/nepal_map/wms",
+          url: wms_gurl,
           params: {
             layers: mapLayer.value,
             TILED: true
