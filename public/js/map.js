@@ -98837,58 +98837,45 @@ module.exports = g;
 
 /***/ }),
 
-/***/ "./resources/js/map.js":
-/*!*****************************!*\
-  !*** ./resources/js/map.js ***!
-  \*****************************/
+/***/ "./resources/js/dragAndDropKml.js":
+/*!****************************************!*\
+  !*** ./resources/js/dragAndDropKml.js ***!
+  \****************************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var ol_ol_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ol/ol.css */ "./node_modules/ol/ol.css");
-/* harmony import */ var ol_ol_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(ol_ol_css__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _mapConstants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./mapConstants */ "./resources/js/mapConstants.js");
 /* harmony import */ var _mapMain__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./mapMain */ "./resources/js/mapMain.js");
-/* harmony import */ var _mapBaselayer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./mapBaselayer */ "./resources/js/mapBaselayer.js");
-/* harmony import */ var _mapLayergroup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./mapLayergroup */ "./resources/js/mapLayergroup.js");
-/* harmony import */ var _mapConstants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./mapConstants */ "./resources/js/mapConstants.js");
-/* harmony import */ var _mapWmscapabilities__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./mapWmscapabilities */ "./resources/js/mapWmscapabilities.js");
-/* harmony import */ var ol_layer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ol/layer */ "./node_modules/ol/layer.js");
-/* harmony import */ var ol_source__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ol/source */ "./node_modules/ol/source.js");
-function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+/* harmony import */ var ol_layer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ol/layer */ "./node_modules/ol/layer.js");
+/* harmony import */ var ol_source__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ol/source */ "./node_modules/ol/source.js");
 
 
 
+ //DragAndDrop Feature for KML
 
-
-
-
-
- //Map baselayer added
-
-_mapMain__WEBPACK_IMPORTED_MODULE_1__["map"].addLayer(_mapLayergroup__WEBPACK_IMPORTED_MODULE_3__["baseLayerGroup"]); //Map mainlayer added
-
-_mapMain__WEBPACK_IMPORTED_MODULE_1__["map"].addLayer(_mapLayergroup__WEBPACK_IMPORTED_MODULE_3__["mainLayerGroup"]);
-_mapWmscapabilities__WEBPACK_IMPORTED_MODULE_5__["getMapLayer"](); //DragAndDrop Feature
-
-_mapConstants__WEBPACK_IMPORTED_MODULE_4__["dragAndDropInteraction"].on("addfeatures", function (event) {
-  var vectorSourceDragAndDrop = new ol_source__WEBPACK_IMPORTED_MODULE_7__["Vector"]({
+_mapConstants__WEBPACK_IMPORTED_MODULE_0__["dragAndDropInteraction"].on("addfeatures", function (event) {
+  var vectorSourceDragAndDrop = new ol_source__WEBPACK_IMPORTED_MODULE_3__["Vector"]({
     features: event.features
   });
-  _mapMain__WEBPACK_IMPORTED_MODULE_1__["map"].addLayer(new ol_layer__WEBPACK_IMPORTED_MODULE_6__["Vector"]({
+  _mapMain__WEBPACK_IMPORTED_MODULE_1__["map"].addLayer(new ol_layer__WEBPACK_IMPORTED_MODULE_2__["Vector"]({
     source: vectorSourceDragAndDrop
   }));
   _mapMain__WEBPACK_IMPORTED_MODULE_1__["map"].getView().fit(vectorSourceDragAndDrop.getExtent());
+}); //Trigger
+
+_mapConstants__WEBPACK_IMPORTED_MODULE_0__["kml_pointer"].addEventListener("click", function (evt) {
+  _mapMain__WEBPACK_IMPORTED_MODULE_1__["map"].on("click", function (evt) {
+    displayFeatureInfo(evt.pixel, evt.coordinate);
+  });
 });
 
 var displayFeatureInfo = function displayFeatureInfo(pixel, coordinate) {
   var features = [];
   _mapMain__WEBPACK_IMPORTED_MODULE_1__["map"].forEachFeatureAtPixel(pixel, function (feature) {
     features.push(feature);
+    console.log(features);
   });
 
   if (features.length > 0) {
@@ -98901,16 +98888,37 @@ var displayFeatureInfo = function displayFeatureInfo(pixel, coordinate) {
     }
 
     console.log(info);
-    _mapConstants__WEBPACK_IMPORTED_MODULE_4__["kmlOverlay"].setPosition(coordinate);
-    _mapConstants__WEBPACK_IMPORTED_MODULE_4__["content"].innerHTML = info;
+    _mapConstants__WEBPACK_IMPORTED_MODULE_0__["kmlOverlay"].setPosition(coordinate);
+    _mapConstants__WEBPACK_IMPORTED_MODULE_0__["content"].innerHTML = info;
   }
 };
 
-_mapMain__WEBPACK_IMPORTED_MODULE_1__["map"].on("click", function (evt) {
-  displayFeatureInfo(evt.pixel, evt.coordinate);
-}); //Layer switcher logic
+/***/ }),
 
-var _iterator = _createForOfIteratorHelper(_mapConstants__WEBPACK_IMPORTED_MODULE_4__["baseLayerElements"]),
+/***/ "./resources/js/layerSwitcherLogic.js":
+/*!********************************************!*\
+  !*** ./resources/js/layerSwitcherLogic.js ***!
+  \********************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _mapBaselayer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./mapBaselayer */ "./resources/js/mapBaselayer.js");
+/* harmony import */ var _mapLayergroup__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./mapLayergroup */ "./resources/js/mapLayergroup.js");
+function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+
+ //Queryselector for layerswitcher
+
+var baseLayerElements = document.querySelectorAll(".selection>select[id=base_layer]");
+var mainLayerElements = document.querySelectorAll(".selection > input[type=checkbox]"); //Layer switcher logic
+
+var _iterator = _createForOfIteratorHelper(baseLayerElements),
     _step;
 
 try {
@@ -98918,11 +98926,11 @@ try {
     var baseLayerElement = _step.value;
     baseLayerElement.addEventListener("change", function () {
       var baseLayerElementValue = this.value;
-      _mapLayergroup__WEBPACK_IMPORTED_MODULE_3__["baseLayerGroup"].getLayers().forEach(function (element, index, array) {
+      _mapLayergroup__WEBPACK_IMPORTED_MODULE_1__["baseLayerGroup"].getLayers().forEach(function (element, index, array) {
         var baseLayerName = element.get("title");
         element.setVisible(baseLayerName === baseLayerElementValue); //Setting vector layer to true for drawing
 
-        _mapBaselayer__WEBPACK_IMPORTED_MODULE_2__["vector"].setVisible("true");
+        _mapBaselayer__WEBPACK_IMPORTED_MODULE_0__["vector"].setVisible("true");
       });
     });
   } // Layer switcher logic for upper layer
@@ -98933,7 +98941,7 @@ try {
   _iterator.f();
 }
 
-var _iterator2 = _createForOfIteratorHelper(_mapConstants__WEBPACK_IMPORTED_MODULE_4__["mainLayerElements"]),
+var _iterator2 = _createForOfIteratorHelper(mainLayerElements),
     _step2;
 
 try {
@@ -98942,7 +98950,7 @@ try {
     mainLayerElement.addEventListener("change", function () {
       var mainLayerElementValue = this.value;
       var mainLayer;
-      _mapLayergroup__WEBPACK_IMPORTED_MODULE_3__["mainLayerGroup"].getLayers().forEach(function (element, index, array) {
+      _mapLayergroup__WEBPACK_IMPORTED_MODULE_1__["mainLayerGroup"].getLayers().forEach(function (element, index, array) {
         if (mainLayerElementValue === element.get("title")) {
           mainLayer = element;
         }
@@ -98955,6 +98963,38 @@ try {
 } finally {
   _iterator2.f();
 }
+
+/***/ }),
+
+/***/ "./resources/js/map.js":
+/*!*****************************!*\
+  !*** ./resources/js/map.js ***!
+  \*****************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var ol_ol_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ol/ol.css */ "./node_modules/ol/ol.css");
+/* harmony import */ var ol_ol_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(ol_ol_css__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _mapMain__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./mapMain */ "./resources/js/mapMain.js");
+/* harmony import */ var _mapLayergroup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./mapLayergroup */ "./resources/js/mapLayergroup.js");
+/* harmony import */ var _layerSwitcherLogic__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./layerSwitcherLogic */ "./resources/js/layerSwitcherLogic.js");
+/* harmony import */ var _mapWmscapabilities__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./mapWmscapabilities */ "./resources/js/mapWmscapabilities.js");
+/* harmony import */ var _dragAndDropKml__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./dragAndDropKml */ "./resources/js/dragAndDropKml.js");
+
+
+
+
+ //Required
+
+ //Map baselayer added
+
+_mapMain__WEBPACK_IMPORTED_MODULE_1__["map"].addLayer(_mapLayergroup__WEBPACK_IMPORTED_MODULE_2__["baseLayerGroup"]); //Map mainlayer added
+
+_mapMain__WEBPACK_IMPORTED_MODULE_1__["map"].addLayer(_mapLayergroup__WEBPACK_IMPORTED_MODULE_2__["mainLayerGroup"]); //WmsCapabilities tool function
+
+_mapWmscapabilities__WEBPACK_IMPORTED_MODULE_4__["getMapLayer"]();
 
 /***/ }),
 
@@ -99093,11 +99133,12 @@ var base_stamen_map = new ol_layer__WEBPACK_IMPORTED_MODULE_0__["Tile"]({
 /*!**************************************!*\
   !*** ./resources/js/mapConstants.js ***!
   \**************************************/
-/*! exports provided: dragAndDropInteraction, fullScreen, dragRotateAndZoom, zoomSlider, attribution, overViewMap, gurl, baseLayerElements, mainLayerElements, mapDraw, mapClear, drawInteraction, container, content, closer, kmlOverlay */
+/*! exports provided: kml_pointer, dragAndDropInteraction, fullScreen, dragRotateAndZoom, zoomSlider, attribution, overViewMap, gurl, mapDraw, drawInteraction, mapClear, container, content, closer, kmlOverlay */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "kml_pointer", function() { return kml_pointer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "dragAndDropInteraction", function() { return dragAndDropInteraction; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fullScreen", function() { return fullScreen; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "dragRotateAndZoom", function() { return dragRotateAndZoom; });
@@ -99105,11 +99146,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "attribution", function() { return attribution; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "overViewMap", function() { return overViewMap; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "gurl", function() { return gurl; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "baseLayerElements", function() { return baseLayerElements; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mainLayerElements", function() { return mainLayerElements; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapDraw", function() { return mapDraw; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapClear", function() { return mapClear; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "drawInteraction", function() { return drawInteraction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapClear", function() { return mapClear; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "container", function() { return container; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "content", function() { return content; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "closer", function() { return closer; });
@@ -99130,7 +99169,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
- // DragAndDrop
+
+var kml_pointer = document.getElementById("kml_pointer"); // DragAndDrop for GeoJSON and KML
 
 var dragAndDropInteraction = new ol_interaction__WEBPACK_IMPORTED_MODULE_2__["DragAndDrop"]({
   formatConstructors: [ol_format__WEBPACK_IMPORTED_MODULE_3__["GeoJSON"], ol_format__WEBPACK_IMPORTED_MODULE_3__["KML"]]
@@ -99149,19 +99189,16 @@ var overViewMap = new ol_control__WEBPACK_IMPORTED_MODULE_0__["OverviewMap"]({
   })]
 }); //URL of geoserver
 
-var gurl = "http://localhost:8080/geoserver/nepal_map/wms"; //Queryselector for layerswitcher
+var gurl = "http://localhost:8080/geoserver/nepal_map/wms"; //Draw linestring upon click draw button
 
-var baseLayerElements = document.querySelectorAll(".selection>select[id=base_layer]");
-var mainLayerElements = document.querySelectorAll(".selection > input[type=checkbox]"); //Draw linestring upon click draw button
-
-var mapDraw = document.getElementById("drawline").addEventListener("click", _mapFunctions__WEBPACK_IMPORTED_MODULE_6__["drawline"]); //Remove interaction
-
-var mapClear = document.getElementById("clear").addEventListener("click", _mapFunctions__WEBPACK_IMPORTED_MODULE_6__["clear"]); //Draw linestring
+var mapDraw = document.getElementById("drawline").addEventListener("click", _mapFunctions__WEBPACK_IMPORTED_MODULE_6__["drawline"]); //Draw linestring
 
 var drawInteraction = new ol_interaction__WEBPACK_IMPORTED_MODULE_2__["Draw"]({
   type: "LineString",
   maxPoints: 2
-});
+}); //Remove interaction
+
+var mapClear = document.getElementById("clear").addEventListener("click", _mapFunctions__WEBPACK_IMPORTED_MODULE_6__["clear"]);
 /**
  * Elements that make up the popup.
  */
@@ -99233,13 +99270,12 @@ function drawline() {
         success: function success(data) {
           var population = new Array(),
               i;
-          console.log(data.length);
+          console.log(data);
 
           for (i = 0; i < data.length; i++) {
-            population[i] = data[i][i];
+            population[i] = data[i];
           }
 
-          console.log(population);
           _populationChart__WEBPACK_IMPORTED_MODULE_3__["chart"](population); // Get the modal
 
           var modal = document.getElementById("graphModal"); // Get the <span> element that closes the modal
@@ -99611,7 +99647,7 @@ function chart(population) {
   var labelForChart = new Array();
 
   for (var i = 0; i < population.length; i++) {
-    labelForChart[i] = i + "mtr(s)";
+    labelForChart[i] = i;
   }
 
   var speedData = {
@@ -99637,7 +99673,7 @@ function chart(population) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! c:\xampp\htdocs\laravel_projects\map_with_webpack\resources\js\map.js */"./resources/js/map.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\laravel_projects\map_with_webpack\resources\js\map.js */"./resources/js/map.js");
 
 
 /***/ })

@@ -7,41 +7,34 @@ use Illuminate\Support\Facades\DB;
 
 class MapController extends Controller {
     public function getCoordinates( Request $request ) {
-        $getPointsQuery = "SELECT ST_AsText( ( dumpPoints ).geom ) As wkt_geom FROM (
-            SELECT ST_DumpPoints( ST_Segmentize
-            ( ST_GeomFromText( '".$request->geom."' ),
-            0.1 ) ) AS dumpPoints
-        ) AS foo";
-        $getPoints = DB::select( $getPointsQuery );
-        $i = 0;
-        foreach ( $getPoints as $point ) {
-            $points[$i] = $point->wkt_geom;
-            $i++;
-        }
-        for ( $j = 0; $j<count( $points )-1;
-        $j++ ) {
-            $makeLineQuery = "SELECT ST_AsText(ST_MakeLine(ST_GeomFromText('".$points[$j]."', 4326),ST_GeomFromText
-         ('".$points[$j+1]."', 4326)))";
-            $makeLine[$j] = DB::select( $makeLineQuery );
+        $query = " WITH line AS
+(SELECT 'SRID=4326;".$request->geom."'::geometry AS geom),
+T_line As
+(SELECT st_transform(line.geom,3857)  AS geom from line),
+
+linemeasure AS
+-- Add a mesure dimension to extract steps
+(SELECT ST_AddMeasure(T_line.geom, 0, ST_Length(T_line.geom)) as linem,
+        generate_series(0, ST_Length(T_line.geom)::int, 100) as i
+ FROM T_line),
+
+points2d AS
+(SELECT ST_GeometryN(ST_LocateAlong(linem, i), 1) AS geom FROM linemeasure),
+
+T_points2d As
+(SELECT st_transform(points2d.geom,4326)  AS geom from points2d),
+
+cells AS
+(SELECT  ST_Value(corona.rast, 1, T_points2d.geom) AS val
+ FROM corona, T_points2d
+ WHERE ST_Intersects(corona.rast, T_points2d.geom))
+
+select * from cells";
+        $results = DB::select( $query );
+        foreach ( $results as $key=>$value ) {
+            $values[] = $value->val;
         }
 
-        for ( $k = 0; $k<count( $makeLine );
-        $k++ ) {
-            $line[$k] = $makeLine[$k][0]->st_astext;
-        }
-        for ( $l = 0; $l<count( $line );
-        $l++ ) {
-            $querypointPopulation = "SELECT (ST_SummaryStats(St_Union(ST_Clip(rast,ST_GeomFromText('".$line[$l]."', 4326),true)))).sum FROM public.corona
-        WHERE ST_Intersects
-         (rast,ST_GeomFromText
-         ('".$line[$l]."', 4326))";
-            $getPopulation[$l] = DB::select( $querypointPopulation );
-        }
-        for ( $m = 0; $m<count( $getPopulation );
-        $m++ ) {
-            $jsonEncodeData[$m] =  [$m=>$getPopulation[$m][0]->sum];
-        }
-
-        return $jsonEncodeData;
+        return $values;
     }
 }

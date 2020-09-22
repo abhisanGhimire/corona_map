@@ -2,6 +2,7 @@ import * as mapMain from "./mapMain";
 import * as mapConstants from "./mapConstants";
 import WKT from "ol/format/WKT";
 import * as populationChart from "./populationChart";
+
 export function drawline() {
     mapMain.map.addInteraction(mapConstants.drawInteraction);
     mapConstants.drawInteraction.on("drawend", function(e) {
@@ -27,11 +28,10 @@ export function drawline() {
                 success: function(data) {
                     let population = new Array(),
                         i;
-                    console.log(data.length);
+                    console.log(data);
                     for (i = 0; i < data.length; i++) {
-                        population[i] = data[i][i];
+                        population[i] = data[i];
                     }
-                    console.log(population);
                     populationChart.chart(population);
                     // Get the modal
                     var modal = document.getElementById("graphModal");
