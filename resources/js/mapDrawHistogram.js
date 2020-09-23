@@ -34,6 +34,7 @@ function openChart(geometry) {
     var geom = format.writeGeometry(
         geometry.clone().transform("EPSG:3857", "EPSG:4326")
     );
+    console.log(geom);
     $(document).ready(function() {
         $.ajaxSetup({
             headers: {

@@ -33,32 +33,34 @@ export function histogram(count, interval) {
                 {
                     label: "Population Distribution",
                     data: count,
-                    backgroundColor: "green"
+                    backgroundColor: [
+                        "#4fc3f7",
+                        "#bb86fc",
+                        "#2a9df4",
+                        "#d0efff",
+                        "#fffdb8",
+                        "#bb86fc",
+                        "#ffdd3c",
+                        "#d7ccc8",
+                        "#bb86fc",
+                        "#9ecd63"
+                    ]
                 }
             ]
         },
         options: {
             scales: {
-                xAxes: [
-                    {
-                        display: false,
-                        barPercentage: 1.3,
-                        ticks: {
-                            max: 3
-                        }
-                    },
-                    {
-                        display: true,
-                        ticks: {
-                            autoSkip: false,
-                            max: 4
-                        }
-                    }
-                ],
                 yAxes: [
                     {
-                        ticks: {
-                            beginAtZero: true
+                        display: false
+                    }
+                ],
+                xAxes: [
+                    {
+                        barPercentage: 1.0,
+                        categoryPercentage: 1.0,
+                        gridLines: {
+                            display: false
                         }
                     }
                 ]
