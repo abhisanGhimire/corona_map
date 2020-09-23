@@ -98837,75 +98837,17 @@ module.exports = g;
 
 /***/ }),
 
-/***/ "./resources/js/dragAndDropKml.js":
-/*!****************************************!*\
-  !*** ./resources/js/dragAndDropKml.js ***!
-  \****************************************/
+/***/ "./resources/js/layers/layerSwitcherLogic.js":
+/*!***************************************************!*\
+  !*** ./resources/js/layers/layerSwitcherLogic.js ***!
+  \***************************************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _mapConstants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./mapConstants */ "./resources/js/mapConstants.js");
-/* harmony import */ var _mapMain__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./mapMain */ "./resources/js/mapMain.js");
-/* harmony import */ var ol_layer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ol/layer */ "./node_modules/ol/layer.js");
-/* harmony import */ var ol_source__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ol/source */ "./node_modules/ol/source.js");
-
-
-
- //DragAndDrop Feature for KML
-
-_mapConstants__WEBPACK_IMPORTED_MODULE_0__["dragAndDropInteraction"].on("addfeatures", function (event) {
-  var vectorSourceDragAndDrop = new ol_source__WEBPACK_IMPORTED_MODULE_3__["Vector"]({
-    features: event.features
-  });
-  _mapMain__WEBPACK_IMPORTED_MODULE_1__["map"].addLayer(new ol_layer__WEBPACK_IMPORTED_MODULE_2__["Vector"]({
-    source: vectorSourceDragAndDrop
-  }));
-  _mapMain__WEBPACK_IMPORTED_MODULE_1__["map"].getView().fit(vectorSourceDragAndDrop.getExtent());
-}); //Trigger
-
-_mapConstants__WEBPACK_IMPORTED_MODULE_0__["kml_pointer"].addEventListener("click", function (evt) {
-  _mapMain__WEBPACK_IMPORTED_MODULE_1__["map"].on("click", function (evt) {
-    displayFeatureInfo(evt.pixel, evt.coordinate);
-  });
-});
-
-var displayFeatureInfo = function displayFeatureInfo(pixel, coordinate) {
-  var features = [];
-  _mapMain__WEBPACK_IMPORTED_MODULE_1__["map"].forEachFeatureAtPixel(pixel, function (feature) {
-    features.push(feature);
-    console.log(features);
-  });
-
-  if (features.length > 0) {
-    var info = [];
-
-    if (typeof features[0].get("description") != "undefined") {
-      info.push(features[0].get("description"));
-    } else {
-      info.push("<p>No description available</p>");
-    }
-
-    console.log(info);
-    _mapConstants__WEBPACK_IMPORTED_MODULE_0__["kmlOverlay"].setPosition(coordinate);
-    _mapConstants__WEBPACK_IMPORTED_MODULE_0__["content"].innerHTML = info;
-  }
-};
-
-/***/ }),
-
-/***/ "./resources/js/layerSwitcherLogic.js":
-/*!********************************************!*\
-  !*** ./resources/js/layerSwitcherLogic.js ***!
-  \********************************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _mapBaselayer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./mapBaselayer */ "./resources/js/mapBaselayer.js");
-/* harmony import */ var _mapLayergroup__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./mapLayergroup */ "./resources/js/mapLayergroup.js");
+/* harmony import */ var _mapBaselayer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./mapBaselayer */ "./resources/js/layers/mapBaselayer.js");
+/* harmony import */ var _mapLayergroup__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./mapLayergroup */ "./resources/js/layers/mapLayergroup.js");
 function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
 
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -98966,42 +98908,10 @@ try {
 
 /***/ }),
 
-/***/ "./resources/js/map.js":
-/*!*****************************!*\
-  !*** ./resources/js/map.js ***!
-  \*****************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var ol_ol_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ol/ol.css */ "./node_modules/ol/ol.css");
-/* harmony import */ var ol_ol_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(ol_ol_css__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _mapMain__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./mapMain */ "./resources/js/mapMain.js");
-/* harmony import */ var _mapLayergroup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./mapLayergroup */ "./resources/js/mapLayergroup.js");
-/* harmony import */ var _layerSwitcherLogic__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./layerSwitcherLogic */ "./resources/js/layerSwitcherLogic.js");
-/* harmony import */ var _mapWmscapabilities__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./mapWmscapabilities */ "./resources/js/mapWmscapabilities.js");
-/* harmony import */ var _dragAndDropKml__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./dragAndDropKml */ "./resources/js/dragAndDropKml.js");
-
-
-
-
- //Required
-
- //Map baselayer added
-
-_mapMain__WEBPACK_IMPORTED_MODULE_1__["map"].addLayer(_mapLayergroup__WEBPACK_IMPORTED_MODULE_2__["baseLayerGroup"]); //Map mainlayer added
-
-_mapMain__WEBPACK_IMPORTED_MODULE_1__["map"].addLayer(_mapLayergroup__WEBPACK_IMPORTED_MODULE_2__["mainLayerGroup"]); //WmsCapabilities tool function
-
-_mapWmscapabilities__WEBPACK_IMPORTED_MODULE_4__["getMapLayer"]();
-
-/***/ }),
-
-/***/ "./resources/js/mapBaselayer.js":
-/*!**************************************!*\
-  !*** ./resources/js/mapBaselayer.js ***!
-  \**************************************/
+/***/ "./resources/js/layers/mapBaselayer.js":
+/*!*********************************************!*\
+  !*** ./resources/js/layers/mapBaselayer.js ***!
+  \*********************************************/
 /*! exports provided: vectorSource, vector, base_no_layer, base_osm_standardmap, base_osm_humanitarianmap, base_bing_map, base_gmap, base_gsatmap, base_cartoDB_map, base_stamenwithlabel_map, base_stamen_map */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -99129,190 +99039,10 @@ var base_stamen_map = new ol_layer__WEBPACK_IMPORTED_MODULE_0__["Tile"]({
 
 /***/ }),
 
-/***/ "./resources/js/mapConstants.js":
-/*!**************************************!*\
-  !*** ./resources/js/mapConstants.js ***!
-  \**************************************/
-/*! exports provided: kml_pointer, dragAndDropInteraction, fullScreen, dragRotateAndZoom, zoomSlider, attribution, overViewMap, gurl, mapDraw, drawInteraction, mapClear, container, content, closer, kmlOverlay */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "kml_pointer", function() { return kml_pointer; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "dragAndDropInteraction", function() { return dragAndDropInteraction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fullScreen", function() { return fullScreen; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "dragRotateAndZoom", function() { return dragRotateAndZoom; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "zoomSlider", function() { return zoomSlider; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "attribution", function() { return attribution; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "overViewMap", function() { return overViewMap; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "gurl", function() { return gurl; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapDraw", function() { return mapDraw; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "drawInteraction", function() { return drawInteraction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapClear", function() { return mapClear; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "container", function() { return container; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "content", function() { return content; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "closer", function() { return closer; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "kmlOverlay", function() { return kmlOverlay; });
-/* harmony import */ var ol_control__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ol/control */ "./node_modules/ol/control.js");
-/* harmony import */ var ol_control_ZoomSlider__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ol/control/ZoomSlider */ "./node_modules/ol/control/ZoomSlider.js");
-/* harmony import */ var ol_interaction__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ol/interaction */ "./node_modules/ol/interaction.js");
-/* harmony import */ var ol_format__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ol/format */ "./node_modules/ol/format.js");
-/* harmony import */ var ol_layer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ol/layer */ "./node_modules/ol/layer.js");
-/* harmony import */ var ol_source_OSM__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ol/source/OSM */ "./node_modules/ol/source/OSM.js");
-/* harmony import */ var _mapFunctions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./mapFunctions */ "./resources/js/mapFunctions.js");
-/* harmony import */ var ol_Overlay__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ol/Overlay */ "./node_modules/ol/Overlay.js");
-
-
-
-
-
-
-
-
-
-var kml_pointer = document.getElementById("kml_pointer"); // DragAndDrop for GeoJSON and KML
-
-var dragAndDropInteraction = new ol_interaction__WEBPACK_IMPORTED_MODULE_2__["DragAndDrop"]({
-  formatConstructors: [ol_format__WEBPACK_IMPORTED_MODULE_3__["GeoJSON"], ol_format__WEBPACK_IMPORTED_MODULE_3__["KML"]]
-}); //Controls and Interactions
-
-var fullScreen = new ol_control__WEBPACK_IMPORTED_MODULE_0__["FullScreen"]();
-var dragRotateAndZoom = new ol_interaction__WEBPACK_IMPORTED_MODULE_2__["DragRotateAndZoom"]();
-var zoomSlider = new ol_control_ZoomSlider__WEBPACK_IMPORTED_MODULE_1__["default"]();
-var attribution = new ol_control__WEBPACK_IMPORTED_MODULE_0__["Attribution"]({
-  collapsible: true
-});
-var overViewMap = new ol_control__WEBPACK_IMPORTED_MODULE_0__["OverviewMap"]({
-  collapsed: false,
-  layers: [new ol_layer__WEBPACK_IMPORTED_MODULE_4__["Tile"]({
-    source: new ol_source_OSM__WEBPACK_IMPORTED_MODULE_5__["default"]()
-  })]
-}); //URL of geoserver
-
-var gurl = "http://localhost:8080/geoserver/nepal_map/wms"; //Draw linestring upon click draw button
-
-var mapDraw = document.getElementById("drawline").addEventListener("click", _mapFunctions__WEBPACK_IMPORTED_MODULE_6__["drawline"]); //Draw linestring
-
-var drawInteraction = new ol_interaction__WEBPACK_IMPORTED_MODULE_2__["Draw"]({
-  type: "LineString",
-  maxPoints: 2
-}); //Remove interaction
-
-var mapClear = document.getElementById("clear").addEventListener("click", _mapFunctions__WEBPACK_IMPORTED_MODULE_6__["clear"]);
-/**
- * Elements that make up the popup.
- */
-
-var container = document.getElementById("popup");
-var content = document.getElementById("popup-content");
-var closer = document.getElementById("popup-closer");
-/**
- * Create an overlay to anchor the popup to the map.
- */
-
-var kmlOverlay = new ol_Overlay__WEBPACK_IMPORTED_MODULE_7__["default"]({
-  element: container,
-  autoPan: true,
-  autoPanAnimation: {
-    duration: 250
-  }
-});
-/**
- * Add a click handler to hide the popup.
- * @return {boolean} Don't follow the href.
- */
-
-closer.onclick = function () {
-  kmlOverlay.setPosition(undefined);
-  closer.blur();
-  return false;
-};
-
-/***/ }),
-
-/***/ "./resources/js/mapFunctions.js":
-/*!**************************************!*\
-  !*** ./resources/js/mapFunctions.js ***!
-  \**************************************/
-/*! exports provided: drawline, clear */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "drawline", function() { return drawline; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clear", function() { return clear; });
-/* harmony import */ var _mapMain__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./mapMain */ "./resources/js/mapMain.js");
-/* harmony import */ var _mapConstants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./mapConstants */ "./resources/js/mapConstants.js");
-/* harmony import */ var ol_format_WKT__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ol/format/WKT */ "./node_modules/ol/format/WKT.js");
-/* harmony import */ var _populationChart__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./populationChart */ "./resources/js/populationChart.js");
-
-
-
-
-function drawline() {
-  _mapMain__WEBPACK_IMPORTED_MODULE_0__["map"].addInteraction(_mapConstants__WEBPACK_IMPORTED_MODULE_1__["drawInteraction"]);
-  _mapConstants__WEBPACK_IMPORTED_MODULE_1__["drawInteraction"].on("drawend", function (e) {
-    var format = new ol_format_WKT__WEBPACK_IMPORTED_MODULE_2__["default"]();
-    var geom = format.writeGeometry(e.feature.getGeometry().clone().transform("EPSG:3857", "EPSG:4326"));
-    console.log(geom);
-    $(document).ready(function () {
-      $.ajaxSetup({
-        headers: {
-          "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
-        }
-      });
-      $.ajax({
-        url: "/map/coordinates",
-        type: "POST",
-        data: {
-          geom: geom
-        },
-        success: function success(data) {
-          var population = new Array(),
-              i;
-          console.log(data);
-
-          for (i = 0; i < data.length; i++) {
-            population[i] = data[i];
-          }
-
-          _populationChart__WEBPACK_IMPORTED_MODULE_3__["chart"](population); // Get the modal
-
-          var modal = document.getElementById("graphModal"); // Get the <span> element that closes the modal
-
-          var span = document.getElementsByClassName("closePopulationChart")[0]; // When the user clicks the button, open the modal
-
-          modal.style.display = "block"; // When the user clicks on <span> (x), close the modal
-
-          span.onclick = function () {
-            modal.style.display = "none";
-            _populationChart__WEBPACK_IMPORTED_MODULE_3__["myChart"].destroy();
-          }; // When the user clicks anywhere outside of the modal, close it
-
-
-          window.onclick = function (event) {
-            if (event.target == modal) {
-              _populationChart__WEBPACK_IMPORTED_MODULE_3__["myChart"].destroy();
-              modal.style.display = "none";
-            }
-          };
-
-          console.log("Successful");
-        }
-      });
-    });
-  });
-}
-function clear() {
-  _mapMain__WEBPACK_IMPORTED_MODULE_0__["map"].removeInteraction(_mapConstants__WEBPACK_IMPORTED_MODULE_1__["drawInteraction"]);
-}
-
-/***/ }),
-
-/***/ "./resources/js/mapLayergroup.js":
-/*!***************************************!*\
-  !*** ./resources/js/mapLayergroup.js ***!
-  \***************************************/
+/***/ "./resources/js/layers/mapLayergroup.js":
+/*!**********************************************!*\
+  !*** ./resources/js/layers/mapLayergroup.js ***!
+  \**********************************************/
 /*! exports provided: baseLayerGroup, mainLayerGroup */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -99321,8 +99051,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "baseLayerGroup", function() { return baseLayerGroup; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mainLayerGroup", function() { return mainLayerGroup; });
 /* harmony import */ var ol_layer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ol/layer */ "./node_modules/ol/layer.js");
-/* harmony import */ var _mapBaselayer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./mapBaselayer */ "./resources/js/mapBaselayer.js");
-/* harmony import */ var _mapMainlayer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./mapMainlayer */ "./resources/js/mapMainlayer.js");
+/* harmony import */ var _mapBaselayer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./mapBaselayer */ "./resources/js/layers/mapBaselayer.js");
+/* harmony import */ var _mapMainlayer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./mapMainlayer */ "./resources/js/layers/mapMainlayer.js");
 
 
 
@@ -99335,50 +99065,10 @@ var mainLayerGroup = new ol_layer__WEBPACK_IMPORTED_MODULE_0__["Group"]({
 
 /***/ }),
 
-/***/ "./resources/js/mapMain.js":
-/*!*********************************!*\
-  !*** ./resources/js/mapMain.js ***!
-  \*********************************/
-/*! exports provided: map */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "map", function() { return map; });
-/* harmony import */ var ol__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ol */ "./node_modules/ol/index.js");
-/* harmony import */ var _mapConstants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./mapConstants */ "./resources/js/mapConstants.js");
-/* harmony import */ var ol_control__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ol/control */ "./node_modules/ol/control.js");
-/* harmony import */ var ol_interaction__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ol/interaction */ "./node_modules/ol/interaction.js");
-/* harmony import */ var _mapBaselayer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./mapBaselayer */ "./resources/js/mapBaselayer.js");
-
-
-
-
- //Main Map
-
-var map = new ol__WEBPACK_IMPORTED_MODULE_0__["Map"]({
-  target: "map",
-  layers: [_mapBaselayer__WEBPACK_IMPORTED_MODULE_4__["base_no_layer"]],
-  overlays: [_mapConstants__WEBPACK_IMPORTED_MODULE_1__["kmlOverlay"]],
-  view: new ol__WEBPACK_IMPORTED_MODULE_0__["View"]({
-    center: [9443807.824891845, 3281690.3876565387],
-    extent: [8519000, 2930000, 10395000, 3665000],
-    zoom: 6,
-    minZoom: 6
-  }),
-  keyboardEventTarget: document,
-  interactions: Object(ol_interaction__WEBPACK_IMPORTED_MODULE_3__["defaults"])().extend([_mapConstants__WEBPACK_IMPORTED_MODULE_1__["dragRotateAndZoom"], _mapConstants__WEBPACK_IMPORTED_MODULE_1__["dragAndDropInteraction"]]),
-  controls: Object(ol_control__WEBPACK_IMPORTED_MODULE_2__["defaults"])({
-    attribution: false
-  }).extend([_mapConstants__WEBPACK_IMPORTED_MODULE_1__["fullScreen"], _mapConstants__WEBPACK_IMPORTED_MODULE_1__["overViewMap"], _mapConstants__WEBPACK_IMPORTED_MODULE_1__["zoomSlider"], _mapConstants__WEBPACK_IMPORTED_MODULE_1__["attribution"]])
-});
-
-/***/ }),
-
-/***/ "./resources/js/mapMainlayer.js":
-/*!**************************************!*\
-  !*** ./resources/js/mapMainlayer.js ***!
-  \**************************************/
+/***/ "./resources/js/layers/mapMainlayer.js":
+/*!*********************************************!*\
+  !*** ./resources/js/layers/mapMainlayer.js ***!
+  \*********************************************/
 /*! exports provided: nepalBorder, nepalProvince, nepalDistrict, nepalVDC, nepalWard, corona, population */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -99393,7 +99083,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "population", function() { return population; });
 /* harmony import */ var ol_source_ImageWMS__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ol/source/ImageWMS */ "./node_modules/ol/source/ImageWMS.js");
 /* harmony import */ var ol_layer_Image__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ol/layer/Image */ "./node_modules/ol/layer/Image.js");
-/* harmony import */ var _mapConstants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./mapConstants */ "./resources/js/mapConstants.js");
+/* harmony import */ var _mapConstants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../mapConstants */ "./resources/js/mapConstants.js");
 /* harmony import */ var ol_source_TileWMS__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ol/source/TileWMS */ "./node_modules/ol/source/TileWMS.js");
 /* harmony import */ var ol_layer_Tile__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ol/layer/Tile */ "./node_modules/ol/layer/Tile.js");
 
@@ -99517,6 +99207,428 @@ var population = new ol_layer_Tile__WEBPACK_IMPORTED_MODULE_4__["default"]({
 
 /***/ }),
 
+/***/ "./resources/js/map.js":
+/*!*****************************!*\
+  !*** ./resources/js/map.js ***!
+  \*****************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var ol_ol_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ol/ol.css */ "./node_modules/ol/ol.css");
+/* harmony import */ var ol_ol_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(ol_ol_css__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _mapMain__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./mapMain */ "./resources/js/mapMain.js");
+/* harmony import */ var _layers_mapLayergroup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./layers/mapLayergroup */ "./resources/js/layers/mapLayergroup.js");
+/* harmony import */ var _mapWmscapabilities__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./mapWmscapabilities */ "./resources/js/mapWmscapabilities.js");
+/* harmony import */ var _mapDrawHistogram__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./mapDrawHistogram */ "./resources/js/mapDrawHistogram.js");
+/* harmony import */ var _layers_layerSwitcherLogic__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./layers/layerSwitcherLogic */ "./resources/js/layers/layerSwitcherLogic.js");
+/* harmony import */ var _mapdragAndDropKml__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./mapdragAndDropKml */ "./resources/js/mapdragAndDropKml.js");
+
+
+
+ //Required
+
+
+
+ //Map baselayer added
+
+_mapMain__WEBPACK_IMPORTED_MODULE_1__["map"].addLayer(_layers_mapLayergroup__WEBPACK_IMPORTED_MODULE_2__["baseLayerGroup"]); //Map mainlayer added
+
+_mapMain__WEBPACK_IMPORTED_MODULE_1__["map"].addLayer(_layers_mapLayergroup__WEBPACK_IMPORTED_MODULE_2__["mainLayerGroup"]); //WmsCapabilities tool function
+
+_mapWmscapabilities__WEBPACK_IMPORTED_MODULE_3__["getMapLayer"]();
+
+/***/ }),
+
+/***/ "./resources/js/mapConstants.js":
+/*!**************************************!*\
+  !*** ./resources/js/mapConstants.js ***!
+  \**************************************/
+/*! exports provided: kml_pointer, gurl, mapDraw, drawInteraction, mapClear */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "kml_pointer", function() { return kml_pointer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "gurl", function() { return gurl; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapDraw", function() { return mapDraw; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "drawInteraction", function() { return drawInteraction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapClear", function() { return mapClear; });
+/* harmony import */ var ol_interaction__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ol/interaction */ "./node_modules/ol/interaction.js");
+/* harmony import */ var _mapFunctions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./mapFunctions */ "./resources/js/mapFunctions.js");
+
+
+var kml_pointer = document.getElementById("kml_pointer"); //URL of geoserver
+
+var gurl = "http://localhost:8080/geoserver/nepal_map/wms"; //Draw linestring upon click draw button
+
+var mapDraw = document.getElementById("drawline").addEventListener("click", _mapFunctions__WEBPACK_IMPORTED_MODULE_1__["drawline"]); //Draw linestring
+
+var drawInteraction = new ol_interaction__WEBPACK_IMPORTED_MODULE_0__["Draw"]({
+  type: "LineString",
+  maxPoints: 2
+}); //Remove interaction
+
+var mapClear = document.getElementById("clear").addEventListener("click", _mapFunctions__WEBPACK_IMPORTED_MODULE_1__["clear"]);
+
+/***/ }),
+
+/***/ "./resources/js/mapDrawHistogram.js":
+/*!******************************************!*\
+  !*** ./resources/js/mapDrawHistogram.js ***!
+  \******************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _layers_mapBaselayer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./layers/mapBaselayer */ "./resources/js/layers/mapBaselayer.js");
+/* harmony import */ var _mapMain__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./mapMain */ "./resources/js/mapMain.js");
+/* harmony import */ var ol_interaction__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ol/interaction */ "./node_modules/ol/interaction.js");
+/* harmony import */ var _mapOverlay__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./mapOverlay */ "./resources/js/mapOverlay.js");
+/* harmony import */ var ol_format_WKT__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ol/format/WKT */ "./node_modules/ol/format/WKT.js");
+/* harmony import */ var _populationChart__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./populationChart */ "./resources/js/populationChart.js");
+
+
+
+
+
+
+var drawHistogram = document.getElementById("drawHistogram");
+var geometry;
+var drawBoundary; // global so we can remove it later
+
+function addInteractionForExport() {
+  drawBoundary = new ol_interaction__WEBPACK_IMPORTED_MODULE_2__["Draw"]({
+    source: _layers_mapBaselayer__WEBPACK_IMPORTED_MODULE_0__["vectorSource"],
+    type: "Polygon"
+  });
+  drawBoundary.on("drawend", function (evt) {
+    _mapMain__WEBPACK_IMPORTED_MODULE_1__["map"].removeInteraction(drawBoundary);
+    geometry = evt.feature.getGeometry();
+    openChart(geometry);
+  });
+  _mapMain__WEBPACK_IMPORTED_MODULE_1__["map"].addInteraction(drawBoundary);
+}
+/**
+ * Handle change event.
+ */
+
+
+drawHistogram.onclick = function () {
+  _mapMain__WEBPACK_IMPORTED_MODULE_1__["map"].removeInteraction(drawBoundary);
+  addInteractionForExport();
+};
+
+function openChart(geometry) {
+  var format = new ol_format_WKT__WEBPACK_IMPORTED_MODULE_4__["default"]();
+  var geom = format.writeGeometry(geometry.clone().transform("EPSG:3857", "EPSG:4326"));
+  $(document).ready(function () {
+    $.ajaxSetup({
+      headers: {
+        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+      }
+    });
+    $.ajax({
+      url: "/map/histogram",
+      type: "POST",
+      data: {
+        geom: geom
+      },
+      success: function success(data) {
+        console.log(data.items);
+        var min = new Array(),
+            max = new Array(),
+            count = new Array(),
+            i;
+
+        for (i = 0; i < data.items.length; i++) {
+          min[i] = data.items[i].min;
+          count[i] = data.items[i].count;
+        }
+
+        min[i] = data.items[i - 1].max;
+        console.log(count);
+        console.log(min);
+        _populationChart__WEBPACK_IMPORTED_MODULE_5__["histogram"](count, min); // Get the modal
+
+        var modal = document.getElementById("graphModal_1"); // Get the <span> element that closes the modal
+
+        var span = document.getElementById("close_histogram"); // When the user clicks the button, open the modal
+
+        modal.style.display = "block"; // When the user clicks on <span> (x), close the modal
+
+        span.onclick = function () {
+          modal.style.display = "none";
+          _populationChart__WEBPACK_IMPORTED_MODULE_5__["histogramChart"].destroy();
+        }; // When the user clicks anywhere outside of the modal, close it
+
+
+        window.onclick = function (event) {
+          if (event.target == modal) {
+            _populationChart__WEBPACK_IMPORTED_MODULE_5__["histogramChart"].destroy();
+            modal.style.display = "none";
+          }
+        };
+      }
+    });
+  });
+}
+
+/***/ }),
+
+/***/ "./resources/js/mapFunctions.js":
+/*!**************************************!*\
+  !*** ./resources/js/mapFunctions.js ***!
+  \**************************************/
+/*! exports provided: drawline, clear */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "drawline", function() { return drawline; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clear", function() { return clear; });
+/* harmony import */ var _mapMain__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./mapMain */ "./resources/js/mapMain.js");
+/* harmony import */ var _mapConstants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./mapConstants */ "./resources/js/mapConstants.js");
+/* harmony import */ var ol_format_WKT__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ol/format/WKT */ "./node_modules/ol/format/WKT.js");
+/* harmony import */ var _populationChart__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./populationChart */ "./resources/js/populationChart.js");
+
+
+
+
+function drawline() {
+  _mapMain__WEBPACK_IMPORTED_MODULE_0__["map"].addInteraction(_mapConstants__WEBPACK_IMPORTED_MODULE_1__["drawInteraction"]);
+  _mapConstants__WEBPACK_IMPORTED_MODULE_1__["drawInteraction"].on("drawend", function (e) {
+    var format = new ol_format_WKT__WEBPACK_IMPORTED_MODULE_2__["default"]();
+    var geom = format.writeGeometry(e.feature.getGeometry().clone().transform("EPSG:3857", "EPSG:4326"));
+    console.log(geom);
+    $(document).ready(function () {
+      $.ajaxSetup({
+        headers: {
+          "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        }
+      });
+      $.ajax({
+        url: "/map/coordinates",
+        type: "POST",
+        data: {
+          geom: geom
+        },
+        success: function success(data) {
+          var population = new Array(),
+              i;
+          console.log(data);
+
+          for (i = 0; i < data.length; i++) {
+            population[i] = data[i];
+          }
+
+          _populationChart__WEBPACK_IMPORTED_MODULE_3__["chart"](population); // Get the modal
+
+          var modal = document.getElementById("graphModal"); // Get the <span> element that closes the modal
+
+          var span = document.getElementsByClassName("closePopulationChart")[0]; // When the user clicks the button, open the modal
+
+          modal.style.display = "block"; // When the user clicks on <span> (x), close the modal
+
+          span.onclick = function () {
+            modal.style.display = "none";
+            _populationChart__WEBPACK_IMPORTED_MODULE_3__["myChart"].destroy();
+          }; // When the user clicks anywhere outside of the modal, close it
+
+
+          window.onclick = function (event) {
+            if (event.target == modal) {
+              _populationChart__WEBPACK_IMPORTED_MODULE_3__["myChart"].destroy();
+              modal.style.display = "none";
+            }
+          };
+
+          console.log("Successful");
+        }
+      });
+    });
+  });
+}
+function clear() {
+  _mapMain__WEBPACK_IMPORTED_MODULE_0__["map"].removeInteraction(_mapConstants__WEBPACK_IMPORTED_MODULE_1__["drawInteraction"]);
+}
+
+/***/ }),
+
+/***/ "./resources/js/mapInteractionAndControls.js":
+/*!***************************************************!*\
+  !*** ./resources/js/mapInteractionAndControls.js ***!
+  \***************************************************/
+/*! exports provided: fullScreen, dragRotateAndZoom, zoomSlider, attribution, overViewMap, dragAndDropInteraction */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fullScreen", function() { return fullScreen; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "dragRotateAndZoom", function() { return dragRotateAndZoom; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "zoomSlider", function() { return zoomSlider; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "attribution", function() { return attribution; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "overViewMap", function() { return overViewMap; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "dragAndDropInteraction", function() { return dragAndDropInteraction; });
+/* harmony import */ var ol_control__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ol/control */ "./node_modules/ol/control.js");
+/* harmony import */ var ol_control_ZoomSlider__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ol/control/ZoomSlider */ "./node_modules/ol/control/ZoomSlider.js");
+/* harmony import */ var ol_interaction__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ol/interaction */ "./node_modules/ol/interaction.js");
+/* harmony import */ var ol_layer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ol/layer */ "./node_modules/ol/layer.js");
+/* harmony import */ var ol_source_OSM__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ol/source/OSM */ "./node_modules/ol/source/OSM.js");
+/* harmony import */ var ol_format__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ol/format */ "./node_modules/ol/format.js");
+
+
+
+
+
+
+ //Controls and Interactions
+
+var fullScreen = new ol_control__WEBPACK_IMPORTED_MODULE_0__["FullScreen"]();
+var dragRotateAndZoom = new ol_interaction__WEBPACK_IMPORTED_MODULE_2__["DragRotateAndZoom"]();
+var zoomSlider = new ol_control_ZoomSlider__WEBPACK_IMPORTED_MODULE_1__["default"]();
+var attribution = new ol_control__WEBPACK_IMPORTED_MODULE_0__["Attribution"]({
+  collapsible: true
+});
+var overViewMap = new ol_control__WEBPACK_IMPORTED_MODULE_0__["OverviewMap"]({
+  collapsed: false,
+  layers: [new ol_layer__WEBPACK_IMPORTED_MODULE_3__["Tile"]({
+    source: new ol_source_OSM__WEBPACK_IMPORTED_MODULE_4__["default"]()
+  })]
+}); // DragAndDrop for GeoJSON and KML
+
+var dragAndDropInteraction = new ol_interaction__WEBPACK_IMPORTED_MODULE_2__["DragAndDrop"]({
+  formatConstructors: [ol_format__WEBPACK_IMPORTED_MODULE_5__["GeoJSON"], ol_format__WEBPACK_IMPORTED_MODULE_5__["KML"]]
+});
+
+/***/ }),
+
+/***/ "./resources/js/mapMain.js":
+/*!*********************************!*\
+  !*** ./resources/js/mapMain.js ***!
+  \*********************************/
+/*! exports provided: map */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "map", function() { return map; });
+/* harmony import */ var ol__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ol */ "./node_modules/ol/index.js");
+/* harmony import */ var _mapConstants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./mapConstants */ "./resources/js/mapConstants.js");
+/* harmony import */ var ol_control__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ol/control */ "./node_modules/ol/control.js");
+/* harmony import */ var ol_interaction__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ol/interaction */ "./node_modules/ol/interaction.js");
+/* harmony import */ var _layers_mapBaselayer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./layers/mapBaselayer */ "./resources/js/layers/mapBaselayer.js");
+/* harmony import */ var _mapInteractionAndControls__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./mapInteractionAndControls */ "./resources/js/mapInteractionAndControls.js");
+/* harmony import */ var _mapOverlay__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./mapOverlay */ "./resources/js/mapOverlay.js");
+
+
+
+
+
+
+ //Main Map
+
+var map = new ol__WEBPACK_IMPORTED_MODULE_0__["Map"]({
+  target: "map",
+  layers: [_layers_mapBaselayer__WEBPACK_IMPORTED_MODULE_4__["base_no_layer"]],
+  overlays: [_mapOverlay__WEBPACK_IMPORTED_MODULE_6__["kmlOverlay"]],
+  view: new ol__WEBPACK_IMPORTED_MODULE_0__["View"]({
+    center: [9443807.824891845, 3281690.3876565387],
+    extent: [8519000, 2930000, 10395000, 3665000],
+    zoom: 6,
+    minZoom: 6
+  }),
+  keyboardEventTarget: document,
+  interactions: Object(ol_interaction__WEBPACK_IMPORTED_MODULE_3__["defaults"])().extend([_mapInteractionAndControls__WEBPACK_IMPORTED_MODULE_5__["dragRotateAndZoom"], _mapInteractionAndControls__WEBPACK_IMPORTED_MODULE_5__["dragAndDropInteraction"]]),
+  controls: Object(ol_control__WEBPACK_IMPORTED_MODULE_2__["defaults"])({
+    attribution: false
+  }).extend([_mapInteractionAndControls__WEBPACK_IMPORTED_MODULE_5__["fullScreen"], _mapInteractionAndControls__WEBPACK_IMPORTED_MODULE_5__["overViewMap"], _mapInteractionAndControls__WEBPACK_IMPORTED_MODULE_5__["zoomSlider"], _mapInteractionAndControls__WEBPACK_IMPORTED_MODULE_5__["attribution"]])
+});
+
+/***/ }),
+
+/***/ "./resources/js/mapOverlay.js":
+/*!************************************!*\
+  !*** ./resources/js/mapOverlay.js ***!
+  \************************************/
+/*! exports provided: container, content, closer, kmlOverlay, container_1, content_1, closer_1, histogramOverlay */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "container", function() { return container; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "content", function() { return content; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "closer", function() { return closer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "kmlOverlay", function() { return kmlOverlay; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "container_1", function() { return container_1; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "content_1", function() { return content_1; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "closer_1", function() { return closer_1; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "histogramOverlay", function() { return histogramOverlay; });
+/* harmony import */ var ol_Overlay__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ol/Overlay */ "./node_modules/ol/Overlay.js");
+
+/**
+ * Elements that make up the popup.
+ */
+
+var container = document.getElementById("popup");
+var content = document.getElementById("popup-content");
+var closer = document.getElementById("popup-closer");
+/**
+ * Create an overlay to anchor the popup to the map.
+ */
+
+var kmlOverlay = new ol_Overlay__WEBPACK_IMPORTED_MODULE_0__["default"]({
+  element: container,
+  autoPan: true,
+  autoPanAnimation: {
+    duration: 250
+  }
+});
+/**
+ * Add a click handler to hide the popup.
+ * @return {boolean} Don't follow the href.
+ */
+
+closer.onclick = function () {
+  kmlOverlay.setPosition(undefined);
+  closer.blur();
+  return false;
+}; // Popup for histogram
+
+/**
+ * Elements that make up the popup.
+ */
+
+
+var container_1 = document.getElementById("popup_1");
+var content_1 = document.getElementById("popup-content_1");
+var closer_1 = document.getElementById("popup-closer_1");
+/**
+ * Create an overlay to anchor the popup to the map.
+ */
+
+var histogramOverlay = new ol_Overlay__WEBPACK_IMPORTED_MODULE_0__["default"]({
+  element: container_1,
+  autoPan: true,
+  autoPanAnimation: {
+    duration: 250
+  }
+});
+/**
+ * Add a click handler to hide the popup.
+ * @return {boolean} Don't follow the href.
+ */
+
+closer_1.onclick = function () {
+  histogramOverlay.setPosition(undefined);
+  closer_1.blur();
+  return false;
+};
+
+/***/ }),
+
 /***/ "./resources/js/mapWmscapabilities.js":
 /*!********************************************!*\
   !*** ./resources/js/mapWmscapabilities.js ***!
@@ -99629,18 +99741,83 @@ function getMapLayer() {
 
 /***/ }),
 
+/***/ "./resources/js/mapdragAndDropKml.js":
+/*!*******************************************!*\
+  !*** ./resources/js/mapdragAndDropKml.js ***!
+  \*******************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _mapConstants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./mapConstants */ "./resources/js/mapConstants.js");
+/* harmony import */ var _mapMain__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./mapMain */ "./resources/js/mapMain.js");
+/* harmony import */ var ol_layer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ol/layer */ "./node_modules/ol/layer.js");
+/* harmony import */ var ol_source__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ol/source */ "./node_modules/ol/source.js");
+/* harmony import */ var _mapOverlay__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./mapOverlay */ "./resources/js/mapOverlay.js");
+/* harmony import */ var _mapInteractionAndControls__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./mapInteractionAndControls */ "./resources/js/mapInteractionAndControls.js");
+
+
+
+
+
+ //DragAndDrop Feature for KML
+
+_mapInteractionAndControls__WEBPACK_IMPORTED_MODULE_5__["dragAndDropInteraction"].on("addfeatures", function (event) {
+  var vectorSourceDragAndDrop = new ol_source__WEBPACK_IMPORTED_MODULE_3__["Vector"]({
+    features: event.features
+  });
+  _mapMain__WEBPACK_IMPORTED_MODULE_1__["map"].addLayer(new ol_layer__WEBPACK_IMPORTED_MODULE_2__["Vector"]({
+    source: vectorSourceDragAndDrop
+  }));
+  _mapMain__WEBPACK_IMPORTED_MODULE_1__["map"].getView().fit(vectorSourceDragAndDrop.getExtent());
+}); //Trigger
+
+_mapConstants__WEBPACK_IMPORTED_MODULE_0__["kml_pointer"].addEventListener("click", function (evt) {
+  _mapMain__WEBPACK_IMPORTED_MODULE_1__["map"].on("click", function (evt) {
+    displayFeatureInfo(evt.pixel, evt.coordinate);
+  });
+});
+
+var displayFeatureInfo = function displayFeatureInfo(pixel, coordinate) {
+  var features = [];
+  _mapMain__WEBPACK_IMPORTED_MODULE_1__["map"].forEachFeatureAtPixel(pixel, function (feature) {
+    features.push(feature);
+    console.log(features);
+  });
+
+  if (features.length > 0) {
+    var info = [];
+
+    if (typeof features[0].get("description") != "undefined") {
+      info.push(features[0].get("description"));
+    } else {
+      info.push("<p>No description available</p>");
+    }
+
+    console.log(info);
+    _mapOverlay__WEBPACK_IMPORTED_MODULE_4__["kmlOverlay"].setPosition(coordinate);
+    _mapOverlay__WEBPACK_IMPORTED_MODULE_4__["content"].innerHTML = info;
+  }
+};
+
+/***/ }),
+
 /***/ "./resources/js/populationChart.js":
 /*!*****************************************!*\
   !*** ./resources/js/populationChart.js ***!
   \*****************************************/
-/*! exports provided: myChart, chart */
+/*! exports provided: myChart, histogramChart, chart, histogram */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "myChart", function() { return myChart; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "histogramChart", function() { return histogramChart; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "chart", function() { return chart; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "histogram", function() { return histogram; });
 var myChart;
+var histogramChart;
 function chart(population) {
   var ctx = document.getElementById("populationChart");
   console.log(population);
@@ -99661,6 +99838,42 @@ function chart(population) {
   myChart = new Chart(ctx, {
     type: "line",
     data: speedData
+  });
+}
+function histogram(count, interval) {
+  var ctx = document.getElementById("populationChart_1").getContext("2d");
+  histogramChart = new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: interval,
+      datasets: [{
+        label: "Population Distribution",
+        data: count,
+        backgroundColor: "green"
+      }]
+    },
+    options: {
+      scales: {
+        xAxes: [{
+          display: false,
+          barPercentage: 1.3,
+          ticks: {
+            max: 3
+          }
+        }, {
+          display: true,
+          ticks: {
+            autoSkip: false,
+            max: 4
+          }
+        }],
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
   });
 }
 

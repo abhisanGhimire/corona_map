@@ -37,4 +37,28 @@ select * from cells";
 
         return $values;
     }
+
+    public function getHistogram( Request $request ) {
+        $query = "with clipped_rast as
+        (SELECT St_Union(ST_Clip(rast,ST_GeomFromText('".$request->geom."', 4326),true)) as rast
+        FROM public.corona
+        WHERE ST_Intersects
+         (rast,ST_GeomFromText
+         ('".$request->geom."', 4326))
+)
+SELECT (stats).*
+FROM (SELECT  ST_Histogram(clipped_rast.rast, 1,10) As stats
+    FROM clipped_rast
+     ) As foo;";
+
+        $everything = DB::select( $query );
+        foreach ( $everything as $key => $post ) {
+            $data['items'][$key] = [
+                'min' => $post->min,
+                'max' => $post->max,
+                'count' => $post->count,
+            ];
+        }
+        return response()->json( $data );
+    }
 }

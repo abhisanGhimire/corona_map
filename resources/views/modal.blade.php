@@ -5,6 +5,13 @@
         <canvas id="populationChart" width="100" height="100"></canvas>
     </div>
 </div>
+<div id="graphModal_1" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="closePopulationChart" id="close_histogram">&times;</span>
+        <canvas id="populationChart_1" width="100" height="100"></canvas>
+    </div>
+</div>
 <div id="getWmsAddress" class="modal">
     <!-- Modal content -->
     <div class="modal-content">

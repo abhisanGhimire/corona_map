@@ -2,13 +2,15 @@ import { Map, View } from "ol";
 import * as mapConstants from "./mapConstants";
 import { defaults as defaultControls } from "ol/control";
 import { defaults as defaultInteractions } from "ol/interaction";
-import * as mapBaselayer from "./mapBaselayer";
+import * as mapBaselayer from "./layers/mapBaselayer";
+import * as mapInteractionAndControls from "./mapInteractionAndControls";
+import * as mapOverlay from "./mapOverlay";
 
 //Main Map
 export const map = new Map({
     target: "map",
     layers: [mapBaselayer.base_no_layer],
-    overlays: [mapConstants.kmlOverlay],
+    overlays: [mapOverlay.kmlOverlay],
     view: new View({
         center: [9443807.824891845, 3281690.3876565387],
         extent: [8519000, 2930000, 10395000, 3665000],
@@ -17,15 +19,15 @@ export const map = new Map({
     }),
     keyboardEventTarget: document,
     interactions: defaultInteractions().extend([
-        mapConstants.dragRotateAndZoom,
-        mapConstants.dragAndDropInteraction
+        mapInteractionAndControls.dragRotateAndZoom,
+        mapInteractionAndControls.dragAndDropInteraction
     ]),
     controls: defaultControls({
         attribution: false
     }).extend([
-        mapConstants.fullScreen,
-        mapConstants.overViewMap,
-        mapConstants.zoomSlider,
-        mapConstants.attribution
+        mapInteractionAndControls.fullScreen,
+        mapInteractionAndControls.overViewMap,
+        mapInteractionAndControls.zoomSlider,
+        mapInteractionAndControls.attribution
     ])
 });

@@ -2,9 +2,13 @@ import * as mapConstants from "./mapConstants";
 import * as mapMain from "./mapMain";
 import { Vector as VectorLayer } from "ol/layer";
 import { Vector as VectorSource } from "ol/source";
+import * as mapOverlay from "./mapOverlay";
+import * as mapInteractionAndControls from "./mapInteractionAndControls";
 
 //DragAndDrop Feature for KML
-mapConstants.dragAndDropInteraction.on("addfeatures", function(event) {
+mapInteractionAndControls.dragAndDropInteraction.on("addfeatures", function(
+    event
+) {
     var vectorSourceDragAndDrop = new VectorSource({
         features: event.features
     });
@@ -36,7 +40,7 @@ var displayFeatureInfo = function(pixel, coordinate) {
             info.push("<p>No description available</p>");
         }
         console.log(info);
-        mapConstants.kmlOverlay.setPosition(coordinate);
-        mapConstants.content.innerHTML = info;
+        mapOverlay.kmlOverlay.setPosition(coordinate);
+        mapOverlay.content.innerHTML = info;
     }
 };

@@ -1,10 +1,11 @@
 import "ol/ol.css";
 import * as mapMain from "./mapMain";
-import * as mapLayergroup from "./mapLayergroup";
-import * as layerSwitcherLogiv from "./layerSwitcherLogic";
+import * as mapLayergroup from "./layers/mapLayergroup";
 import * as mapWmscapabilities from "./mapWmscapabilities";
 //Required
-import * as dragAndDropKml from "./dragAndDropKml";
+import * as mapDrawhistogram from "./mapDrawHistogram";
+import * as layerSwitcherLogic from "./layers/layerSwitcherLogic";
+import * as dragAndDropKml from "./mapdragAndDropKml";
 
 //Map baselayer added
 mapMain.map.addLayer(mapLayergroup.baseLayerGroup);

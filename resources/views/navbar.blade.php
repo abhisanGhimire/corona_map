@@ -14,6 +14,9 @@
             <a class="nav-link" href="#" id="kml_pointer">KML</a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="#" id="drawHistogram">Draw Histogram</a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="#" id="clear">Clear</a>
         </li>
     </ul>

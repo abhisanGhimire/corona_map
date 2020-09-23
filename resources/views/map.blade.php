@@ -32,6 +32,10 @@
                 <a href="#" id="popup-closer" class="ol-popup-closer"></a>
                 <div id="popup-content"></div>
             </div>
+            <div id="popup_1" class="ol-popup">
+                <a href="#" id="popup-closer_1" class="ol-popup-closer"></a>
+                <div id="popup-content_1"></div>
+            </div>
             @include('modal')
         </div>
         <script type="text/javascript" src="{{ asset('/js/map.js') }}"></script>

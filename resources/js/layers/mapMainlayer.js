@@ -1,6 +1,6 @@
 import ImageWMS from "ol/source/ImageWMS";
 import ImageLayer from "ol/layer/Image";
-import * as mapConstants from "./mapConstants";
+import * as mapConstants from "../mapConstants";
 import TileWMS from "ol/source/TileWMS";
 import TileLayer from "ol/layer/Tile";
 
